@@ -81,9 +81,12 @@
     <Compile Include="Entities\Vacina.cs" />
     <Compile Include="Interface\IRepository\IBaseRepository.cs" />
     <Compile Include="Interface\IRepository\ITipoCursoRepository.cs" />
+    <Compile Include="Interface\IRepository\ITipoExameRepository.cs" />
     <Compile Include="Interface\IService\ITipoCursoService.cs" />
+    <Compile Include="Interface\IService\ITipoExameService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\TipoCursoService.cs" />
+    <Compile Include="Services\TipoExameService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

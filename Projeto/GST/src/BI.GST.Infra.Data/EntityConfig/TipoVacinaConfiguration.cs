@@ -8,6 +8,18 @@ namespace BI.GST.Infra.Data.EntityConfig
     public TipoVacinaConfiguration()
     {
       HasKey(e => e.TipoVacinaId);
+
+      Property(c => c.Nome)
+               .HasMaxLength(150)
+               .IsRequired();
+
+
+      Property(c => c.Validade)
+               .HasMaxLength(10)
+               .IsRequired();
+
+      Property(c => c.Delete)
+              .IsRequired();
     }
   }
 }

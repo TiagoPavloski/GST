@@ -10,7 +10,17 @@ namespace BI.GST.Infra.Data.EntityConfig
     {
       HasKey(e => e.TipoCursoId);
 
-      //Property(p => p.TipoCursoId).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+      Property(c => c.Nome)
+           .HasMaxLength(150)
+           .IsRequired();
+
+
+      Property(c => c.Validade)
+               .HasMaxLength(10)
+               .IsRequired();
+
+      Property(c => c.Delete)
+              .IsRequired();
 
     }
   }
