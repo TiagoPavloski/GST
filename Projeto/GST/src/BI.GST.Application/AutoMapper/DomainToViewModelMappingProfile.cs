@@ -19,6 +19,7 @@ namespace BI.GST.Application.AutoMapper
     protected override void Configure()
     {
       Mapper.CreateMap<TipoCurso, TipoCursoViewModel>();
+      Mapper.CreateMap<TipoExame, TipoExameViewModel>();
     }
   }
 }

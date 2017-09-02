@@ -175,6 +175,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoCursosController.cs" />
+    <Compile Include="Controllers\TipoExamesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -226,6 +227,12 @@
     <Content Include="Views\TipoCursos\Edit.cshtml" />
     <Content Include="Views\TipoCursos\Index.cshtml" />
     <Content Include="Views\Shared\_Paginacao.cshtml" />
+    <Content Include="Views\TipoExames\Create.cshtml" />
+    <Content Include="Views\TipoExames\Delete.cshtml" />
+    <Content Include="Views\TipoExames\Details.cshtml" />
+    <Content Include="Views\TipoExames\Edit.cshtml" />
+    <Content Include="Views\TipoExames\Index.cshtml" />
+    <Content Include="Views\Shared\_Mensagem.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

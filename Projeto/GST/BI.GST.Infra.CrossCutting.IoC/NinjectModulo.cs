@@ -18,12 +18,15 @@ namespace BI.GST.Infra.CrossCutting.IoC
     {
       //Application
       Bind<ITipoCursoAppService>().To<TipoCursoAppService>();
+      Bind<ITipoExameAppService>().To<TipoExameAppService>();
 
       //Servicos
       Bind<ITipoCursoService>().To<TipoCursoService>();
+      Bind<ITipoExameService>().To<TipoExameService>();
 
       //Data Repository
       Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+      Bind<ITipoExameRepository>().To<TipoExameRepository>();
 
       //Data Configuration
       Bind<IContextManager>().To<ContextManager>();

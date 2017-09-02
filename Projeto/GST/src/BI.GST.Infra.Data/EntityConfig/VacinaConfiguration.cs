@@ -8,6 +8,13 @@ namespace BI.GST.Infra.Data.EntityConfig
     public VacinaConfiguration()
     {
       HasKey(e => e.VacinaId);
+
+      Property(c => c.Status)
+                .IsRequired();
+
+      Property(c => c.Data)
+               .HasMaxLength(10)
+               .IsRequired();
     }
   }
 }
