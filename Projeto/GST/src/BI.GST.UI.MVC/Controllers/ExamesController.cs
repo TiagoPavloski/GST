@@ -32,9 +32,20 @@ namespace BI.GST.UI.MVC.Controllers
             var examesViewModel = _exameAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            //ViewBag.Pesquisa = pesquisa;
             ViewBag.Controller = "Exames";
             ViewBag.TotalRegistros = _exameAppService.ObterTotalRegistros(pesquisa);
+
+            #region DDL Status
+            List<SelectListItem> ddlStatus_Exames = new List<SelectListItem>();
+            ddlStatus_Exames.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Exames.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
+            TempData["ddlStatus_Exames"] = ddlStatus_Exames;
+
+            foreach (var item in examesViewModel)
+            {
+                item.StatusNome = ddlStatus_Exames.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+            }
+            #endregion
 
             return View(examesViewModel);
         }
@@ -51,6 +62,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            var ddlStatus_Exames = (List<SelectListItem>)TempData["ddlStatus_Exames"];
+            exame.StatusNome = ddlStatus_Exames.Where(e => e.Value.Trim().Equals(exame.Status.ToString())).First().Text;
             return View(exame);
         }
 
@@ -131,6 +144,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            var ddlStatus_Exames = (List<SelectListItem>)TempData["ddlStatus_Exames"];
+            exame.StatusNome = ddlStatus_Exames.Where(e => e.Value.Trim().Equals(exame.Status.ToString())).First().Text;
             return View(exame);
         }
 

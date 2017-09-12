@@ -32,9 +32,20 @@ namespace BI.GST.UI.MVC.Controllers
             var vacinasViewModel = _vacinaAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            //ViewBag.Pesquisa = pesquisa;
             ViewBag.Controller = "Vacinas";
             ViewBag.TotalRegistros = _vacinaAppService.ObterTotalRegistros(pesquisa);
+
+            #region DDL Status
+            List<SelectListItem> ddlStatus_Vacinas = new List<SelectListItem>();
+            ddlStatus_Vacinas.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Vacinas.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
+            TempData["ddlStatus_Vacinas"] = ddlStatus_Vacinas;
+
+            foreach (var item in vacinasViewModel)
+            {
+                item.StatusNome = ddlStatus_Vacinas.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+            }
+            #endregion
 
             return View(vacinasViewModel);
         }
@@ -51,6 +62,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            var ddlStatus_Vacinas = (List<SelectListItem>)TempData["ddlStatus_Vacinas"];
+            vacina.StatusNome = ddlStatus_Vacinas.Where(e => e.Value.Trim().Equals(vacina.Status.ToString())).First().Text;
             return View(vacina);
         }
 
@@ -132,6 +145,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            var ddlStatus_Vacinas = (List<SelectListItem>)TempData["ddlStatus_Vacinas"];
+            vacina.StatusNome = ddlStatus_Vacinas.Where(e => e.Value.Trim().Equals(vacina.Status.ToString())).First().Text;
             return View(vacina);
         }
 
