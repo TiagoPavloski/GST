@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.ViewModels
 {
-  public class TipoCursoViewModel
+  public class TipoVacinaViewModel
   {
-    public int TipoCursoId { get; set; }
+    public int TipoVacinaId { get; set; }
 
     [Required(ErrorMessage = "Prencher campo Nome")]
     [MaxLength(150, ErrorMessage = "Máximo de 150")]

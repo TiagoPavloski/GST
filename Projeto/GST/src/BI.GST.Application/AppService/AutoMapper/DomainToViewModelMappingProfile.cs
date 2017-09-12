@@ -20,6 +20,10 @@ namespace BI.GST.Application.AutoMapper
     {
       Mapper.CreateMap<TipoCurso, TipoCursoViewModel>();
       Mapper.CreateMap<TipoExame, TipoExameViewModel>();
+      Mapper.CreateMap<TipoVacina, TipoVacinaViewModel>();
+      Mapper.CreateMap<Vacina, VacinaViewModel>();
+      Mapper.CreateMap<Curso, CursoViewModel>();
+      Mapper.CreateMap<Exame, ExameViewModel>();
     }
   }
 }

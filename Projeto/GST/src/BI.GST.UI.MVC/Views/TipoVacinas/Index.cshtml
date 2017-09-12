@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BI.GST.Application.ViewModels.TipoExameViewModel>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.TipoVacinaViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -11,7 +11,7 @@
 </p>
 
 
-@using (Html.BeginForm("Index", "TipoExames", new { pesquisa = "" }, FormMethod.Get))
+@using (Html.BeginForm("Index", "TipoVacinas", new { pesquisa = "" }, FormMethod.Get))
 {
   <p>
     Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
@@ -38,9 +38,9 @@
             @Html.DisplayFor(modelItem => item.Validade)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TipoExameId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TipoExameId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TipoExameId })
+            @Html.ActionLink("Edit", "Edit", new { id=item.TipoVacinaId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TipoVacinaId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TipoVacinaId })
         </td>
     </tr>
 }
