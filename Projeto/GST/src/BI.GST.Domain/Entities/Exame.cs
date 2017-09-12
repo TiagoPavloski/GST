@@ -10,14 +10,17 @@ namespace BI.GST.Domain.Entities
   {
     public int ExameId { get; set; }
 
-    public virtual Funcionario Funcionario { get; set; }
+    public int FuncionarioId { get; set; }
 
-    public virtual TipoExame TipoExame { get; set; }
+    public int TipoExameId { get; set; }
     
     public string Data { get; set; }
 
     public int Status { get; set; }
 
     public bool Delete { get; set; }
+
+    public virtual Funcionario Funcionario { get; set; }
+    public virtual TipoExame TipoExame { get; set; }
   }
 }

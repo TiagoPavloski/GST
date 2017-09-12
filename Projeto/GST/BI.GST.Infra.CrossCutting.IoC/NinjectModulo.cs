@@ -23,6 +23,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
       Bind<ICursoAppService>().To<CursoAppService>();
       Bind<IExameAppService>().To<ExameAppService>();
       Bind<IVacinaAppService>().To<VacinaAppService>();
+      Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
 
       //Servicos
       Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -31,6 +32,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
       Bind<ICursoService>().To<CursoService>();
       Bind<IExameService>().To<ExameService>();
       Bind<IVacinaService>().To<VacinaService>();
+      Bind<IFuncionarioService>().To<FuncionarioService>();
 
       //Data Repository
       Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -39,6 +41,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
       Bind<ICursoRepository>().To<CursoRepository>();
       Bind<IExameRepository>().To<ExameRepository>();
       Bind<IVacinaRepository>().To<VacinaRepository>();
+      Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
 
       //Data Configuration
       Bind<IContextManager>().To<ContextManager>();

@@ -13,121 +13,133 @@ using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class TipoExamesController : Controller
+    public class ExamesController : Controller
     {
+        private readonly IExameAppService _exameAppService;
         private readonly ITipoExameAppService _tipoExameAppService;
+        private readonly IFuncionarioAppService _funcionarioAppService;
 
-        public TipoExamesController(ITipoExameAppService tipoExameAppService)
+        public ExamesController(IExameAppService exameAppService, ITipoExameAppService tipoExameAppService, IFuncionarioAppService funcionarioAppService)
         {
+            _exameAppService = exameAppService;
             _tipoExameAppService = tipoExameAppService;
+            _funcionarioAppService = funcionarioAppService;
         }
-        // GET: TipoExames
+
+        // GET: Exames
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var tipoExameViewModel = _tipoExameAppService.ObterGrid(page, pesquisa);
+            var examesViewModel = _exameAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
             //ViewBag.Pesquisa = pesquisa;
-            ViewBag.Controller = "TipoExames";
-            ViewBag.TotalRegistros = _tipoExameAppService.ObterTotalRegistros(pesquisa);
-            return View(tipoExameViewModel);
+            ViewBag.Controller = "Exames";
+            ViewBag.TotalRegistros = _exameAppService.ObterTotalRegistros(pesquisa);
+
+            return View(examesViewModel);
         }
 
-        // GET: TipoExames/Details/5
+        // GET: Exames/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var tipoExame = _tipoExameAppService.ObterPorId(id.Value);
-            if (tipoExame == null)
+            var exame = _exameAppService.ObterPorId(id.Value);
+            if (exame == null)
             {
                 return HttpNotFound();
             }
-            return View(tipoExame);
+            return View(exame);
         }
 
-        // GET: TipoExames/Create
+        // GET: Exames/Create
         public ActionResult Create()
         {
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
+            ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
             return View();
         }
 
-        // POST: TipoExames/Create
+        // POST: Exames/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TipoExameViewModel tipoExameViewModel)
+        public ActionResult Create(ExameViewModel exameViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_tipoExameAppService.Adicionar(tipoExameViewModel))
+                if (!_exameAppService.Adicionar(exameViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoExame com os mesmos dados')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Exame com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(tipoExameViewModel);
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", exameViewModel.FuncionarioId);
+            ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome", exameViewModel.TipoExameId);
+            return View(exameViewModel);
         }
 
-        // GET: TipoExames/Edit/5
+        // GET: Exames/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var tipoExame = _tipoExameAppService.ObterPorId(id.Value);
-            if (tipoExame == null)
+            var exame = _exameAppService.ObterPorId(id.Value);
+            if (exame == null)
             {
                 return HttpNotFound();
             }
-            return View(tipoExame);
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", exame.FuncionarioId);
+            ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome", exame.TipoExameId);
+            return View(exame);
         }
 
-        // POST: TipoExames/Edit/5
+        // POST: Exames/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(TipoExameViewModel tipoExameViewModel)
+        public ActionResult Edit(ExameViewModel exameViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_tipoExameAppService.Atualizar(tipoExameViewModel))
+                if (!_exameAppService.Atualizar(exameViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Exame com os mesmos dados já cadastrada')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Exame com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(tipoExameViewModel);
+            return View(exameViewModel);
         }
 
-        // GET: TipoExames/Delete/5
+        // GET: Exames/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var tipoExame = _tipoExameAppService.ObterPorId(id.Value);
-            if (tipoExame == null)
+            var exame = _exameAppService.ObterPorId(id.Value);
+            if (exame == null)
             {
                 return HttpNotFound();
             }
-            return View(tipoExame);
+            return View(exame);
         }
 
-        // POST: TipoExames/Delete/5
+        // POST: Exames/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_tipoExameAppService.Excluir(id))
+            if (!_exameAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
                 return null;
@@ -142,10 +154,9 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (disposing)
             {
-                _tipoExameAppService.Dispose();
+                _exameAppService.Dispose();
             }
             base.Dispose(disposing);
         }
-
     }
 }

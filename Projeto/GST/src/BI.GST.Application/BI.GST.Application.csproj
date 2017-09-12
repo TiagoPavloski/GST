@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\ExameAppService.cs" />
+    <Compile Include="AppService\FuncionarioAppService.cs" />
     <Compile Include="AppService\TipoCursoAppService.cs" />
     <Compile Include="AppService\TipoExameAppService.cs" />
     <Compile Include="AppService\TipoVacinaAppService.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Interface\IBaseAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IExameAppService.cs" />
+    <Compile Include="Interface\IFuncionarioAppService.cs" />
     <Compile Include="Interface\ITipoCursoAppService.cs" />
     <Compile Include="Interface\ITipoExameAppService.cs" />
     <Compile Include="Interface\ITipoVacinaAppService.cs" />
@@ -74,6 +76,8 @@
     <Compile Include="ViewModels\CursoViewModel.cs" />
     <Compile Include="ViewModels\ExameViewModel.cs" />
     <Compile Include="ViewModels\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModels\PessoaViewModel.cs" />
+    <Compile Include="ViewModels\TelefoneViewModel.cs" />
     <Compile Include="ViewModels\TipoCursoViewModel.cs" />
     <Compile Include="ViewModels\TipoExameViewModel.cs" />
     <Compile Include="ViewModels\TipoVacinaViewModel.cs" />
