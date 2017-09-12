@@ -32,9 +32,20 @@ namespace BI.GST.UI.MVC.Controllers
             var cursosViewModel = _cursoAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            //ViewBag.Pesquisa = pesquisa;
             ViewBag.Controller = "Cursos";
             ViewBag.TotalRegistros = _cursoAppService.ObterTotalRegistros(pesquisa);
+
+            #region DDL Status
+            List<SelectListItem> ddlStatus_Cursos = new List<SelectListItem>();
+            ddlStatus_Cursos.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Cursos.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
+            TempData["ddlStatus_Cursos"] = ddlStatus_Cursos;
+
+            foreach (var item in cursosViewModel)
+            {
+                item.StatusNome = ddlStatus_Cursos.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+            }
+            #endregion
 
             return View(cursosViewModel);
         }
@@ -51,6 +62,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            var ddlStatus_Cursos = (List<SelectListItem>)TempData["ddlStatus_Cursos"];
+            curso.StatusNome = ddlStatus_Cursos.Where(e => e.Value.Trim().Equals(curso.Status.ToString())).First().Text;
             return View(curso);
         }
 
@@ -132,6 +145,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            var ddlStatus_Cursos = (List<SelectListItem>)TempData["ddlStatus_Cursos"];
+            curso.StatusNome = ddlStatus_Cursos.Where(e => e.Value.Trim().Equals(curso.Status.ToString())).First().Text;
             return View(curso);
         }
 
