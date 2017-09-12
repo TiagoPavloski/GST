@@ -16,9 +16,9 @@ namespace BI.GST.Domain.Interface.IService
 
     IEnumerable<TipoExame> Find(Expression<Func<TipoExame, bool>> predicate);
 
-    void Adicionar(TipoExame cliente);
+    void Adicionar(TipoExame tipoExame);
 
-    void Atualizar(TipoExame cliente);
+    void Atualizar(TipoExame tipoExame);
 
     void Excluir(int id);
 
