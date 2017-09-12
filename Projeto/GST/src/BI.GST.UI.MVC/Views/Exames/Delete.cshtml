@@ -1,4 +1,4 @@
-﻿@model BI.GST.Application.ViewModels.CursoViewModel
+﻿@model BI.GST.Application.ViewModels.ExameViewModel
 
 @{
     ViewBag.Title = "Delete";
@@ -8,11 +8,11 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Curso</h4>
+    <h4>Exame</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayName("Funcionario")
+            @Html.DisplayNameFor(model => model.Funcionario)
         </dt>
 
         <dd>
@@ -20,11 +20,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayName("Tipo Curso")
+            @Html.DisplayNameFor(model => model.TipoExame.Nome)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TipoCurso.Nome)
+            @Html.DisplayFor(model => model.TipoExame.Nome)
         </dd>
 
         <dt>

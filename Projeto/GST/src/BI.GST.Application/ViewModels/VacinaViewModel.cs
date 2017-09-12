@@ -1,6 +1,7 @@
 ﻿using BI.GST.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,13 @@ namespace BI.GST.Application.ViewModels
   {
     public int VacinaId { get; set; }
 
-    [Required(ErrorMessage = "Prencher campo Funcionario")]
-    public virtual Funcionario Funcionario { get; set; }
+    [Required]
+    [DisplayName("Funcionario")]
+    public int FuncionarioId { get; set; }
 
-    [Required(ErrorMessage = "Prencher campo TipoVacina")]
-    public virtual TipoVacina TipoVacina { get; set; }
+    [Required]
+    [DisplayName("Tipo Vacina")]
+    public int TipoVacinaId { get; set; }
 
     [Required(ErrorMessage = "Prencher campo Data")]
     [MaxLength(150, ErrorMessage = "Máximo de 10")]
@@ -27,5 +30,8 @@ namespace BI.GST.Application.ViewModels
 
     [ScaffoldColumn(false)]
     public bool Delete { get; set; }
+
+    public virtual Funcionario Funcionario { get; set; }
+    public virtual TipoVacina TipoVacina { get; set; }
   }
 }

@@ -1,18 +1,94 @@
-﻿<nav>
-    <ul class="pagination">
-        <li>
-            <a href="#" aria-label="Anterior">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
-        </li>
-        @for(var i = 0; i <= (ViewBag.TotalRegistros/10); i++)
+﻿@*PAGINAÇÃO*@
+
+@if (ViewBag.TotalRegistros != null)
+{
+  if (Convert.ToInt32(ViewBag.TotalRegistros.ToString()) > 10)
+  {
+
+    //PaginaAnterior E ProximaPagina RECEBEM OS VALORES PARA ACESSAR AS PÁGINAS
+    int PaginaAnterior = ViewBag.PaginaAtual - 1;
+    int ProximaPagina = ViewBag.PaginaAtual + 1;
+    int TotalPaginas = (ViewBag.TotalRegistros / 10);
+    string TotalRegistros = ViewBag.TotalRegistros.ToString();
+
+
+    //PARA NÃO APARECER ESCRITO PAGINA 0 NO BOTÃO
+    int PaginaAtualButton = ViewBag.PaginaAtual + 1;
+    int TotalPaginasButton = 0;
+
+    //VERIFICA SE O TOTAL DE REGISTROS É DIVISIVEL POR 10
+    if ((ViewBag.TotalRegistros % 10) == 0)
+    {
+      TotalPaginasButton = ViewBag.TotalRegistros / 10;
+    }
+    //SE NÃO FOR SOMA 1 PARA A PAGINAÇÃO FICAR CORRETA
+    else
+    {
+      TotalPaginasButton = ViewBag.TotalRegistros / 10;
+      TotalPaginasButton = TotalPaginas + 1;
+
+    }
+
+    <nav>
+      <ul class="pagination">
+
+        @if (ViewBag.PaginaAtual > 0)
         {
-            <li><a class="@(i == ViewBag.PaginaAtual? "current" : "")" href="@Url.Action("Index", ViewBag.Controller, new { page = i, pesquisa = ViewBag.Pesquisa})">@i</a></li>
+          //SE A PÁGINA ATUAL FOR MAIOR QUE 0, APRESENTA O BOTÃO ANTERIOR E PRIMEIRA PÁGINA NA TELA
+          //PRIMEIRA PÁGINA
+          <li>
+            <a class="btn btn-labeled btn-default" href="/@ViewBag.Controller?page=0 @ViewBag.Busca" aria-label="Primeira página" rel="tooltip" title="Primeira página" data-placement="top">
+
+              <i class="fa fa-angle-double-left"> <<
+              </i>
+
+            </a>
+          </li>
+
+          //href RECEBE ViewBag.Controller COM O NOME DA CONTROLLER + NÚMERO DA PÁGINA ANTERIOR, DESSA FORMA, A PAGINAÇÃO PODE SER USADA POR QUALQUER PÁGINA
+          <li>
+
+            <a class="btn btn-labeled btn-default" href="/@ViewBag.Controller?page=@PaginaAnterior@ViewBag.Busca" aria-label="Anterior" rel="tooltip" title="Página anterior" data-placement="top">
+
+              <i class="fa fa-angle-left"> <
+              </i>
+
+            </a>
+          </li>
         }
         <li>
-            <a href="#" aria-label="Próximo">
-                <span aria-hidden="true">&laquo;</span>
-            </a>
+          <a class="btn btn-labeled btn-default" href="#" rel="tooltip" title="Página atual: @PaginaAtualButton. Total de páginas: @TotalPaginasButton" data-placement="top">@PaginaAtualButton de @TotalPaginasButton</a>
         </li>
-    </ul>
-</nav>
+        @if (ViewBag.PaginaAtual < TotalPaginas)
+        {
+          //SE A PÁGINA ATUAL FOR MENOR QUE O TOTAL DE PÁGINAS, APRESENTA O BOTÃO PRÓXIMO E ULTIMA PAGINA NA TELA
+          //href RECEBE ViewBag.Controller COM O NOME DA CONTROLLER + NÚMERO DA PÁGINA ANTERIOR, DESSA FORMA, A PAGINAÇÃO PODE SER USADA POR QUALQUER PÁGINA
+          <li>
+            <a class="btn btn-labeled btn-default" href="/@ViewBag.Controller?page=@ProximaPagina@ViewBag.Busca" aria-label="Próximo" rel="tooltip" title="Próxima página" data-placement="top">
+
+              <i class="fa fa-angle-right"> >
+              </i>
+
+            </a>
+          </li>
+
+
+          //ÚLTIMA PÁGINA
+          <li>
+            <a class="btn btn-labeled btn-default" href="/@ViewBag.Controller?page=@TotalPaginas@ViewBag.Busca" aria-label="Última página" rel="tooltip" title="Ultima página" data-placement="top">
+
+              <i class="fa fa-angle-double-right"> >>
+              </i>
+
+            </a>
+          </li>
+
+        }
+        @Html.Label("Total de registros: " + TotalRegistros, new { style = "margin-top: 13px; margin-left: 11px;" })
+
+      </ul>
+
+
+    </nav>
+  }
+}

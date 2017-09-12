@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BI.GST.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.ViewModels
 {
-  public class FuncionarioViewModel
+  public class FuncionarioViewModel : PessoaViewModel
   {
     public int FuncionarioId { get; set; }
 

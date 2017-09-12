@@ -24,6 +24,7 @@ namespace BI.GST.Application.AutoMapper
       Mapper.CreateMap<Vacina, VacinaViewModel>();
       Mapper.CreateMap<Curso, CursoViewModel>();
       Mapper.CreateMap<Exame, ExameViewModel>();
+      Mapper.CreateMap<Funcionario, FuncionarioViewModel>();
     }
   }
 }

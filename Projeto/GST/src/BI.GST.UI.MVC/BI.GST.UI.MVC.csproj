@@ -174,10 +174,12 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TipoCursosController.cs" />
     <Compile Include="Controllers\TipoExamesController.cs" />
     <Compile Include="Controllers\TipoVacinasController.cs" />
+    <Compile Include="Controllers\VacinasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,6 +247,16 @@
     <Content Include="Views\Cursos\Details.cshtml" />
     <Content Include="Views\Cursos\Edit.cshtml" />
     <Content Include="Views\Cursos\Index.cshtml" />
+    <Content Include="Views\Exames\Create.cshtml" />
+    <Content Include="Views\Exames\Delete.cshtml" />
+    <Content Include="Views\Exames\Details.cshtml" />
+    <Content Include="Views\Exames\Edit.cshtml" />
+    <Content Include="Views\Exames\Index.cshtml" />
+    <Content Include="Views\Vacinas\Create.cshtml" />
+    <Content Include="Views\Vacinas\Delete.cshtml" />
+    <Content Include="Views\Vacinas\Details.cshtml" />
+    <Content Include="Views\Vacinas\Edit.cshtml" />
+    <Content Include="Views\Vacinas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

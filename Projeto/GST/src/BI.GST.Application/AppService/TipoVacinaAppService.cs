@@ -14,10 +14,12 @@ namespace BI.GST.Application.AppService
   public class TipoVacinaAppService : BaseAppService, ITipoVacinaAppService
   {
     private readonly ITipoVacinaService _tipoVacinaService;
+    private readonly IVacinaService _vacinaService;
 
-    public TipoVacinaAppService(ITipoVacinaService tipoVacinaService)
+    public TipoVacinaAppService(ITipoVacinaService tipoVacinaService, IVacinaService vacinaService)
     {
       _tipoVacinaService = tipoVacinaService;
+      _vacinaService = vacinaService;
     }
     public bool Adicionar(TipoVacinaViewModel tipoVacinaViewModel)
     {
@@ -65,7 +67,9 @@ namespace BI.GST.Application.AppService
     public bool Excluir(int id)
     {
       bool existente = _tipoVacinaService.Find(e => e.TipoVacinaId == id).Any();
-      if (existente)
+      bool vacinaUtiliza = _vacinaService.Find(c => c.TipoVacinaId == id && c.Delete == false).Any();
+
+      if (existente && !vacinaUtiliza)
       {
         BeginTransaction();
         var tipoVacina = _tipoVacinaService.ObterPorId(id);

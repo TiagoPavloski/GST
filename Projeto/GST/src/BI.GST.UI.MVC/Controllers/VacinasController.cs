@@ -13,121 +13,134 @@ using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class TipoVacinasController : Controller
+    public class VacinasController : Controller
     {
+        private readonly IVacinaAppService _vacinaAppService;
         private readonly ITipoVacinaAppService _tipoVacinaAppService;
+        private readonly IFuncionarioAppService _funcionarioAppService;
 
-        public TipoVacinasController(ITipoVacinaAppService tipoVacinaAppService)
+        public VacinasController(IVacinaAppService vacinaAppService, ITipoVacinaAppService tipoVacinaAppService, IFuncionarioAppService funcionarioAppService)
         {
+            _vacinaAppService = vacinaAppService;
             _tipoVacinaAppService = tipoVacinaAppService;
+            _funcionarioAppService = funcionarioAppService;
         }
-        // GET: TipoVacinas
+
+        // GET: Vacinas
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var tipoVacinaViewModel = _tipoVacinaAppService.ObterGrid(page, pesquisa);
+            var vacinasViewModel = _vacinaAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
             //ViewBag.Pesquisa = pesquisa;
-            ViewBag.Controller = "TipoVacinas";
-            ViewBag.TotalRegistros = _tipoVacinaAppService.ObterTotalRegistros(pesquisa);
-            return View(tipoVacinaViewModel);
+            ViewBag.Controller = "Vacinas";
+            ViewBag.TotalRegistros = _vacinaAppService.ObterTotalRegistros(pesquisa);
+
+            return View(vacinasViewModel);
         }
 
-        // GET: TipoVacinas/Details/5
+        // GET: Vacinas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var tipoVacina = _tipoVacinaAppService.ObterPorId(id.Value);
-            if (tipoVacina == null)
+            var vacina = _vacinaAppService.ObterPorId(id.Value);
+            if (vacina == null)
             {
                 return HttpNotFound();
             }
-            return View(tipoVacina);
+            return View(vacina);
         }
 
-        // GET: TipoVacinas/Create
+        // GET: Vacinas/Create
         public ActionResult Create()
         {
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
+            ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
             return View();
         }
 
-        // POST: TipoVacinas/Create
+        // POST: Vacinas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(TipoVacinaViewModel tipoVacinaViewModel)
+        public ActionResult Create(VacinaViewModel vacinaViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_tipoVacinaAppService.Adicionar(tipoVacinaViewModel))
+                if (!_vacinaAppService.Adicionar(vacinaViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo Vacina com os mesmos dados')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Vacina com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(tipoVacinaViewModel);
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", vacinaViewModel.FuncionarioId);
+            ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome", vacinaViewModel.TipoVacinaId);
+            return View(vacinaViewModel);
         }
 
-        // GET: TipoVacinas/Edit/5
+        // GET: Vacinas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var tipoVacina = _tipoVacinaAppService.ObterPorId(id.Value);
-            if (tipoVacina == null)
+            var vacina = _vacinaAppService.ObterPorId(id.Value);
+            if (vacina == null)
             {
                 return HttpNotFound();
             }
-            return View(tipoVacina);
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", vacina.FuncionarioId);
+            ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome", vacina.TipoVacinaId);
+            return View(vacina);
         }
 
-        // POST: TipoVacinas/Edit/5
+        // POST: Vacinas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(TipoVacinaViewModel tipoVacinaViewModel)
+        public ActionResult Edit(VacinaViewModel vacinaViewModel)
         {
+
             if (ModelState.IsValid)
             {
-                if (!_tipoVacinaAppService.Atualizar(tipoVacinaViewModel))
+                if (!_vacinaAppService.Atualizar(vacinaViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Vacina com os mesmos dados já cadastrada')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Vacina com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(tipoVacinaViewModel);
+            return View(vacinaViewModel);
         }
 
-        // GET: TipoVacinas/Delete/5
+        // GET: Vacinas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var tipoVacina = _tipoVacinaAppService.ObterPorId(id.Value);
-            if (tipoVacina == null)
+            var vacina = _vacinaAppService.ObterPorId(id.Value);
+            if (vacina == null)
             {
                 return HttpNotFound();
             }
-            return View(tipoVacina);
+            return View(vacina);
         }
 
-        // POST: TipoVacinas/Delete/5
+        // POST: Vacinas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_tipoVacinaAppService.Excluir(id))
+            if (!_vacinaAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
                 return null;
@@ -142,7 +155,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (disposing)
             {
-                _tipoVacinaAppService.Dispose();
+                _vacinaAppService.Dispose();
             }
             base.Dispose(disposing);
         }

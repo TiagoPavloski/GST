@@ -1,4 +1,4 @@
-﻿@model BI.GST.Application.ViewModels.CursoViewModel
+﻿@model BI.GST.Application.ViewModels.VacinaViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -7,11 +7,11 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Curso</h4>
+    <h4>Vacina</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayName("Funcionario")
+            @Html.DisplayNameFor(model => model.Funcionario)
         </dt>
 
         <dd>
@@ -19,11 +19,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayName("Tipo Curso")
+            @Html.DisplayNameFor(model => model.TipoVacina)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TipoCurso.Nome)
+            @Html.DisplayFor(model => model.TipoVacina.Nome)
         </dd>
 
         <dt>
@@ -45,6 +45,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.CursoId }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.VacinaId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
