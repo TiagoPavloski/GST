@@ -10,6 +10,10 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+@*<div class="text-left">
+  <a href="/TipoCurso/Create" class="btn btn-labeled btn-success"> <span class="btn-label"></span>Novo </a>
+</div>*@
+
 @using (Html.BeginForm("Index", "TipoCursos", new { pesquisa = "" }, FormMethod.Get))
 {
   <p>
