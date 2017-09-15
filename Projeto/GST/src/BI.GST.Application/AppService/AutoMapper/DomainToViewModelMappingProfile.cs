@@ -9,22 +9,23 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.AutoMapper
 {
-  public class DomainToViewModelMappingProfile : Profile
-  {
-    public override string ProfileName
+    public class DomainToViewModelMappingProfile : Profile
     {
-      get { return "DomainToViewModelMappings"; }
-    }
+        public override string ProfileName
+        {
+            get { return "DomainToViewModelMappings"; }
+        }
 
-    protected override void Configure()
-    {
-      Mapper.CreateMap<TipoCurso, TipoCursoViewModel>();
-      Mapper.CreateMap<TipoExame, TipoExameViewModel>();
-      Mapper.CreateMap<TipoVacina, TipoVacinaViewModel>();
-      Mapper.CreateMap<Vacina, VacinaViewModel>();
-      Mapper.CreateMap<Curso, CursoViewModel>();
-      Mapper.CreateMap<Exame, ExameViewModel>();
-      Mapper.CreateMap<Funcionario, FuncionarioViewModel>();
+        protected override void Configure()
+        {
+            Mapper.CreateMap<TipoCurso, TipoCursoViewModel>();
+            Mapper.CreateMap<TipoExame, TipoExameViewModel>();
+            Mapper.CreateMap<TipoVacina, TipoVacinaViewModel>();
+            Mapper.CreateMap<Vacina, VacinaViewModel>();
+            Mapper.CreateMap<Curso, CursoViewModel>();
+            Mapper.CreateMap<Exame, ExameViewModel>();
+            Mapper.CreateMap<Funcionario, FuncionarioViewModel>();
+            Mapper.CreateMap<EmpresaUtilizadora, EmpresaUtilizadoraViewModel>();
+        }
     }
-  }
 }
