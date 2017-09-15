@@ -18,14 +18,14 @@ namespace BI.GST.Domain.Services
     {
       _tipoExameRepository = tipoExameRepository;
     }
-    public void Adicionar(TipoExame exame)
+    public void Adicionar(TipoExame tipoExame)
     {
-      _tipoExameRepository.Adicionar(exame);
+      _tipoExameRepository.Adicionar(tipoExame);
     }
 
-    public void Atualizar(TipoExame exame)
+    public void Atualizar(TipoExame tipoExame)
     {
-      _tipoExameRepository.Atualizar(exame);
+      _tipoExameRepository.Atualizar(tipoExame);
     }
 
     public void Dispose()

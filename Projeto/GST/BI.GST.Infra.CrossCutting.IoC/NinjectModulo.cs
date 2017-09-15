@@ -19,14 +19,29 @@ namespace BI.GST.Infra.CrossCutting.IoC
       //Application
       Bind<ITipoCursoAppService>().To<TipoCursoAppService>();
       Bind<ITipoExameAppService>().To<TipoExameAppService>();
+      Bind<ITipoVacinaAppService>().To<TipoVacinaAppService>();
+      Bind<ICursoAppService>().To<CursoAppService>();
+      Bind<IExameAppService>().To<ExameAppService>();
+      Bind<IVacinaAppService>().To<VacinaAppService>();
+      Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
 
       //Servicos
       Bind<ITipoCursoService>().To<TipoCursoService>();
       Bind<ITipoExameService>().To<TipoExameService>();
+      Bind<ITipoVacinaService>().To<TipoVacinaService>();
+      Bind<ICursoService>().To<CursoService>();
+      Bind<IExameService>().To<ExameService>();
+      Bind<IVacinaService>().To<VacinaService>();
+      Bind<IFuncionarioService>().To<FuncionarioService>();
 
       //Data Repository
       Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
       Bind<ITipoExameRepository>().To<TipoExameRepository>();
+      Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
+      Bind<ICursoRepository>().To<CursoRepository>();
+      Bind<IExameRepository>().To<ExameRepository>();
+      Bind<IVacinaRepository>().To<VacinaRepository>();
+      Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
 
       //Data Configuration
       Bind<IContextManager>().To<ContextManager>();

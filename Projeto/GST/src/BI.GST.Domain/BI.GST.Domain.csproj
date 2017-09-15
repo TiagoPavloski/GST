@@ -79,14 +79,32 @@
     <Compile Include="Entities\TipoVacina.cs" />
     <Compile Include="Entities\UF.cs" />
     <Compile Include="Entities\Vacina.cs" />
+    <Compile Include="Interface\IRepository\ICursoRepository.cs" />
     <Compile Include="Interface\IRepository\IBaseRepository.cs" />
+    <Compile Include="Interface\IRepository\IEmpresaUtilizadoraRepository.cs" />
+    <Compile Include="Interface\IRepository\IExameRepository.cs" />
+    <Compile Include="Interface\IRepository\IFuncionarioRepository.cs" />
     <Compile Include="Interface\IRepository\ITipoCursoRepository.cs" />
     <Compile Include="Interface\IRepository\ITipoExameRepository.cs" />
+    <Compile Include="Interface\IRepository\ITipoVacinaRepository.cs" />
+    <Compile Include="Interface\IRepository\IVacinaRepository.cs" />
+    <Compile Include="Interface\IService\ICursoService.cs" />
+    <Compile Include="Interface\IService\IEmpresaUtilizadoraService.cs" />
+    <Compile Include="Interface\IService\IExameService.cs" />
+    <Compile Include="Interface\IService\IFuncionarioService.cs" />
     <Compile Include="Interface\IService\ITipoCursoService.cs" />
     <Compile Include="Interface\IService\ITipoExameService.cs" />
+    <Compile Include="Interface\IService\ITipoVacinaService.cs" />
+    <Compile Include="Interface\IService\IVacinaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CursoService.cs" />
+    <Compile Include="Services\EmpresaUtilizadoraService.cs" />
+    <Compile Include="Services\ExameService.cs" />
+    <Compile Include="Services\FuncionarioService.cs" />
     <Compile Include="Services\TipoCursoService.cs" />
     <Compile Include="Services\TipoExameService.cs" />
+    <Compile Include="Services\TipoVacinaService.cs" />
+    <Compile Include="Services\VacinaService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
