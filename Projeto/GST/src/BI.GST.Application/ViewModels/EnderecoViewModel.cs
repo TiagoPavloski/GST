@@ -5,11 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BI.GST.Domain.Entities
+namespace BI.GST.Application.ViewModels
 {
-    public class Endereco
+    public class EnderecoViewModel
     {
-
         public int EnderecoId { get; set; }
 
         public string Logradouro { get; set; }
@@ -31,10 +30,10 @@ namespace BI.GST.Domain.Entities
         public bool Delete { get; set; }
 
 
-        public virtual UF UF { get; set; }
-        public int? EmpresaId { get; set; }
-        [ForeignKey("EmpresaId")]
-        public virtual Empresa Empresa { get; set; }
+        public virtual UFViewModel UFViewModel { get; set; }
 
+        public int EmpresaId { get; set; }
+        [ForeignKey("EmpresaId")]
+        public virtual EmpresaViewModel EmpresaViewModel { get; set; }
     }
 }

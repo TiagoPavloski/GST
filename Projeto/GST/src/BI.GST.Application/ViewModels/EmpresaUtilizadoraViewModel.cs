@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
-namespace BI.GST.Domain.Entities
+namespace BI.GST.Application.ViewModels
 {
-    public class EmpresaUtilizadora
+    public class EmpresaUtilizadoraViewModel
     {
-        public EmpresaUtilizadora()
+        public EmpresaUtilizadoraViewModel()
         {
-            Telefones = new List<Telefone>();
+            TelefonesViewModel = new List<TelefoneViewModel>();
         }
         public int EmpresaUtilizadoraId { get; set; }
 
@@ -28,7 +24,7 @@ namespace BI.GST.Domain.Entities
 
         public bool Delete { get; set; }
 
-        public virtual Endereco Endereco { get; set; }
-        public virtual ICollection<Telefone> Telefones { get; set; }
+        public virtual EnderecoViewModel EnderecoViewModel { get; set; }
+        public virtual ICollection<TelefoneViewModel> TelefonesViewModel { get; set; }
     }
 }
