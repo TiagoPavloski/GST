@@ -217,20 +217,23 @@
       <!-- /top navigation -->
       <!-- page content -->
       <div class="right_col" role="main" style="min-height: 1984px;>
-
-        @RenderBody()
-      </div>
-      <!-- /page content -->
-      <!-- footer content -->
-      <footer>
-        <div class="pull-right">
-          Bridge IT - @DateTime.Now.Year - Todos os direitos reservados</a>
+       
+          <div class="page-title">
+            @RenderBody()
+            </div>
+         
+          </div>
+          <!-- /page content -->
+          <!-- footer content -->
+          <footer>
+            <div class="pull-right">
+              Bridge IT - @DateTime.Now.Year - Todos os direitos reservados</a>
+            </div>
+            <div class="clearfix"></div>
+          </footer>
+          <!-- /footer content -->
         </div>
-        <div class="clearfix"></div>
-      </footer>
-      <!-- /footer content -->
-    </div>
-  </div>
+      </div>
   <!-- jQuery -->
   <script src="~/vendors/jquery/dist/jquery.min.js"></script>
   <!-- Bootstrap -->
