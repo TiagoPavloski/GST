@@ -1,0 +1,43 @@
+﻿@model BI.GST.Application.ViewModels.AgenteErgonomicoViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AgenteErgonomico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FonteGeradora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FonteGeradora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orientacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orientacao)
+        </dd>
+
+       
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgenteErgonomicoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

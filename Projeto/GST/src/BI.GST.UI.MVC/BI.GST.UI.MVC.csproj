@@ -175,6 +175,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AgenteErgonomicosController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -4535,6 +4536,11 @@
     <Content Include="vendors\validator\.bower.json" />
     <Content Include="vendors\validator\README.md" />
     <Content Include="vendors\validator\validator.jquery.json" />
+    <Content Include="Views\AgenteErgonomicos\Create.cshtml" />
+    <Content Include="Views\AgenteErgonomicos\Delete.cshtml" />
+    <Content Include="Views\AgenteErgonomicos\Details.cshtml" />
+    <Content Include="Views\AgenteErgonomicos\Edit.cshtml" />
+    <Content Include="Views\AgenteErgonomicos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

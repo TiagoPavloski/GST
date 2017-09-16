@@ -12,40 +12,43 @@ using BI.GST.Domain.Interface.IService;
 
 namespace BI.GST.Infra.CrossCutting.IoC
 {
-  public class NinjectModulo : NinjectModule
-  {
-    public override void Load()
+    public class NinjectModulo : NinjectModule
     {
-      //Application
-      Bind<ITipoCursoAppService>().To<TipoCursoAppService>();
-      Bind<ITipoExameAppService>().To<TipoExameAppService>();
-      Bind<ITipoVacinaAppService>().To<TipoVacinaAppService>();
-      Bind<ICursoAppService>().To<CursoAppService>();
-      Bind<IExameAppService>().To<ExameAppService>();
-      Bind<IVacinaAppService>().To<VacinaAppService>();
-      Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
+        public override void Load()
+        {
+            //Application
+            Bind<ITipoCursoAppService>().To<TipoCursoAppService>();
+            Bind<ITipoExameAppService>().To<TipoExameAppService>();
+            Bind<ITipoVacinaAppService>().To<TipoVacinaAppService>();
+            Bind<ICursoAppService>().To<CursoAppService>();
+            Bind<IExameAppService>().To<ExameAppService>();
+            Bind<IVacinaAppService>().To<VacinaAppService>();
+            Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
+            Bind<IAgenteErgonomicoAppService>().To<AgenteErgonomicoAppService>();
 
-      //Servicos
-      Bind<ITipoCursoService>().To<TipoCursoService>();
-      Bind<ITipoExameService>().To<TipoExameService>();
-      Bind<ITipoVacinaService>().To<TipoVacinaService>();
-      Bind<ICursoService>().To<CursoService>();
-      Bind<IExameService>().To<ExameService>();
-      Bind<IVacinaService>().To<VacinaService>();
-      Bind<IFuncionarioService>().To<FuncionarioService>();
+            //Servicos
+            Bind<ITipoCursoService>().To<TipoCursoService>();
+            Bind<ITipoExameService>().To<TipoExameService>();
+            Bind<ITipoVacinaService>().To<TipoVacinaService>();
+            Bind<ICursoService>().To<CursoService>();
+            Bind<IExameService>().To<ExameService>();
+            Bind<IVacinaService>().To<VacinaService>();
+            Bind<IFuncionarioService>().To<FuncionarioService>();
+            Bind<IAgenteErgonomicoService>().To<AgenteErgonomicoService>();
 
-      //Data Repository
-      Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
-      Bind<ITipoExameRepository>().To<TipoExameRepository>();
-      Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
-      Bind<ICursoRepository>().To<CursoRepository>();
-      Bind<IExameRepository>().To<ExameRepository>();
-      Bind<IVacinaRepository>().To<VacinaRepository>();
-      Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
+            //Data Repository
+            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+            Bind<ITipoExameRepository>().To<TipoExameRepository>();
+            Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
+            Bind<ICursoRepository>().To<CursoRepository>();
+            Bind<IExameRepository>().To<ExameRepository>();
+            Bind<IVacinaRepository>().To<VacinaRepository>();
+            Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
+            Bind<IAgenteErgonomicoRepository>().To<AgenteErgonomicoRepository>();
 
-      //Data Configuration
-      Bind<IContextManager>().To<ContextManager>();
-      Bind<IUnitOfWork>().To<UnitOfWork>();
+            //Data Configuration
+            Bind<IContextManager>().To<ContextManager>();
+            Bind<IUnitOfWork>().To<UnitOfWork>();
+        }
     }
-  }
 }
