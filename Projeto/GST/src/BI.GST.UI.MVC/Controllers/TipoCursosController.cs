@@ -27,7 +27,6 @@ namespace BI.GST.UI.MVC.Controllers
             var tipoCursoViewModel = _tipoCursoAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            //ViewBag.Pesquisa = pesquisa;
             ViewBag.Controller = "TipoCursos";
             ViewBag.TotalRegistros = _tipoCursoAppService.ObterTotalRegistros(pesquisa);
             return View(tipoCursoViewModel);
@@ -65,8 +64,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_tipoCursoAppService.Adicionar(tipoCursoViewModel))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
