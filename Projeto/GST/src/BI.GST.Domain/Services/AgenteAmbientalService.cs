@@ -29,6 +29,12 @@ namespace BI.GST.Domain.Services
             _agenteAmbientalRepository.Atualizar(agenteAmbiental);
         }
 
+        public void Dispose()
+        {
+            _agenteAmbientalRepository.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
         public void Excluir(int id)
         {
             _agenteAmbientalRepository.Excluir(id);
