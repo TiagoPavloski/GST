@@ -26,6 +26,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<ExameViewModel, Exame>();
             Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
             Mapper.CreateMap<EmpresaUtilizadoraViewModel, EmpresaUtilizadora>();
+            Mapper.CreateMap<AgenteAmbientalViewModel, AgenteAmbiental>();
         }
     }
 }

@@ -12,8 +12,6 @@ namespace BI.GST.Domain.Entities
 
     public string Nome { get; set; }
 
-    public int Status { get; set; }
-
     public bool Delete { get; set; }
   }
 }
