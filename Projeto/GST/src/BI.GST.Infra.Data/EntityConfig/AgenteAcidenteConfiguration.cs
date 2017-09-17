@@ -7,6 +7,7 @@ namespace BI.GST.Infra.Data.EntityConfig
   {
     public AgenteAcidenteConfiguration()
     {
+
       HasKey(e => e.AgenteAcidenteId);
     }
   }

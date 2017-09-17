@@ -10,6 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
+
 @using (Html.BeginForm("Index", "TipoCursos", new { pesquisa = "" }, FormMethod.Get))
 {
   <p>
@@ -47,3 +48,4 @@
 </table>
 
 @Html.Partial("_Paginacao")
+@Html.Partial("_Mensagem")

@@ -16,7 +16,7 @@ namespace BI.GST.Application.ViewModels
     public string Nome { get; set; }
 
     [Required(ErrorMessage = "Prencher campo Validade")]
-    [MaxLength(150, ErrorMessage = "Máximo de 150")]
+    [MaxLength(150, ErrorMessage = "Máximo de 10")]
     public string Validade { get; set; }
 
     [ScaffoldColumn(false)]

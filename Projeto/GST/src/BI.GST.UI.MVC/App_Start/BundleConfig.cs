@@ -26,6 +26,14 @@ namespace BI.GST.UI.MVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //Template
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap/template").Include(
+                      "~/js/datepicker/daterangepicker.js",
+                      "~/js/moment/moment.min.js"));
+
+            bundles.Add(new StyleBundle("~/Content/css/template").Include(
+                      "~/css/maps/jquery-jvectormap-2.0.3.css"));
         }
     }
 }

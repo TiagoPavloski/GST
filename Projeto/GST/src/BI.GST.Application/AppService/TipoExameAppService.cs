@@ -14,10 +14,12 @@ namespace BI.GST.Application.AppService
   public class TipoExameAppService : BaseAppService, ITipoExameAppService
   {
     private readonly ITipoExameService _tipoExameService;
+    private readonly IExameService _exameService;
 
-    public TipoExameAppService(ITipoExameService tipoExameService)
+    public TipoExameAppService(ITipoExameService tipoExameService, IExameService exameService)
     {
       _tipoExameService = tipoExameService;
+      _exameService = exameService;
     }
     public bool Adicionar(TipoExameViewModel tipoExameViewModel)
     {
@@ -65,7 +67,9 @@ namespace BI.GST.Application.AppService
     public bool Excluir(int id)
     {
       bool existente = _tipoExameService.Find(e => e.TipoExameId == id).Any();
-      if (existente)
+      bool exameUtiliza = _exameService.Find(c => c.TipoExameId == id && c.Delete == false).Any();
+
+      if (existente && !exameUtiliza)
       {
         BeginTransaction();
         var tipoExame = _tipoExameService.ObterPorId(id);

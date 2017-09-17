@@ -14,10 +14,12 @@ namespace BI.GST.Application.AppService
   public class TipoCursoAppService : BaseAppService, ITipoCursoAppService
   {
     private readonly ITipoCursoService _tipoCursoService;
+    private readonly ICursoService _cursoService;
 
-    public TipoCursoAppService(ITipoCursoService tipoCursoService)
+    public TipoCursoAppService(ITipoCursoService tipoCursoService, ICursoService cursoService)
     {
       _tipoCursoService = tipoCursoService;
+      _cursoService = cursoService;
     }
 
     public bool Adicionar(TipoCursoViewModel tipoCursoViewModel)
@@ -67,7 +69,9 @@ namespace BI.GST.Application.AppService
     public bool Excluir(int id)
     {
       bool existente = _tipoCursoService.Find(e => e.TipoCursoId == id).Any();
-      if (existente)
+      bool cursoUtiliza = _cursoService.Find(c => c.TipoCursoId == id && c.Delete == false).Any();
+
+      if (existente && !cursoUtiliza)
       {
         BeginTransaction();
         var tipoCurso = _tipoCursoService.ObterPorId(id);
