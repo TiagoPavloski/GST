@@ -56,6 +56,7 @@
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaUtilizadoraAppService.cs" />
+    <Compile Include="AppService\EquipamentoRuidoAppService.cs" />
     <Compile Include="AppService\ExameAppService.cs" />
     <Compile Include="AppService\FuncionarioAppService.cs" />
     <Compile Include="AppService\FinanceiroAppService.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Interface\IBaseAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaUtilizadoraAppService.cs" />
+    <Compile Include="Interface\IEquipamentoRuidoAppService.cs" />
     <Compile Include="Interface\IExameAppService.cs" />
     <Compile Include="Interface\IFuncionarioAppService.cs" />
     <Compile Include="Interface\IFinanceiroAppService.cs" />
@@ -84,6 +86,7 @@
     <Compile Include="ViewModels\EmpresaUtilizadoraViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
+    <Compile Include="ViewModels\EquipamentoRuidoViewModel.cs" />
     <Compile Include="ViewModels\ExameViewModel.cs" />
     <Compile Include="ViewModels\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />

@@ -113,6 +113,7 @@
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />
     <Compile Include="Repository\EmpresaUtilizadoraRepository.cs" />
+    <Compile Include="Repository\EquipamentoRuidoRepository.cs" />
     <Compile Include="Repository\ExameRepository.cs" />
     <Compile Include="Repository\FuncionarioRepository.cs" />
     <Compile Include="Repository\FinanceiroRepository.cs" />

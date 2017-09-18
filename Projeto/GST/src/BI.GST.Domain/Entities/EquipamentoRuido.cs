@@ -10,6 +10,8 @@ namespace BI.GST.Domain.Entities
   {
     public int EquipamentoRuidoId { get; set; }
 
+    public string Nome { get; set; }
+
     public string MarcaEquipamento { get; set; }
 
     public string ModeloEquipamento { get; set; }
@@ -17,8 +19,6 @@ namespace BI.GST.Domain.Entities
     public string Compensacao { get; set; }
 
     public string Resposta { get; set; }
-
-    public int Status { get; set; }
 
     public bool Delete { get; set; }
   }
