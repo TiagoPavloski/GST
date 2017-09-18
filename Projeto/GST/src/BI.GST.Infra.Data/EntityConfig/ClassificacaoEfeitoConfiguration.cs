@@ -8,6 +8,13 @@ namespace BI.GST.Infra.Data.EntityConfig
     public ClassificacaoEfeitoConfiguration()
     {
       HasKey(e => e.ClassificacaoEfeitoId);
-    }
+
+            Property(c => c.Classificacao)
+           .HasMaxLength(150)
+           .IsRequired();
+            
+            Property(c => c.Delete)
+           .IsRequired();
+        }
   }
 }

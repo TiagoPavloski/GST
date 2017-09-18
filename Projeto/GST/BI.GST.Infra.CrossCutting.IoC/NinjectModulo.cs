@@ -25,6 +25,14 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IVacinaAppService>().To<VacinaAppService>();
             Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
             Bind<IAgenteErgonomicoAppService>().To<AgenteErgonomicoAppService>();
+            Bind<ISetorAppService>().To<SetorAppService>();
+            Bind<IAgenteAcidenteAppService>().To<AgenteAcidenteAppService>();
+            Bind<IAgenteQuimicoAppService>().To<AgenteQuimicoAppService>();
+            Bind<IAgenteFisicoAppService>().To<AgenteFisicoAppService>();
+            Bind<IAgenteBiologicoAppService>().To<AgenteBiologicoAppService>();
+            Bind<IMedicaoAgenteAppService>().To<MedicaoAgenteAppService>();
+            Bind<IClassificacaoEfeitoAppService>().To<ClassificacaoEfeitoAppService>();
+            Bind<IMeioPropagacaoAppService>().To<MeioPropagacaoAppService>();
 
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -35,6 +43,14 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IVacinaService>().To<VacinaService>();
             Bind<IFuncionarioService>().To<FuncionarioService>();
             Bind<IAgenteErgonomicoService>().To<AgenteErgonomicoService>();
+            Bind<ISetorService>().To<SetorService>();
+            Bind<IAgenteAcidenteService>().To<AgenteAcidenteService>();
+            Bind<IAgenteQuimicoService>().To<AgenteQuimicoService>();
+            Bind<IAgenteFisicoService>().To<AgenteFisicoService>();
+            Bind<IAgenteBiologicoService>().To<AgenteBiologicoService>();
+            Bind<IMedicaoAgenteService>().To<MedicaoAgenteService>();
+            Bind<IClassificacaoEfeitoService>().To<ClassificacaoEfeitoService>();
+            Bind<IMeioPropagacaoService>().To<MeioPropagacaoService>();
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -45,6 +61,14 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IVacinaRepository>().To<VacinaRepository>();
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
             Bind<IAgenteErgonomicoRepository>().To<AgenteErgonomicoRepository>();
+            Bind<ISetorRepository>().To<SetorRepository>();
+            Bind<IAgenteAcidenteRepository>().To<AgenteAcidenteRepository>();
+            Bind<IAgenteQuimicoRepository>().To<AgenteQuimicoRepository>();
+            Bind<IAgenteFisicoRepository>().To<AgenteFisicoRepository>();
+            Bind<IAgenteBiologicoRepository>().To<AgenteBiologicoRepository>();
+            Bind<IMedicaoAgenteRepository>().To<MedicaoAgenteRepository>();
+            Bind<IClassificacaoEfeitoRepositiry>().To<ClassificacaoEfeitoRepository>();
+            Bind<IMeioPropagacaoRepository>().To<MeioPropagacaoRepository>();
 
             //Data Configuration
             Bind<IContextManager>().To<ContextManager>();

@@ -8,6 +8,13 @@ namespace BI.GST.Infra.Data.EntityConfig
     public MeioPropagacaoConfiguration()
     {
       HasKey(e => e.MeioPropagacaoId);
-    }
+
+            Property(c => c.Meio)
+           .HasMaxLength(150)
+           .IsRequired();
+
+            Property(c => c.Delete)
+           .IsRequired();
+        }
   }
 }

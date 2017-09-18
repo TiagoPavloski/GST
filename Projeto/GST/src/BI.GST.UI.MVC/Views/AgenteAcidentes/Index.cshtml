@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BI.GST.Domain.Entities.AgenteAcidente>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Frequencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TempoExposicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fonte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Efeito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Orientacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedidasPropostas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fundamentacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Frequencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TempoExposicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fonte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Efeito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Orientacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedidasPropostas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fundamentacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AgenteAcidenteId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AgenteAcidenteId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AgenteAcidenteId })
+        </td>
+    </tr>
+}
+
+</table>

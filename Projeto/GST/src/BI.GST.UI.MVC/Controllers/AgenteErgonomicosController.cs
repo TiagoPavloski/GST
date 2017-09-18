@@ -100,7 +100,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteErgonomicoAppService.Atualizar(agenteErgonomicoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Curso com os mesmos dados já cadastrada')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");

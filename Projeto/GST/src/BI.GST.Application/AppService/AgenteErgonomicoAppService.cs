@@ -19,6 +19,7 @@ namespace BI.GST.Application.AppService
         {
             _agenteErgonomicoService = agenteErgonomicoService;
         }
+
         public bool Adicionar(AgenteErgonomicoViewModel agenteErgonomicoViewModel)
         {
             var agenteErgonomico = Mapper.Map<AgenteErgonomicoViewModel, AgenteErgonomico>(agenteErgonomicoViewModel);
