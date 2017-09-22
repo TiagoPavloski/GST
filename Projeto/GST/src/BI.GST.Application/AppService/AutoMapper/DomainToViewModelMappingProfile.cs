@@ -26,6 +26,9 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<Exame, ExameViewModel>();
             Mapper.CreateMap<Funcionario, FuncionarioViewModel>();
             Mapper.CreateMap<EmpresaUtilizadora, EmpresaUtilizadoraViewModel>();
-        }
+			Mapper.CreateMap<Telefone, TelefoneViewModel>();
+			Mapper.CreateMap<UF, UFViewModel>();
+			Mapper.CreateMap<Endereco, EnderecoViewModel>();
+		}
     }
 }
