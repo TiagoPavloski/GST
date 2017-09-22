@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using BI.GST.Domain.Entities;
 using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
+using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -19,37 +20,45 @@ namespace BI.GST.UI.MVC.Controllers
 		private readonly ITelefoneAppService _funcionarioAppService;
 		private readonly IUFAppService _uFAppService;
 
-		public EmpresaUtilizadorasController(IEmpresaUtilizadoraAppService empresaUtilizadoraAppService)
+		public EmpresaUtilizadorasController(IEmpresaUtilizadoraAppService empresaUtilizadoraAppService, IEnderecoAppService enderecoViewModelAppService, ITelefoneAppService funcionarioAppService, IUFAppService uFAppService)
 		{
-				
+			_empresaUtilizadoraAppService = empresaUtilizadoraAppService;
+			_enderecoViewModelAppService = enderecoViewModelAppService;
+			_funcionarioAppService = funcionarioAppService;
+			_uFAppService = uFAppService;
 		}
 
 		// GET: EmpresaUtilizadoras
-		public ActionResult Index()
+		public ActionResult Index(string pesquisa, int page = 0)
         {
-            var empresasUtilizadora = db.EmpresasUtilizadora.Include(e => e.Endereco);
-            return View(empresasUtilizadora.ToList());
-        }
+			var cursosViewModel = _empresaUtilizadoraAppService.ObterGrid(page, pesquisa);
+			ViewBag.PaginaAtual = page;
+			ViewBag.Busca = "&pesquisa=" + pesquisa;
+			ViewBag.Controller = "Cursos";
+			ViewBag.TotalRegistros = _empresaUtilizadoraAppService.ObterTotalRegistros(pesquisa);
+
+			return View(cursosViewModel);
+		}
 
         // GET: EmpresaUtilizadoras/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            EmpresaUtilizadora empresaUtilizadora = db.EmpresasUtilizadora.Find(id);
-            if (empresaUtilizadora == null)
-            {
-                return HttpNotFound();
-            }
-            return View(empresaUtilizadora);
-        }
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var empresaUtilizadora = _empresaUtilizadoraAppService.ObterPorId(id.Value);
+			if (empresaUtilizadora == null)
+			{
+				return HttpNotFound();
+			}
+			return View(empresaUtilizadora);
+		}
 
         // GET: EmpresaUtilizadoras/Create
         public ActionResult Create()
         {
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro");
+            //ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro");
             return View();
         }
 
@@ -58,85 +67,97 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "EmpresaUtilizadoraId,NomeFantasia,RazaoSocial,CNPJ,EnderecoId,Email,Senha,Delete")] EmpresaUtilizadora empresaUtilizadora)
+        public ActionResult Create(EmpresaUtilizadoraViewModel empresaUtilizadoraViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                db.EmpresasUtilizadora.Add(empresaUtilizadora);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
-            return View(empresaUtilizadora);
+			if (ModelState.IsValid)
+			{
+				if (!_empresaUtilizadoraAppService.Adicionar(empresaUtilizadoraViewModel))
+				{
+					//TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
+					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um empresaUtilizadora com os mesmos dados')</SCRIPT>");
+				}
+				else
+					return RedirectToAction("Index");
+			}
+			return View(empresaUtilizadoraViewModel);
+			//ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
         }
 
         // GET: EmpresaUtilizadoras/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            EmpresaUtilizadora empresaUtilizadora = db.EmpresasUtilizadora.Find(id);
-            if (empresaUtilizadora == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
-            return View(empresaUtilizadora);
-        }
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var empresaUtilizadora = _empresaUtilizadoraAppService.ObterPorId(id.Value);
+			if (empresaUtilizadora == null)
+			{
+				return HttpNotFound();
+			}
+			return View(empresaUtilizadora);
+			// ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
+
+		}
 
         // POST: EmpresaUtilizadoras/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "EmpresaUtilizadoraId,NomeFantasia,RazaoSocial,CNPJ,EnderecoId,Email,Senha,Delete")] EmpresaUtilizadora empresaUtilizadora)
+        public ActionResult Edit(EmpresaUtilizadoraViewModel empresaUtilizadoraViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(empresaUtilizadora).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
-            return View(empresaUtilizadora);
-        }
+
+			if (ModelState.IsValid)
+			{
+				if (!_empresaUtilizadoraAppService.Atualizar(empresaUtilizadoraViewModel))
+				{
+					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Curso com os mesmos dados já cadastrada')</SCRIPT>");
+				}
+				else
+					return RedirectToAction("Index");
+			}
+			return View(empresaUtilizadoraViewModel);
+		}
 
         // GET: EmpresaUtilizadoras/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            EmpresaUtilizadora empresaUtilizadora = db.EmpresasUtilizadora.Find(id);
-            if (empresaUtilizadora == null)
-            {
-                return HttpNotFound();
-            }
-            return View(empresaUtilizadora);
-        }
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var empresaUtilizadora = _empresaUtilizadoraAppService.ObterPorId(id.Value);
+			if (empresaUtilizadora == null)
+			{
+				return HttpNotFound();
+			}
+			return View(empresaUtilizadora);
+		}
 
         // POST: EmpresaUtilizadoras/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            EmpresaUtilizadora empresaUtilizadora = db.EmpresasUtilizadora.Find(id);
-            db.EmpresasUtilizadora.Remove(empresaUtilizadora);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+			if (!_empresaUtilizadoraAppService.Excluir(id))
+			{
+				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+				return null;
+			}
+			else
+			{
+				return RedirectToAction("Index");
+			}
+		}
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+			if (disposing)
+			{
+				_empresaUtilizadoraAppService.Dispose();
+			}
+			base.Dispose(disposing);
+		}
     }
 }
