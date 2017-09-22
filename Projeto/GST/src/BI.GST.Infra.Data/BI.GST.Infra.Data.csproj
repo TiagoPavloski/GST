@@ -112,11 +112,14 @@
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />
     <Compile Include="Repository\EmpresaUtilizadoraRepository.cs" />
+    <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\ExameRepository.cs" />
     <Compile Include="Repository\FuncionarioRepository.cs" />
+    <Compile Include="Repository\TelefoneRepository.cs" />
     <Compile Include="Repository\TipoCursoRepository.cs" />
     <Compile Include="Repository\TipoExameRepository.cs" />
     <Compile Include="Repository\TipoVacinaRepository.cs" />
+    <Compile Include="Repository\UFRepository.cs" />
     <Compile Include="Repository\VacinaRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />
   </ItemGroup>
