@@ -8,6 +8,10 @@ namespace BI.GST.Infra.Data.EntityConfig
     public AgenteAmbientalConfiguration()
     {
       HasKey(e => e.AgenteAmbientalId);
-    }
+
+      Property(c => c.Nome)
+     .HasMaxLength(150)
+     .IsRequired();
+        }
   }
 }

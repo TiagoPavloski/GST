@@ -27,6 +27,9 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFAppService>().To<UFAppService>();
 			Bind<ITelefoneAppService>().To<TelefoneAppService>();
 			Bind<IEnderecoAppService>().To<EnderecoAppService>();
+        	Bind<IFinanceiroAppService>().To<FinanceiroAppService>();
+        	Bind<IAgenteAmbientalAppService>().To<AgenteAmbientalAppService>();
+        	Bind<IEquipamentoRuidoAppService>().To<EquipamentoRuidoAppService>();
 
 			//Servicos
 			Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -39,6 +42,9 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFService>().To<UFService>();
 			Bind<ITelefoneService>().To<TelefoneService>();
 			Bind<IEnderecoService>().To<EnderecoService>();
+        	Bind<IFinanceiroService>().To<FinanceiroService>();
+        	Bind<IAgenteAmbientalService>().To<AgenteAmbientalService>();
+        	Bind<IEquipamentoRuidoService>().To<EquipamentoRuidoService>();
 
 			//Data Repository
 			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -51,6 +57,9 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFRepository>().To<UFRepository>();
 			Bind<ITelefoneRepository>().To<TelefoneRepository>();
 			Bind<IEnderecoRepository>().To<EnderecoRepository>();
+  			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
+        	Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
+        	Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
 
 			//Data Configuration
 			Bind<IContextManager>().To<ContextManager>();

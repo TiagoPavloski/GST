@@ -1,0 +1,42 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteAmbientalViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Agente Ambiental", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por Nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AgenteAmbientalId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AgenteAmbientalId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AgenteAmbientalId })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.Partial("_Paginacao")
+
