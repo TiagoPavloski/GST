@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BI.GST.Domain.Entities.Financeiro>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.FinanceiroViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -9,6 +9,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Financeiro", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por Titulo: @Html.Editor("pesquisa") <input type="submit" value="PesquisarPorTitulo" class="btn btn-default" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -16,9 +23,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Operacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataOperacao)
@@ -30,16 +34,7 @@
             @Html.DisplayNameFor(model => model.DataVencimento)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DataQuitacao)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Valor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Instituicao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Delete)
@@ -56,9 +51,6 @@
             @Html.DisplayFor(modelItem => item.Operacao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.DataOperacao)
         </td>
         <td>
@@ -68,19 +60,7 @@
             @Html.DisplayFor(modelItem => item.DataVencimento)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.DataQuitacao)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Valor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Instituicao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delete)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.FinanceiroId }) |
@@ -91,3 +71,5 @@
 }
 
 </table>
+
+@Html.Partial("_Paginacao")

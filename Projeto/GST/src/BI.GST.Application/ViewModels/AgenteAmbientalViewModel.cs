@@ -9,10 +9,10 @@ namespace BI.GST.Application.ViewModels
 {
     public class AgenteAmbientalViewModel
     {
-        public int agenteAmbientalId { get; set; }
+        public int AgenteAmbientalId { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Nome")]
         [MaxLength(100, ErrorMessage = "Máximo de 100")]
-        public string nome { get; set; }
+        public string Nome { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace BI.GST.Application.AutoMapper
 			Mapper.CreateMap<EnderecoViewModel, Endereco>();
             Mapper.CreateMap<AgenteAmbientalViewModel, AgenteAmbiental>();
             Mapper.CreateMap<EquipamentoRuidoViewModel, EquipamentoRuido>();
+            Mapper.CreateMap<FinanceiroViewModel, Financeiro>();
         }
     }
 }

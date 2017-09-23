@@ -8,17 +8,30 @@ using System.Web;
 using System.Web.Mvc;
 using BI.GST.Domain.Entities;
 using BI.GST.Infra.Data.Context;
+using BI.GST.Application.Interface;
+using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
     public class FinanceiroController : Controller
     {
-        private ProjetoContext db = new ProjetoContext();
+        private readonly IFinanceiroAppService _financeiroAppService;
+
+        public FinanceiroController(IFinanceiroAppService financeiroAppService)
+        {
+            _financeiroAppService = financeiroAppService;
+        }
 
         // GET: Financeiro
-        public ActionResult Index()
+        public ActionResult Index(string pesquisa, int page = 0)
         {
-            return View(db.Financeiros.ToList());
+            var financeiroViewModel = _financeiroAppService.ObterGrid(page, pesquisa);
+            ViewBag.PaginaAtual = page;
+            ViewBag.Busca = "&pesquisa=" + pesquisa;
+            ViewBag.Controller = "Financeiro";
+            ViewBag.TotalRegistros = _financeiroAppService.ObterTotalRegistros(pesquisa);
+
+            return View(financeiroViewModel);
         }
 
         // GET: Financeiro/Details/5
@@ -28,7 +41,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Financeiro financeiro = db.Financeiros.Find(id);
+            var financeiro = _financeiroAppService.ObterContasPorId(id.Value);
             if (financeiro == null)
             {
                 return HttpNotFound();
@@ -47,16 +60,19 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "FinanceiroId,Titulo,Operacao,Descricao,DataOperacao,NumeroParcelas,DataVencimento,DataQuitacao,Valor,Instituicao,Status,Delete")] Financeiro financeiro)
+        public ActionResult Create(FinanceiroViewModel financeiroViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Financeiros.Add(financeiro);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (!_financeiroAppService.Adicionar(financeiroViewModel))
+                {
+                    TempData["Mensagem"] = "Atenção, há um título financeiro com os mesmos dados";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
+                }
+                else
+                    return RedirectToAction("Index");
             }
-
-            return View(financeiro);
+            return View(financeiroViewModel);
         }
 
         // GET: Financeiro/Edit/5
@@ -66,7 +82,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Financeiro financeiro = db.Financeiros.Find(id);
+            var financeiro = _financeiroAppService.ObterContasPorId(id.Value);
             if (financeiro == null)
             {
                 return HttpNotFound();
@@ -79,15 +95,18 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "FinanceiroId,Titulo,Operacao,Descricao,DataOperacao,NumeroParcelas,DataVencimento,DataQuitacao,Valor,Instituicao,Status,Delete")] Financeiro financeiro)
+        public ActionResult Edit(FinanceiroViewModel financeiroViewModel)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(financeiro).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (!_financeiroAppService.Atualizar(financeiroViewModel))
+                {
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um título Financeiro com os mesmos dados já cadastrado')</SCRIPT>");
+                }
+                else
+                    return RedirectToAction("Index");
             }
-            return View(financeiro);
+            return View(financeiroViewModel);
         }
 
         // GET: Financeiro/Delete/5
@@ -97,7 +116,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Financeiro financeiro = db.Financeiros.Find(id);
+            var financeiro = _financeiroAppService.ObterContasPorId(id.Value);
             if (financeiro == null)
             {
                 return HttpNotFound();
@@ -110,17 +129,22 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Financeiro financeiro = db.Financeiros.Find(id);
-            db.Financeiros.Remove(financeiro);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (!_financeiroAppService.Excluir(id))
+            {
+                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+                return null;
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
-                db.Dispose();
+                _financeiroAppService.Dispose();
             }
             base.Dispose(disposing);
         }

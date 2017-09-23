@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.Interface
 {
-    public interface IFinanceiroAppService
+    public interface IFinanceiroAppService : IDisposable
     {
         bool Adicionar(FinanceiroViewModel financeiroViewModel);
 
@@ -27,5 +27,6 @@ namespace BI.GST.Application.Interface
         List<FinanceiroViewModel> ObterContasPorInstituicao(string instituicao);
 
         FinanceiroViewModel ObterContasPorId(int id);
+
     }
 }

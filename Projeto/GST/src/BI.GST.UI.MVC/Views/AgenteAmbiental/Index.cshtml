@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BI.GST.Domain.Entities.AgenteAmbiental>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteAmbientalViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -9,13 +9,17 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Agente Ambiental", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por Nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
         </th>
         <th></th>
     </tr>
@@ -26,9 +30,6 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Delete)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AgenteAmbientalId }) |
             @Html.ActionLink("Details", "Details", new { id=item.AgenteAmbientalId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.AgenteAmbientalId })
@@ -37,3 +38,5 @@
 }
 
 </table>
+@Html.Partial("_Paginacao")
+
