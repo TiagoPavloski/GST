@@ -10,9 +10,13 @@ namespace BI.GST.Domain.Entities
   {
     public int AgentePPRAId { get; set; }
 
+    public int AgenteAmbientalId { get; set; }
+
+    public int MeioPropagacaoId { get; set; }
+
     public virtual AgenteAmbiental AgenteAmbiental { get; set; }
 
-    //public virtual PropagacaoAgente PropagacaoAgente { get; set; }  Não tem tabela disso ?????????????
+    public virtual MeioPropagacao MeioPropagacao { get; set; }
 
     public bool Delete { get; set; }
   }
