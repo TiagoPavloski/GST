@@ -20,8 +20,8 @@ namespace BI.GST.Domain.Entities
         [ForeignKey("EmpresaUtilizadoraId")]
         public virtual EmpresaUtilizadora EmpresaUtilizadora { get; set; }
 
-        public int EmpresaId { get; set; }
-        [ForeignKey("EmpresaId")]
-        public virtual Empresa Empresa { get; set; }
+        //public int? EmpresaId { get; set; }
+        //[ForeignKey("EmpresaId")]
+        //public virtual Empresa Empresa { get; set; }
     }
 }

@@ -8,12 +8,18 @@ namespace BI.GST.Application.ViewModels
 {
 	public class EUEnderecoTelefoneViewModel
 	{
-		EmpresaUtilizadoraViewModel empresaUtilizadoraViewModel = new EmpresaUtilizadoraViewModel();
+		public EUEnderecoTelefoneViewModel()
+		{
 
-		EnderecoViewModel enderecoViewModel = new EnderecoViewModel();
+		}
+		public EmpresaUtilizadoraViewModel empresaUtilizadoraViewModel;
 
-		List<TelefoneViewModel> telefoneViewModel = new List<TelefoneViewModel>();
+		public IEnumerable<EmpresaUtilizadoraViewModel> empresaUtilizadoraViewModels;
 
-		UFViewModel uFViewModel = new UFViewModel();
+		public EnderecoViewModel enderecoViewModel = new EnderecoViewModel();
+
+		public IEnumerable<TelefoneViewModel> telefoneViewModel;
+
+		public UFViewModel uFViewModel = new UFViewModel();
 	}
 }

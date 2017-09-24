@@ -27,6 +27,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFAppService>().To<UFAppService>();
 			Bind<ITelefoneAppService>().To<TelefoneAppService>();
 			Bind<IEnderecoAppService>().To<EnderecoAppService>();
+			Bind<IEmpresaUtilizadoraAppService>().To<EmpresaUtilizadoraAppService>();
         	Bind<IFinanceiroAppService>().To<FinanceiroAppService>();
         	Bind<IAgenteAmbientalAppService>().To<AgenteAmbientalAppService>();
         	Bind<IEquipamentoRuidoAppService>().To<EquipamentoRuidoAppService>();
@@ -41,7 +42,6 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoAppService>().To<MeioPropagacaoAppService>();
             Bind<ICronogramaDeAcoesAppService>().To<CronogramaDeAcoesAppService>();
             Bind<IAgentePPRAAppService>().To<AgentePPRAAppService>();
-
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
             Bind<ITipoExameService>().To<TipoExameService>();
@@ -53,6 +53,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFService>().To<UFService>();
 			Bind<ITelefoneService>().To<TelefoneService>();
 			Bind<IEnderecoService>().To<EnderecoService>();
+			Bind<IEmpresaUtilizadoraService>().To<EmpresaUtilizadoraService>();
         	Bind<IFinanceiroService>().To<FinanceiroService>();
         	Bind<IAgenteAmbientalService>().To<AgenteAmbientalService>();
         	Bind<IEquipamentoRuidoService>().To<EquipamentoRuidoService>();
@@ -79,6 +80,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFRepository>().To<UFRepository>();
 			Bind<ITelefoneRepository>().To<TelefoneRepository>();
 			Bind<IEnderecoRepository>().To<EnderecoRepository>();
+			Bind<IEmpresaUtilizadoraRepository>().To<EmpresaUtilizadoraRepository>();
   			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
         	Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
         	Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
@@ -93,7 +95,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoRepository>().To<MeioPropagacaoRepository>();
             Bind<ICronogramaDeAcoesRepository>().To<CronogramaDeAcoesRepository>();
             Bind<IAgentePPRARepository>().To<AgentePPRARepository>();
-
+            
             //Data Configuration
             Bind<IContextManager>().To<ContextManager>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
