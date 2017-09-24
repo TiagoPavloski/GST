@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BI.GST.Domain.Entities.AgenteAcidente>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteAcidenteViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -9,6 +9,14 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Agente Acidentes", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -79,3 +87,6 @@
 }
 
 </table>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

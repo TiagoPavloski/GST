@@ -65,7 +65,7 @@ namespace BI.GST.UI.MVC.Controllers
                 if (!_agenteAcidenteAppService.Adicionar(agenteAcidenteViewModel))
                 {
                     //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteAcidente com os mesmos dados')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Agente Acidente com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
