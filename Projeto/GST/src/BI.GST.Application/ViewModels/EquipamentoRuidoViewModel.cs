@@ -22,5 +22,9 @@ namespace BI.GST.Application.ViewModels
         [Required(ErrorMessage = "Prencher campo Modelo")]
         [MaxLength(100, ErrorMessage = "Máximo de 100")]
         public string ModeloEquipamento { get; set; }
+
+        public string Compensacao { get; set; }
+
+        public string Resposta { get; set; }
     }
 }

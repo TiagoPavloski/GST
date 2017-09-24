@@ -178,6 +178,7 @@
     <Compile Include="Controllers\AgenteAmbientalController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresaUtilizadorasController.cs" />
+    <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\FinanceiroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -4554,6 +4555,11 @@
     <Content Include="Views\AgenteAmbiental\Details.cshtml" />
     <Content Include="Views\AgenteAmbiental\Edit.cshtml" />
     <Content Include="Views\AgenteAmbiental\Index.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Create.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Delete.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Details.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Edit.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
