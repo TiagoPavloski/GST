@@ -1,0 +1,162 @@
+﻿@model BI.GST.Domain.Entities.AgenteQuimico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AgenteQuimico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LimiteTolerancia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LimiteTolerancia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Frequencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Frequencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempoExposicao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoExposicao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tecnica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tecnica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Metodo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Metodo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fonte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fonte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EPI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EPI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EPC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EPC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Caracteristicas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Caracteristicas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orientacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orientacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidasPropostas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidasPropostas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidasExistentes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidasExistentes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AnaliseQualitativa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AnaliseQualitativa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EfeitosPotenciais)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EfeitosPotenciais)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fundamentacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fundamentacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delete)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgenteQuimicoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

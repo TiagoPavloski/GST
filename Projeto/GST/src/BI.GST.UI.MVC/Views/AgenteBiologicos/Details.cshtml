@@ -1,0 +1,50 @@
+﻿@model BI.GST.Domain.Entities.AgenteBiologico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AgenteBiologico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FonteGeradora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FonteGeradora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orientacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orientacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delete)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgenteBiologicoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -54,6 +54,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
+    <Compile Include="AppService\AgenteAcidenteAppService.cs" />
+    <Compile Include="AppService\AgenteBiologicoAppService.cs" />
+    <Compile Include="AppService\AgenteErgonomicoAppService.cs" />
+    <Compile Include="AppService\AgenteFisicoAppService.cs" />
+    <Compile Include="AppService\AgenteQuimicoAppService.cs" />
+    <Compile Include="AppService\ClassificacaoEfeitoAppService.cs" />
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaUtilizadoraAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
@@ -62,6 +68,9 @@
     <Compile Include="AppService\FuncionarioAppService.cs" />
     <Compile Include="AppService\TelefoneAppService.cs" />
     <Compile Include="AppService\FinanceiroAppService.cs" />
+    <Compile Include="AppService\MedicaoAgenteAppService.cs" />
+    <Compile Include="AppService\MeioPropagacaoAppService.cs" />
+    <Compile Include="AppService\SetorAppService.cs" />
     <Compile Include="AppService\TipoCursoAppService.cs" />
     <Compile Include="AppService\TipoExameAppService.cs" />
     <Compile Include="AppService\TipoVacinaAppService.cs" />
@@ -72,7 +81,13 @@
     <Compile Include="AppService\AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="AppService\BaseAppService.cs" />
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
+    <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
+    <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
+    <Compile Include="Interface\IAgenteErgonomicoAppService.cs" />
+    <Compile Include="Interface\IAgenteFisicoAppService.cs" />
+    <Compile Include="Interface\IAgenteQuimicoAppService.cs" />
     <Compile Include="Interface\IBaseAppService.cs" />
+    <Compile Include="Interface\IClassificacaoEfeitoAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaUtilizadoraAppService.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
@@ -81,6 +96,9 @@
     <Compile Include="Interface\IFuncionarioAppService.cs" />
     <Compile Include="Interface\ITelefoneAppService.cs" />
     <Compile Include="Interface\IFinanceiroAppService.cs" />
+    <Compile Include="Interface\IMedicaoAgenteAppService.cs" />
+    <Compile Include="Interface\IMeioPropagacaoAppService.cs" />
+    <Compile Include="Interface\ISetorAppService.cs" />
     <Compile Include="Interface\ITipoCursoAppService.cs" />
     <Compile Include="Interface\ITipoExameAppService.cs" />
     <Compile Include="Interface\ITipoVacinaAppService.cs" />
@@ -88,6 +106,12 @@
     <Compile Include="Interface\IVacinaAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AgenteAmbientalViewModel.cs" />
+    <Compile Include="ViewModels\AgenteAcidenteViewModel.cs" />
+    <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
+    <Compile Include="ViewModels\AgenteErgonomicoViewModel.cs" />
+    <Compile Include="ViewModels\AgenteFisicoViewModel.cs" />
+    <Compile Include="ViewModels\AgenteQuimicoViewModel.cs" />
+    <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
     <Compile Include="ViewModels\CursoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaUtilizadoraViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
@@ -96,11 +120,15 @@
     <Compile Include="ViewModels\EquipamentoRuidoViewModel.cs" />
     <Compile Include="ViewModels\ExameViewModel.cs" />
     <Compile Include="ViewModels\FuncionarioViewModel.cs" />
+    <Compile Include="ViewModels\MedicaoAgenteViewModel.cs" />
+    <Compile Include="ViewModels\MeioPropagacaoViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
+    <Compile Include="ViewModels\SetorViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />
     <Compile Include="ViewModels\FinanceiroViewModel.cs" />
     <Compile Include="ViewModels\TipoCursoViewModel.cs" />
     <Compile Include="ViewModels\TipoExameViewModel.cs" />
+    <Compile Include="ViewModels\TipoSetorViewModel.cs" />
     <Compile Include="ViewModels\TipoVacinaViewModel.cs" />
     <Compile Include="ViewModels\UFViewModel.cs" />
     <Compile Include="ViewModels\VacinaViewModel.cs" />

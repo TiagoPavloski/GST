@@ -8,6 +8,21 @@ namespace BI.GST.Infra.Data.EntityConfig
     public MedicaoAgenteConfiguration()
     {
       HasKey(e => e.MedicaoAgenteId);
-    }
+
+            Property(c => c.Data)
+           .HasMaxLength(150)
+           .IsRequired();
+
+            Property(c => c.Medicao)
+           .HasMaxLength(200)
+           .IsRequired();
+
+            Property(c => c.ItemDemonstraAmbientais)
+           .HasMaxLength(150)
+           .IsRequired();
+
+            Property(c => c.Delete)
+           .IsRequired();
+        }
   }
 }

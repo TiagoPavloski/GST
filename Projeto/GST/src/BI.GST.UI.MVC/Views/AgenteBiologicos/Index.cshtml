@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BI.GST.Domain.Entities.AgenteBiologico>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FonteGeradora)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Orientacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FonteGeradora)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Orientacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AgenteBiologicoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AgenteBiologicoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AgenteBiologicoId })
+        </td>
+    </tr>
+}
+
+</table>

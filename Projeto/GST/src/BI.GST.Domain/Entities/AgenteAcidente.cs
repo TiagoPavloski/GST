@@ -26,7 +26,7 @@ namespace BI.GST.Domain.Entities
 
     public string MedidasPropostas { get; set; }
 
-    public string Movimentacao { get; set; }
+    public string Fundamentacao { get; set; }
 
     public bool Delete { get; set; }
   }
