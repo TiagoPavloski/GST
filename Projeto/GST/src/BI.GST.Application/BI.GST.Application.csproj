@@ -58,8 +58,10 @@
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
     <Compile Include="AppService\AgenteErgonomicoAppService.cs" />
     <Compile Include="AppService\AgenteFisicoAppService.cs" />
+    <Compile Include="AppService\AgentePPRAAppService.cs" />
     <Compile Include="AppService\AgenteQuimicoAppService.cs" />
     <Compile Include="AppService\ClassificacaoEfeitoAppService.cs" />
+    <Compile Include="AppService\CronogramaDeAcoesAppService.cs" />
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaUtilizadoraAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
@@ -85,9 +87,11 @@
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
     <Compile Include="Interface\IAgenteErgonomicoAppService.cs" />
     <Compile Include="Interface\IAgenteFisicoAppService.cs" />
+    <Compile Include="Interface\IAgentePPRAAppService.cs" />
     <Compile Include="Interface\IAgenteQuimicoAppService.cs" />
     <Compile Include="Interface\IBaseAppService.cs" />
     <Compile Include="Interface\IClassificacaoEfeitoAppService.cs" />
+    <Compile Include="Interface\ICronogramaDeAcoesAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaUtilizadoraAppService.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
@@ -110,8 +114,10 @@
     <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
     <Compile Include="ViewModels\AgenteErgonomicoViewModel.cs" />
     <Compile Include="ViewModels\AgenteFisicoViewModel.cs" />
+    <Compile Include="ViewModels\AgentePPRAViewModel.cs" />
     <Compile Include="ViewModels\AgenteQuimicoViewModel.cs" />
     <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
+    <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
     <Compile Include="ViewModels\CursoViewModel.cs" />
     <Compile Include="ViewModels\EmpresaUtilizadoraViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />

@@ -42,6 +42,8 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<MedicaoAgente, MedicaoAgenteViewModel>();
             Mapper.CreateMap<ClassificacaoEfeito, ClassificacaoEfeitoViewModel>();
             Mapper.CreateMap<MeioPropagacao, MeioPropagacaoViewModel>();
+            Mapper.CreateMap<AgentePPRA, AgentePPRAViewModel>();
+            Mapper.CreateMap<CronogramaDeAcoes, CronogramaDeAcoesViewModel>();
         }
     }
 }
