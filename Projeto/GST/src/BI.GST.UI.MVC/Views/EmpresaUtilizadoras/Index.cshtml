@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BI.GST.Domain.Entities.EmpresaUtilizadora>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.EmpresaUtilizadoraViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -9,11 +9,16 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Exames", new { pesquisa = "" }, FormMethod.Get))
+{
+	<p>
+		Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+	</p>
+}
+
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Endereco.Logradouro)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.NomeFantasia)
         </th>
@@ -26,20 +31,11 @@
         <th>
             @Html.DisplayNameFor(model => model.Email)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Senha)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
-        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Endereco.Logradouro)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.NomeFantasia)
         </td>
@@ -53,12 +49,6 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Senha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delete)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.EmpresaUtilizadoraId }) |
             @Html.ActionLink("Details", "Details", new { id=item.EmpresaUtilizadoraId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.EmpresaUtilizadoraId })
@@ -67,3 +57,5 @@
 }
 
 </table>
+
+@Html.Partial("_Paginacao")

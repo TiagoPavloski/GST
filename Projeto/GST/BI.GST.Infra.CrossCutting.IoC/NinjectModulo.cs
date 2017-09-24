@@ -27,6 +27,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFAppService>().To<UFAppService>();
 			Bind<ITelefoneAppService>().To<TelefoneAppService>();
 			Bind<IEnderecoAppService>().To<EnderecoAppService>();
+			Bind<IEmpresaUtilizadoraAppService>().To<EmpresaUtilizadoraAppService>();
 
 			//Servicos
 			Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -39,6 +40,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFService>().To<UFService>();
 			Bind<ITelefoneService>().To<TelefoneService>();
 			Bind<IEnderecoService>().To<EnderecoService>();
+			Bind<IEmpresaUtilizadoraService>().To<EmpresaUtilizadoraService>();
 
 			//Data Repository
 			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -51,6 +53,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUFRepository>().To<UFRepository>();
 			Bind<ITelefoneRepository>().To<TelefoneRepository>();
 			Bind<IEnderecoRepository>().To<EnderecoRepository>();
+			Bind<IEmpresaUtilizadoraRepository>().To<EmpresaUtilizadoraRepository>();
 
 			//Data Configuration
 			Bind<IContextManager>().To<ContextManager>();

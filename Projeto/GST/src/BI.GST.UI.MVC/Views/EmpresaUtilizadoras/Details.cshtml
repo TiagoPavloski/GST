@@ -1,4 +1,4 @@
-﻿@model BI.GST.Domain.Entities.EmpresaUtilizadora
+﻿@model BI.GST.Application.ViewModels.EmpresaUtilizadoraViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -10,14 +10,6 @@
     <h4>EmpresaUtilizadora</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Endereco.Logradouro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Endereco.Logradouro)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.NomeFantasia)
         </dt>
@@ -57,14 +49,84 @@
         <dd>
             @Html.DisplayFor(model => model.Senha)
         </dd>
+		<!-- ENDERECO -->
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.CEP)
+		</dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Delete)
-        </dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.CEP)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Logradouro)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Delete)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Logradouro)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Numero)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Numero)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Bairro)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Bairro)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Cidade)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Cidade)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Pais)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Pais)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.UF.Nome)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.UF.Nome)
+		</dd>
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Complemento)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Complemento)
+		</dd>
+		<dt>
+			@Html.DisplayName("Telefone")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Telefones[0].Numero)
+		</dd>
+		<dt>
+		@Html.DisplayName("Telefone")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Telefones[1].Numero)
+		</dd>
+		<dt>
+			@Html.DisplayName("Telefone")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Telefones[2].Numero)
+		</dd>
 
     </dl>
 </div>
