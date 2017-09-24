@@ -39,6 +39,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMedicaoAgenteAppService>().To<MedicaoAgenteAppService>();
             Bind<IClassificacaoEfeitoAppService>().To<ClassificacaoEfeitoAppService>();
             Bind<IMeioPropagacaoAppService>().To<MeioPropagacaoAppService>();
+            Bind<ICronogramaDeAcoesAppService>().To<CronogramaDeAcoesAppService>();
+            Bind<IAgentePPRAAppService>().To<AgentePPRAAppService>();
 
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -63,6 +65,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMedicaoAgenteService>().To<MedicaoAgenteService>();
             Bind<IClassificacaoEfeitoService>().To<ClassificacaoEfeitoService>();
             Bind<IMeioPropagacaoService>().To<MeioPropagacaoService>();
+            Bind<ICronogramaDeAcoesService>().To<CronogramaDeAcoesService>();
+            Bind<IAgentePPRAService>().To<AgentePPRAService>();
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -87,6 +91,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMedicaoAgenteRepository>().To<MedicaoAgenteRepository>();
             Bind<IClassificacaoEfeitoRepositiry>().To<ClassificacaoEfeitoRepository>();
             Bind<IMeioPropagacaoRepository>().To<MeioPropagacaoRepository>();
+            Bind<ICronogramaDeAcoesRepository>().To<CronogramaDeAcoesRepository>();
+            Bind<IAgentePPRARepository>().To<AgentePPRARepository>();
 
             //Data Configuration
             Bind<IContextManager>().To<ContextManager>();
