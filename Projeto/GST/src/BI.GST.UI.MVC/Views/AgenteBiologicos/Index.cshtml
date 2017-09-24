@@ -9,6 +9,12 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@using (Html.BeginForm("Index", "Agentes Biologicos", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -19,9 +25,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Orientacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
         </th>
         <th></th>
     </tr>
@@ -38,9 +41,6 @@
             @Html.DisplayFor(modelItem => item.Orientacao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Delete)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AgenteBiologicoId }) |
             @Html.ActionLink("Details", "Details", new { id=item.AgenteBiologicoId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.AgenteBiologicoId })
@@ -49,3 +49,4 @@
 }
 
 </table>
+@Html.Partial("_Paginacao")
