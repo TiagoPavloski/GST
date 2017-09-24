@@ -10,6 +10,8 @@ namespace BI.GST.Domain.Entities
   {
     public int CronogramaDeAcoesId { get; set; }
 
+    public int PPRAId { get; set; }
+        
     public virtual PPRA PPRA { get; set; }
 
     public string Atividade { get; set; }

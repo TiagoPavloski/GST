@@ -1,0 +1,57 @@
+﻿@model BI.GST.Application.ViewModels.EquipamentoRuidoViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EquipamentoRuido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarcaEquipamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarcaEquipamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModeloEquipamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModeloEquipamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Compensacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compensacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resposta)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EquipamentoRuidoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

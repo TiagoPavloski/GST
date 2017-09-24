@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BI.GST.Domain.Entities.MeioPropagacao>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Meio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Delete)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Meio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Delete)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MeioPropagacaoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MeioPropagacaoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MeioPropagacaoId })
+        </td>
+    </tr>
+}
+
+</table>

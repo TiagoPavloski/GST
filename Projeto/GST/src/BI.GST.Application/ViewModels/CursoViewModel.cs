@@ -22,11 +22,12 @@ namespace BI.GST.Application.ViewModels
         public int TipoCursoId { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Data")]
-        [MaxLength(150, ErrorMessage = "Máximo de 10")]
+        [MaxLength(150, ErrorMessage = "Máximo de 150")]
         public string Data { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Status")]
         public int Status { get; set; }
+
         public string StatusNome { get; set; }
 
         public bool Delete { get; set; }

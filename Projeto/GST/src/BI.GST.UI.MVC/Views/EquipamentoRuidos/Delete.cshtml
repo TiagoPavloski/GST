@@ -1,0 +1,62 @@
+﻿@model BI.GST.Application.ViewModels.EquipamentoRuidoViewModel
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EquipamentoRuido</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MarcaEquipamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MarcaEquipamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModeloEquipamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModeloEquipamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Compensacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Compensacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Resposta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Resposta)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

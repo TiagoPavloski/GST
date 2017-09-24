@@ -12,7 +12,7 @@ namespace BI.GST.Domain.Entities
 
     public string Nome { get; set; }
 
-    public string FonteErgonomica { get; set; }
+    public string FonteGeradora { get; set; }
 
     public string Orientacao { get; set; }
 

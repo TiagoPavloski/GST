@@ -1,0 +1,83 @@
+﻿@model BI.GST.Application.ViewModels.AgenteAcidenteViewModel
+
+@{
+    ViewBag.Title = "Detalhes";
+}
+
+<h2>Detalhes</h2>
+
+<div>
+    <h4>AgenteAcidente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Frequencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Frequencia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TempoExposicao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TempoExposicao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fonte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fonte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Efeito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Efeito)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Orientacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Orientacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidasPropostas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidasPropostas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fundamentacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fundamentacao)
+        </dd>
+
+       
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AgenteAcidenteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
