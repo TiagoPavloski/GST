@@ -8,6 +8,10 @@ namespace BI.GST.Infra.Data.EntityConfig
     public CronogramaDeAcoesConfiguration()
     {
       HasKey(e => e.CronogramaDeAcoesId);
-    }
+
+      Property(c => c.Atividade)
+        .HasMaxLength(150)
+        .IsRequired();
+        }
   }
 }

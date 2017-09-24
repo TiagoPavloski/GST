@@ -24,6 +24,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IExameAppService>().To<ExameAppService>();
             Bind<IVacinaAppService>().To<VacinaAppService>();
             Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
+			Bind<IUFAppService>().To<UFAppService>();
+			Bind<ITelefoneAppService>().To<TelefoneAppService>();
+			Bind<IEnderecoAppService>().To<EnderecoAppService>();
+        	Bind<IFinanceiroAppService>().To<FinanceiroAppService>();
+        	Bind<IAgenteAmbientalAppService>().To<AgenteAmbientalAppService>();
+        	Bind<IEquipamentoRuidoAppService>().To<EquipamentoRuidoAppService>();
             Bind<IAgenteErgonomicoAppService>().To<AgenteErgonomicoAppService>();
             Bind<ISetorAppService>().To<SetorAppService>();
             Bind<IAgenteAcidenteAppService>().To<AgenteAcidenteAppService>();
@@ -42,6 +48,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IExameService>().To<ExameService>();
             Bind<IVacinaService>().To<VacinaService>();
             Bind<IFuncionarioService>().To<FuncionarioService>();
+			Bind<IUFService>().To<UFService>();
+			Bind<ITelefoneService>().To<TelefoneService>();
+			Bind<IEnderecoService>().To<EnderecoService>();
+        	Bind<IFinanceiroService>().To<FinanceiroService>();
+        	Bind<IAgenteAmbientalService>().To<AgenteAmbientalService>();
+        	Bind<IEquipamentoRuidoService>().To<EquipamentoRuidoService>();
             Bind<IAgenteErgonomicoService>().To<AgenteErgonomicoService>();
             Bind<ISetorService>().To<SetorService>();
             Bind<IAgenteAcidenteService>().To<AgenteAcidenteService>();
@@ -60,6 +72,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IExameRepository>().To<ExameRepository>();
             Bind<IVacinaRepository>().To<VacinaRepository>();
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
+			Bind<IUFRepository>().To<UFRepository>();
+			Bind<ITelefoneRepository>().To<TelefoneRepository>();
+			Bind<IEnderecoRepository>().To<EnderecoRepository>();
+  			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
+        	Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
+        	Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
             Bind<IAgenteErgonomicoRepository>().To<AgenteErgonomicoRepository>();
             Bind<ISetorRepository>().To<SetorRepository>();
             Bind<IAgenteAcidenteRepository>().To<AgenteAcidenteRepository>();

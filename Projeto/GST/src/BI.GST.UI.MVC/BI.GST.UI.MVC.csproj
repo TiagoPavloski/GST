@@ -175,6 +175,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AgenteAmbientalController.cs" />
     <Compile Include="Controllers\AgenteAcidentesController.cs" />
     <Compile Include="Controllers\AgenteBiologicosController.cs" />
     <Compile Include="Controllers\AgenteErgonomicosController.cs" />
@@ -182,7 +183,10 @@
     <Compile Include="Controllers\AgenteQuimicosController.cs" />
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\EmpresaUtilizadorasController.cs" />
+    <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
+    <Compile Include="Controllers\FinanceiroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicaoAgentesController.cs" />
     <Compile Include="Controllers\MeioPropagacoesController.cs" />
@@ -4545,6 +4549,26 @@
     <Content Include="vendors\validator\README.md" />
     <Content Include="vendors\validator\validator.jquery.json" />
     <Content Include="Views\Shared\_Mensagem - Copy.cshtml" />
+    <Content Include="Views\EmpresaUtilizadoras\Create.cshtml" />
+    <Content Include="Views\EmpresaUtilizadoras\Delete.cshtml" />
+    <Content Include="Views\EmpresaUtilizadoras\Details.cshtml" />
+    <Content Include="Views\EmpresaUtilizadoras\Edit.cshtml" />
+    <Content Include="Views\EmpresaUtilizadoras\Index.cshtml" />
+    <Content Include="Views\Financeiro\Create.cshtml" />
+    <Content Include="Views\Financeiro\Delete.cshtml" />
+    <Content Include="Views\Financeiro\Details.cshtml" />
+    <Content Include="Views\Financeiro\Edit.cshtml" />
+    <Content Include="Views\Financeiro\Index.cshtml" />
+    <Content Include="Views\AgenteAmbiental\Create.cshtml" />
+    <Content Include="Views\AgenteAmbiental\Delete.cshtml" />
+    <Content Include="Views\AgenteAmbiental\Details.cshtml" />
+    <Content Include="Views\AgenteAmbiental\Edit.cshtml" />
+    <Content Include="Views\AgenteAmbiental\Index.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Create.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Delete.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Details.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Edit.cshtml" />
+    <Content Include="Views\EquipamentoRuidos\Index.cshtml" />
     <Content Include="Views\AgenteErgonomicos\Create.cshtml" />
     <Content Include="Views\AgenteErgonomicos\Delete.cshtml" />
     <Content Include="Views\AgenteErgonomicos\Details.cshtml" />
@@ -4646,7 +4670,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58694</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

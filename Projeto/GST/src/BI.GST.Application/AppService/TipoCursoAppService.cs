@@ -21,6 +21,7 @@ namespace BI.GST.Application.AppService
       _tipoCursoService = tipoCursoService;
       _cursoService = cursoService;
     }
+
     public bool Adicionar(TipoCursoViewModel tipoCursoViewModel)
     {
       var tipoCurso = Mapper.Map<TipoCursoViewModel, TipoCurso>(tipoCursoViewModel);
