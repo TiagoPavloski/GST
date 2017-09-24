@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Interface.IService
 {
-    public interface IEquipamentoRuidoService
+    public interface IEquipamentoRuidoService : IDisposable
     {
         IEnumerable<EquipamentoRuido> ObterTodos();
 
@@ -25,7 +25,5 @@ namespace BI.GST.Domain.Interface.IService
         IEnumerable<EquipamentoRuido> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
-
-        void Dispose();
     }
 }
