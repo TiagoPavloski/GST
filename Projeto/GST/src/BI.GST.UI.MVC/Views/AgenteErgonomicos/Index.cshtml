@@ -9,7 +9,7 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-@using (Html.BeginForm("Index", "AgenteErgonomicos", new { pesquisa = "" }, FormMethod.Get))
+@using (Html.BeginForm("Index", "Agentes Ergonomicos", new { pesquisa = "" }, FormMethod.Get))
 {
     <p>
         Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
@@ -51,3 +51,4 @@
 }
 
 </table>
+@Html.Partial("_Paginacao")

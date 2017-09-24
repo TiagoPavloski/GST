@@ -9,6 +9,13 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Agentes Físicos", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -62,10 +69,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Observacao)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
-        </th>
-        <th></th>
+       <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -122,9 +126,6 @@
             @Html.DisplayFor(modelItem => item.Observacao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Delete)
-        </td>
-        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AgenteFisicoId }) |
             @Html.ActionLink("Details", "Details", new { id=item.AgenteFisicoId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.AgenteFisicoId })
@@ -133,3 +134,4 @@
 }
 
 </table>
+@Html.Partial("_Paginacao")
