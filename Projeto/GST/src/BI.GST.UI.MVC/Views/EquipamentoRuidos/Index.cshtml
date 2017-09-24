@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.EquipamentoRuidoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "EquipamentoRuidos", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por Nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MarcaEquipamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModeloEquipamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Compensacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Resposta)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MarcaEquipamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModeloEquipamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Compensacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Resposta)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EquipamentoRuidoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EquipamentoRuidoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EquipamentoRuidoId })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.Partial("_Paginacao")
