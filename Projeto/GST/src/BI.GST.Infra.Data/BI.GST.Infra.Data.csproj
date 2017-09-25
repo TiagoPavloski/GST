@@ -117,9 +117,11 @@
     <Compile Include="Repository\AgenteFisicoRepository.cs" />
     <Compile Include="Repository\AgenteQuimicoRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\CnaeRepository.cs" />
     <Compile Include="Repository\CronogramaDeAcoesRepository.cs" />
     <Compile Include="Repository\ClassificacaoEfeitoRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />
+    <Compile Include="Repository\EmpresaRepository.cs" />
     <Compile Include="Repository\EmpresaUtilizadoraRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\EquipamentoRuidoRepository.cs" />

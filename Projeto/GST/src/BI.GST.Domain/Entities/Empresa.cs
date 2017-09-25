@@ -24,24 +24,21 @@ namespace BI.GST.Domain.Entities
 
         public string CNPJ { get; set; }
 
-        public virtual ICollection<Telefone> Telefones { get; set; }
-
         public string Email { get; set; }
 
-        public virtual ICollection<Endereco> Enderecos { get; set; }
-
-        public virtual ICollection<Funcionario> Responsaveis { get; set; }
 
         public int CnaeId { get; set; }
-
-        public virtual Cnae CnaePrincipal { get; set; }
-
-        public virtual ICollection<Cnae> CnaeSecundarios { get; set; }
-
-        public virtual ICollection<Setor> Setores { get; set; }
 
         public string Logo { get; set; }
 
         public bool Delete { get; set; }
-    }
+
+
+		public virtual Cnae CnaePrincipal { get; set; }
+		public virtual ICollection<Telefone> Telefones { get; set; }
+		public virtual ICollection<Endereco> Enderecos { get; set; }
+		public virtual ICollection<Funcionario> Responsaveis { get; set; }
+		public virtual ICollection<Cnae> CnaeSecundarios { get; set; }
+		public virtual ICollection<Setor> Setores { get; set; }
+	}
 }
