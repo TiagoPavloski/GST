@@ -42,8 +42,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoAppService>().To<MeioPropagacaoAppService>();
             Bind<ICronogramaDeAcoesAppService>().To<CronogramaDeAcoesAppService>();
             Bind<IAgentePPRAAppService>().To<AgentePPRAAppService>();
-            //Servicos
-            Bind<ITipoCursoService>().To<TipoCursoService>();
+			Bind<ICnaeAppService>().To<CnaeAppService>();
+			Bind<IEmpresaAppService>().To<EmpresaAppService>();
+
+			//Servicos
+			Bind<ITipoCursoService>().To<TipoCursoService>();
             Bind<ITipoExameService>().To<TipoExameService>();
             Bind<ITipoVacinaService>().To<TipoVacinaService>();
             Bind<ICursoService>().To<CursoService>();
@@ -68,9 +71,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoService>().To<MeioPropagacaoService>();
             Bind<ICronogramaDeAcoesService>().To<CronogramaDeAcoesService>();
             Bind<IAgentePPRAService>().To<AgentePPRAService>();
+			Bind<ICnaeService>().To<CnaeService>();
+			Bind<IEmpresaService>().To<EmpresaService>();
 
-            //Data Repository
-            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+			//Data Repository
+			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
             Bind<ITipoExameRepository>().To<TipoExameRepository>();
             Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
             Bind<ICursoRepository>().To<CursoRepository>();
@@ -95,9 +100,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoRepository>().To<MeioPropagacaoRepository>();
             Bind<ICronogramaDeAcoesRepository>().To<CronogramaDeAcoesRepository>();
             Bind<IAgentePPRARepository>().To<AgentePPRARepository>();
-            
-            //Data Configuration
-            Bind<IContextManager>().To<ContextManager>();
+			Bind<ICnaeRepository>().To<CnaeRepository>();
+			Bind<IEmpresaRepository>().To<EmpresaRepository>();
+
+			//Data Configuration
+			Bind<IContextManager>().To<ContextManager>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }

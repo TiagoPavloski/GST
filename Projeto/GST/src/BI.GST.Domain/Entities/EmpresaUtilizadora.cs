@@ -28,6 +28,7 @@ namespace BI.GST.Domain.Entities
 
         public bool Delete { get; set; }
 
+
         public virtual Endereco Endereco { get; set; }
         public virtual ICollection<Telefone> Telefones { get; set; }
     }
