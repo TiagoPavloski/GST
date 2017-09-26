@@ -125,6 +125,7 @@
     <Compile Include="Repository\EmpresaUtilizadoraRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\EquipamentoRuidoRepository.cs" />
+    <Compile Include="Repository\EscalaRepository.cs" />
     <Compile Include="Repository\ExameRepository.cs" />
     <Compile Include="Repository\FuncionarioRepository.cs" />
     <Compile Include="Repository\TelefoneRepository.cs" />

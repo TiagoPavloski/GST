@@ -8,6 +8,14 @@ namespace BI.GST.Infra.Data.EntityConfig
     public EscalaConfiguration()
     {
       HasKey(e => e.EscalaId);
+
+      Property(e => e.Nome)
+                .IsRequired()
+                .HasMaxLength(35);
+
+     Property(e => e.HoraAlmoco)
+                .HasMaxLength(15);
+
     }
   }
 }

@@ -68,6 +68,7 @@
     <Compile Include="AppService\EmpresaUtilizadoraAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
     <Compile Include="AppService\EquipamentoRuidoAppService.cs" />
+    <Compile Include="AppService\EscalaAppService.cs" />
     <Compile Include="AppService\ExameAppService.cs" />
     <Compile Include="AppService\FuncionarioAppService.cs" />
     <Compile Include="AppService\TelefoneAppService.cs" />
@@ -100,6 +101,7 @@
     <Compile Include="Interface\IEmpresaUtilizadoraAppService.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
     <Compile Include="Interface\IEquipamentoRuidoAppService.cs" />
+    <Compile Include="Interface\IEscalaAppService.cs" />
     <Compile Include="Interface\IExameAppService.cs" />
     <Compile Include="Interface\IFuncionarioAppService.cs" />
     <Compile Include="Interface\ITelefoneAppService.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
     <Compile Include="ViewModels\EquipamentoRuidoViewModel.cs" />
+    <Compile Include="ViewModels\EscalaViewModel.cs" />
     <Compile Include="ViewModels\ExameViewModel.cs" />
     <Compile Include="ViewModels\FuncionarioViewModel.cs" />
     <Compile Include="ViewModels\MedicaoAgenteViewModel.cs" />
