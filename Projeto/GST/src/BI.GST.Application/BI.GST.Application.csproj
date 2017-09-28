@@ -75,6 +75,7 @@
     <Compile Include="AppService\MedicaoAgenteAppService.cs" />
     <Compile Include="AppService\MeioPropagacaoAppService.cs" />
     <Compile Include="AppService\SetorAppService.cs" />
+    <Compile Include="AppService\EscalaAppService.cs" />
     <Compile Include="AppService\TipoCursoAppService.cs" />
     <Compile Include="AppService\TipoExameAppService.cs" />
     <Compile Include="AppService\TipoVacinaAppService.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Interface\IMedicaoAgenteAppService.cs" />
     <Compile Include="Interface\IMeioPropagacaoAppService.cs" />
     <Compile Include="Interface\ISetorAppService.cs" />
+    <Compile Include="Interface\IEscalaAppService.cs" />
     <Compile Include="Interface\ITipoCursoAppService.cs" />
     <Compile Include="Interface\ITipoExameAppService.cs" />
     <Compile Include="Interface\ITipoVacinaAppService.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="ViewModels\SetorViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />
     <Compile Include="ViewModels\FinanceiroViewModel.cs" />
+    <Compile Include="ViewModels\EscalaViewModel.cs" />
     <Compile Include="ViewModels\TipoCursoViewModel.cs" />
     <Compile Include="ViewModels\TipoExameViewModel.cs" />
     <Compile Include="ViewModels\TipoSetorViewModel.cs" />

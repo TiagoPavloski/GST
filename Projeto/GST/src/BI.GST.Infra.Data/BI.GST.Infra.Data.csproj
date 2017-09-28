@@ -132,6 +132,7 @@
     <Compile Include="Repository\MedicaoAgenteRepository.cs" />
     <Compile Include="Repository\MeioPropagacaoRepository.cs" />
     <Compile Include="Repository\SetorRepository.cs" />
+    <Compile Include="Repository\EscalaRepository.cs" />
     <Compile Include="Repository\TipoCursoRepository.cs" />
     <Compile Include="Repository\TipoExameRepository.cs" />
     <Compile Include="Repository\TipoVacinaRepository.cs" />

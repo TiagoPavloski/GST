@@ -44,9 +44,10 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgentePPRAAppService>().To<AgentePPRAAppService>();
 			Bind<ICnaeAppService>().To<CnaeAppService>();
 			Bind<IEmpresaAppService>().To<EmpresaAppService>();
+            Bind<IEscalaAppService>().To<EscalaAppService>();
 
-			//Servicos
-			Bind<ITipoCursoService>().To<TipoCursoService>();
+            //Servicos
+            Bind<ITipoCursoService>().To<TipoCursoService>();
             Bind<ITipoExameService>().To<TipoExameService>();
             Bind<ITipoVacinaService>().To<TipoVacinaService>();
             Bind<ICursoService>().To<CursoService>();
@@ -73,9 +74,10 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgentePPRAService>().To<AgentePPRAService>();
 			Bind<ICnaeService>().To<CnaeService>();
 			Bind<IEmpresaService>().To<EmpresaService>();
+            Bind<IEscalaService>().To<EscalaService>();
 
-			//Data Repository
-			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+            //Data Repository
+            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
             Bind<ITipoExameRepository>().To<TipoExameRepository>();
             Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
             Bind<ICursoRepository>().To<CursoRepository>();
@@ -102,9 +104,10 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgentePPRARepository>().To<AgentePPRARepository>();
 			Bind<ICnaeRepository>().To<CnaeRepository>();
 			Bind<IEmpresaRepository>().To<EmpresaRepository>();
+            Bind<IEscalaRepository>().To<EscalaRepository>();
 
-			//Data Configuration
-			Bind<IContextManager>().To<ContextManager>();
+            //Data Configuration
+            Bind<IContextManager>().To<ContextManager>();
             Bind<IUnitOfWork>().To<UnitOfWork>();
         }
     }

@@ -1,0 +1,30 @@
+﻿@model BI.GST.Application.ViewModels.EscalaViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhe da escala @Html.DisplayNameFor(model => model.Nome)</h2>
+
+<div>
+    <h4>Escala</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraAlmoco)
+        </dt>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.EscalaId }) |
+    @Html.ActionLink("Voltar para lista", "Index")
+</p>

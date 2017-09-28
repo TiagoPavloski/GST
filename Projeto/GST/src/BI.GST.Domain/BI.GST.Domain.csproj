@@ -102,6 +102,7 @@
     <Compile Include="Interface\IRepository\IMedicaoAgenteRepository.cs" />
     <Compile Include="Interface\IRepository\IMeioPropagacaoRepository.cs" />
     <Compile Include="Interface\IRepository\ISetorRepository.cs" />
+    <Compile Include="Interface\IRepository\IEscalaRepository.cs" />
     <Compile Include="Interface\IRepository\ITipoCursoRepository.cs" />
     <Compile Include="Interface\IRepository\ITipoExameRepository.cs" />
     <Compile Include="Interface\IRepository\ITipoVacinaRepository.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Interface\IService\IMedicaoAgenteService.cs" />
     <Compile Include="Interface\IService\IMeioPropagacaoService.cs" />
     <Compile Include="Interface\IService\ISetorService.cs" />
+    <Compile Include="Interface\IService\IEscalaService.cs" />
     <Compile Include="Interface\IService\ITipoCursoService.cs" />
     <Compile Include="Interface\IService\ITipoExameService.cs" />
     <Compile Include="Interface\IService\ITipoVacinaService.cs" />
@@ -157,6 +159,7 @@
     <Compile Include="Services\MedicaoAgenteService.cs" />
     <Compile Include="Services\MeioPropagacaoService.cs" />
     <Compile Include="Services\SetorService.cs" />
+    <Compile Include="Services\EscalaService.cs" />
     <Compile Include="Services\TipoCursoService.cs" />
     <Compile Include="Services\TipoExameService.cs" />
     <Compile Include="Services\TipoVacinaService.cs" />
