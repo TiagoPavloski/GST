@@ -1,0 +1,39 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.EscalaViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Escalas</h2>
+
+<p>
+    @Html.ActionLink("Criar nova escala", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HoraAlmoco)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoraAlmoco)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.EscalaId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.EscalaId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.EscalaId })
+        </td>
+    </tr>
+}
+
+</table>
