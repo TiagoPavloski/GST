@@ -46,6 +46,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BeginCollectionItem, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BeginCollectionItem.1.2.1.0\lib\net35\BeginCollectionItem.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
@@ -183,6 +187,7 @@
     <Compile Include="Controllers\AgenteQuimicosController.cs" />
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EmpresaUtilizadorasController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\EscalasController.cs" />
@@ -4615,6 +4620,15 @@
     <Content Include="Views\MeioPropagacoes\Details.cshtml" />
     <Content Include="Views\MeioPropagacoes\Edit.cshtml" />
     <Content Include="Views\MeioPropagacoes\Index.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\Empresas\_Telefone.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Collection.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\_Endereco.cshtml" />
+    <Content Include="Views\Empresas\_Cnae.cshtml" />
     <Content Include="Views\Escalas\Create.cshtml" />
     <Content Include="Views\Escalas\Delete.cshtml" />
     <Content Include="Views\Escalas\Details.cshtml" />

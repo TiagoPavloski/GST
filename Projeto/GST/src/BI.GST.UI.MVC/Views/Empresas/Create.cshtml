@@ -1,0 +1,170 @@
+﻿@model BI.GST.Application.ViewModels.EmpresaViewModel
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
+
+@{
+	ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="form-horizontal">
+		<h4>Empresa</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.NomeFantasia, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.NomeFantasia, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.NomeFantasia, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.RazaoSocial, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.RazaoSocial, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.RazaoSocial, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.CNPJ, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.CNPJ, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.CNPJ, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<h5>Cnae Principal</h5>
+		<hr />
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.CnaePrincipal.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.CnaePrincipal.Codigo, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.CnaePrincipal.Codigo, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.CnaePrincipal.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.CnaePrincipal.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.CnaePrincipal.Descricao, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.CnaePrincipal.GrauDeRisco, htmlAttributes: new { @class = "control-label col-md-2" })
+
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.CnaePrincipal.GrauDeRisco, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.CnaePrincipal.GrauDeRisco, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<h5>Telefone</h5>
+		<hr />
+		<p><a id="add-telefone" class="btn">Adicionar Telefone</a></p>
+
+		<div id="tab-1" class="tab-pane">
+			@if (Model != null && Model.Telefones != null)
+			{
+				foreach (var telefone in Model.Telefones)
+				{
+					Html.RenderPartial("_Telefone", telefone);
+
+				}
+			}
+		</div>
+
+
+		<h5>Endereco</h5>
+		<hr />
+		<p><a id="add-endereco" class="btn">Adicionar Endereco</a></p>
+
+		<div id="tab-2" class="tab-pane">
+			@if (Model != null && Model.Enderecos != null)
+			{
+				foreach (var endereco in Model.Enderecos)
+				{
+					Html.RenderPartial("_Endereco", endereco);
+
+				}
+			}
+		</div>
+
+		<h5>Cnae Secundario</h5>
+		<hr />
+		<p><a id="add-cnae" class="btn">Adicionar Cnae Secundário</a></p>
+
+		<div id="tab-3" class="tab-pane">
+			@if (Model != null && Model.CnaeSecundarios != null)
+			{
+				foreach (var cnaeSecundarios in Model.CnaeSecundarios)
+				{
+					Html.RenderPartial("_Cnae", cnaeSecundarios);
+
+				}
+			}
+		</div>
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Create" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
+}
+
+<div>
+	@Html.ActionLink("Back to List", "Index")
+</div>
+
+<script type="text/javascript">
+	$("#add-telefone").click(function () {
+		$.get('/Empresas/LinhaTelefone', function (template) {
+			$("#tab-1").append(template);
+		});
+	});
+</script>
+
+<script type="text/javascript">
+	$("#add-endereco").click(function () {
+		$.get('/Empresas/LinhaEndereco', function (template) {
+			$("#tab-2").append(template);
+		});
+	});
+</script>
+
+
+<script type="text/javascript">
+	$("#add-cnae").click(function () {
+		$.get('/Empresas/LinhaCnae', function (template) {
+			$("#tab-3").append(template);
+		});
+	});
+</script>
