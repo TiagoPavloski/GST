@@ -190,6 +190,7 @@
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EmpresaUtilizadorasController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
+    <Compile Include="Controllers\EscalasController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\FinanceiroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -4628,6 +4629,11 @@
     <Content Include="Views\Empresas\Create.cshtml" />
     <Content Include="Views\Empresas\_Endereco.cshtml" />
     <Content Include="Views\Empresas\_Cnae.cshtml" />
+    <Content Include="Views\Escalas\Create.cshtml" />
+    <Content Include="Views\Escalas\Delete.cshtml" />
+    <Content Include="Views\Escalas\Details.cshtml" />
+    <Content Include="Views\Escalas\Edit.cshtml" />
+    <Content Include="Views\Escalas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

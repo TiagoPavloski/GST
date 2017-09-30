@@ -33,7 +33,8 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<Financeiro, FinanceiroViewModel>();
             Mapper.CreateMap<AgenteAmbiental, AgenteAmbientalViewModel>();
 			Mapper.CreateMap<Empresa, EmpresaViewModel>();
-			Mapper.CreateMap<AgenteErgonomico, AgenteErgonomicoViewModel>();
+            Mapper.CreateMap<Escala, EscalaViewModel>();
+            Mapper.CreateMap<AgenteErgonomico, AgenteErgonomicoViewModel>();
             Mapper.CreateMap<AgenteAcidente, AgenteAcidenteViewModel>();
             Mapper.CreateMap<Setor, SetorViewModel>();
             Mapper.CreateMap<AgenteQuimico, AgenteQuimicoViewModel>();
@@ -44,6 +45,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<MeioPropagacao, MeioPropagacaoViewModel>();
             Mapper.CreateMap<AgentePPRA, AgentePPRAViewModel>();
             Mapper.CreateMap<CronogramaDeAcoes, CronogramaDeAcoesViewModel>();
+            Mapper.CreateMap<Anexo, AnexoViewModel>();
         }
     }
 }
