@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.ViewModels
 {
-    class AnexoViewModel
+    public class AnexoViewModel
     {
         public int AnexoID { get; set; }
 
