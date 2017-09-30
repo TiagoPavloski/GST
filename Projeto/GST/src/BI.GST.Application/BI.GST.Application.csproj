@@ -60,6 +60,7 @@
     <Compile Include="AppService\AgenteFisicoAppService.cs" />
     <Compile Include="AppService\AgentePPRAAppService.cs" />
     <Compile Include="AppService\AgenteQuimicoAppService.cs" />
+    <Compile Include="AppService\AnexoAppService.cs" />
     <Compile Include="AppService\ClassificacaoEfeitoAppService.cs" />
     <Compile Include="AppService\CnaeAppService.cs" />
     <Compile Include="AppService\CronogramaDeAcoesAppService.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Interface\IAgenteFisicoAppService.cs" />
     <Compile Include="Interface\IAgentePPRAAppService.cs" />
     <Compile Include="Interface\IAgenteQuimicoAppService.cs" />
+    <Compile Include="Interface\IAnexoAppService.cs" />
     <Compile Include="Interface\IBaseAppService.cs" />
     <Compile Include="Interface\IClassificacaoEfeitoAppService.cs" />
     <Compile Include="Interface\ICnaeAppService.cs" />
@@ -122,6 +124,7 @@
     <Compile Include="ViewModels\AgenteFisicoViewModel.cs" />
     <Compile Include="ViewModels\AgentePPRAViewModel.cs" />
     <Compile Include="ViewModels\AgenteQuimicoViewModel.cs" />
+    <Compile Include="ViewModels\AnexoViewModel.cs" />
     <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
     <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
