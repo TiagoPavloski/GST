@@ -116,6 +116,7 @@
     <Compile Include="ViewModels\AgenteFisicoViewModel.cs" />
     <Compile Include="ViewModels\AgentePPRAViewModel.cs" />
     <Compile Include="ViewModels\AgenteQuimicoViewModel.cs" />
+    <Compile Include="ViewModels\AnexoViewModel.cs" />
     <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
     <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
     <Compile Include="ViewModels\CursoViewModel.cs" />

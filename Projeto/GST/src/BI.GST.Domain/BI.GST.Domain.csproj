@@ -81,6 +81,7 @@
     <Compile Include="Entities\Vacina.cs" />
     <Compile Include="Interface\IRepository\IAgenteAmbientalRepository.cs" />
     <Compile Include="Interface\IRepository\IAgentePPRARepository.cs" />
+    <Compile Include="Interface\IRepository\IAnexoRepository.cs" />
     <Compile Include="Interface\IRepository\ICronogramaDeAcoesRepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteAcidenteRepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteBiologicoRepository.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Interface\IRepository\IVacinaRepository.cs" />
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
     <Compile Include="Interface\IService\IAgentePPRAService.cs" />
+    <Compile Include="Interface\IService\IAnexoService.cs" />
     <Compile Include="Interface\IService\ICronogramaDeAcoesService.cs" />
     <Compile Include="Interface\IService\IAgenteacidenteService.cs" />
     <Compile Include="Interface\IService\IAgenteBiologicoService.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AgenteAmbientalService.cs" />
     <Compile Include="Services\AgentePPRAService.cs" />
+    <Compile Include="Services\AnexoService.cs" />
     <Compile Include="Services\CronogramaDeAcoesService.cs" />
     <Compile Include="Services\AgenteAcidenteService.cs" />
     <Compile Include="Services\AgenteBiologicoService.cs" />
