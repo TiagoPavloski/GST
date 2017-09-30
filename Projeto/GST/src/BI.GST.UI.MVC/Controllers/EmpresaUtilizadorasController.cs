@@ -31,13 +31,13 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: EmpresaUtilizadoras
 		public ActionResult Index(string pesquisa, int page = 0)
         {
-			var cursosViewModel = _empresaUtilizadoraAppService.ObterGrid(page, pesquisa);
+			var empresaUtilizadoraViewModel = _empresaUtilizadoraAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
 			ViewBag.Controller = "Cursos";
 			ViewBag.TotalRegistros = _empresaUtilizadoraAppService.ObterTotalRegistros(pesquisa);
 
-			return View(cursosViewModel);
+			return View(empresaUtilizadoraViewModel);
 		}
 
         // GET: EmpresaUtilizadoras/Details/5
@@ -58,8 +58,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: EmpresaUtilizadoras/Create
         public ActionResult Create()
         {
-            //ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro");
-            return View();
+            ViewBag.EnderecoId = new SelectList(_enderecoViewModelAppService.ObterTodos(), "EnderecoId", "Logradouro");
+			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
+			return View();
         }
 
         // POST: EmpresaUtilizadoras/Create
@@ -73,14 +74,14 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_empresaUtilizadoraAppService.Adicionar(empresaUtilizadoraViewModel))
 				{
-					//TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
 					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um empresaUtilizadora com os mesmos dados')</SCRIPT>");
 				}
 				else
 					return RedirectToAction("Index");
 			}
+			ViewBag.EnderecoId = new SelectList(_enderecoViewModelAppService.ObterTodos(), "EnderecoId", "Logradouro", empresaUtilizadoraViewModel.EnderecoId);
+			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome", empresaUtilizadoraViewModel.Endereco.UFId);
 			return View(empresaUtilizadoraViewModel);
-			//ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
         }
 
         // GET: EmpresaUtilizadoras/Edit/5
@@ -95,9 +96,9 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				return HttpNotFound();
 			}
+			ViewBag.EnderecoId = new SelectList(_enderecoViewModelAppService.ObterTodos(), "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
+			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome", empresaUtilizadora.Endereco.UFId);
 			return View(empresaUtilizadora);
-			// ViewBag.EnderecoId = new SelectList(db.Enderecos, "EnderecoId", "Logradouro", empresaUtilizadora.EnderecoId);
-
 		}
 
         // POST: EmpresaUtilizadoras/Edit/5
@@ -107,7 +108,7 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EmpresaUtilizadoraViewModel empresaUtilizadoraViewModel)
         {
-
+			//UF ID selecionado
 			if (ModelState.IsValid)
 			{
 				if (!_empresaUtilizadoraAppService.Atualizar(empresaUtilizadoraViewModel))

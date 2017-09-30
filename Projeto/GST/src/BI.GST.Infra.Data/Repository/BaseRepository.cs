@@ -12,43 +12,93 @@ using BI.GST.Infra.Data.Interface;
 
 namespace BI.GST.Infra.Data.Repository
 {
+  public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
+  {
+    protected ProjetoContext Context;
+    protected DbSet<TEntity> DbSet;
+    private readonly ContextManager _contextManager = ServiceLocator.Current.GetInstance<IContextManager>() as ContextManager;
+
+    public BaseRepository()
+    {
+      Context = _contextManager.GetContext();
+      DbSet = Context.Set<TEntity>();
+    }
     public class BaseRepository<TEntity> : Conversor, IBaseRepository<TEntity> where TEntity : class
     {
         protected ProjetoContext Context;
         protected DbSet<TEntity> DbSet;
         private readonly ContextManager _contextManager = ServiceLocator.Current.GetInstance<IContextManager>() as ContextManager;
 
+
+
+
+
+
+
+    public virtual IEnumerable<TEntity> ObterTodos()
+    {
+      Context.Configuration.LazyLoadingEnabled = false;
+      return DbSet.AsNoTracking().ToList();
+    }
         public BaseRepository()
         {
             Context = _contextManager.GetContext();
             DbSet = Context.Set<TEntity>();
         }
 
+    public virtual TEntity ObterPorId(Guid id)
+    {
+      return DbSet.Find(id);
+    }
         public virtual IEnumerable<TEntity> ObterTodos()
         {
             Context.Configuration.LazyLoadingEnabled = false;
             return DbSet.AsNoTracking().ToList();
         }
 
+    public virtual TEntity ObterPorId(int id)
+    {
+      return DbSet.Find(id);
+    }
         public virtual TEntity ObterPorId(Guid id)
         {
             return DbSet.Find(id);
         }
 
+    public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+    {
+      return DbSet.Where(predicate);
+    }
         public virtual TEntity ObterPorId(int id)
         {
             return DbSet.Find(id);
         }
 
+    public virtual void Adicionar(TEntity obj)
+    {
+      DbSet.Add(obj);
+    }
         public virtual IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return DbSet.Where(predicate);
         }
 
+    public virtual void Atualizar(TEntity obj)
+    {
+      var entry = Context.Entry(obj);
+      DbSet.Attach(obj);
+      entry.State = EntityState.Modified;
+    }
         public virtual void Adicionar(TEntity obj)
         {
             DbSet.Add(obj);
         }
+
+    public virtual void Excluir(Guid id)
+    {
+      DbSet.Remove(DbSet.Find(id));
+    }
+
 
         public virtual void Atualizar(TEntity obj)
         {
@@ -57,16 +107,29 @@ namespace BI.GST.Infra.Data.Repository
             entry.State = EntityState.Modified;
         }
 
+    public virtual void Excluir(int id)
+    {
+      DbSet.Remove(DbSet.Find(id));
+    }
         public virtual void Excluir(Guid id)
         {
             DbSet.Remove(DbSet.Find(id));
         }
 
+    public void SaveChanges()
+    {
+      Context.SaveChanges();
+    }
         public virtual void Excluir(int id)
         {
             DbSet.Remove(DbSet.Find(id));
         }
 
+    public void Dispose()
+    {
+      Context.Dispose();
+      GC.SuppressFinalize(this);
+    }
         public void SaveChanges()
         {
             Context.SaveChanges();
@@ -78,4 +141,14 @@ namespace BI.GST.Infra.Data.Repository
             GC.SuppressFinalize(this);
         }
     }
+
+  }
+
+
+
+
+
+
+
+
 }

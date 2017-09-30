@@ -4,64 +4,65 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace BI.GST.Infra.Data.Context
 {
-  public class ProjetoContext : DbContext
-  {
-    public ProjetoContext()
-        : base("ProjetoContext")
-    {
+	public class ProjetoContext : DbContext
+	{
+		public ProjetoContext()
+			: base("ProjetoContext")
+		{
 
-    }
+		}
 
-    public DbSet<Cliente> Clientes { get; set; }
-    public DbSet<EnderecoEx> EnderecosEx { get; set; }
-    public DbSet<Endereco> Enderecos { get; set; }
-    public DbSet<AgenteAcidente> AgentesAcidente { get; set; }
-    public DbSet<AgenteAmbiental> AgentesAmbiental { get; set; }
-    public DbSet<AgenteBiologico> AgentesBiologico { get; set; }
-    public DbSet<AgenteCausadorCBO> AgentesCausadorCBO { get; set; }
-    public DbSet<AgenteErgonomico> AgentesErgonomico { get; set; }
-    public DbSet<AgenteFisico> AgentesFisico { get; set; }
-    public DbSet<AgentePPRA> AgentesPPRA { get; set; }
-    public DbSet<AgenteQuimico> AgentseQuimico { get; set; }
-    public DbSet<AgenteRiscoCBO> AgentesRiscoCBO { get; set; }
-    public DbSet<Anexo> Anexos { get; set; }
-    public DbSet<CBO> CBOs { get; set; }
-    public DbSet<Certificado> Certificados { get; set; }
-    public DbSet<ClassificacaoEfeito> ClassificacoesEfeito { get; set; }
-    public DbSet<Cnae> Cnaes { get; set; }
-    public DbSet<Colaborador> Colaboradores { get; set; }
-    public DbSet<CronogramaDeAcoes> CronogramasDeAcoes { get; set; }
-    public DbSet<Curso> Cursos { get; set; }
-    public DbSet<Empresa> Empresas { get; set; }
-    public DbSet<EmpresaUtilizadora> EmpresasUtilizadora { get; set; }
-    public DbSet<EquipamentoRuido> EquipamentosRuido { get; set; }
-    public DbSet<Escala> Escalas { get; set; }
-    public DbSet<Exame> Exames { get; set; }
-    public DbSet<Financeiro> Financeiros { get; set; }
-    public DbSet<FonteRiscoCBO> FontesRiscoCBO { get; set; }
-    public DbSet<Funcionario> Funcionarios { get; set; }
-    public DbSet<FuncionarioEmpresa> FuncionariosEmpresas { get; set; }
-    public DbSet<InstituicaoCurso> InstituicoesCurso { get; set; }
-    public DbSet<MedicaoAgente> MedicoesAgente { get; set; }
-    public DbSet<MeioPropagacao> MeiosPropagacao { get; set; }
-    public DbSet<OS> OSs { get; set; }
-    public DbSet<PPRA> PPRAs { get; set; }
-    public DbSet<RiscoCBO> RiscosCBO { get; set; }
-    public DbSet<RiscoFuncionario> RiscosFuncionario { get; set; }
-    public DbSet<Setor> Setores { get; set; }
-    public DbSet<Telefone> Telefones { get; set; }
-    public DbSet<TipoCurso> TiposCurso { get; set; }
-    public DbSet<TipoExame> TiposExame { get; set; }
-    public DbSet<TipoSetor> TiposSetor { get; set; }
-    public DbSet<TipoVacina> TiposVacina { get; set; }
-    public DbSet<UF> UFs { get; set; }
-    public DbSet<Vacina> Vacinas { get; set; }
+		public DbSet<Cliente> Clientes { get; set; }
+		public DbSet<EnderecoEx> EnderecosEx { get; set; }
+		public DbSet<Endereco> Enderecos { get; set; }
+		public DbSet<AgenteAcidente> AgentesAcidente { get; set; }
+		public DbSet<AgenteAmbiental> AgentesAmbiental { get; set; }
+		public DbSet<AgenteBiologico> AgentesBiologico { get; set; }
+		public DbSet<AgenteCausadorCBO> AgentesCausadorCBO { get; set; }
+		public DbSet<AgenteErgonomico> AgentesErgonomico { get; set; }
+		public DbSet<AgenteFisico> AgentesFisico { get; set; }
+		public DbSet<AgentePPRA> AgentesPPRA { get; set; }
+		public DbSet<AgenteQuimico> AgentseQuimico { get; set; }
+		public DbSet<AgenteRiscoCBO> AgentesRiscoCBO { get; set; }
+		public DbSet<Anexo> Anexos { get; set; }
+		public DbSet<CBO> CBOs { get; set; }
+		public DbSet<Certificado> Certificados { get; set; }
+		public DbSet<ClassificacaoEfeito> ClassificacoesEfeito { get; set; }
+		public DbSet<Cnae> Cnaes { get; set; }
+		public DbSet<Colaborador> Colaboradores { get; set; }
+		public DbSet<CronogramaDeAcoes> CronogramasDeAcoes { get; set; }
+		public DbSet<Curso> Cursos { get; set; }
+		public DbSet<Empresa> Empresas { get; set; }
+		public DbSet<EmpresaUtilizadora> EmpresasUtilizadora { get; set; }
+		public DbSet<EquipamentoRuido> EquipamentosRuido { get; set; }
+		public DbSet<Escala> Escalas { get; set; }
+		public DbSet<Exame> Exames { get; set; }
+		public DbSet<Financeiro> Financeiros { get; set; }
+		public DbSet<FonteRiscoCBO> FontesRiscoCBO { get; set; }
+		public DbSet<Funcionario> Funcionarios { get; set; }
+		public DbSet<FuncionarioEmpresa> FuncionariosEmpresas { get; set; }
+		public DbSet<InstituicaoCurso> InstituicoesCurso { get; set; }
+		public DbSet<MedicaoAgente> MedicoesAgente { get; set; }
+		public DbSet<MeioPropagacao> MeiosPropagacao { get; set; }
+		public DbSet<OS> OSs { get; set; }
+		public DbSet<PPRA> PPRAs { get; set; }
+		public DbSet<RiscoCBO> RiscosCBO { get; set; }
+		public DbSet<RiscoFuncionario> RiscosFuncionario { get; set; }
+		public DbSet<Setor> Setores { get; set; }
+		public DbSet<Telefone> Telefones { get; set; }
+		public DbSet<TipoCurso> TiposCurso { get; set; }
+		public DbSet<TipoExame> TiposExame { get; set; }
+		public DbSet<TipoSetor> TiposSetor { get; set; }
+		public DbSet<TipoVacina> TiposVacina { get; set; }
+		public DbSet<UF> UFs { get; set; }
+		public DbSet<Vacina> Vacinas { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -131,26 +132,26 @@ namespace BI.GST.Infra.Data.Context
         }
 
         public override int SaveChanges()
-    {
-      foreach (var entry in ChangeTracker.Entries().Where(Entry => Entry.Entity.GetType().GetProperty("DataCadastro") != null))
-      {
-        if (entry.State == EntityState.Added)
-        {
-          entry.Property("DataCadastro").CurrentValue = DateTime.Now; //Propriedade DataCadastro sempre recebe data Atual
-        }
-        if (entry.State == EntityState.Modified)
-        {
-          entry.Property("DataCadastro").IsModified = false; //Caso seja update não modifica
-        }
-      }
-      foreach (var entry in ChangeTracker.Entries().Where(Entry => Entry.Entity.GetType().GetProperty("Delete") != null))
-      {
-        if (entry.State == EntityState.Added)
-        {
-          entry.Property("Delete").CurrentValue = false;
-        }
-      }
-      return base.SaveChanges();
-    }
-  }
+		{
+			foreach (var entry in ChangeTracker.Entries().Where(Entry => Entry.Entity.GetType().GetProperty("DataCadastro") != null))
+			{
+				if (entry.State == EntityState.Added)
+				{
+					entry.Property("DataCadastro").CurrentValue = DateTime.Now; //Propriedade DataCadastro sempre recebe data Atual
+				}
+				if (entry.State == EntityState.Modified)
+				{
+					entry.Property("DataCadastro").IsModified = false; //Caso seja update não modifica
+				}
+			}
+			foreach (var entry in ChangeTracker.Entries().Where(Entry => Entry.Entity.GetType().GetProperty("Delete") != null))
+			{
+				if (entry.State == EntityState.Added)
+				{
+					entry.Property("Delete").CurrentValue = false;
+				}
+			}
+			return base.SaveChanges();
+		}
+	}
 }

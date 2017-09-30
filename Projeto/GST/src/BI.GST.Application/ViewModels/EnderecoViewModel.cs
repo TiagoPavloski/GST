@@ -30,7 +30,7 @@ namespace BI.GST.Application.ViewModels
         public bool Delete { get; set; }
 
 
-        public virtual UFViewModel UFViewModel { get; set; }
+        public virtual UFViewModel UF { get; set; }
 
         public int EmpresaId { get; set; }
         [ForeignKey("EmpresaId")]

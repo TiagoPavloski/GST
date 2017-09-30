@@ -185,6 +185,7 @@
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresaUtilizadorasController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
+    <Compile Include="Controllers\EscalasController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\FinanceiroController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -4614,6 +4615,11 @@
     <Content Include="Views\MeioPropagacoes\Details.cshtml" />
     <Content Include="Views\MeioPropagacoes\Edit.cshtml" />
     <Content Include="Views\MeioPropagacoes\Index.cshtml" />
+    <Content Include="Views\Escalas\Create.cshtml" />
+    <Content Include="Views\Escalas\Delete.cshtml" />
+    <Content Include="Views\Escalas\Details.cshtml" />
+    <Content Include="Views\Escalas\Edit.cshtml" />
+    <Content Include="Views\Escalas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

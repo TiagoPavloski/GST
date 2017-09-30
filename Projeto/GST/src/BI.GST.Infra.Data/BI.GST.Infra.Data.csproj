@@ -119,10 +119,12 @@
     <Compile Include="Repository\AgenteQuimicoRepository.cs" />
     <Compile Include="Repository\AnexoRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\CnaeRepository.cs" />
     <Compile Include="Repository\Conversor.cs" />
     <Compile Include="Repository\CronogramaDeAcoesRepository.cs" />
     <Compile Include="Repository\ClassificacaoEfeitoRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />
+    <Compile Include="Repository\EmpresaRepository.cs" />
     <Compile Include="Repository\EmpresaUtilizadoraRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\EquipamentoRuidoRepository.cs" />
@@ -133,6 +135,7 @@
     <Compile Include="Repository\MedicaoAgenteRepository.cs" />
     <Compile Include="Repository\MeioPropagacaoRepository.cs" />
     <Compile Include="Repository\SetorRepository.cs" />
+    <Compile Include="Repository\EscalaRepository.cs" />
     <Compile Include="Repository\TipoCursoRepository.cs" />
     <Compile Include="Repository\TipoExameRepository.cs" />
     <Compile Include="Repository\TipoVacinaRepository.cs" />

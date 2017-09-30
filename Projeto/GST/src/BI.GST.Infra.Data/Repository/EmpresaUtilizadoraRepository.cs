@@ -22,5 +22,15 @@ namespace BI.GST.Infra.Data.Repository
                        .Skip((page) * 10)
                        .Take(10);
         }
-    }
+
+		public override void Atualizar(EmpresaUtilizadora obj)
+		{
+			new EnderecoRepository().Atualizar(obj.Endereco);
+			foreach (var item in obj.Telefones)
+			{
+				new TelefoneRepository().Atualizar(item);
+			}
+			base.Atualizar(obj);
+		}
+	}
 }

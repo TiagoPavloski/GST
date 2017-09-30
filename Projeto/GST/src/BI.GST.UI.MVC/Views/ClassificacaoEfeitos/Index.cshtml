@@ -9,15 +9,19 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "Classificações Efeitos", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.Classificacao)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
-        </th>
-        <th></th>
+       <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -25,10 +29,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Classificacao)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delete)
-        </td>
-        <td>
+       <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ClassificacaoEfeitoId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ClassificacaoEfeitoId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ClassificacaoEfeitoId })
@@ -36,4 +37,4 @@
     </tr>
 }
 
-</table>
+@Html.Partial("_Paginacao")

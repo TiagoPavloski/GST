@@ -43,6 +43,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<MeioPropagacaoViewModel, MeioPropagacao>();
             Mapper.CreateMap<CronogramaDeAcoesViewModel, CronogramaDeAcoes>();
             Mapper.CreateMap<AgentePPRAViewModel, AgentePPRA>();
+            Mapper.CreateMap<EscalaViewModel, Escala>();
         }
     }
 }

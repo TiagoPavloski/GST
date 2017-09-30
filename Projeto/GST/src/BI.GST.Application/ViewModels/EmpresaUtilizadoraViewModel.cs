@@ -6,7 +6,7 @@ namespace BI.GST.Application.ViewModels
     {
         public EmpresaUtilizadoraViewModel()
         {
-            TelefonesViewModel = new List<TelefoneViewModel>();
+            //Telefones = new List<TelefoneViewModel>();
         }
         public int EmpresaUtilizadoraId { get; set; }
 
@@ -18,13 +18,16 @@ namespace BI.GST.Application.ViewModels
 
         public int EnderecoId { get; set; }
 
-        public string Email { get; set; }
+		public int UFId { get; set; }
+
+		public string Email { get; set; }
 
         public string Senha { get; set; }
 
         public bool Delete { get; set; }
 
-        public virtual EnderecoViewModel EnderecoViewModel { get; set; }
-        public virtual ICollection<TelefoneViewModel> TelefonesViewModel { get; set; }
+        public virtual EnderecoViewModel Endereco { get; set; }
+		public virtual UFViewModel UF { get; set; }
+		public virtual List<TelefoneViewModel> Telefones { get; set; }
     }
 }
