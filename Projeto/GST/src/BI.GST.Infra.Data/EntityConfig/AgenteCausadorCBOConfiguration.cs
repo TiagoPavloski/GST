@@ -7,7 +7,14 @@ namespace BI.GST.Infra.Data.EntityConfig
   {
     public AgenteCausadorCBOConfiguration()
     {
-      HasKey(e => e.AgenteCausadorCBOId);
-    }
+            HasKey(e => e.AgenteCausadorCBOId);
+
+            Property(e => e.Nome)
+                      .IsRequired()
+                      .HasMaxLength(60);
+
+            Property(c => c.Status)
+                      .IsRequired();
+        }
   }
 }

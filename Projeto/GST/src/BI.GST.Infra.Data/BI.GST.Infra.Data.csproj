@@ -116,6 +116,7 @@
     <Compile Include="Repository\AgenteBiologicoRepository.cs" />
     <Compile Include="Repository\AgenteErgonomicoRepository.cs" />
     <Compile Include="Repository\AgenteFisicoRepository.cs" />
+    <Compile Include="Repository\AgenteCausadorCBORepository.cs" />
     <Compile Include="Repository\AgenteQuimicoRepository.cs" />
     <Compile Include="Repository\AnexoRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />

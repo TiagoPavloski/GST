@@ -1,126 +1,130 @@
-﻿using System.Net;
-using System.Web.Mvc;
+﻿using System.Data.Entity;
+using BI.GST.Domain.Entities;
 using BI.GST.Application.Interface;
+using System.Web.Mvc;
+using System.Net;
 using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class AgenteBiologicosController : Controller
+    public class AgenteCausadorCBOsController : Controller
     {
-        private readonly IAgenteBiologicoAppService _agenteBiologicoAppService;
+        private readonly IAgenteCausadorCBOAppService _agenteCausadorCBOAppService;
 
-        public AgenteBiologicosController(IAgenteBiologicoAppService agenteBiologicoAppService)
+        public AgenteCausadorCBOsController(IAgenteCausadorCBOAppService agenteCausadorCBOAppService)
         {
-            _agenteBiologicoAppService = agenteBiologicoAppService;
+            _agenteCausadorCBOAppService = agenteCausadorCBOAppService;
         }
 
         // GET: agenteBiologicos
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var agenteBiologicoViewModel = _agenteBiologicoAppService.ObterGrid(page, pesquisa);
+            var agenteBiologicoViewModel = _agenteCausadorCBOAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            ViewBag.Controller = "agenteBiologicos";
-            ViewBag.TotalRegistros = _agenteBiologicoAppService.ObterTotalRegistros(pesquisa);
+            ViewBag.Controller = "agenteCausadorCBOes";
+            ViewBag.TotalRegistros = _agenteCausadorCBOAppService.ObterTotalRegistros(pesquisa);
             return View(agenteBiologicoViewModel);
         }
 
-        // GET: agenteBiologicos/Details/5
+
+        // GET: AgenteCausadorCBOes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AgenteBiologicoViewModel agenteBiologico = _agenteBiologicoAppService.ObterPorId(id.Value);
-            if (agenteBiologico == null)
+            var agenteCausadorCBO = _agenteCausadorCBOAppService.ObterPorId(id.Value);
+            if (agenteCausadorCBO == null)
             {
                 return HttpNotFound();
             }
-            return View(agenteBiologico);
+            return View(agenteCausadorCBO);
         }
 
-        // GET: agenteBiologicos/Create
+        // GET: AgenteCausadorCBOes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: agenteBiologicos/Create
+        // POST: AgenteCausadorCBOes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(AgenteBiologicoViewModel agenteBiologicoViewModel)
+        public ActionResult Create(AgenteCausadorCBOViewModel agenteCausadorCBOViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_agenteBiologicoAppService.Adicionar(agenteBiologicoViewModel))
+                if (!_agenteCausadorCBOAppService.Adicionar(agenteCausadorCBOViewModel))
                 {
                     //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteBiologico com os mesmos dados')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Agente Causador com o mesmo nome!')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(agenteBiologicoViewModel);
+            return View(agenteCausadorCBOViewModel);
         }
 
-        // GET: agenteBiologicos/Edit/5
+        // GET: AgenteCausadorCBOes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var agenteBiologico = _agenteBiologicoAppService.ObterPorId(id.Value);
-            if (agenteBiologico == null)
+            var agente = _agenteCausadorCBOAppService.ObterPorId(id.Value);
+            if (agente == null)
             {
                 return HttpNotFound();
             }
-            return View(agenteBiologico);
+            return View(agente);
         }
 
-        // POST: agenteBiologicos/Edit/5
+        // POST: AgenteCausadorCBOes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(AgenteBiologicoViewModel agenteBiologicoViewModel)
+        public ActionResult Edit(AgenteCausadorCBOViewModel agenteCausadorCBOViewModel)
         {
+
             if (ModelState.IsValid)
             {
-                if (!_agenteBiologicoAppService.Atualizar(agenteBiologicoViewModel))
+                if (!_agenteCausadorCBOAppService.Atualizar(agenteCausadorCBOViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Agente Causador com o mesmo nome!')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(agenteBiologicoViewModel);
+            return View(agenteCausadorCBOViewModel);
         }
 
-        // GET: agenteBiologicos/Delete/5
+        // GET: AgenteCausadorCBOes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AgenteBiologicoViewModel agenteBiologico = _agenteBiologicoAppService.ObterPorId(id.Value);
-            if (agenteBiologico == null)
+            var agente = _agenteCausadorCBOAppService.ObterPorId(id.Value);
+            if (agente == null)
             {
                 return HttpNotFound();
             }
-            return View(agenteBiologico);
+            return View(agente);
         }
 
-        // POST: agenteBiologicos/Delete/5
+        // POST: AgenteCausadorCBOes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_agenteBiologicoAppService.Excluir(id))
+            if (!_agenteCausadorCBOAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
                 return null;
@@ -135,7 +139,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (disposing)
             {
-                _agenteBiologicoAppService.Dispose();
+                _agenteCausadorCBOAppService.Dispose();
             }
             base.Dispose(disposing);
         }

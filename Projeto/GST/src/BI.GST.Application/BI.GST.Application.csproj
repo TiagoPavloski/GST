@@ -69,6 +69,7 @@
     <Compile Include="AppService\EmpresaUtilizadoraAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
     <Compile Include="AppService\EquipamentoRuidoAppService.cs" />
+    <Compile Include="AppService\AgenteCausadorCBOAppService.cs" />
     <Compile Include="AppService\ExameAppService.cs" />
     <Compile Include="AppService\FuncionarioAppService.cs" />
     <Compile Include="AppService\TelefoneAppService.cs" />
@@ -92,6 +93,7 @@
     <Compile Include="Interface\IAgenteErgonomicoAppService.cs" />
     <Compile Include="Interface\IAgenteFisicoAppService.cs" />
     <Compile Include="Interface\IAgentePPRAAppService.cs" />
+    <Compile Include="Interface\IAgenteCausadorCBOAppService.cs" />
     <Compile Include="Interface\IAgenteQuimicoAppService.cs" />
     <Compile Include="Interface\IAnexoAppService.cs" />
     <Compile Include="Interface\IBaseAppService.cs" />
@@ -123,6 +125,7 @@
     <Compile Include="ViewModels\AgenteErgonomicoViewModel.cs" />
     <Compile Include="ViewModels\AgenteFisicoViewModel.cs" />
     <Compile Include="ViewModels\AgentePPRAViewModel.cs" />
+    <Compile Include="ViewModels\AgenteCausadorCBOViewModel.cs" />
     <Compile Include="ViewModels\AgenteQuimicoViewModel.cs" />
     <Compile Include="ViewModels\AnexoViewModel.cs" />
     <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
