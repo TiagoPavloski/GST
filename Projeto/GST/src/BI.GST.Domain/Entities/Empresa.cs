@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,14 +27,14 @@ namespace BI.GST.Domain.Entities
 
         public string Email { get; set; }
 
-
-        public int CnaeId { get; set; }
+        public int? CnaeId { get; set; }
 
         public string Logo { get; set; }
 
         public bool Delete { get; set; }
 
 
+		[ForeignKey("CnaeId")]
 		public virtual Cnae CnaePrincipal { get; set; }
 		public virtual ICollection<Telefone> Telefones { get; set; }
 		public virtual ICollection<Endereco> Enderecos { get; set; }
