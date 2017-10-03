@@ -1,0 +1,33 @@
+﻿@model BI.GST.Application.ViewModels.AgenteCausadorCBOViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalhes @Html.DisplayNameFor(model => model.Nome)</h2>
+
+<div>
+    <h4>AgenteCausadorCBO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AgenteCausadorCBOId }) |
+    @Html.ActionLink("Voltar para lista", "Index")
+</p>

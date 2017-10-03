@@ -44,6 +44,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<CronogramaDeAcoesViewModel, CronogramaDeAcoes>();
             Mapper.CreateMap<AgentePPRAViewModel, AgentePPRA>();
             Mapper.CreateMap<EscalaViewModel, Escala>();
+            Mapper.CreateMap<AgenteCausadorCBOViewModel, AgenteCausadorCBO>();
         }
     }
 }
