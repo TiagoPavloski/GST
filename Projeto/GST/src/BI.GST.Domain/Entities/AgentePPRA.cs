@@ -14,6 +14,10 @@ namespace BI.GST.Domain.Entities
 
     public int MeioPropagacaoId { get; set; }
 
+    public int PPRAId { get; set; }
+
+    public virtual PPRA PPRA { get; set; }
+
     public virtual AgenteAmbiental AgenteAmbiental { get; set; }
 
     public virtual MeioPropagacao MeioPropagacao { get; set; }

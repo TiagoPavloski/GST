@@ -60,6 +60,7 @@
     <Compile Include="AppService\AgenteFisicoAppService.cs" />
     <Compile Include="AppService\AgentePPRAAppService.cs" />
     <Compile Include="AppService\AgenteQuimicoAppService.cs" />
+    <Compile Include="AppService\AnexoAppService.cs" />
     <Compile Include="AppService\ClassificacaoEfeitoAppService.cs" />
     <Compile Include="AppService\CnaeAppService.cs" />
     <Compile Include="AppService\CronogramaDeAcoesAppService.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="AppService\MedicaoAgenteAppService.cs" />
     <Compile Include="AppService\MeioPropagacaoAppService.cs" />
     <Compile Include="AppService\SetorAppService.cs" />
+    <Compile Include="AppService\EscalaAppService.cs" />
     <Compile Include="AppService\TipoCursoAppService.cs" />
     <Compile Include="AppService\TipoExameAppService.cs" />
     <Compile Include="AppService\TipoVacinaAppService.cs" />
@@ -91,6 +93,7 @@
     <Compile Include="Interface\IAgenteFisicoAppService.cs" />
     <Compile Include="Interface\IAgentePPRAAppService.cs" />
     <Compile Include="Interface\IAgenteQuimicoAppService.cs" />
+    <Compile Include="Interface\IAnexoAppService.cs" />
     <Compile Include="Interface\IBaseAppService.cs" />
     <Compile Include="Interface\IClassificacaoEfeitoAppService.cs" />
     <Compile Include="Interface\ICnaeAppService.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="Interface\IMedicaoAgenteAppService.cs" />
     <Compile Include="Interface\IMeioPropagacaoAppService.cs" />
     <Compile Include="Interface\ISetorAppService.cs" />
+    <Compile Include="Interface\IEscalaAppService.cs" />
     <Compile Include="Interface\ITipoCursoAppService.cs" />
     <Compile Include="Interface\ITipoExameAppService.cs" />
     <Compile Include="Interface\ITipoVacinaAppService.cs" />
@@ -120,6 +124,7 @@
     <Compile Include="ViewModels\AgenteFisicoViewModel.cs" />
     <Compile Include="ViewModels\AgentePPRAViewModel.cs" />
     <Compile Include="ViewModels\AgenteQuimicoViewModel.cs" />
+    <Compile Include="ViewModels\AnexoViewModel.cs" />
     <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
     <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
@@ -136,6 +141,7 @@
     <Compile Include="ViewModels\SetorViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />
     <Compile Include="ViewModels\FinanceiroViewModel.cs" />
+    <Compile Include="ViewModels\EscalaViewModel.cs" />
     <Compile Include="ViewModels\TipoCursoViewModel.cs" />
     <Compile Include="ViewModels\TipoExameViewModel.cs" />
     <Compile Include="ViewModels\TipoSetorViewModel.cs" />

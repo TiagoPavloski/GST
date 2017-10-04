@@ -50,6 +50,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -116,8 +117,10 @@
     <Compile Include="Repository\AgenteErgonomicoRepository.cs" />
     <Compile Include="Repository\AgenteFisicoRepository.cs" />
     <Compile Include="Repository\AgenteQuimicoRepository.cs" />
+    <Compile Include="Repository\AnexoRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\CnaeRepository.cs" />
+    <Compile Include="Repository\Conversor.cs" />
     <Compile Include="Repository\CronogramaDeAcoesRepository.cs" />
     <Compile Include="Repository\ClassificacaoEfeitoRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />
@@ -132,6 +135,7 @@
     <Compile Include="Repository\MedicaoAgenteRepository.cs" />
     <Compile Include="Repository\MeioPropagacaoRepository.cs" />
     <Compile Include="Repository\SetorRepository.cs" />
+    <Compile Include="Repository\EscalaRepository.cs" />
     <Compile Include="Repository\TipoCursoRepository.cs" />
     <Compile Include="Repository\TipoExameRepository.cs" />
     <Compile Include="Repository\TipoVacinaRepository.cs" />
