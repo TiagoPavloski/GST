@@ -81,7 +81,7 @@
     <Compile Include="EntityConfig\CronogramaDeAcoesConfiguration.cs" />
     <Compile Include="EntityConfig\CursoConfiguration.cs" />
     <Compile Include="EntityConfig\EmpresaConfiguration.cs" />
-    <Compile Include="EntityConfig\EmpresaUtilizadoraConfiguration.cs" />
+    <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
     <Compile Include="EntityConfig\EnderecoConfiguration.cs" />
     <Compile Include="EntityConfig\EnderecoExConfiguration.cs" />
     <Compile Include="EntityConfig\EquipamentoRuidoConfiguration.cs" />
@@ -126,7 +126,7 @@
     <Compile Include="Repository\ClassificacaoEfeitoRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />
     <Compile Include="Repository\EmpresaRepository.cs" />
-    <Compile Include="Repository\EmpresaUtilizadoraRepository.cs" />
+    <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\EquipamentoRuidoRepository.cs" />
     <Compile Include="Repository\ExameRepository.cs" />

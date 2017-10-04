@@ -40,7 +40,7 @@ namespace BI.GST.UI.MVC.Controllers
 			var empresaViewModel = _empresaAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
-			ViewBag.Controller = "Cursos";
+			ViewBag.Controller = "Empresas";
 			ViewBag.TotalRegistros = _empresaAppService.ObterTotalRegistros(pesquisa);
 
 			return View(empresaViewModel);
@@ -67,22 +67,13 @@ namespace BI.GST.UI.MVC.Controllers
 			return PartialView("_Telefone", telefone);
 		}
 
-		public ActionResult LinhaEndereco()
-		{
-			var endereco = new EnderecoViewModel();
-			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
-			return PartialView("_Endereco", endereco);
-		}
-
-		public ActionResult LinhaCnae()
-		{
-			var cnae = new CnaeViewModel();
-			return PartialView("_Cnae", cnae);
-		}
-
 		// GET: Empresas/Create
 		public ActionResult Create()
 		{
+			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
+			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
+			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+
 			var empresaViewModel = new EmpresaViewModel();
 			return View(empresaViewModel);
 		}
@@ -92,7 +83,7 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, List<EnderecoViewModel> enderecoViewModel, List<CnaeViewModel> cnaeSecundarioViewModel)
+		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, List<CnaeViewModel> cnaeSecundarioViewModel)
 		{
 			if (ModelState.IsValid)
 			{

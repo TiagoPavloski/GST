@@ -53,7 +53,7 @@
     <Compile Include="Entities\CronogramaDeAcoes.cs" />
     <Compile Include="Entities\Curso.cs" />
     <Compile Include="Entities\Empresa.cs" />
-    <Compile Include="Entities\EmpresaUtilizadora.cs" />
+    <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\EnderecoEx.cs" />
     <Compile Include="Entities\EquipamentoRuido.cs" />
@@ -94,7 +94,7 @@
     <Compile Include="Interface\IRepository\ICursoRepository.cs" />
     <Compile Include="Interface\IRepository\IBaseRepository.cs" />
     <Compile Include="Interface\IRepository\IEmpresaRepository.cs" />
-    <Compile Include="Interface\IRepository\IEmpresaUtilizadoraRepository.cs" />
+    <Compile Include="Interface\IRepository\IUsuarioRepository.cs" />
     <Compile Include="Interface\IRepository\IEnderecoRepository.cs" />
     <Compile Include="Interface\IRepository\IEquipamentoRuidoRepository.cs" />
     <Compile Include="Interface\IRepository\IExameRepository.cs" />
@@ -124,7 +124,7 @@
     <Compile Include="Interface\IService\IClassificacaoEfeitoService.cs" />
     <Compile Include="Interface\IService\ICursoService.cs" />
     <Compile Include="Interface\IService\IEmpresaService.cs" />
-    <Compile Include="Interface\IService\IEmpresaUtilizadoraService.cs" />
+    <Compile Include="Interface\IService\IUsuarioService.cs" />
     <Compile Include="Interface\IService\IEnderecoService.cs" />
     <Compile Include="Interface\IService\IEquipamentoRuidoService.cs" />
     <Compile Include="Interface\IService\IExameService.cs" />
@@ -155,7 +155,7 @@
     <Compile Include="Services\ClassificacaoEfeitoService.cs" />
     <Compile Include="Services\CursoService.cs" />
     <Compile Include="Services\EmpresaService.cs" />
-    <Compile Include="Services\EmpresaUtilizadoraService.cs" />
+    <Compile Include="Services\UsuarioService.cs" />
     <Compile Include="Services\EnderecoService.cs" />
     <Compile Include="Services\EquipamentoRuidoService.cs" />
     <Compile Include="Services\ExameService.cs" />

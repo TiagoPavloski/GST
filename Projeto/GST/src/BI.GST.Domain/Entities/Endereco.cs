@@ -9,7 +9,6 @@ namespace BI.GST.Domain.Entities
 {
     public class Endereco
     {
-
         public int EnderecoId { get; set; }
 
         public string Logradouro { get; set; }
@@ -32,9 +31,6 @@ namespace BI.GST.Domain.Entities
 
 
         public virtual UF UF { get; set; }
-		public int? EmpresaId { get; set; }
-		[ForeignKey("EmpresaId")]
-		public virtual Empresa Empresa { get; set; }
 
 	}
 }

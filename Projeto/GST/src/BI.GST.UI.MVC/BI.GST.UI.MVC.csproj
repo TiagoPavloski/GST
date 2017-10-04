@@ -189,7 +189,7 @@
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
-    <Compile Include="Controllers\EmpresaUtilizadorasController.cs" />
+    <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\EscalasController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
@@ -4556,11 +4556,11 @@
     <Content Include="vendors\validator\README.md" />
     <Content Include="vendors\validator\validator.jquery.json" />
     <Content Include="Views\Shared\_Mensagem - Copy.cshtml" />
-    <Content Include="Views\EmpresaUtilizadoras\Create.cshtml" />
-    <Content Include="Views\EmpresaUtilizadoras\Delete.cshtml" />
-    <Content Include="Views\EmpresaUtilizadoras\Details.cshtml" />
-    <Content Include="Views\EmpresaUtilizadoras\Edit.cshtml" />
-    <Content Include="Views\EmpresaUtilizadoras\Index.cshtml" />
+    <Content Include="Views\Usuarios\Create.cshtml" />
+    <Content Include="Views\Usuarios\Delete.cshtml" />
+    <Content Include="Views\Usuarios\Details.cshtml" />
+    <Content Include="Views\Usuarios\Edit.cshtml" />
+    <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Views\Financeiro\Create.cshtml" />
     <Content Include="Views\Financeiro\Delete.cshtml" />
     <Content Include="Views\Financeiro\Details.cshtml" />
