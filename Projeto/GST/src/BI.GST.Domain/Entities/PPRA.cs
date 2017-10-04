@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,9 +38,9 @@ namespace BI.GST.Domain.Entities
 
         public bool CIPA { get; set; }
 
-        public string CIPAEleitosId { get; set; }
+        public int CIPAEleitosId { get; set; }
 
-        public string CIPASuplentesId { get; set; }
+        public int CIPASuplentesId { get; set; }
 
         public string TabelaCIPA { get; set; }
 
@@ -60,9 +61,13 @@ namespace BI.GST.Domain.Entities
         public bool Delete { get; set; }
 
         //public virtual ICollection<AlteracoesPPRA> AlteracoesPPRA { get; set; } ??? não tem tabela disso
+        [ForeignKey("CIPAEleitosId")]
         public virtual ICollection<FuncionarioEmpresa> CIPAEleitos { get; set; }
+        [ForeignKey("CIPASuplentesId")]
         public virtual ICollection<FuncionarioEmpresa> CIPASuplentes { get; set; }
+        [ForeignKey("SESMTEleitosId")]
         public virtual ICollection<FuncionarioEmpresa> SESMTEleitos { get; set; }
+        [ForeignKey("SESMTSuplentesId")]
         public virtual ICollection<FuncionarioEmpresa> SESMTSuplentes { get; set; }
         public virtual ICollection<AgentePPRA> AgentesAmbientais { get; set; }
         public virtual ICollection<CronogramaDeAcoes> CronogramasDeAcao { get; set; }

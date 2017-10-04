@@ -131,6 +131,7 @@
     <Compile Include="Repository\EquipamentoRuidoRepository.cs" />
     <Compile Include="Repository\ExameRepository.cs" />
     <Compile Include="Repository\FuncionarioRepository.cs" />
+    <Compile Include="Repository\PPRARepository.cs" />
     <Compile Include="Repository\TelefoneRepository.cs" />
     <Compile Include="Repository\FinanceiroRepository.cs" />
     <Compile Include="Repository\MedicaoAgenteRepository.cs" />

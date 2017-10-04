@@ -99,6 +99,7 @@
     <Compile Include="Interface\IRepository\IEquipamentoRuidoRepository.cs" />
     <Compile Include="Interface\IRepository\IExameRepository.cs" />
     <Compile Include="Interface\IRepository\IFuncionarioRepository.cs" />
+    <Compile Include="Interface\IRepository\IPPRARepository.cs" />
     <Compile Include="Interface\IRepository\ITelefoneRepository.cs" />
     <Compile Include="Interface\IRepository\IFinanceiroRepository.cs" />
     <Compile Include="Interface\IRepository\IMedicaoAgenteRepository.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Interface\IService\IEquipamentoRuidoService.cs" />
     <Compile Include="Interface\IService\IExameService.cs" />
     <Compile Include="Interface\IService\IFuncionarioService.cs" />
+    <Compile Include="Interface\IService\IPPRAService.cs" />
     <Compile Include="Interface\IService\ITelefoneService.cs" />
     <Compile Include="Interface\IService\IFinanceiroService.cs" />
     <Compile Include="Interface\IService\IMedicaoAgenteService.cs" />
@@ -160,6 +162,7 @@
     <Compile Include="Services\EquipamentoRuidoService.cs" />
     <Compile Include="Services\ExameService.cs" />
     <Compile Include="Services\FuncionarioService.cs" />
+    <Compile Include="Services\PPRAService.cs" />
     <Compile Include="Services\TelefoneService.cs" />
     <Compile Include="Services\FinanceiroService.cs" />
     <Compile Include="Services\MedicaoAgenteService.cs" />

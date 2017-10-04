@@ -127,7 +127,6 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new TipoVacinaConfiguration());
             modelBuilder.Configurations.Add(new UFConfiguration());
             modelBuilder.Configurations.Add(new VacinaConfiguration());
-
             base.OnModelCreating(modelBuilder);
         }
 
