@@ -25,7 +25,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<CursoViewModel, Curso>();
             Mapper.CreateMap<ExameViewModel, Exame>();
             Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
-            Mapper.CreateMap<EmpresaUtilizadoraViewModel, EmpresaUtilizadora>();
+            Mapper.CreateMap<UsuarioViewModel, Usuario>();
 			Mapper.CreateMap<TelefoneViewModel, Telefone>();
 			Mapper.CreateMap<UFViewModel, UF>();
 			Mapper.CreateMap<EnderecoViewModel, Endereco>();
@@ -44,6 +44,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<CronogramaDeAcoesViewModel, CronogramaDeAcoes>();
             Mapper.CreateMap<AgentePPRAViewModel, AgentePPRA>();
 			Mapper.CreateMap<EmpresaViewModel, Empresa>();
+			Mapper.CreateMap<CnaeViewModel, Cnae>();
 		}
     }
 }
