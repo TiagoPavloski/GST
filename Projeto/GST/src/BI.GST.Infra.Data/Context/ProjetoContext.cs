@@ -40,7 +40,7 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<CronogramaDeAcoes> CronogramasDeAcoes { get; set; }
 		public DbSet<Curso> Cursos { get; set; }
 		public DbSet<Empresa> Empresas { get; set; }
-		public DbSet<EmpresaUtilizadora> EmpresasUtilizadora { get; set; }
+		public DbSet<Usuario> EmpresasUtilizadora { get; set; }
 		public DbSet<EquipamentoRuido> EquipamentosRuido { get; set; }
 		public DbSet<Escala> Escalas { get; set; }
 		public DbSet<Exame> Exames { get; set; }

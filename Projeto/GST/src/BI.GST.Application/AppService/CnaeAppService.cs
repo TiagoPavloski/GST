@@ -23,10 +23,10 @@ namespace BI.GST.Application.AppService
 
 		public bool Adicionar(CnaeViewModel cnaeViewModel)
 		{
-			var Cronograma = Mapper.Map<CnaeViewModel, Cnae>(cnaeViewModel);
+			var cronograma = Mapper.Map<CnaeViewModel, Cnae>(cnaeViewModel);
 
 			BeginTransaction();
-			_cnaeService.Adicionar(Cronograma);
+			_cnaeService.Adicionar(cronograma);
 			Commit();
 			return true;
 		}
@@ -64,7 +64,7 @@ namespace BI.GST.Application.AppService
 
 		public CnaeViewModel ObterPorId(int id)
 		{
-			throw new NotImplementedException();
+			return Mapper.Map<Cnae, CnaeViewModel>(_cnaeService.ObterPorId(id));
 		}
 
 		public IEnumerable<CnaeViewModel> ObterTodos()

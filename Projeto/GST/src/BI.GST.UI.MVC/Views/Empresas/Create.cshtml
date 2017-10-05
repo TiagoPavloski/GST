@@ -86,50 +86,107 @@
 			</div>
 		</div>
 
+
+		<h5>Cnaes Secundario</h5>
+		<hr />
+		<div class="form-group">
+			@Html.ListBox("SetorId", (MultiSelectList)ViewBag.SetorIdList, new { multiple = "multiple" })
+		</div>
+
+
+
+		@*<h5>Setores</h5>
+		<hr />
+		<div class="form-group">
+			@Html.LabelFor(model => model.CnaeSecundarios, "Cnae Secundario", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.ListBox("CnaeId", (MultiSelectList)ViewBag.CnaeIdList)
+				@Html.ValidationMessageFor(model => model.CnaeSecundarios, "", new { @class = "text-danger" })
+			</div>
+		</div>*@
+
+
 		<h5>Telefone</h5>
 		<hr />
 		<p><a id="add-telefone" class="btn">Adicionar Telefone</a></p>
 
 		<div id="tab-1" class="tab-pane">
 			@if (Model != null && Model.Telefones != null)
-			{
-				foreach (var telefone in Model.Telefones)
 				{
-					Html.RenderPartial("_Telefone", telefone);
+					foreach (var telefone in Model.Telefones)
+					{
+						Html.RenderPartial("_Telefone", telefone);
 
+					}
 				}
-			}
 		</div>
 
 
 		<h5>Endereco</h5>
 		<hr />
-		<p><a id="add-endereco" class="btn">Adicionar Endereco</a></p>
-
-		<div id="tab-2" class="tab-pane">
-			@if (Model != null && Model.Enderecos != null)
-			{
-				foreach (var endereco in Model.Enderecos)
-				{
-					Html.RenderPartial("_Endereco", endereco);
-
-				}
-			}
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.CEP, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Endereco.CEP, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Endereco.CEP, "", new { @class = "text-danger" })
+			</div>
 		</div>
 
-		<h5>Cnae Secundario</h5>
-		<hr />
-		<p><a id="add-cnae" class="btn">Adicionar Cnae Secundário</a></p>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.Logradouro, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Endereco.Logradouro, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Endereco.Logradouro, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-		<div id="tab-3" class="tab-pane">
-			@if (Model != null && Model.CnaeSecundarios != null)
-			{
-				foreach (var cnaeSecundarios in Model.CnaeSecundarios)
-				{
-					Html.RenderPartial("_Cnae", cnaeSecundarios);
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.Numero, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Endereco.Numero, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Endereco.Numero, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-				}
-			}
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.Bairro, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Endereco.Bairro, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Endereco.Bairro, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.Cidade, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Endereco.Cidade, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Endereco.Cidade, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.Pais, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Endereco.Pais, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Endereco.Pais, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.UFId, "UF", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("UFId", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.Endereco.UFId, "", new { @class = "text-danger" })
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			@Html.LabelFor(model => model.Endereco.Complemento, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.EditorFor(model => model.Endereco.Complemento, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.ValidationMessageFor(model => model.Endereco.Complemento, "", new { @class = "text-danger" })
+			</div>
 		</div>
 
 		<div class="form-group">
@@ -148,23 +205,6 @@
 	$("#add-telefone").click(function () {
 		$.get('/Empresas/LinhaTelefone', function (template) {
 			$("#tab-1").append(template);
-		});
-	});
-</script>
-
-<script type="text/javascript">
-	$("#add-endereco").click(function () {
-		$.get('/Empresas/LinhaEndereco', function (template) {
-			$("#tab-2").append(template);
-		});
-	});
-</script>
-
-
-<script type="text/javascript">
-	$("#add-cnae").click(function () {
-		$.get('/Empresas/LinhaCnae', function (template) {
-			$("#tab-3").append(template);
 		});
 	});
 </script>

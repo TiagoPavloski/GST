@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Interface.IRepository
 {
-    public interface IEmpresaUtilizadoraRepository : IBaseRepository<EmpresaUtilizadora>
+    public interface IUsuarioRepository : IBaseRepository<Usuario>
     {
-        IEnumerable<EmpresaUtilizadora> ObterGrid(int page, string pesquisa);
+        IEnumerable<Usuario> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
     }
