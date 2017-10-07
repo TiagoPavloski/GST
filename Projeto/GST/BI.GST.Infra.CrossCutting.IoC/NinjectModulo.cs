@@ -42,54 +42,6 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoAppService>().To<MeioPropagacaoAppService>();
             Bind<ICronogramaDeAcoesAppService>().To<CronogramaDeAcoesAppService>();
             Bind<IAgentePPRAAppService>().To<AgentePPRAAppService>();
-			      Bind<ICnaeAppService>().To<CnaeAppService>();
-			      Bind<IEmpresaAppService>().To<EmpresaAppService>();
-            Bind<IEscalaAppService>().To<EscalaAppService>();
-            Bind<IAgenteCausadorCBOAppService>().To<AgenteCausadorCBOAppService>();
-using Ninject.Modules;
-using BI.GST.Application;
-using BI.GST.Application.Interface;
-using BI.GST.Domain.Interface.IRepository;
-using BI.GST.Domain.Services;
-using BI.GST.Infra.Data.Context;
-using BI.GST.Infra.Data.Interface;
-using BI.GST.Infra.Data.Repository;
-using BI.GST.Infra.Data.UoW;
-using BI.GST.Application.AppService;
-using BI.GST.Domain.Interface.IService;
-
-namespace BI.GST.Infra.CrossCutting.IoC
-{
-    public class NinjectModulo : NinjectModule
-    {
-        public override void Load()
-        {
-            //Application
-            Bind<ITipoCursoAppService>().To<TipoCursoAppService>();
-            Bind<ITipoExameAppService>().To<TipoExameAppService>();
-            Bind<ITipoVacinaAppService>().To<TipoVacinaAppService>();
-            Bind<ICursoAppService>().To<CursoAppService>();
-            Bind<IExameAppService>().To<ExameAppService>();
-            Bind<IVacinaAppService>().To<VacinaAppService>();
-            Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
-			Bind<IUFAppService>().To<UFAppService>();
-			Bind<ITelefoneAppService>().To<TelefoneAppService>();
-			Bind<IEnderecoAppService>().To<EnderecoAppService>();
-			Bind<IEmpresaUtilizadoraAppService>().To<EmpresaUtilizadoraAppService>();
-        	Bind<IFinanceiroAppService>().To<FinanceiroAppService>();
-        	Bind<IAgenteAmbientalAppService>().To<AgenteAmbientalAppService>();
-        	Bind<IEquipamentoRuidoAppService>().To<EquipamentoRuidoAppService>();
-            Bind<IAgenteErgonomicoAppService>().To<AgenteErgonomicoAppService>();
-            Bind<ISetorAppService>().To<SetorAppService>();
-            Bind<IAgenteAcidenteAppService>().To<AgenteAcidenteAppService>();
-            Bind<IAgenteQuimicoAppService>().To<AgenteQuimicoAppService>();
-            Bind<IAgenteFisicoAppService>().To<AgenteFisicoAppService>();
-            Bind<IAgenteBiologicoAppService>().To<AgenteBiologicoAppService>();
-            Bind<IMedicaoAgenteAppService>().To<MedicaoAgenteAppService>();
-            Bind<IClassificacaoEfeitoAppService>().To<ClassificacaoEfeitoAppService>();
-            Bind<IMeioPropagacaoAppService>().To<MeioPropagacaoAppService>();
-            Bind<ICronogramaDeAcoesAppService>().To<CronogramaDeAcoesAppService>();
-            Bind<IAgentePPRAAppService>().To<AgentePPRAAppService>();
 			Bind<ICnaeAppService>().To<CnaeAppService>();
 			Bind<IEmpresaAppService>().To<EmpresaAppService>();
             Bind<IEscalaAppService>().To<EscalaAppService>();
