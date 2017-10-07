@@ -19,17 +19,15 @@ namespace BI.GST.UI.MVC.Controllers
 		private readonly IEmpresaAppService _empresaAppService;
 		private readonly IEnderecoAppService _enderecoAppService;
 		private readonly ITelefoneAppService _telefoneAppService;
-		//private readonly IFuncionarioAppService _funcionarioAppService;
 		private readonly ICnaeAppService _cnaeAppService;
 		private readonly ISetorAppService _setorAppService;
 		private readonly IUFAppService _uFAppService;
 
-		public EmpresasController(IEmpresaAppService empresaAppService, IEnderecoAppService enderecoAppService, ITelefoneAppService telefoneAppService/*, IFuncionarioAppService funcionarioAppService*/, ICnaeAppService cnaeAppService, ISetorAppService setorAppService, IUFAppService uFAppService)
+		public EmpresasController(IEmpresaAppService empresaAppService, IEnderecoAppService enderecoAppService, ITelefoneAppService telefoneAppService, ICnaeAppService cnaeAppService, ISetorAppService setorAppService, IUFAppService uFAppService)
 		{
 			_empresaAppService = empresaAppService;
 			_enderecoAppService = enderecoAppService;
 			_telefoneAppService = telefoneAppService;
-			//_funcionarioAppService = funcionarioAppService;
 			_cnaeAppService = cnaeAppService;
 			_setorAppService = setorAppService;
 			_uFAppService = uFAppService;
@@ -72,6 +70,7 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
+			ViewBag.CnaeId = ViewBag.CnaeIdList;
 			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
 
 			var empresaViewModel = new EmpresaViewModel();
@@ -83,11 +82,11 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, List<CnaeViewModel> cnaeSecundarioViewModel)
+		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
 		{
 			if (ModelState.IsValid)
 			{
-				if (!_empresaAppService.Adicionar(empresaViewModel))
+				if (!_empresaAppService.Adicionar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
 				{
 					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um empresa com os mesmos dados')</SCRIPT>");
 				}
@@ -109,6 +108,12 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				return HttpNotFound();
 			}
+
+			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome", empresa.Endereco.UF.UFId);
+			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaeSecundarios.Select(x => x.CnaeId));
+			ViewBag.CnaeId = new SelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaePrincipal.CnaeId);
+			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome", empresa.Setores.Select(x => x.SetorId));
+
 			return View(empresa);
 		}
 
@@ -117,18 +122,17 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(EmpresaViewModel empresaViewModel)
+		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
 		{
-			//UF ID selecionado
-			if (ModelState.IsValid)
+			//if (ModelState.IsValid)
+			//{
+			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
 			{
-				if (!_empresaAppService.Atualizar(empresaViewModel))
-				{
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Curso com os mesmos dados já cadastrada')</SCRIPT>");
-				}
-				else
-					return RedirectToAction("Index");
+				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Curso com os mesmos dados já cadastrada')</SCRIPT>");
 			}
+			else
+				return RedirectToAction("Index");
+			//}
 			return View(empresaViewModel);
 		}
 
