@@ -121,7 +121,6 @@
     <Compile Include="Repository\AnexoRepository.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\CnaeRepository.cs" />
-    <Compile Include="Repository\Conversor.cs" />
     <Compile Include="Repository\CronogramaDeAcoesRepository.cs" />
     <Compile Include="Repository\ClassificacaoEfeitoRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />

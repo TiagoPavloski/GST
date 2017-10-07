@@ -2,7 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 
-namespace BI.GST.Infra.Data.Repository
+namespace BI.GST.Infra.CrossCutting.MVCFilters
 {
     public class Conversor
     {

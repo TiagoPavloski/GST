@@ -104,7 +104,6 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new CronogramaDeAcoesConfiguration());
             modelBuilder.Configurations.Add(new CursoConfiguration());
             modelBuilder.Configurations.Add(new EmpresaConfiguration());
-            modelBuilder.Configurations.Add(new EmpresaUtilizadoraConfiguration());
             modelBuilder.Configurations.Add(new EquipamentoRuidoConfiguration());
             modelBuilder.Configurations.Add(new EscalaConfiguration());
             modelBuilder.Configurations.Add(new ExameConfiguration());

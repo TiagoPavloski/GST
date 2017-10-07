@@ -49,6 +49,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<CronogramaDeAcoes, CronogramaDeAcoesViewModel>();
             Mapper.CreateMap<Anexo, AnexoViewModel>();
 			Mapper.CreateMap<Cnae, CnaeViewModel>();
-		}
+            Mapper.CreateMap<PPRA, PPRAViewModel>();
+        }
     }
 }

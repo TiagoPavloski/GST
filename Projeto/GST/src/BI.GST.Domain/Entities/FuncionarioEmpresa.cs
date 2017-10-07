@@ -32,12 +32,5 @@ namespace BI.GST.Domain.Entities
         public virtual Escala Escala { get; set; }
 
         public bool Delete { get; set; }
-
-
-        public virtual ICollection<PPRA> PPRACipaEleitos { get; set; }
-        public virtual ICollection<PPRA> PPRACipaSuplentes { get; set; }
-        public virtual ICollection<PPRA> PPRASesmtEleitos { get; set; }
-        public virtual ICollection<PPRA> PPRASesmtSuplentes { get; set; }
-
     }
 }

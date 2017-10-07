@@ -24,13 +24,13 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IExameAppService>().To<ExameAppService>();
             Bind<IVacinaAppService>().To<VacinaAppService>();
             Bind<IFuncionarioAppService>().To<FuncionarioAppService>();
-			Bind<IUFAppService>().To<UFAppService>();
-			Bind<ITelefoneAppService>().To<TelefoneAppService>();
-			Bind<IEnderecoAppService>().To<EnderecoAppService>();
-			Bind<IUsuarioAppService>().To<UsuarioAppService>();
-        	Bind<IFinanceiroAppService>().To<FinanceiroAppService>();
-        	Bind<IAgenteAmbientalAppService>().To<AgenteAmbientalAppService>();
-        	Bind<IEquipamentoRuidoAppService>().To<EquipamentoRuidoAppService>();
+            Bind<IUFAppService>().To<UFAppService>();
+            Bind<ITelefoneAppService>().To<TelefoneAppService>();
+            Bind<IEnderecoAppService>().To<EnderecoAppService>();
+            Bind<IUsuarioAppService>().To<UsuarioAppService>();
+            Bind<IFinanceiroAppService>().To<FinanceiroAppService>();
+            Bind<IAgenteAmbientalAppService>().To<AgenteAmbientalAppService>();
+            Bind<IEquipamentoRuidoAppService>().To<EquipamentoRuidoAppService>();
             Bind<IAgenteErgonomicoAppService>().To<AgenteErgonomicoAppService>();
             Bind<ISetorAppService>().To<SetorAppService>();
             Bind<IAgenteAcidenteAppService>().To<AgenteAcidenteAppService>();
@@ -42,11 +42,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoAppService>().To<MeioPropagacaoAppService>();
             Bind<ICronogramaDeAcoesAppService>().To<CronogramaDeAcoesAppService>();
             Bind<IAgentePPRAAppService>().To<AgentePPRAAppService>();
-			      Bind<ICnaeAppService>().To<CnaeAppService>();
-			      Bind<IEmpresaAppService>().To<EmpresaAppService>();
+            Bind<ICnaeAppService>().To<CnaeAppService>();
+            Bind<IEmpresaAppService>().To<EmpresaAppService>();
             Bind<IEscalaAppService>().To<EscalaAppService>();
             Bind<IAgenteCausadorCBOAppService>().To<AgenteCausadorCBOAppService>();
             Bind<IAnexoAppService>().To<AnexoAppService>();
+            Bind<IPPRAAppService>().To<PPRAAppService>();
 
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -56,13 +57,13 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IExameService>().To<ExameService>();
             Bind<IVacinaService>().To<VacinaService>();
             Bind<IFuncionarioService>().To<FuncionarioService>();
-			Bind<IUFService>().To<UFService>();
-			Bind<ITelefoneService>().To<TelefoneService>();
-			Bind<IEnderecoService>().To<EnderecoService>();
-			Bind<IUsuarioService>().To<UsuarioService>();
-        	Bind<IFinanceiroService>().To<FinanceiroService>();
-        	Bind<IAgenteAmbientalService>().To<AgenteAmbientalService>();
-        	Bind<IEquipamentoRuidoService>().To<EquipamentoRuidoService>();
+            Bind<IUFService>().To<UFService>();
+            Bind<ITelefoneService>().To<TelefoneService>();
+            Bind<IEnderecoService>().To<EnderecoService>();
+            Bind<IUsuarioService>().To<UsuarioService>();
+            Bind<IFinanceiroService>().To<FinanceiroService>();
+            Bind<IAgenteAmbientalService>().To<AgenteAmbientalService>();
+            Bind<IEquipamentoRuidoService>().To<EquipamentoRuidoService>();
             Bind<IAgenteErgonomicoService>().To<AgenteErgonomicoService>();
             Bind<ISetorService>().To<SetorService>();
             Bind<IAgenteAcidenteService>().To<AgenteAcidenteService>();
@@ -74,11 +75,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoService>().To<MeioPropagacaoService>();
             Bind<ICronogramaDeAcoesService>().To<CronogramaDeAcoesService>();
             Bind<IAgentePPRAService>().To<AgentePPRAService>();
-			      Bind<ICnaeService>().To<CnaeService>();
-			      Bind<IEmpresaService>().To<EmpresaService>();
+            Bind<ICnaeService>().To<CnaeService>();
+            Bind<IEmpresaService>().To<EmpresaService>();
             Bind<IEscalaService>().To<EscalaService>();
             Bind<IAgenteCausadorCBOService>().To<AgenteCausadorCBOService>();
             Bind<IAnexoService>().To<AnexoService>();
+            Bind<IPPRAService>().To<PPRAService>();
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -88,20 +90,19 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IExameRepository>().To<ExameRepository>();
             Bind<IVacinaRepository>().To<VacinaRepository>();
             Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
-			Bind<IUFRepository>().To<UFRepository>();
-			Bind<ITelefoneRepository>().To<TelefoneRepository>();
-			Bind<IEnderecoRepository>().To<EnderecoRepository>();
-			Bind<IUsuarioRepository>().To<UsuarioRepository>();
-  			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
-        	Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
-        	Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
-			      Bind<IUFRepository>().To<UFRepository>();
-			      Bind<ITelefoneRepository>().To<TelefoneRepository>();
-			      Bind<IEnderecoRepository>().To<EnderecoRepository>();
-			      Bind<IEmpresaUtilizadoraRepository>().To<EmpresaUtilizadoraRepository>();
-  			    Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
-        	  Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
-        	  Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
+            Bind<IUFRepository>().To<UFRepository>();
+            Bind<ITelefoneRepository>().To<TelefoneRepository>();
+            Bind<IEnderecoRepository>().To<EnderecoRepository>();
+            Bind<IUsuarioRepository>().To<UsuarioRepository>();
+            Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
+            Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
+            Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
+            Bind<IUFRepository>().To<UFRepository>();
+            Bind<ITelefoneRepository>().To<TelefoneRepository>();
+            Bind<IEnderecoRepository>().To<EnderecoRepository>();
+            Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
+            Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
+            Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
             Bind<IAgenteErgonomicoRepository>().To<AgenteErgonomicoRepository>();
             Bind<ISetorRepository>().To<SetorRepository>();
             Bind<IAgenteAcidenteRepository>().To<AgenteAcidenteRepository>();
@@ -113,11 +114,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IMeioPropagacaoRepository>().To<MeioPropagacaoRepository>();
             Bind<ICronogramaDeAcoesRepository>().To<CronogramaDeAcoesRepository>();
             Bind<IAgentePPRARepository>().To<AgentePPRARepository>();
-			Bind<ICnaeRepository>().To<CnaeRepository>();
-			Bind<IEmpresaRepository>().To<EmpresaRepository>();
+            Bind<ICnaeRepository>().To<CnaeRepository>();
+            Bind<IEmpresaRepository>().To<EmpresaRepository>();
             Bind<IEscalaRepository>().To<EscalaRepository>();
             Bind<IAgenteCausadorCBORepository>().To<AgenteCausadorCBORepository>();
             Bind<IAnexoRepository>().To<AnexoRepository>();
+            Bind<IPPRARepository>().To<PPRARepository>();
 
             //Data Configuration
             Bind<IContextManager>().To<ContextManager>();
