@@ -45,6 +45,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<AgentePPRAViewModel, AgentePPRA>();
 			Mapper.CreateMap<EmpresaViewModel, Empresa>();
             Mapper.CreateMap<EscalaViewModel, Escala>();
+            Mapper.CreateMap<AgenteCausadorCBOViewModel, AgenteCausadorCBO>();
             Mapper.CreateMap<AnexoViewModel, Anexo>();
 			Mapper.CreateMap<CnaeViewModel, Cnae>();
 		}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteCausadorCBOViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Agentes Causadores CBO</h2>
+
+<p>
+    @Html.ActionLink("Adicionar um novo Agente Causador", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "AgenteCausadorCBOs", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.AgenteCausadorCBOId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.AgenteCausadorCBOId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.AgenteCausadorCBOId })
+        </td>
+    </tr>
+}
+
+</table>
