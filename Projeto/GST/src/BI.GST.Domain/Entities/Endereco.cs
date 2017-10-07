@@ -32,9 +32,9 @@ namespace BI.GST.Domain.Entities
 
 
         public virtual UF UF { get; set; }
-        //public int? EmpresaId { get; set; }
-        //[ForeignKey("EmpresaId")]
-        //public virtual Empresa Empresa { get; set; }
+		public int? EmpresaId { get; set; }
+		[ForeignKey("EmpresaId")]
+		public virtual Empresa Empresa { get; set; }
 
-    }
+	}
 }

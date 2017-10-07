@@ -108,7 +108,6 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(EmpresaUtilizadoraViewModel empresaUtilizadoraViewModel)
         {
-			//UF ID selecionado
 			if (ModelState.IsValid)
 			{
 				if (!_empresaUtilizadoraAppService.Atualizar(empresaUtilizadoraViewModel))
