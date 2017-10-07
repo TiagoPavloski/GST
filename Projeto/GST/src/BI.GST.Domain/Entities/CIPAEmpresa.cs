@@ -8,6 +8,11 @@ namespace BI.GST.Domain.Entities
 {
     public class CIPAEmpresa
     {
+        public CIPAEmpresa()
+        {
+            CIPAEmpresaFuncionarios = new List<CIPAEmpresaFuncionario>();
+        }
+
         public int CipaEmpresaID { get; set; }
 
         public int Ano { get; set; }
@@ -19,6 +24,8 @@ namespace BI.GST.Domain.Entities
         public virtual Empresa Empresa { get; set; }
 
         public bool Delete { get; set; }
+
+        public virtual ICollection<CIPAEmpresaFuncionario> CIPAEmpresaFuncionarios { get; set; }
 
     }
 }

@@ -22,8 +22,8 @@ namespace BI.GST.Domain.Interface.IService
 
         void Excluir(int id);
 
-        IEnumerable<CIPAEmpresaFuncionario> ObterGrid(int page, string pesquisa);
+        IEnumerable<CIPAEmpresaFuncionario> ObterGrid(int page, string pesquisa, int CIPAEmpresaId);
 
-        int ObterTotalRegistros(string pesquisa);
+        int ObterTotalRegistros(string pesquisa, int CIPAEmpresaId);
     }
 }

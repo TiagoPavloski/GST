@@ -86,6 +86,8 @@
     <Compile Include="Interface\IRepository\IAgenteAmbientalRepository.cs" />
     <Compile Include="Interface\IRepository\IAgentePPRARepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteCausadorCBORepository.cs" />
+    <Compile Include="Interface\IRepository\ICIPAEmpresaFuncionarioRepository.cs" />
+    <Compile Include="Interface\IRepository\ICIPAEmpresaRepository.cs" />
     <Compile Include="Interface\IRepository\ICnaeRepository.cs" />
     <Compile Include="Interface\IRepository\IAnexoRepository.cs" />
     <Compile Include="Interface\IRepository\ICronogramaDeAcoesRepository.cs" />
@@ -98,6 +100,8 @@
     <Compile Include="Interface\IRepository\ICursoRepository.cs" />
     <Compile Include="Interface\IRepository\IBaseRepository.cs" />
     <Compile Include="Interface\IRepository\IEmpresaRepository.cs" />
+    <Compile Include="Interface\IRepository\ISESMTEmpresaFuncionarioRepository.cs" />
+    <Compile Include="Interface\IRepository\ISESMTEmpresaRepository.cs" />
     <Compile Include="Interface\IRepository\IUsuarioRepository.cs" />
     <Compile Include="Interface\IRepository\IEnderecoRepository.cs" />
     <Compile Include="Interface\IRepository\IEquipamentoRuidoRepository.cs" />
@@ -118,6 +122,8 @@
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
     <Compile Include="Interface\IService\IAgentePPRAService.cs" />
     <Compile Include="Interface\IService\IAgenteCausadorCBOService.cs" />
+    <Compile Include="Interface\IService\ICIPAEmpresaFuncionarioService.cs" />
+    <Compile Include="Interface\IService\ICIPAEmpresaService.cs" />
     <Compile Include="Interface\IService\ICnaeService.cs" />
     <Compile Include="Interface\IService\IAnexoService.cs" />
     <Compile Include="Interface\IService\ICronogramaDeAcoesService.cs" />
@@ -129,6 +135,8 @@
     <Compile Include="Interface\IService\IClassificacaoEfeitoService.cs" />
     <Compile Include="Interface\IService\ICursoService.cs" />
     <Compile Include="Interface\IService\IEmpresaService.cs" />
+    <Compile Include="Interface\IService\ISESMTEmpresaFuncionarioService.cs" />
+    <Compile Include="Interface\IService\ISESMTEmpresaService.cs" />
     <Compile Include="Interface\IService\IUsuarioService.cs" />
     <Compile Include="Interface\IService\IEnderecoService.cs" />
     <Compile Include="Interface\IService\IEquipamentoRuidoService.cs" />
@@ -150,6 +158,8 @@
     <Compile Include="Services\AgenteAmbientalService.cs" />
     <Compile Include="Services\AgentePPRAService.cs" />
     <Compile Include="Services\AgenteCausadorCBOService.cs" />
+    <Compile Include="Services\CIPAEmpresaFuncionarioService.cs" />
+    <Compile Include="Services\CIPAEmpresaService.cs" />
     <Compile Include="Services\CnaeService.cs" />
     <Compile Include="Services\AnexoService.cs" />
     <Compile Include="Services\CronogramaDeAcoesService.cs" />
@@ -161,6 +171,8 @@
     <Compile Include="Services\ClassificacaoEfeitoService.cs" />
     <Compile Include="Services\CursoService.cs" />
     <Compile Include="Services\EmpresaService.cs" />
+    <Compile Include="Services\SESMTEmpresaFuncionarioService.cs" />
+    <Compile Include="Services\SESMTEmpresaService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
     <Compile Include="Services\EnderecoService.cs" />
     <Compile Include="Services\EquipamentoRuidoService.cs" />
