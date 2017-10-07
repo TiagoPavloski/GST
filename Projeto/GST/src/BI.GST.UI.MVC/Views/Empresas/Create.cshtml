@@ -48,33 +48,18 @@
 			</div>
 		</div>
 
-		<h5>Cnae Principal</h5>
-		<hr />
-
 		<div class="form-group">
-			@Html.LabelFor(model => model.CnaePrincipal.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
-
+			@Html.Label("Cnae PrincipaL", "Cnae", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.CnaePrincipal.Codigo, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.CnaePrincipal.Codigo, "", new { @class = "text-danger" })
+				@Html.DropDownList("CnaeId", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.CnaeId, "", new { @class = "text-danger" })
 			</div>
 		</div>
 
 		<div class="form-group">
-			@Html.LabelFor(model => model.CnaePrincipal.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
-
+			@Html.Label("Cnae Secundarios", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.CnaePrincipal.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.CnaePrincipal.Descricao, "", new { @class = "text-danger" })
-			</div>
-		</div>
-
-		<div class="form-group">
-			@Html.LabelFor(model => model.CnaePrincipal.GrauDeRisco, htmlAttributes: new { @class = "control-label col-md-2" })
-
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.CnaePrincipal.GrauDeRisco, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.CnaePrincipal.GrauDeRisco, "", new { @class = "text-danger" })
+				@Html.ListBox("cnaeSecundarioId", (MultiSelectList)ViewBag.CnaeIdList, htmlAttributes: new { @class = "form-control" })
 			</div>
 		</div>
 
@@ -86,30 +71,19 @@
 			</div>
 		</div>
 
-
-		<h5>Cnaes Secundario</h5>
-		<hr />
 		<div class="form-group">
-			@Html.ListBox("SetorId", (MultiSelectList)ViewBag.SetorIdList, new { multiple = "multiple" })
+			@Html.Label("Setores", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.ListBox("SetorId", (MultiSelectList)ViewBag.SetorIdList, htmlAttributes: new { @class = "form-control" })
+			</div>
 		</div>
 
-
-
-		@*<h5>Setores</h5>
-		<hr />
 		<div class="form-group">
-			@Html.LabelFor(model => model.CnaeSecundarios, "Cnae Secundario", htmlAttributes: new { @class = "control-label col-md-2" })
+			@Html.Label("Telefone", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.ListBox("CnaeId", (MultiSelectList)ViewBag.CnaeIdList)
-				@Html.ValidationMessageFor(model => model.CnaeSecundarios, "", new { @class = "text-danger" })
+				<p><a id="add-telefone" class="btn">Adicionar Novo</a></p>
 			</div>
-		</div>*@
-
-
-		<h5>Telefone</h5>
-		<hr />
-		<p><a id="add-telefone" class="btn">Adicionar Telefone</a></p>
-
+		</div>
 		<div id="tab-1" class="tab-pane">
 			@if (Model != null && Model.Telefones != null)
 				{

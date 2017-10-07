@@ -39,8 +39,11 @@ namespace BI.GST.Application.ViewModels
 
         public bool Delete { get; set; }
 
-        public int EmpresaId { get; set; }
-        [ForeignKey("EmpresaId")]
-        public virtual EmpresaViewModel Empresa { get; set; }
-    }
+		//public int EmpresaId { get; set; }
+		//[ForeignKey("EmpresaId")]
+		//public virtual EmpresaViewModel Empresa { get; set; }
+
+		public virtual ICollection<EmpresaViewModel> Empresas { get; set; }
+
+	}
 }
