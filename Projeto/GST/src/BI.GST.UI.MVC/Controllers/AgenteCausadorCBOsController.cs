@@ -1,9 +1,9 @@
-﻿using System.Data.Entity;
-using BI.GST.Domain.Entities;
-using BI.GST.Application.Interface;
+﻿using BI.GST.Application.Interface;
 using System.Web.Mvc;
 using System.Net;
 using BI.GST.Application.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -16,15 +16,29 @@ namespace BI.GST.UI.MVC.Controllers
             _agenteCausadorCBOAppService = agenteCausadorCBOAppService;
         }
 
-        // GET: agenteBiologicos
+        // GET: agenteCausadorCBO
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var agenteBiologicoViewModel = _agenteCausadorCBOAppService.ObterGrid(page, pesquisa);
+            var agenteCausadorViewModel = _agenteCausadorCBOAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            ViewBag.Controller = "agenteCausadorCBOes";
+            ViewBag.Controller = "agenteCausadorCBOs";
             ViewBag.TotalRegistros = _agenteCausadorCBOAppService.ObterTotalRegistros(pesquisa);
-            return View(agenteBiologicoViewModel);
+            
+
+            #region DDL Status
+            List<SelectListItem> ddlStatus_Causador = new List<SelectListItem>();
+            ddlStatus_Causador.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Causador.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Causador"] = ddlStatus_Causador;
+
+            foreach (var item in agenteCausadorViewModel)
+            {
+                item.StatusNome = ddlStatus_Causador.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+            }
+            #endregion
+
+            return View(agenteCausadorViewModel);
         }
 
 
@@ -40,6 +54,10 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            var ddlStatus_Riscos = (List<SelectListItem>)TempData["ddlStatus_Causador"];
+            agenteCausadorCBO.StatusNome = ddlStatus_Riscos.Where(e => e.Value.Trim().Equals(agenteCausadorCBO.Status.ToString())).First().Text;
+
             return View(agenteCausadorCBO);
         }
 
@@ -66,6 +84,14 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
             }
+
+            List<SelectListItem> ddlStatus_Risco = new List<SelectListItem>();
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Causador"] = ddlStatus_Risco;
+
+            agenteCausadorCBOViewModel.StatusNome = ddlStatus_Risco.Where(e => e.Value.Trim().Equals(agenteCausadorCBOViewModel.Status.ToString())).First().Text;
+
             return View(agenteCausadorCBOViewModel);
         }
 
@@ -81,6 +107,15 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            List<SelectListItem> ddlStatus_Risco = new List<SelectListItem>();
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Causador"] = ddlStatus_Risco;
+
+            var ddlStatus_Riscos = (List<SelectListItem>)TempData["ddlStatus_Causador"];
+            agente.StatusNome = ddlStatus_Riscos.Where(e => e.Value.Trim().Equals(agente.Status.ToString())).First().Text;
+
             return View(agente);
         }
 
@@ -116,7 +151,11 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            var ddlStatus_Riscos = (List<SelectListItem>)TempData["ddlStatus_Causador"];
+            agente.StatusNome = ddlStatus_Riscos.Where(e => e.Value.Trim().Equals(agente.Status.ToString())).First().Text;
             return View(agente);
+
         }
 
         // POST: AgenteCausadorCBOes/Delete/5
