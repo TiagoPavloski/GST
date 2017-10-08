@@ -1,21 +1,22 @@
-﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteCausadorCBOViewModel>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteRiscoCBOViewModel>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Agentes Causadores CBO</h2>
+<h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Adicionar Agente Causador", "Create")
+    @Html.ActionLink("Adicionar Risco", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "AgenteCausadorCBOs", new { pesquisa = "" }, FormMethod.Get))
+@using (Html.BeginForm("Index", "AgenteRiscoCBOs", new { pesquisa = "" }, FormMethod.Get))
 {
     <p>
         Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
     </p>
 }
+
 <table class="table">
     <tr>
         <th>
@@ -36,9 +37,9 @@
             @Html.DisplayFor(modelItem => item.StatusNome)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.AgenteCausadorCBOId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.AgenteCausadorCBOId }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.AgenteCausadorCBOId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.AgenteRiscoCBOId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.AgenteRiscoCBOId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.AgenteRiscoCBOId })
         </td>
     </tr>
 }

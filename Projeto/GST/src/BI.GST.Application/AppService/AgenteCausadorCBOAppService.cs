@@ -33,7 +33,7 @@ namespace BI.GST.Application.AppService
     {
       var agenteCausadorCBO = Mapper.Map<AgenteCausadorCBOViewModel, AgenteCausadorCBO>(agenteCausadorCBOViewModel);
 
-      var duplicado = _agenteCausadorCBOService.Find(e => e.Nome == agenteCausadorCBO.Nome).Any();
+      var duplicado = _agenteCausadorCBOService.Find(e => e.Nome == agenteCausadorCBO.Nome).Where(d => d.Delete == false).Any();
       if (duplicado)
       {
         return false;
@@ -51,7 +51,7 @@ namespace BI.GST.Application.AppService
     {
       var agenteCausadorCBO = Mapper.Map<AgenteCausadorCBOViewModel, AgenteCausadorCBO>(agenteCausadorCBOViewModel);
 
-      var duplicado = _agenteCausadorCBOService.Find(e => e.Nome == agenteCausadorCBO.Nome && e.AgenteCausadorCBOId != agenteCausadorCBO.AgenteCausadorCBOId).Any();
+      var duplicado = _agenteCausadorCBOService.Find(e => e.Nome == agenteCausadorCBO.Nome && e.Delete == false && e.AgenteCausadorCBOId != agenteCausadorCBO.AgenteCausadorCBOId).Any();
 
       if (duplicado)
       {

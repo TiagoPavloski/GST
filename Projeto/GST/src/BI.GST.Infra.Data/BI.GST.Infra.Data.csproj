@@ -115,6 +115,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AgenteAmbientalRepository.cs" />
+    <Compile Include="Repository\AgenteRiscoCBORepository.cs" />
     <Compile Include="Repository\AgentePPRARepository.cs" />
     <Compile Include="Repository\AgenteAcidenteRepository.cs" />
     <Compile Include="Repository\AgenteBiologicoRepository.cs" />

@@ -47,6 +47,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IEscalaAppService>().To<EscalaAppService>();
             Bind<IAgenteCausadorCBOAppService>().To<AgenteCausadorCBOAppService>();
             Bind<IAnexoAppService>().To<AnexoAppService>();
+	    Bind<IAgenteRiscoCBOAppService>().To<AgenteRiscoCBOAppService>();
             Bind<IPPRAAppService>().To<PPRAAppService>();
             Bind<ISESMTEmpresaAppService>().To<SESMTEmpresaAppService>();
             Bind<ISESMTEmpresaFuncionarioAppService>().To<SESMTEmpresaFuncionarioAppService>();
@@ -89,6 +90,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ICIPAEmpresaFuncionarioService>().To<CIPAEmpresaFuncionarioService>();
             Bind<ISESMTEmpresaService>().To<SESMTEmpresaService>();
             Bind<ISESMTEmpresaFuncionarioService>().To<SESMTEmpresaFuncionarioService>();
+            Bind<IAgenteRiscoCBOService>().To<AgenteRiscoCBOService>();
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -122,6 +124,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgenteCausadorCBORepository>().To<AgenteCausadorCBORepository>();
             Bind<IAnexoRepository>().To<AnexoRepository>();
             Bind<IPPRARepository>().To<PPRARepository>();
+	    Bind<IAgenteRiscoCBORepository>().To<AgenteRiscoCBORepository>();
             Bind<ICIPAEmpresaRepository>().To<CIPAEmpresaRepository>();
             Bind<ICIPAEmpresaFuncionarioRepository>().To<CIPAEmpresaFuncionarioRepository>();
             Bind<ISESMTEmpresaRepository>().To<SESMTEmpresaRepository>();
