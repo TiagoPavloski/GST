@@ -3,11 +3,11 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace BI.GST.Infra.Data.EntityConfig
 {
-  public class PPRAConfiguration : EntityTypeConfiguration<PPRA>
-  {
-    public PPRAConfiguration()
+    public class PPRAConfiguration : EntityTypeConfiguration<PPRA>
     {
-      HasKey(e => e.PPRAId);
+        public PPRAConfiguration()
+        {
+            HasKey(e => e.PPRAId);
+        }
     }
-  }
 }

@@ -7,7 +7,7 @@
 <h2>Agentes Causadores CBO</h2>
 
 <p>
-    @Html.ActionLink("Adicionar um novo Agente Causador", "Create")
+    @Html.ActionLink("Adicionar Agente Causador", "Create")
 </p>
 
 @using (Html.BeginForm("Index", "AgenteCausadorCBOs", new { pesquisa = "" }, FormMethod.Get))
@@ -33,7 +33,7 @@
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Status)
+            @Html.DisplayFor(modelItem => item.StatusNome)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.AgenteCausadorCBOId }) |
@@ -44,3 +44,5 @@
 }
 
 </table>
+
+@Html.Partial("_Paginacao")

@@ -13,7 +13,7 @@ using BI.GST.Infra.Data.Interface;
 namespace BI.GST.Infra.Data.Repository
 {
 
-    public class BaseRepository<TEntity> : Conversor, IBaseRepository<TEntity> where TEntity : class
+    public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         protected ProjetoContext Context;
         protected DbSet<TEntity> DbSet;

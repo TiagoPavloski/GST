@@ -8,6 +8,7 @@ using BI.GST.Application.ViewModels;
 using BI.GST.Domain.Interface.IService;
 using AutoMapper;
 using BI.GST.Domain.Entities;
+using BI.GST.Infra.CrossCutting.MVCFilters;
 
 namespace BI.GST.Application.AppService
 {
@@ -28,6 +29,7 @@ namespace BI.GST.Application.AppService
             _agenteAmbientalService.Adicionar(agenteAmbiental);
             Commit();
             return true;
+
         }
 
         public bool Atualizar(AgenteAmbientalViewModel agenteAmbientalViewModel)
