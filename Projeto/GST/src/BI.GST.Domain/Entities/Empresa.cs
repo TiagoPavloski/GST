@@ -12,8 +12,6 @@ namespace BI.GST.Domain.Entities
         public Empresa()
         {
             Telefones = new List<Telefone>();
-            Enderecos = new List<Endereco>();
-            Responsaveis = new List<Funcionario>();
             CnaeSecundarios = new List<Cnae>();
             Setores = new List<Setor>();
         }
@@ -29,7 +27,9 @@ namespace BI.GST.Domain.Entities
 
         public int? CnaeId { get; set; }
 
-        public string Logo { get; set; }
+		public int EnderecoId { get; set; }
+
+		public string Logo { get; set; }
 
         public bool Delete { get; set; }
 
@@ -37,8 +37,7 @@ namespace BI.GST.Domain.Entities
 		[ForeignKey("CnaeId")]
 		public virtual Cnae CnaePrincipal { get; set; }
 		public virtual ICollection<Telefone> Telefones { get; set; }
-		public virtual ICollection<Endereco> Enderecos { get; set; }
-		public virtual ICollection<Funcionario> Responsaveis { get; set; }
+		public virtual Endereco Endereco { get; set; }
 		public virtual ICollection<Cnae> CnaeSecundarios { get; set; }
 		public virtual ICollection<Setor> Setores { get; set; }
 	}

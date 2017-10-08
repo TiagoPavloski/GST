@@ -8,10 +8,11 @@ namespace BI.GST.Application.ViewModels
 		public EmpresaViewModel()
 		{
 			Telefones = new List<TelefoneViewModel>();
-			Enderecos = new List<EnderecoViewModel>();
-			Responsaveis = new List<FuncionarioViewModel>();
 			CnaeSecundarios = new List<CnaeViewModel>();
 			Setores = new List<SetorViewModel>();
+			CnaePrincipal = new CnaeViewModel();
+			UF = new UFViewModel();
+			Endereco = new EnderecoViewModel();
 		}
 		public int EmpresaId { get; set; }
 
@@ -25,18 +26,20 @@ namespace BI.GST.Application.ViewModels
 
 		public int CnaeId { get; set; }
 
+		public int EnderecoId { get; set; }
+
+		public int UFId { get; set; }
+
 		public string Logo { get; set; }
 
 		public bool Delete { get; set; }
 
-
 		[ForeignKey("CnaeId")]
 		public virtual CnaeViewModel CnaePrincipal { get; set; }
+		public virtual EnderecoViewModel Endereco { get; set; }
+		[ForeignKey("UFId")]
+		public virtual UFViewModel UF { get; set; }
 		public virtual List<TelefoneViewModel> Telefones { get; set; }
-		public virtual List<EnderecoViewModel> Enderecos { get; set; }
-		//public virtual UFViewModel UF { get; set; }
-		//public int UFId { get; set; }
-		public virtual List<FuncionarioViewModel> Responsaveis { get; set; }
 		public virtual List<CnaeViewModel> CnaeSecundarios { get; set; }
 		public virtual List<SetorViewModel> Setores { get; set; }
 	}

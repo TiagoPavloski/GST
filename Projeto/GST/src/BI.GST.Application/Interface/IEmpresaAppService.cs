@@ -13,9 +13,9 @@ namespace BI.GST.Application.Interface
 
 		EmpresaViewModel ObterPorId(int id);
 
-		bool Adicionar(EmpresaViewModel empresaViewModel);
+		bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId);
 
-		bool Atualizar(EmpresaViewModel empresaViewModel);
+		bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId);
 
 		bool Excluir(int id);
 
