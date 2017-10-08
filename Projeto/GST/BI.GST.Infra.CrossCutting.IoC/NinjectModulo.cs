@@ -92,6 +92,78 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ISESMTEmpresaFuncionarioService>().To<SESMTEmpresaFuncionarioService>();
             Bind<IAgenteRiscoCBOService>().To<AgenteRiscoCBOService>();
 
+			//Servicos
+			Bind<ITipoCursoService>().To<TipoCursoService>();
+			Bind<ITipoExameService>().To<TipoExameService>();
+			Bind<ITipoVacinaService>().To<TipoVacinaService>();
+			Bind<ICursoService>().To<CursoService>();
+			Bind<IExameService>().To<ExameService>();
+			Bind<IVacinaService>().To<VacinaService>();
+			Bind<IFuncionarioService>().To<FuncionarioService>();
+			Bind<IUFService>().To<UFService>();
+			Bind<ITelefoneService>().To<TelefoneService>();
+			Bind<IEnderecoService>().To<EnderecoService>();
+			Bind<IUsuarioService>().To<UsuarioService>();
+			Bind<IFinanceiroService>().To<FinanceiroService>();
+			Bind<IAgenteAmbientalService>().To<AgenteAmbientalService>();
+			Bind<IEquipamentoRuidoService>().To<EquipamentoRuidoService>();
+			Bind<IAgenteErgonomicoService>().To<AgenteErgonomicoService>();
+			Bind<ISetorService>().To<SetorService>();
+			Bind<IAgenteAcidenteService>().To<AgenteAcidenteService>();
+			Bind<IAgenteQuimicoService>().To<AgenteQuimicoService>();
+			Bind<IAgenteFisicoService>().To<AgenteFisicoService>();
+			Bind<IAgenteBiologicoService>().To<AgenteBiologicoService>();
+			Bind<IMedicaoAgenteService>().To<MedicaoAgenteService>();
+			Bind<IClassificacaoEfeitoService>().To<ClassificacaoEfeitoService>();
+			Bind<IMeioPropagacaoService>().To<MeioPropagacaoService>();
+			Bind<ICronogramaDeAcoesService>().To<CronogramaDeAcoesService>();
+			Bind<IAgentePPRAService>().To<AgentePPRAService>();
+			Bind<ICnaeService>().To<CnaeService>();
+			Bind<IEmpresaService>().To<EmpresaService>();
+			Bind<IEscalaService>().To<EscalaService>();
+			Bind<IAgenteCausadorCBOService>().To<AgenteCausadorCBOService>();
+			Bind<IAnexoService>().To<AnexoService>();
+
+			//Data Repository
+			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+			Bind<ITipoExameRepository>().To<TipoExameRepository>();
+			Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
+			Bind<ICursoRepository>().To<CursoRepository>();
+			Bind<IExameRepository>().To<ExameRepository>();
+			Bind<IVacinaRepository>().To<VacinaRepository>();
+			Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
+			Bind<IUFRepository>().To<UFRepository>();
+			Bind<ITelefoneRepository>().To<TelefoneRepository>();
+			Bind<IEnderecoRepository>().To<EnderecoRepository>();
+			Bind<IUsuarioRepository>().To<UsuarioRepository>();
+			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
+			Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
+			Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
+			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
+			Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
+			Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
+			Bind<IAgenteErgonomicoRepository>().To<AgenteErgonomicoRepository>();
+			Bind<ISetorRepository>().To<SetorRepository>();
+			Bind<IAgenteAcidenteRepository>().To<AgenteAcidenteRepository>();
+			Bind<IAgenteQuimicoRepository>().To<AgenteQuimicoRepository>();
+			Bind<IAgenteFisicoRepository>().To<AgenteFisicoRepository>();
+			Bind<IAgenteBiologicoRepository>().To<AgenteBiologicoRepository>();
+			Bind<IMedicaoAgenteRepository>().To<MedicaoAgenteRepository>();
+			Bind<IClassificacaoEfeitoRepositiry>().To<ClassificacaoEfeitoRepository>();
+			Bind<IMeioPropagacaoRepository>().To<MeioPropagacaoRepository>();
+			Bind<ICronogramaDeAcoesRepository>().To<CronogramaDeAcoesRepository>();
+			Bind<IAgentePPRARepository>().To<AgentePPRARepository>();
+			Bind<ICnaeRepository>().To<CnaeRepository>();
+			Bind<IEmpresaRepository>().To<EmpresaRepository>();
+			Bind<IEscalaRepository>().To<EscalaRepository>();
+			Bind<IAgenteCausadorCBORepository>().To<AgenteCausadorCBORepository>();
+			Bind<IAnexoRepository>().To<AnexoRepository>();
+
+			//Data Configuration
+			Bind<IContextManager>().To<ContextManager>();
+			Bind<IUnitOfWork>().To<UnitOfWork>();
+		}
+	}
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
             Bind<ITipoExameRepository>().To<TipoExameRepository>();
