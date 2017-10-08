@@ -78,16 +78,20 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Usuarios/Edit/5
 		public ActionResult Edit(int? id)
 		{
+			UsuarioViewModel usuario = null;
 			if (id == null)
 			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+				usuario = _UsuarioAppService.ObterPorId((int)Session["usuarioId"]);
 			}
-			var Usuario = _UsuarioAppService.ObterPorId(id.Value);
-			if (Usuario == null)
+			else
+			{
+				usuario = _UsuarioAppService.ObterPorId(id.Value);
+			}
+			if (usuario == null)
 			{
 				return HttpNotFound();
 			}
-			return View(Usuario);
+			return View(usuario);
 		}
 
 		// POST: Usuarios/Edit/5
@@ -101,10 +105,12 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_UsuarioAppService.Atualizar(UsuarioViewModel))
 				{
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Curso com os mesmos dados já cadastrada')</SCRIPT>");
+					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Usuario com os mesmos dados já cadastrada')</SCRIPT>");
 				}
-				else
+				else if(UsuarioViewModel.UsuarioId != (int)Session["usuarioId"])
 					return RedirectToAction("Index");
+				else
+					return RedirectToAction("Index", "Home");
 			}
 			return View(UsuarioViewModel);
 		}
