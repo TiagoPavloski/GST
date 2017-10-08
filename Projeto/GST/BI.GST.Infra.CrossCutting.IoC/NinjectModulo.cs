@@ -48,7 +48,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgenteCausadorCBOAppService>().To<AgenteCausadorCBOAppService>();
             Bind<IAnexoAppService>().To<AnexoAppService>();
             Bind<IPPRAAppService>().To<PPRAAppService>();
-
+            Bind<ISESMTEmpresaAppService>().To<SESMTEmpresaAppService>();
+            Bind<ISESMTEmpresaFuncionarioAppService>().To<SESMTEmpresaFuncionarioAppService>();
+            Bind<ICIPAEmpresaAppService>().To<CIPAEmpresaAppService>();
+            Bind<ICIPAEmpresaFuncionarioAppService>().To<CIPAEmpresaFuncionarioAppService>();
+            
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
             Bind<ITipoExameService>().To<TipoExameService>();
@@ -81,6 +85,10 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgenteCausadorCBOService>().To<AgenteCausadorCBOService>();
             Bind<IAnexoService>().To<AnexoService>();
             Bind<IPPRAService>().To<PPRAService>();
+            Bind<ICIPAEmpresaService>().To<CIPAEmpresaService>();
+            Bind<ICIPAEmpresaFuncionarioService>().To<CIPAEmpresaFuncionarioService>();
+            Bind<ISESMTEmpresaService>().To<SESMTEmpresaService>();
+            Bind<ISESMTEmpresaFuncionarioService>().To<SESMTEmpresaFuncionarioService>();
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -94,12 +102,6 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ITelefoneRepository>().To<TelefoneRepository>();
             Bind<IEnderecoRepository>().To<EnderecoRepository>();
             Bind<IUsuarioRepository>().To<UsuarioRepository>();
-            Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
-            Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
-            Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
-            Bind<IUFRepository>().To<UFRepository>();
-            Bind<ITelefoneRepository>().To<TelefoneRepository>();
-            Bind<IEnderecoRepository>().To<EnderecoRepository>();
             Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
             Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
             Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
@@ -120,7 +122,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgenteCausadorCBORepository>().To<AgenteCausadorCBORepository>();
             Bind<IAnexoRepository>().To<AnexoRepository>();
             Bind<IPPRARepository>().To<PPRARepository>();
-
+            Bind<ICIPAEmpresaRepository>().To<CIPAEmpresaRepository>();
+            Bind<ICIPAEmpresaFuncionarioRepository>().To<CIPAEmpresaFuncionarioRepository>();
+            Bind<ISESMTEmpresaRepository>().To<SESMTEmpresaRepository>();
+            Bind<ISESMTEmpresaFuncionarioRepository>().To<SESMTEmpresaFuncionarioRepository>();
+            
             //Data Configuration
             Bind<IContextManager>().To<ContextManager>();
             Bind<IUnitOfWork>().To<UnitOfWork>();

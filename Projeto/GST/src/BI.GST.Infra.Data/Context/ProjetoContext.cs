@@ -63,6 +63,10 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<TipoVacina> TiposVacina { get; set; }
 		public DbSet<UF> UFs { get; set; }
 		public DbSet<Vacina> Vacinas { get; set; }
+        public DbSet<CIPAEmpresa> CIPAEmpresas { get; set; }
+        public DbSet<CIPAEmpresaFuncionario> CIPAEmpresaFuncionarios { get; set; }
+        public DbSet<SESMTEmpresa> SESMTEmpresas { get; set; }
+        public DbSet<SESMTEmpresaFuncionario> SESMTEmpresaFuncionarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -126,6 +130,10 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new TipoVacinaConfiguration());
             modelBuilder.Configurations.Add(new UFConfiguration());
             modelBuilder.Configurations.Add(new VacinaConfiguration());
+            modelBuilder.Configurations.Add(new CIPAEmpresaConfiguration());
+            modelBuilder.Configurations.Add(new CipaEmpresaFuncionarioConfiguration());
+            modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
+            modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

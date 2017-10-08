@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BI.GST.Application.ViewModels
 {
@@ -26,12 +27,15 @@ namespace BI.GST.Application.ViewModels
         public int NumeroFuncionarios { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Empresa")]
-        [DisplayName("Empresa")]
         public int EmpresaId { get; set; }
 
-        public virtual Empresa Empresa { get; set; }
+        [ForeignKey("EmpresaId")]
+        public virtual EmpresaViewModel Empresa { get; set; }
+
         [DisplayName("Ativo")]
         public bool Delete { get; set; }
+
+        
 
         public virtual List<CIPAEmpresaFuncionarioViewModel> CIPAEmpresaFuncionarios { get; set; }
     }
