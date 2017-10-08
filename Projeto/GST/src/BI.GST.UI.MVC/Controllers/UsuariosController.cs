@@ -140,6 +140,31 @@ namespace BI.GST.UI.MVC.Controllers
 			}
 		}
 
+		// GET: Usuarios/Create
+		public ActionResult Login()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+		public ActionResult Login(UsuarioViewModel usuarioViewModel)
+		{
+			var usuario = _UsuarioAppService.Login(usuarioViewModel);
+
+			if (usuario.UsuarioId != 0)
+			{
+				Session["usuario"] = usuario;
+				Session["usuarioId"] = usuario.UsuarioId;
+				return RedirectToAction("Index", "Home");
+			}
+			else
+			{
+				System.Web.HttpContext.Current.Response.Write("<SCRIPT> Dados Incorretos, tente novamente.</SCRIPT>");
+				return View(usuarioViewModel);
+			}
+		}
+
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)

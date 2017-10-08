@@ -95,9 +95,6 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
 			Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
 			Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();
-			Bind<IUFRepository>().To<UFRepository>();
-			Bind<ITelefoneRepository>().To<TelefoneRepository>();
-			Bind<IEnderecoRepository>().To<EnderecoRepository>();
 			Bind<IFinanceiroRepository>().To<FinanceiroRepository>();
 			Bind<IAgenteAmbientalRepository>().To<AgenteAmbientalRepository>();
 			Bind<IEquipamentoRuidoRepository>().To<EquipamentoRuidoRepository>();

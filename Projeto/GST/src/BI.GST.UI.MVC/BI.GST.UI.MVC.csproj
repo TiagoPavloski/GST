@@ -4640,6 +4640,7 @@
     <Content Include="Views\AgenteCausadorCBOs\Details.cshtml" />
     <Content Include="Views\AgenteCausadorCBOs\Edit.cshtml" />
     <Content Include="Views\AgenteCausadorCBOs\Index.cshtml" />
+    <Content Include="Views\Usuarios\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

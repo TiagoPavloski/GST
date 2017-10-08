@@ -14,10 +14,14 @@ namespace BI.GST.Application.AppService
 	public class EmpresaAppService : BaseAppService, IEmpresaAppService
 	{
 		private readonly IEmpresaService _empresaService;
+		private readonly ITelefoneService _telefoneService;
+		private readonly IEnderecoService _enderecoService;
 
-		public EmpresaAppService(IEmpresaService empresaService)
+		public EmpresaAppService(IEmpresaService empresaService, ITelefoneService telefoneService, IEnderecoService enderecoService)
 		{
 			_empresaService = empresaService;
+			_telefoneService = telefoneService;
+			_enderecoService = enderecoService;
 		}
 		public bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
 		{
@@ -57,6 +61,13 @@ namespace BI.GST.Application.AppService
 			foreach (var item in cnaeSecundarioId)
 				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
 
+			foreach (var item in telefoneViewModel)
+			{
+				if (item.EmpresaId == null)
+					item.EmpresaId = empresa.EmpresaId;
+				empresa.Telefones.Add(Mapper.Map<TelefoneViewModel, Telefone>(item));
+			}
+
 			BeginTransaction();
 			_empresaService.Atualizar(empresa);
 			Commit();
@@ -73,12 +84,26 @@ namespace BI.GST.Application.AppService
 		public bool Excluir(int id)
 		{
 			bool existente = _empresaService.Find(e => e.EmpresaId == id).Any();
+			var empresa = _empresaService.ObterPorId(id);
+
+			List<Telefone> telefones = new List<Telefone>();
+			foreach (var item in empresa.Telefones)
+			{
+				item.Delete = true;
+				telefones.Add(item);
+			}
+			empresa.Endereco.Delete = true;
+
 			if (existente)
 			{
 				BeginTransaction();
-				var tipoEmpresa = _empresaService.ObterPorId(id);
-				tipoEmpresa.Delete = true;
-				_empresaService.Atualizar(tipoEmpresa);
+				empresa.Delete = true;
+				_empresaService.Atualizar(empresa);
+				_enderecoService.Atualizar(empresa.Endereco);
+				foreach (var item in telefones)
+				{
+					_telefoneService.Atualizar(item);
+				}
 				Commit();
 				return true;
 			}
