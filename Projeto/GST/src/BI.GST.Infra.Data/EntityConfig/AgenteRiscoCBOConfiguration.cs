@@ -7,7 +7,12 @@ namespace BI.GST.Infra.Data.EntityConfig
   {
     public AgenteRiscoCBOConfiguration()
     {
-      HasKey(e => e.AgenteRiscoCBOId);
+        HasKey(e => e.AgenteRiscoCBOId);
+
+            Property(e => e.Nome)
+                     .HasMaxLength(45)
+                     .IsRequired();
+
     }
   }
 }

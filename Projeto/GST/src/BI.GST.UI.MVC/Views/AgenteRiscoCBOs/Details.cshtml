@@ -1,13 +1,13 @@
-﻿@model BI.GST.Application.ViewModels.AgenteCausadorCBOViewModel
+﻿@model BI.GST.Application.ViewModels.AgenteRiscoCBOViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Detalhes @Html.DisplayNameFor(model => model.Nome)</h2>
+<h2>Details</h2>
 
 <div>
-    <h4>AgenteCausadorCBO</h4>
+    <h4>Agente Risco CBO</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -25,9 +25,10 @@
         <dd>
             @Html.DisplayFor(model => model.StatusNome)
         </dd>
+
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Editar", "Edit", new { id = Model.AgenteCausadorCBOId }) |
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AgenteRiscoCBOId }) |
     @Html.ActionLink("Voltar para lista", "Index")
 </p>

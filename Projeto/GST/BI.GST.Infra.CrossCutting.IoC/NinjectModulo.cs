@@ -47,6 +47,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IEscalaAppService>().To<EscalaAppService>();
 			Bind<IAgenteCausadorCBOAppService>().To<AgenteCausadorCBOAppService>();
 			Bind<IAnexoAppService>().To<AnexoAppService>();
+      Bind<IAgenteRiscoCBOAppService>().To<AgenteRiscoCBOAppService>();
 
 			//Servicos
 			Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -79,6 +80,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IEscalaService>().To<EscalaService>();
 			Bind<IAgenteCausadorCBOService>().To<AgenteCausadorCBOService>();
 			Bind<IAnexoService>().To<AnexoService>();
+      Bind<IAgenteRiscoCBOService>().To<AgenteRiscoCBOService>();
 
 			//Data Repository
 			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -117,6 +119,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IEscalaRepository>().To<EscalaRepository>();
 			Bind<IAgenteCausadorCBORepository>().To<AgenteCausadorCBORepository>();
 			Bind<IAnexoRepository>().To<AnexoRepository>();
+      Bind<IAgenteRiscoCBORepository>().To<AgenteRiscoCBORepository>();
+
 
 			//Data Configuration
 			Bind<IContextManager>().To<ContextManager>();
