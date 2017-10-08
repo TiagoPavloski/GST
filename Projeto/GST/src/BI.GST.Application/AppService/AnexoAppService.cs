@@ -8,6 +8,8 @@ using BI.GST.Application.ViewModels;
 using BI.GST.Domain.Interface.IService;
 using AutoMapper;
 using BI.GST.Domain.Entities;
+using System.Drawing;
+using BI.GST.Infra.CrossCutting.MVCFilters;
 
 namespace BI.GST.Application.AppService
 {
@@ -79,6 +81,16 @@ namespace BI.GST.Application.AppService
         public int ObterTotalRegistros(string pesquisa, int idPPRA)
         {
             return _anexoService.ObterTotalRegistros(pesquisa, idPPRA);
+        }
+
+        public static byte[] ImagemParaByte(Image imagem)
+        {
+            return Conversor.ImagemParaByte(imagem);
+        }
+
+        public static Image ByteParaImagem(byte[] bytes)
+        {
+            return Conversor.ByteParaImagem(bytes);
         }
     }
 }

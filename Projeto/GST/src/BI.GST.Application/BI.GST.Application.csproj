@@ -45,6 +45,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,11 +63,16 @@
     <Compile Include="AppService\AgentePPRAAppService.cs" />
     <Compile Include="AppService\AgenteQuimicoAppService.cs" />
     <Compile Include="AppService\AnexoAppService.cs" />
+    <Compile Include="AppService\CIPAEmpresaAppService.cs" />
+    <Compile Include="AppService\CIPAEmpresaFuncionarioAppService.cs" />
     <Compile Include="AppService\ClassificacaoEfeitoAppService.cs" />
     <Compile Include="AppService\CnaeAppService.cs" />
     <Compile Include="AppService\CronogramaDeAcoesAppService.cs" />
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaAppService.cs" />
+    <Compile Include="AppService\PPRAAppService.cs" />
+    <Compile Include="AppService\SESMTEmpresaAppService.cs" />
+    <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="AppService\UsuarioAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
     <Compile Include="AppService\EquipamentoRuidoAppService.cs" />
@@ -99,11 +105,16 @@
     <Compile Include="Interface\IAgenteQuimicoAppService.cs" />
     <Compile Include="Interface\IAnexoAppService.cs" />
     <Compile Include="Interface\IBaseAppService.cs" />
+    <Compile Include="Interface\ICIPAEmpresaAppService.cs" />
+    <Compile Include="Interface\ICIPAEmpresaFuncionarioAppService.cs" />
     <Compile Include="Interface\IClassificacaoEfeitoAppService.cs" />
     <Compile Include="Interface\ICnaeAppService.cs" />
     <Compile Include="Interface\ICronogramaDeAcoesAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaAppService.cs" />
+    <Compile Include="Interface\IPPRAAppService.cs" />
+    <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
+    <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="Interface\IUsuarioAppService.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
     <Compile Include="Interface\IEquipamentoRuidoAppService.cs" />
@@ -131,10 +142,14 @@
     <Compile Include="ViewModels\AgenteCausadorCBOViewModel.cs" />
     <Compile Include="ViewModels\AgenteQuimicoViewModel.cs" />
     <Compile Include="ViewModels\AnexoViewModel.cs" />
+    <Compile Include="ViewModels\CIPAEmpresaFuncionarioViewModel.cs" />
+    <Compile Include="ViewModels\CIPAEmpresaViewModel.cs" />
     <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
     <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
     <Compile Include="ViewModels\CursoViewModel.cs" />
+    <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
+    <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
@@ -144,6 +159,7 @@
     <Compile Include="ViewModels\MedicaoAgenteViewModel.cs" />
     <Compile Include="ViewModels\MeioPropagacaoViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
+    <Compile Include="ViewModels\PPRAViewModel.cs" />
     <Compile Include="ViewModels\SetorViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />
     <Compile Include="ViewModels\FinanceiroViewModel.cs" />
@@ -159,6 +175,10 @@
     <ProjectReference Include="..\BI.GST.Domain\BI.GST.Domain.csproj">
       <Project>{2007249d-f29c-439d-9345-1825f51bf9a6}</Project>
       <Name>BI.GST.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BI.GST.Infra.CrossCutting.MVCFilters\BI.GST.Infra.CrossCutting.MVCFilters.csproj">
+      <Project>{ab2f9243-5111-4986-8134-371f5e1b2ebf}</Project>
+      <Name>BI.GST.Infra.CrossCutting.MVCFilters</Name>
     </ProjectReference>
     <ProjectReference Include="..\BI.GST.Infra.Data\BI.GST.Infra.Data.csproj">
       <Project>{7CDC0A34-8329-414C-ADCE-7472295BED61}</Project>

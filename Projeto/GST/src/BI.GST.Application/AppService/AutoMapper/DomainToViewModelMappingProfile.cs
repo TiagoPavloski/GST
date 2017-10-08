@@ -47,7 +47,12 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<AgentePPRA, AgentePPRAViewModel>();
             Mapper.CreateMap<CronogramaDeAcoes, CronogramaDeAcoesViewModel>();
             Mapper.CreateMap<Anexo, AnexoViewModel>();
-            Mapper.CreateMap<AgenteRiscoCBO, AgenteRiscoCBOViewModel>();
-            Mapper.CreateMap<Cnae, CnaeViewModel>();
+			Mapper.CreateMap<Cnae, CnaeViewModel>();
+            Mapper.CreateMap<PPRA, PPRAViewModel>();
+            Mapper.CreateMap<CIPAEmpresa, CIPAEmpresaViewModel>();
+            Mapper.CreateMap<CIPAEmpresaFuncionario, CIPAEmpresaFuncionarioViewModel>();
+            Mapper.CreateMap<SESMTEmpresa ,SESMTEmpresaViewModel>();
+            Mapper.CreateMap<SESMTEmpresaFuncionario, SESMTEmpresaFuncionarioViewModel>();
+        }
     }
 }
