@@ -16,14 +16,16 @@ namespace BI.GST.Application.AppService
 		private readonly IEmpresaService _empresaService;
 		private readonly ITelefoneService _telefoneService;
 		private readonly IEnderecoService _enderecoService;
+		private readonly IFuncionarioService _funcionarioService;
 
-		public EmpresaAppService(IEmpresaService empresaService, ITelefoneService telefoneService, IEnderecoService enderecoService)
+		public EmpresaAppService(IEmpresaService empresaService, ITelefoneService telefoneService, IEnderecoService enderecoService, IFuncionarioService funcionarioService)
 		{
 			_empresaService = empresaService;
 			_telefoneService = telefoneService;
 			_enderecoService = enderecoService;
+			_funcionarioService = funcionarioService;
 		}
-		public bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
+		public bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId)
 		{
 			empresaViewModel.Endereco.UFId = empresaViewModel.UFId;
 			var empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
@@ -41,6 +43,9 @@ namespace BI.GST.Application.AppService
 			foreach (var item in cnaeSecundarioId)
 				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
 
+			foreach (var item in funcionarioId)
+				empresa.Responsaveis.Add(new Funcionario { FuncionarioId = item });
+
 			BeginTransaction();
 			_empresaService.Adicionar(empresa);
 			Commit();
@@ -48,7 +53,7 @@ namespace BI.GST.Application.AppService
 		}
 
 
-		public bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
+		public bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId)
 		{
 			empresaViewModel.Endereco.UFId = empresaViewModel.UFId;
 			empresaViewModel.CnaePrincipal.CnaeId = empresaViewModel.CnaeId;
@@ -60,6 +65,9 @@ namespace BI.GST.Application.AppService
 
 			foreach (var item in cnaeSecundarioId)
 				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
+
+			foreach (var item in funcionarioId)
+				empresa.Responsaveis.Add(new Funcionario { FuncionarioId = item });
 
 			foreach (var item in telefoneViewModel)
 			{
@@ -128,6 +136,16 @@ namespace BI.GST.Application.AppService
 		public int ObterTotalRegistros(string pesquisa)
 		{
 			return _empresaService.ObterTotalRegistros(pesquisa);
+		}
+
+		public bool AdicionarResponsavel(string CPF)
+		{
+			throw new NotImplementedException();
+		}
+
+		public bool DeletarResponsavel(int id)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

@@ -71,6 +71,16 @@
 		</dd>
 
 		<dt>
+			@Html.DisplayName("Responsaveis")
+		</dt>
+		@foreach (var item in Model.Responsaveis)
+		{
+			<dd>
+				@Html.DisplayFor(model => item.Nome)
+			</dd>
+		}
+
+		<dt>
 			@Html.DisplayName("Setores")
 		</dt>
 		@foreach (var item in Model.Setores)
