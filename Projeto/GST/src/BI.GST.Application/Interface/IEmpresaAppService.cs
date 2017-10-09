@@ -13,13 +13,17 @@ namespace BI.GST.Application.Interface
 
 		EmpresaViewModel ObterPorId(int id);
 
-		bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId);
+		bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId);
 
-		bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId);
+		bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId);
 
 		bool Excluir(int id);
 
 		IEnumerable<EmpresaViewModel> ObterGrid(int page, string pesquisa);
+
+		bool AdicionarResponsavel(string CPF);
+
+		bool DeletarResponsavel(int id);
 
 		int ObterTotalRegistros(string pesquisa);
 	}
