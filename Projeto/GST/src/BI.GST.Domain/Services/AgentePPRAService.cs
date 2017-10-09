@@ -46,9 +46,9 @@ namespace BI.GST.Domain.Services
             return _agentePPRARepository.Find(predicate);
         }
 
-        public IEnumerable<AgentePPRA> ObterGrid(int page, string pesquisa)
+        public IEnumerable<AgentePPRA> ObterGrid(int page, string pesquisa, int ppraId)
         {
-            return _agentePPRARepository.ObterGrid(page, pesquisa);
+            return _agentePPRARepository.ObterGrid(page, pesquisa, ppraId);
         }
 
         public AgentePPRA ObterPorId(int id)
@@ -56,14 +56,9 @@ namespace BI.GST.Domain.Services
             return _agentePPRARepository.ObterPorId(id);
         }
 
-        public IEnumerable<AgentePPRA> ObterTodos()
+        public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
-            return _agentePPRARepository.ObterTodos();
-        }
-
-        public int ObterTotalRegistros(string pesquisa)
-        {
-            return _agentePPRARepository.ObterTotalRegistros(pesquisa);
+            return _agentePPRARepository.ObterTotalRegistros(pesquisa, ppraId);
         }
     }
 }

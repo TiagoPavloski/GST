@@ -10,17 +10,21 @@ namespace BI.GST.Infra.Data.Repository
 {
     public class CronogramaDeAcoesRepository : BaseRepository<CronogramaDeAcoes>, ICronogramaDeAcoesRepository
     {
-        public IEnumerable<CronogramaDeAcoes> ObterGrid(int page, string pesquisa)
+        public IEnumerable<CronogramaDeAcoes> ObterGrid(int page, string pesquisa, int ppraId)
         {
-            return DbSet.Where(x => pesquisa != null ? x.Atividade.Contains(pesquisa) : x.Atividade != null && x.Delete == false)
-                 .OrderBy(u => u.Atividade)
-                 .Skip((page) * 10)
-                 .Take(10);
+            return DbSet.Where(x => (pesquisa != null ? x.Atividade.Contains(pesquisa) : x.Atividade != null)
+                && (x.PPRAId == ppraId)
+                && (x.Delete == false))
+                .OrderBy(u => u.Atividade)
+                .Skip((page) * 10)
+                .Take(10);
         }
 
-        public int ObterTotalRegistros(string pesquisa)
+        public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
-            return DbSet.Count(x => (pesquisa != null ? x.Atividade.Contains(pesquisa) : x.Atividade != null) && (x.Delete == false));
+            return DbSet.Count(x => (pesquisa != null ? x.Atividade.Contains(pesquisa) : x.Atividade != null) 
+                && (x.PPRAId == ppraId)
+                && (x.Delete == false));
         }
     }
 }

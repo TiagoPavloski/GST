@@ -45,9 +45,9 @@ namespace BI.GST.Domain.Services
             return _cronogramaDeAcoesRepository.Find(predicate);
         }
 
-        public IEnumerable<CronogramaDeAcoes> ObterGrid(int page, string pesquisa)
+        public IEnumerable<CronogramaDeAcoes> ObterGrid(int page, string pesquisa, int ppraId)
         {
-            return _cronogramaDeAcoesRepository.ObterGrid(page, pesquisa);
+            return _cronogramaDeAcoesRepository.ObterGrid(page, pesquisa, ppraId);
         }
 
         public CronogramaDeAcoes ObterPorId(int id)
@@ -55,14 +55,9 @@ namespace BI.GST.Domain.Services
             return _cronogramaDeAcoesRepository.ObterPorId(id);
         }
 
-        public IEnumerable<CronogramaDeAcoes> ObterTodos()
+        public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
-            return _cronogramaDeAcoesRepository.ObterTodos();
-        }
-
-        public int ObterTotalRegistros(string pesquisa)
-        {
-            return _cronogramaDeAcoesRepository.ObterTotalRegistros(pesquisa);
+            return _cronogramaDeAcoesRepository.ObterTotalRegistros(pesquisa, ppraId);
         }
     }
 }

@@ -10,16 +10,18 @@ namespace BI.GST.Infra.Data.Repository
 {
     public class AgentePPRARepository : BaseRepository<AgentePPRA>, IAgentePPRARepository
     {
-        public IEnumerable<AgentePPRA> ObterGrid(int page, string pesquisa)
+        public IEnumerable<AgentePPRA> ObterGrid(int page, string pesquisa, int ppraId)
         {
-            return DbSet.Where(x => x.Delete == false)
+            return DbSet.Where(x => (x.Delete == false)
+                && (x.PPRAId == ppraId))
              .Skip((page) * 10)
              .Take(10);
         }
 
-        public int ObterTotalRegistros(string pesquisa)
+        public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
-            return DbSet.Count(x => (x.Delete == false));
+            return DbSet.Count(x => (x.Delete == false)
+                && (x.PPRAId == ppraId));
         }
     }
 }

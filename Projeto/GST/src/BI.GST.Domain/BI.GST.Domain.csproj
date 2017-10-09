@@ -48,6 +48,7 @@
     <Compile Include="Entities\Certificado.cs" />
     <Compile Include="Entities\CIPAEmpresa.cs" />
     <Compile Include="Entities\CIPAEmpresaFuncionario.cs" />
+    <Compile Include="Entities\CipaQuadro.cs" />
     <Compile Include="Entities\ClassificacaoEfeito.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Cnae.cs" />
@@ -55,8 +56,10 @@
     <Compile Include="Entities\CronogramaDeAcoes.cs" />
     <Compile Include="Entities\Curso.cs" />
     <Compile Include="Entities\Empresa.cs" />
+    <Compile Include="Entities\GrupoCipa.cs" />
     <Compile Include="Entities\SESMTEmpresa.cs" />
     <Compile Include="Entities\SESMTEmpresaFuncionario.cs" />
+    <Compile Include="Entities\SesmtQuadro.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\EnderecoEx.cs" />

@@ -7,10 +7,13 @@ namespace BI.GST.UI.MVC.Controllers
     public class CIPAEmpresasController : Controller
     {
         private readonly ICIPAEmpresaAppService _cipaEmpresaAppService;
+        private readonly IEmpresaAppService _empresaAppService;
+        //private readonly IFAppService _empresaAppService;
 
-        public CIPAEmpresasController(ICIPAEmpresaAppService cipaEmpresaAppService)
+        public CIPAEmpresasController(ICIPAEmpresaAppService cipaEmpresaAppService, IEmpresaAppService empresaAppService)
         {
             _cipaEmpresaAppService = cipaEmpresaAppService;
+            _empresaAppService     = empresaAppService;
         }
 
         // GET: CIPAEmpresas
@@ -43,7 +46,10 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: CIPAEmpresas/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
+            var cipaEmpresaViewModel = new CIPAEmpresaViewModel();
+
+            return View(cipaEmpresaViewModel);
         }
 
         // POST: CIPAEmpresas/Create
@@ -57,12 +63,15 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_cipaEmpresaAppService.Adicionar(cipaEmpresaViewModel))
                 {
+                    ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
+                    //var cipaEmpresa = new CIPAEmpresaViewModel();
                     TempData["Mensagem"] = "Atenção, CIPA já cadastrada para esta empresa e ano";
                     //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
+
             return View(cipaEmpresaViewModel);
         }
 
@@ -78,6 +87,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(cipaEmpresaViewModel);
         }
 
