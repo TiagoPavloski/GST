@@ -68,7 +68,7 @@
     <Compile Include="AppService\CronogramaDeAcoesAppService.cs" />
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaAppService.cs" />
-    <Compile Include="AppService\EmpresaUtilizadoraAppService.cs" />
+    <Compile Include="AppService\UsuarioAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
     <Compile Include="AppService\EquipamentoRuidoAppService.cs" />
     <Compile Include="AppService\AgenteCausadorCBOAppService.cs" />
@@ -106,7 +106,7 @@
     <Compile Include="Interface\ICronogramaDeAcoesAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaAppService.cs" />
-    <Compile Include="Interface\IEmpresaUtilizadoraAppService.cs" />
+    <Compile Include="Interface\IUsuarioAppService.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
     <Compile Include="Interface\IEquipamentoRuidoAppService.cs" />
     <Compile Include="Interface\IExameAppService.cs" />
@@ -138,7 +138,7 @@
     <Compile Include="ViewModels\CnaeViewModel.cs" />
     <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
     <Compile Include="ViewModels\CursoViewModel.cs" />
-    <Compile Include="ViewModels\EmpresaUtilizadoraViewModel.cs" />
+    <Compile Include="ViewModels\UsuarioViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />
     <Compile Include="ViewModels\EquipamentoRuidoViewModel.cs" />

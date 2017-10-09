@@ -19,23 +19,46 @@ namespace BI.GST.Application.AppService
 		{
 			_empresaService = empresaService;
 		}
-		public bool Adicionar(EmpresaViewModel empresaViewModel)
+		public bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
 		{
-			var Empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
+			empresaViewModel.Endereco.UFId = empresaViewModel.UFId;
+			var empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
+
+			empresa.Endereco = Mapper.Map<EnderecoViewModel, Endereco>(empresaViewModel.Endereco);
+
+			List<Telefone> telefones = new List<Telefone>();
+			foreach (var item in telefoneViewModel)
+				telefones.Add(Mapper.Map<TelefoneViewModel, Telefone>(item));
+
+			empresa.Telefones = telefones;
+			foreach (var item in setorId)
+				empresa.Setores.Add(new Setor { SetorId = item });
+
+			foreach (var item in cnaeSecundarioId)
+				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
 
 			BeginTransaction();
-			_empresaService.Adicionar(Empresa);
+			_empresaService.Adicionar(empresa);
 			Commit();
 			return true;
 		}
 
 
-		public bool Atualizar(EmpresaViewModel empresaViewModel)
+		public bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
 		{
-			var Empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
+			empresaViewModel.Endereco.UFId = empresaViewModel.UFId;
+			empresaViewModel.CnaePrincipal.CnaeId = empresaViewModel.CnaeId;
+
+			var empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
+
+			foreach (var item in setorId)
+				empresa.Setores.Add(new Setor { SetorId = item });
+
+			foreach (var item in cnaeSecundarioId)
+				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
 
 			BeginTransaction();
-			_empresaService.Atualizar(Empresa);
+			_empresaService.Atualizar(empresa);
 			Commit();
 			return true;
 		}

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BI.GST.Domain.Entities.Setor>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.SetorViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -19,10 +19,7 @@
 
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa.NomeFantasia)
-        </th>
-        <th>
+         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
         <th>
@@ -36,9 +33,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa.NomeFantasia)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
