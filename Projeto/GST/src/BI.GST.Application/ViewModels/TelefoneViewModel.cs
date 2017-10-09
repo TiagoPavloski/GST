@@ -15,8 +15,12 @@ namespace BI.GST.Application.ViewModels
 
 		public bool Delete { get; set; }
 
-		public int UsuarioId { get; set; }
+		public int? UsuarioId { get; set; }
 		[ForeignKey("UsuarioId")]
 		public virtual UsuarioViewModel Usuario { get; set; }
+
+		public int? EmpresaId { get; set; }
+		[ForeignKey("EmpresaId")]
+		public virtual EmpresaViewModel Empresa { get; set; }
 	}
 }

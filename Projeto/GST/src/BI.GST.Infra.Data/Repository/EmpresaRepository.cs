@@ -43,5 +43,34 @@ namespace BI.GST.Infra.Data.Repository
 			foreach (var item in obj.Telefones)
 				new TelefoneRepository().Adicionar(item);
 		}
+
+		public override void Atualizar(Empresa obj)
+		{
+			//Adiciona lista de cnae completa com o cnae Id que foi pego na tela
+			List<Cnae> cnaes = new List<Cnae>();
+			foreach (var item in obj.CnaeSecundarios)
+				cnaes.Add(new CnaeRepository().ObterPorId(item.CnaeId));
+			obj.CnaeSecundarios = cnaes;
+
+			//Adiciona lista de setores completa com o setor id que foi pego na tela
+			List<Setor> setores = new List<Setor>();
+			foreach (var item in obj.Setores)
+				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
+			obj.Setores = setores;
+
+			base.Atualizar(obj);
+
+			//Atualiza ou Insere Telefone
+			foreach (var item in obj.Telefones)
+			{
+				if (item.TelefoneId == 0)
+					new TelefoneRepository().Adicionar(item);
+				else
+					new TelefoneRepository().Atualizar(item);
+			}
+
+			//Atualiza Endereco
+			new EnderecoRepository().Atualizar(obj.Endereco);
+		}
 	}
 }

@@ -8,20 +8,22 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.Interface
 {
-    public interface IUsuarioAppService : IDisposable
-    {
-        IEnumerable<UsuarioViewModel> ObterTodos();
+	public interface IUsuarioAppService : IDisposable
+	{
+		IEnumerable<UsuarioViewModel> ObterTodos();
 
-        UsuarioViewModel ObterPorId(int id);
+		UsuarioViewModel ObterPorId(int id);
 
-        bool Adicionar(UsuarioViewModel UsuarioViewModel);
+		UsuarioViewModel Login(UsuarioViewModel usuario);
 
-        bool Atualizar(UsuarioViewModel UsuarioViewModel);
+		bool Adicionar(UsuarioViewModel UsuarioViewModel);
 
-        bool Excluir(int id);
+		bool Atualizar(UsuarioViewModel UsuarioViewModel);
 
-        IEnumerable<UsuarioViewModel> ObterGrid(int page, string pesquisa);
+		bool Excluir(int id);
 
-        int ObterTotalRegistros(string pesquisa);
-    }
+		IEnumerable<UsuarioViewModel> ObterGrid(int page, string pesquisa);
+
+		int ObterTotalRegistros(string pesquisa);
+	}
 }
