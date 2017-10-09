@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,19 +38,11 @@ namespace BI.GST.Domain.Entities
 
         public bool CIPA { get; set; }
 
-        public string CIPAEleitosId { get; set; }
+        public int CIPAEmpresaId { get; set; }
 
-        public string CIPASuplentesId { get; set; }
-
-        public string TabelaCIPA { get; set; }
-
-        public string TabelaSESMT { get; set; }
+        public int SESMTEmpresaId { get; set; }
 
         public bool SESMT { get; set; }
-
-        public int SESMTEleitosId { get; set; }
-
-        public int SESMTSuplentesId { get; set; }
 
         public int EquipamentoRuidoId { get; set; }
 
@@ -60,10 +53,7 @@ namespace BI.GST.Domain.Entities
         public bool Delete { get; set; }
 
         //public virtual ICollection<AlteracoesPPRA> AlteracoesPPRA { get; set; } ??? não tem tabela disso
-        public virtual ICollection<FuncionarioEmpresa> CIPAEleitos { get; set; }
-        public virtual ICollection<FuncionarioEmpresa> CIPASuplentes { get; set; }
-        public virtual ICollection<FuncionarioEmpresa> SESMTEleitos { get; set; }
-        public virtual ICollection<FuncionarioEmpresa> SESMTSuplentes { get; set; }
+
         public virtual ICollection<AgentePPRA> AgentesAmbientais { get; set; }
         public virtual ICollection<CronogramaDeAcoes> CronogramasDeAcao { get; set; }
         public virtual ICollection<Anexo> Anexos { get; set; }
@@ -74,5 +64,7 @@ namespace BI.GST.Domain.Entities
         public virtual Empresa EmpresaCliente { get; set; }
         public virtual Empresa EmpresaContratante { get; set; }
         public virtual Empresa EmpresaPrestadora { get; set; }
+        public virtual CIPAEmpresa CipaEmpresa { get; set; }
+        public virtual SESMTEmpresa SESMTEmpresa { get; set; }
     }
 }

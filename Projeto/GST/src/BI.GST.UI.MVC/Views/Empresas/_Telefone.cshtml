@@ -3,6 +3,7 @@
 @using (Html.BeginCollectionItem("TelefoneViewModel"))
 {
 	@Html.HiddenFor(model => model.TelefoneId)
+	@Html.HiddenFor(model => model.EmpresaId)
 
 	<div class="form-group">
 		@Html.LabelFor(model => model.Numero, htmlAttributes: new { @class = "control-label col-md-2" })

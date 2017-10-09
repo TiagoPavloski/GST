@@ -69,7 +69,7 @@ namespace BI.GST.Application.AppService
 
         public CronogramaDeAcoesViewModel ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return Mapper.Map<CronogramaDeAcoes, CronogramaDeAcoesViewModel> (_cronogramaDeAcoesService.ObterPorId(id));
         }
 
         public IEnumerable<CronogramaDeAcoesViewModel> ObterTodos()

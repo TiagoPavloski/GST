@@ -1,66 +1,162 @@
 ﻿@model BI.GST.Application.ViewModels.EmpresaViewModel
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Empresa</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NomeFantasia)
-        </dt>
+	<h4>Empresa</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayNameFor(model => model.NomeFantasia)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NomeFantasia)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.NomeFantasia)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.RazaoSocial)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.RazaoSocial)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.RazaoSocial)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.RazaoSocial)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CNPJ)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.CNPJ)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CNPJ)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.CNPJ)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+		<dt>
+			@Html.DisplayNameFor(model => model.Email)
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.Email)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CnaeId)
-        </dt>
+		<dt>
+			@Html.DisplayName("Cnae Principal")
+		</dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CnaeId)
-        </dd>
+		<dd>
+			@Html.DisplayFor(model => model.CnaePrincipal.Descricao)
+		</dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Logo)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Logo)
-        </dd>
+		<dt>
+			@Html.DisplayName("Cnae Secundarios")
+		</dt>
+		@foreach (var item in Model.CnaeSecundarios)
+		{
+			<dd>
+				@Html.DisplayFor(model => item.Descricao)
+			</dd>
+		}
 
-    </dl>
+		<dt>
+			@Html.DisplayNameFor(model => model.Logo)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Logo)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Responsaveis")
+		</dt>
+		@foreach (var item in Model.Responsaveis)
+		{
+			<dd>
+				@Html.DisplayFor(model => item.Nome)
+			</dd>
+		}
+
+		<dt>
+			@Html.DisplayName("Setores")
+		</dt>
+		@foreach (var item in Model.Setores)
+		{
+			<dd>
+				@Html.DisplayFor(model => item.Nome)
+			</dd>
+		}
+
+		<dt>
+			@Html.DisplayName("Telefones")
+		</dt>
+		@foreach (var item in Model.Telefones)
+		{
+			<dd>
+				@Html.DisplayFor(model => item.Numero)
+			</dd>
+		}
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.CEP)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.CEP)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Logradouro)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Logradouro)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Numero)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Numero)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Bairro)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Bairro)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Cidade)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Cidade)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Pais)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Pais)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.UF.Nome)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.UF.Nome)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Endereco.Complemento)
+		</dt>
+		<dd>
+			@Html.DisplayFor(model => model.Endereco.Complemento)
+		</dd>
+	</dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EmpresaId }) |
-    @Html.ActionLink("Back to List", "Index")
+	@Html.ActionLink("Edit", "Edit", new { id = Model.EmpresaId }) |
+	@Html.ActionLink("Back to List", "Index")
 </p>

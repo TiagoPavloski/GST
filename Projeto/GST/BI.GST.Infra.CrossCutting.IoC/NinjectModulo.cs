@@ -48,6 +48,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IAgenteCausadorCBOAppService>().To<AgenteCausadorCBOAppService>();
             Bind<IAnexoAppService>().To<AnexoAppService>();
             Bind<IAgenteRiscoCBOAppService>().To<AgenteRiscoCBOAppService>();
+			Bind<IPPRAAppService>().To<PPRAAppService>();
+			Bind<ISESMTEmpresaAppService>().To<SESMTEmpresaAppService>();
+			Bind<ISESMTEmpresaFuncionarioAppService>().To<SESMTEmpresaFuncionarioAppService>();
+			Bind<ICIPAEmpresaAppService>().To<CIPAEmpresaAppService>();
+			Bind<ICIPAEmpresaFuncionarioAppService>().To<CIPAEmpresaFuncionarioAppService>();
             Bind<IFonteRiscoCBOAppService>().To<FonteRiscoCBOAppService>();
 
             //Servicos
@@ -81,8 +86,15 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IEscalaService>().To<EscalaService>();
             Bind<IAgenteCausadorCBOService>().To<AgenteCausadorCBOService>();
             Bind<IAnexoService>().To<AnexoService>();
+			Bind<IPPRAService>().To<PPRAService>();
+			Bind<ICIPAEmpresaService>().To<CIPAEmpresaService>();
+			Bind<ICIPAEmpresaFuncionarioService>().To<CIPAEmpresaFuncionarioService>();
+			Bind<ISESMTEmpresaService>().To<SESMTEmpresaService>();
+			Bind<ISESMTEmpresaFuncionarioService>().To<SESMTEmpresaFuncionarioService>();
             Bind<IAgenteRiscoCBOService>().To<AgenteRiscoCBOService>();
             Bind<IFonteRiscoCBOService>().To<FonteRiscoCBOService>();
+
+
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -115,7 +127,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IEscalaRepository>().To<EscalaRepository>();
             Bind<IAgenteCausadorCBORepository>().To<AgenteCausadorCBORepository>();
             Bind<IAnexoRepository>().To<AnexoRepository>();
+			Bind<IPPRARepository>().To<PPRARepository>();
             Bind<IAgenteRiscoCBORepository>().To<AgenteRiscoCBORepository>();
+			Bind<ICIPAEmpresaRepository>().To<CIPAEmpresaRepository>();
+			Bind<ICIPAEmpresaFuncionarioRepository>().To<CIPAEmpresaFuncionarioRepository>();
+			Bind<ISESMTEmpresaRepository>().To<SESMTEmpresaRepository>();
+			Bind<ISESMTEmpresaFuncionarioRepository>().To<SESMTEmpresaFuncionarioRepository>();
             Bind<IFonteRiscoCBORepository>().To<FonteRiscoCBORepository>();
 
             //Data Configuration

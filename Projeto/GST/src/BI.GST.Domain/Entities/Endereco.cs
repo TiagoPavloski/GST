@@ -31,6 +31,5 @@ namespace BI.GST.Domain.Entities
 
 
         public virtual UF UF { get; set; }
-
 	}
 }

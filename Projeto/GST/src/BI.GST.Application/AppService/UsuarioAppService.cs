@@ -78,6 +78,16 @@ namespace BI.GST.Application.AppService
 			return false;
 		}
 
+		public UsuarioViewModel Login(UsuarioViewModel usuario)
+		{
+			var retorno = _UsuarioService.Find(x => (x.Email == usuario.Email) && (x.Senha == usuario.Senha) && (x.Delete == false)).FirstOrDefault();
+
+			if (retorno != null)
+				return Mapper.Map<Usuario, UsuarioViewModel>(retorno);
+			else
+				return usuario;
+		}
+
 		public IEnumerable<UsuarioViewModel> ObterGrid(int page, string pesquisa)
 		{
 			return Mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioViewModel>>(_UsuarioService.ObterGrid(page, pesquisa));
