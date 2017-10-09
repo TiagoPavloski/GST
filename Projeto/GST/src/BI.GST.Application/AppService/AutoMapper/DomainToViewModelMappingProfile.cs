@@ -35,7 +35,7 @@ namespace BI.GST.Application.AutoMapper
 			Mapper.CreateMap<Empresa, EmpresaViewModel>();
             Mapper.CreateMap<Escala, EscalaViewModel>();
             Mapper.CreateMap<AgenteCausadorCBO, AgenteCausadorCBOViewModel>();
-
+            Mapper.CreateMap<FonteRiscoCBO, FonteRiscoCBOViewModel>();
             Mapper.CreateMap<AgenteErgonomico, AgenteErgonomicoViewModel>();
             Mapper.CreateMap<AgenteAcidente, AgenteAcidenteViewModel>();
             Mapper.CreateMap<Setor, SetorViewModel>();

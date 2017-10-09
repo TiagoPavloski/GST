@@ -48,6 +48,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<AgenteCausadorCBOViewModel, AgenteCausadorCBO>();
             Mapper.CreateMap<AnexoViewModel, Anexo>();
             Mapper.CreateMap<AgenteRiscoCBOViewModel, AgenteRiscoCBO>();
+            Mapper.CreateMap<FonteRiscoCBOViewModel, FonteRiscoCBO>();
         }
     }
 }

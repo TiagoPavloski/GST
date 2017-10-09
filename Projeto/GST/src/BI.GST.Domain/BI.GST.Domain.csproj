@@ -80,6 +80,7 @@
     <Compile Include="Entities\UF.cs" />
     <Compile Include="Entities\Vacina.cs" />
     <Compile Include="Interface\IRepository\IAgenteAmbientalRepository.cs" />
+    <Compile Include="Interface\IRepository\IFonteRiscoCBORepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteRiscoCBORepository.cs" />
     <Compile Include="Interface\IRepository\IAgentePPRARepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteCausadorCBORepository.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Interface\IRepository\IUFRepository.cs" />
     <Compile Include="Interface\IRepository\IVacinaRepository.cs" />
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
+    <Compile Include="Interface\IService\IFonteRiscoCBOService.cs" />
     <Compile Include="Interface\IService\IAgenteRiscoCBOService.cs" />
     <Compile Include="Interface\IService\IAgentePPRAService.cs" />
     <Compile Include="Interface\IService\IAgenteCausadorCBOService.cs" />
@@ -144,6 +146,7 @@
     <Compile Include="Interface\IService\IVacinaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AgenteAmbientalService.cs" />
+    <Compile Include="Services\FonteRiscoCBOService.cs" />
     <Compile Include="Services\AgenteRiscoCBOService.cs" />
     <Compile Include="Services\AgentePPRAService.cs" />
     <Compile Include="Services\AgenteCausadorCBOService.cs" />

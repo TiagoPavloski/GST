@@ -195,6 +195,7 @@
     <Compile Include="Controllers\EscalasController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\FinanceiroController.cs" />
+    <Compile Include="Controllers\FonteRiscoCBOsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicaoAgentesController.cs" />
     <Compile Include="Controllers\MeioPropagacoesController.cs" />
@@ -4646,6 +4647,11 @@
     <Content Include="Views\AgenteRiscoCBOs\Details.cshtml" />
     <Content Include="Views\AgenteRiscoCBOs\Edit.cshtml" />
     <Content Include="Views\AgenteRiscoCBOs\Index.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Create.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Delete.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Details.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Edit.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

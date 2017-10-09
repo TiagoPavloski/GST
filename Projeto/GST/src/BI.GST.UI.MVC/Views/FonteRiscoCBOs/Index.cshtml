@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.FonteRiscoCBOViewModel>
+
+@{
+    ViewBag.Title = "Fonte do risco";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Adicionar fonte de risco", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "FonteRiscoCBOs", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StatusNome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusNome)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.FonteRiscoCBOId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.FonteRiscoCBOId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.FonteRiscoCBOId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.Partial("_Paginacao")
