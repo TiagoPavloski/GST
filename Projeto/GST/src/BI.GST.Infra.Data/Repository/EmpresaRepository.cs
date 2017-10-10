@@ -69,6 +69,8 @@ namespace BI.GST.Infra.Data.Repository
 			foreach (var item in obj.Responsaveis)
 				reponsaveis.Add(new FuncionarioRepository().ObterPorId(item.FuncionarioId));
 			obj.Responsaveis = reponsaveis;
+			foreach (var item in obj.Responsaveis)
+				item.EmpresaId = obj.EmpresaId;
 
 			base.Atualizar(obj);
 
