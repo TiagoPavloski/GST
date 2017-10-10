@@ -53,9 +53,10 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<ISESMTEmpresaFuncionarioAppService>().To<SESMTEmpresaFuncionarioAppService>();
 			Bind<ICIPAEmpresaAppService>().To<CIPAEmpresaAppService>();
 			Bind<ICIPAEmpresaFuncionarioAppService>().To<CIPAEmpresaFuncionarioAppService>();
-
-			//Servicos
-			Bind<ITipoCursoService>().To<TipoCursoService>();
+            Bind<IGrupoCipaAppService>().To<GrupoCipaAppService>();
+            
+            //Servicos
+            Bind<ITipoCursoService>().To<TipoCursoService>();
 			Bind<ITipoExameService>().To<TipoExameService>();
 			Bind<ITipoVacinaService>().To<TipoVacinaService>();
 			Bind<ICursoService>().To<CursoService>();
@@ -91,11 +92,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<ISESMTEmpresaService>().To<SESMTEmpresaService>();
 			Bind<ISESMTEmpresaFuncionarioService>().To<SESMTEmpresaFuncionarioService>();
 			Bind<IAgenteRiscoCBOService>().To<AgenteRiscoCBOService>();
+            Bind<IGrupoCipaService>().To<GrupoCipaService>();
+            Bind<ICipaQuadroService>().To<CipaQuadroService>();
+            Bind<ISesmtQuadroService>().To<SesmtQuadroService>();
 
-
-
-			//Data Repository
-			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+            //Data Repository
+            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
 			Bind<ITipoExameRepository>().To<TipoExameRepository>();
 			Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
 			Bind<ICursoRepository>().To<CursoRepository>();
@@ -131,10 +133,13 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<ICIPAEmpresaFuncionarioRepository>().To<CIPAEmpresaFuncionarioRepository>();
 			Bind<ISESMTEmpresaRepository>().To<SESMTEmpresaRepository>();
 			Bind<ISESMTEmpresaFuncionarioRepository>().To<SESMTEmpresaFuncionarioRepository>();
+            Bind<IGrupoCipaRepository>().To<GrupoCipaRepository>();
+            Bind<ICipaQuadroRepository>().To<CipaQuadroRepository>();
+            Bind<ISesmtQuadroRepository>().To<SesmtQuadroRepository>();
 
 
-			//Data Configuration
-			Bind<IContextManager>().To<ContextManager>();
+            //Data Configuration
+            Bind<IContextManager>().To<ContextManager>();
 			Bind<IUnitOfWork>().To<UnitOfWork>();
 		}
 	}

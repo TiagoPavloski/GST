@@ -70,6 +70,7 @@
     <Compile Include="AppService\CronogramaDeAcoesAppService.cs" />
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaAppService.cs" />
+    <Compile Include="AppService\GrupoCipaAppService.cs" />
     <Compile Include="AppService\PPRAAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Interface\ICronogramaDeAcoesAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaAppService.cs" />
+    <Compile Include="Interface\IGrupoCipaAppService.cs" />
     <Compile Include="Interface\IPPRAAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="ViewModels\CnaeViewModel.cs" />
     <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
     <Compile Include="ViewModels\CursoViewModel.cs" />
+    <Compile Include="ViewModels\GrupoCipaViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
