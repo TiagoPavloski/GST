@@ -13,6 +13,7 @@ namespace BI.GST.Application.ViewModels
 			CnaePrincipal = new CnaeViewModel();
 			UF = new UFViewModel();
 			Endereco = new EnderecoViewModel();
+			Responsaveis = new List<FuncionarioViewModel>();
 		}
 		public int EmpresaId { get; set; }
 
@@ -42,5 +43,6 @@ namespace BI.GST.Application.ViewModels
 		public virtual List<TelefoneViewModel> Telefones { get; set; }
 		public virtual List<CnaeViewModel> CnaeSecundarios { get; set; }
 		public virtual List<SetorViewModel> Setores { get; set; }
+		public virtual ICollection<FuncionarioViewModel> Responsaveis { get; set; }
 	}
 }

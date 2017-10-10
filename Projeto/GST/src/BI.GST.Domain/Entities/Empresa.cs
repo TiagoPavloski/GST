@@ -7,31 +7,32 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Entities
 {
-    public class Empresa
-    {
-        public Empresa()
-        {
-            Telefones = new List<Telefone>();
-            CnaeSecundarios = new List<Cnae>();
-            Setores = new List<Setor>();
-        }
-        public int EmpresaId { get; set; }
+	public class Empresa
+	{
+		public Empresa()
+		{
+			Telefones = new List<Telefone>();
+			CnaeSecundarios = new List<Cnae>();
+			Setores = new List<Setor>();
+			Responsaveis = new List<Funcionario>();
+		}
+		public int EmpresaId { get; set; }
 
-        public string NomeFantasia { get; set; }
+		public string NomeFantasia { get; set; }
 
-        public string RazaoSocial { get; set; }
+		public string RazaoSocial { get; set; }
 
-        public string CNPJ { get; set; }
+		public string CNPJ { get; set; }
 
-        public string Email { get; set; }
+		public string Email { get; set; }
 
-        public int? CnaeId { get; set; }
+		public int? CnaeId { get; set; }
 
 		public int EnderecoId { get; set; }
 
 		public string Logo { get; set; }
 
-        public bool Delete { get; set; }
+		public bool Delete { get; set; }
 
 
 		[ForeignKey("CnaeId")]
@@ -40,5 +41,6 @@ namespace BI.GST.Domain.Entities
 		public virtual Endereco Endereco { get; set; }
 		public virtual ICollection<Cnae> CnaeSecundarios { get; set; }
 		public virtual ICollection<Setor> Setores { get; set; }
+		public virtual ICollection<Funcionario> Responsaveis { get; set; }
 	}
 }

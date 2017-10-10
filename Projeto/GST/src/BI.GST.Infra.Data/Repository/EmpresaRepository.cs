@@ -37,6 +37,12 @@ namespace BI.GST.Infra.Data.Repository
 				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
 			obj.Setores = setores;
 
+			//Adiciona lista de responsaveis completa com o setor id que foi pego na tela
+			List<Funcionario> reponsaveis = new List<Funcionario>();
+			foreach (var item in obj.Responsaveis)
+				reponsaveis.Add(new FuncionarioRepository().ObterPorId(item.FuncionarioId));
+			obj.Responsaveis = reponsaveis;
+
 			base.Adicionar(obj);
 
 			//adiciona telefone cadastrado na tela na tabela telefone
@@ -57,6 +63,12 @@ namespace BI.GST.Infra.Data.Repository
 			foreach (var item in obj.Setores)
 				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
 			obj.Setores = setores;
+
+			//Adiciona lista de responsaveis completa com o setor id que foi pego na tela
+			List<Funcionario> reponsaveis = new List<Funcionario>();
+			foreach (var item in obj.Responsaveis)
+				reponsaveis.Add(new FuncionarioRepository().ObterPorId(item.FuncionarioId));
+			obj.Responsaveis = reponsaveis;
 
 			base.Atualizar(obj);
 
