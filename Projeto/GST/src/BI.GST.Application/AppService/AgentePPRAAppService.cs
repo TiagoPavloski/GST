@@ -24,20 +24,39 @@ namespace BI.GST.Application.AppService
         {
             var agentePPRA = Mapper.Map<AgentePPRAViewModel, AgentePPRA>(agentePPRAViewModel);
 
-            BeginTransaction();
-            _agentePPRAService.Adicionar(agentePPRA);
-            Commit();
-            return true;
+            var duplicado = _agentePPRAService.Find(x => (x.MeioPropagacaoId == agentePPRA.MeioPropagacaoId)
+                && (x.AgenteAmbientalId == agentePPRA.AgenteAmbientalId)
+                && (x.PPRAId == agentePPRA.PPRAId)
+                && (x.Delete == false)).Any();
+            if (duplicado)
+                return false;
+            else
+            {
+                BeginTransaction();
+                _agentePPRAService.Adicionar(agentePPRA);
+                Commit();
+                return true;
+            }
+
         }
 
         public bool Atualizar(AgentePPRAViewModel agentePPRAViewModel)
         {
             var agentePPRA = Mapper.Map<AgentePPRAViewModel, AgentePPRA>(agentePPRAViewModel);
 
-            BeginTransaction();
-            _agentePPRAService.Atualizar(agentePPRA);
-            Commit();
-            return true;
+            var duplicado = _agentePPRAService.Find(x => (x.MeioPropagacaoId == agentePPRA.MeioPropagacaoId)
+                 && (x.AgenteAmbientalId == agentePPRA.AgenteAmbientalId)
+                 && (x.PPRAId == agentePPRA.PPRAId)
+                 && (x.Delete == false)).Any();
+            if (duplicado)
+                return false;
+            else
+            {
+                BeginTransaction();
+                _agentePPRAService.Atualizar(agentePPRA);
+                Commit();
+                return true;
+            }
         }
 
         public void Dispose()
@@ -61,9 +80,9 @@ namespace BI.GST.Application.AppService
             return false;
         }
 
-        public IEnumerable<AgentePPRAViewModel> ObterGrid(int page, string pesquisa)
+        public IEnumerable<AgentePPRAViewModel> ObterGrid(int page, string pesquisa, int ppraId)
         {
-            return Mapper.Map<IEnumerable<AgentePPRA>, IEnumerable<AgentePPRAViewModel>>(_agentePPRAService.ObterGrid(page, pesquisa));
+            return Mapper.Map<IEnumerable<AgentePPRA>, IEnumerable<AgentePPRAViewModel>>(_agentePPRAService.ObterGrid(page, pesquisa, ppraId));
         }
 
         public AgentePPRAViewModel ObterPorId(int id)
@@ -71,14 +90,9 @@ namespace BI.GST.Application.AppService
             return Mapper.Map<AgentePPRA, AgentePPRAViewModel>(_agentePPRAService.ObterPorId(id));
         }
 
-        public IEnumerable<AgentePPRAViewModel> ObterTodos()
+        public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
-            return Mapper.Map<IEnumerable<AgentePPRA>, IEnumerable<AgentePPRAViewModel>>(_agentePPRAService.ObterTodos());
-        }
-
-        public int ObterTotalRegistros(string pesquisa)
-        {
-            return _agentePPRAService.ObterTotalRegistros(pesquisa);
+            return _agentePPRAService.ObterTotalRegistros(pesquisa, ppraId);
         }
     }
 }

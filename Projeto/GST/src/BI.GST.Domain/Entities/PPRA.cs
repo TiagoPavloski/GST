@@ -22,11 +22,13 @@ namespace BI.GST.Domain.Entities
 
         public string DataGeracaoPPRA { get; set; }
 
+        public string DataValidadePPRA { get; set; }
+
         public int EmpresaClienteId { get; set; }
 
         public int EmpresaContratanteId { get; set; }
 
-        public int EmpresaPrestadoraId { get; set; }
+        public int UsuarioId { get; set; }
 
         public string DataEmissao { get; set; }
 
@@ -48,8 +50,6 @@ namespace BI.GST.Domain.Entities
 
         public int Status { get; set; } 
 
-        public string Diretorio { get; set; }
-
         public bool Delete { get; set; }
 
         //public virtual ICollection<AlteracoesPPRA> AlteracoesPPRA { get; set; } ??? não tem tabela disso
@@ -63,7 +63,7 @@ namespace BI.GST.Domain.Entities
         public virtual EquipamentoRuido EquipamentoRuido { get; set; }
         public virtual Empresa EmpresaCliente { get; set; }
         public virtual Empresa EmpresaContratante { get; set; }
-        public virtual Empresa EmpresaPrestadora { get; set; }
+        public virtual Usuario Usuario { get; set; }
         public virtual CIPAEmpresa CipaEmpresa { get; set; }
         public virtual SESMTEmpresa SESMTEmpresa { get; set; }
     }

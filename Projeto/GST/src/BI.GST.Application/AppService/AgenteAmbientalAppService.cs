@@ -25,10 +25,17 @@ namespace BI.GST.Application.AppService
         {
             var agenteAmbiental = Mapper.Map<AgenteAmbientalViewModel, AgenteAmbiental>(agenteAmbientalViewModel);
 
-            BeginTransaction();
-            _agenteAmbientalService.Adicionar(agenteAmbiental);
-            Commit();
-            return true;
+            var duplicado = _agenteAmbientalService.Find(x => (x.Nome == agenteAmbiental.Nome)
+                && (x.Delete == false)).Any();
+            if (duplicado)
+                return false;
+            else
+            {
+                BeginTransaction();
+                _agenteAmbientalService.Adicionar(agenteAmbiental);
+                Commit();
+                return true;
+            }
 
         }
 
@@ -36,10 +43,17 @@ namespace BI.GST.Application.AppService
         {
             var agenteAmbiental = Mapper.Map<AgenteAmbientalViewModel, AgenteAmbiental>(agenteAmbientalViewModel);
 
-            BeginTransaction();
-            _agenteAmbientalService.Atualizar(agenteAmbiental);
-            Commit();
-            return true;
+            var duplicado = _agenteAmbientalService.Find(x => (x.Nome == agenteAmbiental.Nome)
+                            && (x.Delete == false)).Any();
+            if (duplicado)
+                return false;
+            else
+            {
+                BeginTransaction();
+                _agenteAmbientalService.Atualizar(agenteAmbiental);
+                Commit();
+                return true;
+            }
         }
 
         public void Dispose()

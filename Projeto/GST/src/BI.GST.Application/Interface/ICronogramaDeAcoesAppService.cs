@@ -9,8 +9,6 @@ namespace BI.GST.Application.Interface
 {
     public interface ICronogramaDeAcoesAppService : IDisposable
     {
-        IEnumerable<CronogramaDeAcoesViewModel> ObterTodos();
-
         CronogramaDeAcoesViewModel ObterPorId(int id);
 
         bool Adicionar(CronogramaDeAcoesViewModel cronogramaDeAcoesViewModel);
@@ -19,8 +17,8 @@ namespace BI.GST.Application.Interface
 
         bool Excluir(int id);
 
-        IEnumerable<CronogramaDeAcoesViewModel> ObterGrid(int page, string pesquisa);
+        IEnumerable<CronogramaDeAcoesViewModel> ObterGrid(int page, string pesquisa, int ppraId);
 
-        int ObterTotalRegistros(string pesquisa);
+        int ObterTotalRegistros(string pesquisa, int ppraId);
     }
 }

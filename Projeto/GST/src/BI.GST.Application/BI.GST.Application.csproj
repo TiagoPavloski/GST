@@ -57,6 +57,7 @@
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
     <Compile Include="AppService\AgenteAcidenteAppService.cs" />
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
+    <Compile Include="AppService\FonteRiscoCBOAppService.cs" />
     <Compile Include="AppService\AgenteRiscoCBOAppService.cs" />
     <Compile Include="AppService\AgenteErgonomicoAppService.cs" />
     <Compile Include="AppService\AgenteFisicoAppService.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="AppService\CronogramaDeAcoesAppService.cs" />
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaAppService.cs" />
+    <Compile Include="AppService\GrupoCipaAppService.cs" />
     <Compile Include="AppService\PPRAAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
+    <Compile Include="Interface\IFonteRiscoCBOAppService.cs" />
     <Compile Include="Interface\IAgenteRiscoCBOAppService.cs" />
     <Compile Include="Interface\IAgenteErgonomicoAppService.cs" />
     <Compile Include="Interface\IAgenteFisicoAppService.cs" />
@@ -112,6 +115,7 @@
     <Compile Include="Interface\ICronogramaDeAcoesAppService.cs" />
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaAppService.cs" />
+    <Compile Include="Interface\IGrupoCipaAppService.cs" />
     <Compile Include="Interface\IPPRAAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />
@@ -135,6 +139,8 @@
     <Compile Include="ViewModels\AgenteAmbientalViewModel.cs" />
     <Compile Include="ViewModels\AgenteAcidenteViewModel.cs" />
     <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
+    <Compile Include="ViewModels\RiscoCBOViewModel.cs" />
+    <Compile Include="ViewModels\FonteRiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\AgenteRiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\AgenteErgonomicoViewModel.cs" />
     <Compile Include="ViewModels\AgenteFisicoViewModel.cs" />
@@ -151,6 +157,7 @@
     <Compile Include="ViewModels\CursoViewModel.cs" />
     <Compile Include="ViewModels\FuncionarioEmpresaViewModel.cs" />
     <Compile Include="ViewModels\OSViewModel.cs" />
+    <Compile Include="ViewModels\GrupoCipaViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
