@@ -137,6 +137,7 @@
     <Compile Include="ViewModels\AgenteAmbientalViewModel.cs" />
     <Compile Include="ViewModels\AgenteAcidenteViewModel.cs" />
     <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
+    <Compile Include="ViewModels\RiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\FonteRiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\AgenteRiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\AgenteErgonomicoViewModel.cs" />
