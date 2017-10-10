@@ -4,19 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BI.GST.Domain.Entities
+namespace BI.GST.Application.ViewModels
 {
-	public class OS
+	public class OSViewModel
 	{
 		public int OsId { get; set; }
 
 		public int FuncionarioEmpresaId { get; set; }
 
-		public virtual FuncionarioEmpresa FuncionarioEmpresa { get; set; }
+		public virtual FuncionarioEmpresaViewModel FuncionarioEmpresa { get; set; }
 
 		public int ColaboradorId { get; set; }
 
-		public virtual Colaborador Colaborador { get; set; }
+		public virtual ColaboradorViewModel Colaborador { get; set; }
 
 		public string DataElaboracao { get; set; }
 

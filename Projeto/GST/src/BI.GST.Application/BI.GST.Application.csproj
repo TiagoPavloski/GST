@@ -146,8 +146,11 @@
     <Compile Include="ViewModels\CIPAEmpresaViewModel.cs" />
     <Compile Include="ViewModels\ClassificacaoEfeitoViewModel.cs" />
     <Compile Include="ViewModels\CnaeViewModel.cs" />
+    <Compile Include="ViewModels\ColaboradorViewModel.cs" />
     <Compile Include="ViewModels\CronogramaDeAcoesViewModel.cs" />
     <Compile Include="ViewModels\CursoViewModel.cs" />
+    <Compile Include="ViewModels\FuncionarioEmpresaViewModel.cs" />
+    <Compile Include="ViewModels\OSViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />

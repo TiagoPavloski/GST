@@ -67,7 +67,9 @@ namespace BI.GST.Application.AppService
 				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
 
 			foreach (var item in funcionarioId)
-				empresa.Responsaveis.Add(new Funcionario { FuncionarioId = item });
+			{
+				empresa.Responsaveis.Add(new Funcionario { FuncionarioId = item, EmpresaId = empresaViewModel.EmpresaId });
+			}
 
 			foreach (var item in telefoneViewModel)
 			{

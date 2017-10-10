@@ -59,7 +59,7 @@
 		<div class="form-group">
 			@Html.Label("Cnae Secundarios", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.ListBox("cnaeSecundarioId", (MultiSelectList)ViewBag.CnaeIdList, htmlAttributes: new { @class = "form-control" })
+				@Html.ListBox("cnaeSecundarioId", (MultiSelectList)ViewBag.CnaeIdList, htmlAttributes: new { @class = "form-control", size = "6" })
 			</div>
 		</div>
 
@@ -74,7 +74,7 @@
 		<div class="form-group">
 			@Html.Label("Reponsaveis", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.ListBox("funcionarioId", (MultiSelectList)ViewBag.FuncionarioIdList, htmlAttributes: new { @class = "form-control" })
+				@Html.ListBox("funcionarioId", (MultiSelectList)ViewBag.FuncionarioIdList, htmlAttributes: new { @class = "form-control", size = "6" })
 			</div>
 		</div>
 	
@@ -82,7 +82,7 @@
 		<div class="form-group">
 			@Html.Label("Setores", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.ListBox("SetorId", (MultiSelectList)ViewBag.SetorIdList, htmlAttributes: new { @class = "form-control" })
+				@Html.ListBox("SetorId", (MultiSelectList)ViewBag.SetorIdList, htmlAttributes: new { @class = "form-control", size="6" })
 			</div>
 		</div>
 
