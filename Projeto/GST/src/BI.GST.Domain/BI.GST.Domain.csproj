@@ -48,6 +48,7 @@
     <Compile Include="Entities\Certificado.cs" />
     <Compile Include="Entities\CIPAEmpresa.cs" />
     <Compile Include="Entities\CIPAEmpresaFuncionario.cs" />
+    <Compile Include="Entities\CipaQuadro.cs" />
     <Compile Include="Entities\ClassificacaoEfeito.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Cnae.cs" />
@@ -55,8 +56,10 @@
     <Compile Include="Entities\CronogramaDeAcoes.cs" />
     <Compile Include="Entities\Curso.cs" />
     <Compile Include="Entities\Empresa.cs" />
+    <Compile Include="Entities\GrupoCipa.cs" />
     <Compile Include="Entities\SESMTEmpresa.cs" />
     <Compile Include="Entities\SESMTEmpresaFuncionario.cs" />
+    <Compile Include="Entities\SesmtQuadro.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\EnderecoEx.cs" />
@@ -83,6 +86,8 @@
     <Compile Include="Entities\TipoVacina.cs" />
     <Compile Include="Entities\UF.cs" />
     <Compile Include="Entities\Vacina.cs" />
+    <Compile Include="Interface\IRepository\ICipaQuadroRepository.cs" />
+    <Compile Include="Interface\IRepository\IGrupoCipaRepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteAmbientalRepository.cs" />
     <Compile Include="Interface\IRepository\IRiscoCBORepository.cs" />
     <Compile Include="Interface\IRepository\IFonteRiscoCBORepository.cs" />
@@ -122,6 +127,7 @@
     <Compile Include="Interface\IRepository\ITipoVacinaRepository.cs" />
     <Compile Include="Interface\IRepository\IUFRepository.cs" />
     <Compile Include="Interface\IRepository\IVacinaRepository.cs" />
+    <Compile Include="Interface\IRepository\ISesmtQuadroRepository.cs" />
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
     <Compile Include="Interface\IService\IRiscoCBOService.cs" />
     <Compile Include="Interface\IService\IFonteRiscoCBOService.cs" />
@@ -130,6 +136,7 @@
     <Compile Include="Interface\IService\IAgenteCausadorCBOService.cs" />
     <Compile Include="Interface\IService\ICIPAEmpresaFuncionarioService.cs" />
     <Compile Include="Interface\IService\ICIPAEmpresaService.cs" />
+    <Compile Include="Interface\IService\ICipaQuadroService.cs" />
     <Compile Include="Interface\IService\ICnaeService.cs" />
     <Compile Include="Interface\IService\IAnexoService.cs" />
     <Compile Include="Interface\IService\ICronogramaDeAcoesService.cs" />
@@ -141,8 +148,10 @@
     <Compile Include="Interface\IService\IClassificacaoEfeitoService.cs" />
     <Compile Include="Interface\IService\ICursoService.cs" />
     <Compile Include="Interface\IService\IEmpresaService.cs" />
+    <Compile Include="Interface\IService\IGrupoCipaService.cs" />
     <Compile Include="Interface\IService\ISESMTEmpresaFuncionarioService.cs" />
     <Compile Include="Interface\IService\ISESMTEmpresaService.cs" />
+    <Compile Include="Interface\IService\ISesmtQuadroService.cs" />
     <Compile Include="Interface\IService\IUsuarioService.cs" />
     <Compile Include="Interface\IService\IEnderecoService.cs" />
     <Compile Include="Interface\IService\IEquipamentoRuidoService.cs" />
@@ -169,6 +178,7 @@
     <Compile Include="Services\AgenteCausadorCBOService.cs" />
     <Compile Include="Services\CIPAEmpresaFuncionarioService.cs" />
     <Compile Include="Services\CIPAEmpresaService.cs" />
+    <Compile Include="Services\CipaQuadroService.cs" />
     <Compile Include="Services\CnaeService.cs" />
     <Compile Include="Services\AnexoService.cs" />
     <Compile Include="Services\CronogramaDeAcoesService.cs" />
@@ -180,8 +190,10 @@
     <Compile Include="Services\ClassificacaoEfeitoService.cs" />
     <Compile Include="Services\CursoService.cs" />
     <Compile Include="Services\EmpresaService.cs" />
+    <Compile Include="Services\GrupoCipaService.cs" />
     <Compile Include="Services\SESMTEmpresaFuncionarioService.cs" />
     <Compile Include="Services\SESMTEmpresaService.cs" />
+    <Compile Include="Services\SesmtQuadroService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
     <Compile Include="Services\EnderecoService.cs" />
     <Compile Include="Services\EquipamentoRuidoService.cs" />

@@ -9,8 +9,6 @@ namespace BI.GST.Application.Interface
 {
     public interface IAgentePPRAAppService : IDisposable
     {
-        IEnumerable<AgentePPRAViewModel> ObterTodos();
-
         AgentePPRAViewModel ObterPorId(int id);
 
         bool Adicionar(AgentePPRAViewModel agentePPRAViewModel);
@@ -19,8 +17,8 @@ namespace BI.GST.Application.Interface
 
         bool Excluir(int id);
 
-        IEnumerable<AgentePPRAViewModel> ObterGrid(int page, string pesquisa);
+        IEnumerable<AgentePPRAViewModel> ObterGrid(int page, string pesquisa, int ppraId);
 
-        int ObterTotalRegistros(string pesquisa);
+        int ObterTotalRegistros(string pesquisa,int ppraId);
     }
 }

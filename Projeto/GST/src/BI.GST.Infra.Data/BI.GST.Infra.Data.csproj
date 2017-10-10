@@ -129,13 +129,16 @@
     <Compile Include="Repository\BaseRepository.cs" />
     <Compile Include="Repository\CIPAEmpresaFuncionarioRepository.cs" />
     <Compile Include="Repository\CIPAEmpresaRepository.cs" />
+    <Compile Include="Repository\CipaQuadroRepository.cs" />
     <Compile Include="Repository\CnaeRepository.cs" />
     <Compile Include="Repository\CronogramaDeAcoesRepository.cs" />
     <Compile Include="Repository\ClassificacaoEfeitoRepository.cs" />
     <Compile Include="Repository\CursoRepository.cs" />
     <Compile Include="Repository\EmpresaRepository.cs" />
+    <Compile Include="Repository\GrupoCipaRepository.cs" />
     <Compile Include="Repository\SESMTEmpresaFuncionarioRepository.cs" />
     <Compile Include="Repository\SESMTEmpresaRepository.cs" />
+    <Compile Include="Repository\SesmtQuadroRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\EquipamentoRuidoRepository.cs" />

@@ -10,8 +10,6 @@ namespace BI.GST.Domain.Interface.IService
 {
     public interface IAgentePPRAService : IDisposable
     {
-        IEnumerable<AgentePPRA> ObterTodos();
-
         AgentePPRA ObterPorId(int id);
 
         IEnumerable<AgentePPRA> Find(Expression<Func<AgentePPRA, bool>> predicate);
@@ -22,8 +20,8 @@ namespace BI.GST.Domain.Interface.IService
 
         void Excluir(int id);
 
-        IEnumerable<AgentePPRA> ObterGrid(int page, string pesquisa);
+        IEnumerable<AgentePPRA> ObterGrid(int page, string pesquisa, int ppraId);
 
-        int ObterTotalRegistros(string pesquisa);
+        int ObterTotalRegistros(string pesquisa, int ppraId);
     }
 }

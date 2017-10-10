@@ -52,16 +52,17 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<ISESMTEmpresaFuncionarioAppService>().To<SESMTEmpresaFuncionarioAppService>();
 			Bind<ICIPAEmpresaAppService>().To<CIPAEmpresaAppService>();
 			Bind<ICIPAEmpresaFuncionarioAppService>().To<CIPAEmpresaFuncionarioAppService>();
-            Bind<IFonteRiscoCBOAppService>().To<FonteRiscoCBOAppService>();
-
+            Bind<IGrupoCipaAppService>().To<GrupoCipaAppService>();
+			Bind<IFonteRiscoCBOAppService>().To<FonteRiscoCBOAppService>();
+            
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
-            Bind<ITipoExameService>().To<TipoExameService>();
-            Bind<ITipoVacinaService>().To<TipoVacinaService>();
-            Bind<ICursoService>().To<CursoService>();
-            Bind<IExameService>().To<ExameService>();
-            Bind<IVacinaService>().To<VacinaService>();
-            Bind<IFuncionarioService>().To<FuncionarioService>();
+			Bind<ITipoExameService>().To<TipoExameService>();
+			Bind<ITipoVacinaService>().To<TipoVacinaService>();
+			Bind<ICursoService>().To<CursoService>();
+			Bind<IExameService>().To<ExameService>();
+			Bind<IVacinaService>().To<VacinaService>();
+			Bind<IFuncionarioService>().To<FuncionarioService>();
 			Bind<IUFService>().To<UFService>();
 			Bind<ITelefoneService>().To<TelefoneService>();
 			Bind<IEnderecoService>().To<EnderecoService>();
@@ -91,15 +92,18 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<ISESMTEmpresaFuncionarioService>().To<SESMTEmpresaFuncionarioService>();
             Bind<IAgenteRiscoCBOService>().To<AgenteRiscoCBOService>();
             Bind<IFonteRiscoCBOService>().To<FonteRiscoCBOService>();
+            Bind<IGrupoCipaService>().To<GrupoCipaService>();
+            Bind<ICipaQuadroService>().To<CipaQuadroService>();
+            Bind<ISesmtQuadroService>().To<SesmtQuadroService>();
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
-            Bind<ITipoExameRepository>().To<TipoExameRepository>();
-            Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
-            Bind<ICursoRepository>().To<CursoRepository>();
-            Bind<IExameRepository>().To<ExameRepository>();
-            Bind<IVacinaRepository>().To<VacinaRepository>();
-            Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
+			Bind<ITipoExameRepository>().To<TipoExameRepository>();
+			Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
+			Bind<ICursoRepository>().To<CursoRepository>();
+			Bind<IExameRepository>().To<ExameRepository>();
+			Bind<IVacinaRepository>().To<VacinaRepository>();
+			Bind<IFuncionarioRepository>().To<FuncionarioRepository>();
 			Bind<IUFRepository>().To<UFRepository>();
 			Bind<ITelefoneRepository>().To<TelefoneRepository>();
 			Bind<IEnderecoRepository>().To<EnderecoRepository>();
@@ -129,10 +133,14 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<ISESMTEmpresaRepository>().To<SESMTEmpresaRepository>();
 			Bind<ISESMTEmpresaFuncionarioRepository>().To<SESMTEmpresaFuncionarioRepository>();
             Bind<IFonteRiscoCBORepository>().To<FonteRiscoCBORepository>();
+            Bind<IGrupoCipaRepository>().To<GrupoCipaRepository>();
+            Bind<ICipaQuadroRepository>().To<CipaQuadroRepository>();
+            Bind<ISesmtQuadroRepository>().To<SesmtQuadroRepository>();
+
 
             //Data Configuration
             Bind<IContextManager>().To<ContextManager>();
-            Bind<IUnitOfWork>().To<UnitOfWork>();
-        }
-    }
+			Bind<IUnitOfWork>().To<UnitOfWork>();
+		}
+	}
 }

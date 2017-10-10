@@ -4659,6 +4659,7 @@
     <Content Include="Views\FonteRiscoCBOs\Details.cshtml" />
     <Content Include="Views\FonteRiscoCBOs\Edit.cshtml" />
     <Content Include="Views\FonteRiscoCBOs\Index.cshtml" />
+    <Content Include="Views\CIPAEmpresas\_CipaEmpresaFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

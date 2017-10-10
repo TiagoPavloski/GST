@@ -9,8 +9,8 @@ namespace BI.GST.Domain.Interface.IRepository
 {
     public interface ICronogramaDeAcoesRepository : IBaseRepository<CronogramaDeAcoes>
     {
-        IEnumerable<CronogramaDeAcoes> ObterGrid(int page, string pesquisa);
+        IEnumerable<CronogramaDeAcoes> ObterGrid(int page, string pesquisa, int ppraId);
 
-        int ObterTotalRegistros(string pesquisa);
+        int ObterTotalRegistros(string pesquisa, int ppraId);
     }
 }

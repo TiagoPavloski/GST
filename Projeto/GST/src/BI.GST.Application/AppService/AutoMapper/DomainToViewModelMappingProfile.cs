@@ -50,8 +50,9 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<PPRA, PPRAViewModel>();
             Mapper.CreateMap<CIPAEmpresa, CIPAEmpresaViewModel>();
             Mapper.CreateMap<CIPAEmpresaFuncionario, CIPAEmpresaFuncionarioViewModel>();
-            Mapper.CreateMap<SESMTEmpresa ,SESMTEmpresaViewModel>();
+            Mapper.CreateMap<SESMTEmpresa, SESMTEmpresaViewModel>();
             Mapper.CreateMap<SESMTEmpresaFuncionario, SESMTEmpresaFuncionarioViewModel>();
+            Mapper.CreateMap<GrupoCipa, GrupoCipaViewModel>();
         }
     }
 }

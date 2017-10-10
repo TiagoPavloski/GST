@@ -26,9 +26,9 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<ExameViewModel, Exame>();
             Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
             Mapper.CreateMap<UsuarioViewModel, Usuario>();
-			      Mapper.CreateMap<TelefoneViewModel, Telefone>();
-			      Mapper.CreateMap<UFViewModel, UF>();
-		      	Mapper.CreateMap<EnderecoViewModel, Endereco>();
+            Mapper.CreateMap<TelefoneViewModel, Telefone>();
+            Mapper.CreateMap<UFViewModel, UF>();
+            Mapper.CreateMap<EnderecoViewModel, Endereco>();
             Mapper.CreateMap<AgenteAmbientalViewModel, AgenteAmbiental>();
             Mapper.CreateMap<EquipamentoRuidoViewModel, EquipamentoRuido>();
             Mapper.CreateMap<FinanceiroViewModel, Financeiro>();
@@ -43,7 +43,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<MeioPropagacaoViewModel, MeioPropagacao>();
             Mapper.CreateMap<CronogramaDeAcoesViewModel, CronogramaDeAcoes>();
             Mapper.CreateMap<AgentePPRAViewModel, AgentePPRA>();
-			      Mapper.CreateMap<EmpresaViewModel, Empresa>();
+            Mapper.CreateMap<EmpresaViewModel, Empresa>();
             Mapper.CreateMap<EscalaViewModel, Escala>();
             Mapper.CreateMap<AgenteCausadorCBOViewModel, AgenteCausadorCBO>();
             Mapper.CreateMap<AnexoViewModel, Anexo>();
@@ -54,6 +54,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<SESMTEmpresaViewModel, SESMTEmpresa>();
             Mapper.CreateMap<SESMTEmpresaFuncionarioViewModel, SESMTEmpresaFuncionario>();
             Mapper.CreateMap<FonteRiscoCBOViewModel, FonteRiscoCBO>();
+            Mapper.CreateMap<GrupoCipaViewModel, GrupoCipa>();
         }
     }
 }

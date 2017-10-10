@@ -44,10 +44,6 @@ namespace BI.GST.Application.ViewModels
 
         public int CIPASuplentesId { get; set; }
 
-        //public string TabelaCIPA { get; set; }
-
-        // string TabelaSESMT { get; set; }
-
         public bool SESMT { get; set; }
 
         public int SESMTEleitosId { get; set; }
@@ -57,8 +53,6 @@ namespace BI.GST.Application.ViewModels
         public int EquipamentoRuidoId { get; set; }
 
         public int Status { get; set; }
-
-        //public string Diretorio { get; set; }
 
         public bool Delete { get; set; }
 
@@ -81,6 +75,6 @@ namespace BI.GST.Application.ViewModels
         public virtual EquipamentoRuidoViewModel EquipamentoRuido { get; set; }
         public virtual EmpresaViewModel EmpresaCliente { get; set; }
         public virtual EmpresaViewModel EmpresaContratante { get; set; }
-        public virtual EmpresaViewModel EmpresaPrestadora { get; set; }
+        public virtual UsuarioViewModel Usuario { get; set; }
     }
 }

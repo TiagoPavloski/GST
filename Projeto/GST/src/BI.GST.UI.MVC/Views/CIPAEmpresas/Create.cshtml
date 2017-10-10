@@ -31,7 +31,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.EmpresaId, "EmpresaId", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Empresa", "Empresa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("EmpresaId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EmpresaId, "", new { @class = "text-danger" })
@@ -39,13 +39,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Delete, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Funcionário", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Delete)
-                    @Html.ValidationMessageFor(model => model.Delete, "", new { @class = "text-danger" })
-                </div>
+                <p><a id="add-funcionario" class="btn">Adicionar Novo</a></p>
             </div>
+        </div>
+        <div id="tab-1" class="tab-pane">
+            @if (Model != null && Model.CIPAEmpresaFuncionarios != null)
+            {
+                foreach (var funcionario in Model.CIPAEmpresaFuncionarios)
+                {
+                    Html.RenderPartial("_CipaEmpresaFuncionario", funcionario);
+
+                }
+            }
         </div>
 
         <div class="form-group">

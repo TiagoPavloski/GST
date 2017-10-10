@@ -62,9 +62,9 @@ namespace BI.GST.Application.AppService
             return false;
         }
 
-        public IEnumerable<CronogramaDeAcoesViewModel> ObterGrid(int page, string pesquisa)
+        public IEnumerable<CronogramaDeAcoesViewModel> ObterGrid(int page, string pesquisa, int ppraId)
         {
-            return Mapper.Map<IEnumerable<CronogramaDeAcoes>, IEnumerable<CronogramaDeAcoesViewModel>>(_cronogramaDeAcoesService.ObterGrid(page, pesquisa));
+            return Mapper.Map<IEnumerable<CronogramaDeAcoes>, IEnumerable<CronogramaDeAcoesViewModel>>(_cronogramaDeAcoesService.ObterGrid(page, pesquisa, ppraId));
         }
 
         public CronogramaDeAcoesViewModel ObterPorId(int id)
@@ -72,14 +72,9 @@ namespace BI.GST.Application.AppService
             return Mapper.Map<CronogramaDeAcoes, CronogramaDeAcoesViewModel> (_cronogramaDeAcoesService.ObterPorId(id));
         }
 
-        public IEnumerable<CronogramaDeAcoesViewModel> ObterTodos()
+        public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
-            return Mapper.Map<IEnumerable<CronogramaDeAcoes>, IEnumerable<CronogramaDeAcoesViewModel>>(_cronogramaDeAcoesService.ObterTodos());
-        }
-
-        public int ObterTotalRegistros(string pesquisa)
-        {
-            return _cronogramaDeAcoesService.ObterTotalRegistros(pesquisa);
+            return _cronogramaDeAcoesService.ObterTotalRegistros(pesquisa, ppraId);
         }
     }
 }
