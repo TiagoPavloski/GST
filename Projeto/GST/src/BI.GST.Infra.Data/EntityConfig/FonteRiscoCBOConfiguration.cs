@@ -8,6 +8,14 @@ namespace BI.GST.Infra.Data.EntityConfig
     public FonteRiscoCBOConfiguration()
     {
       HasKey(e => e.FonteRiscoCBOId);
+
+            Property(e => e.Nome)
+                      .IsRequired()
+                      .HasMaxLength(55);
+
+            Property(e => e.Status)
+                .IsRequired();
+
     }
   }
 }

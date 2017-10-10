@@ -196,6 +196,7 @@
     <Compile Include="Controllers\EscalasController.cs" />
     <Compile Include="Controllers\ExamesController.cs" />
     <Compile Include="Controllers\FinanceiroController.cs" />
+    <Compile Include="Controllers\FonteRiscoCBOsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MedicaoAgentesController.cs" />
     <Compile Include="Controllers\MeioPropagacoesController.cs" />
@@ -4653,6 +4654,11 @@
     <Content Include="Views\CIPAEmpresas\Details.cshtml" />
     <Content Include="Views\CIPAEmpresas\Edit.cshtml" />
     <Content Include="Views\CIPAEmpresas\Index.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Create.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Delete.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Details.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Edit.cshtml" />
+    <Content Include="Views\FonteRiscoCBOs\Index.cshtml" />
     <Content Include="Views\CIPAEmpresas\_CipaEmpresaFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
