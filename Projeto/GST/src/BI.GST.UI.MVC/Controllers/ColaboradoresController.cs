@@ -5,133 +5,132 @@ using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class CIPAEmpresasController : Controller
+    public class ColaboradoresController : Controller
     {
-        private readonly ICIPAEmpresaAppService _cipaEmpresaAppService;
+        private readonly IColaboradorAppService _colaboradorAppService;
         private readonly IEmpresaAppService _empresaAppService;
-        //private readonly IFAppService _empresaAppService;
 
-        public CIPAEmpresasController(ICIPAEmpresaAppService cipaEmpresaAppService, IEmpresaAppService empresaAppService)
+        public ColaboradoresController(IColaboradorAppService colaboradorAppService, IEmpresaAppService empresaAppService)
         {
-            _cipaEmpresaAppService = cipaEmpresaAppService;
+            _colaboradorAppService = colaboradorAppService;
             _empresaAppService     = empresaAppService;
         }
 
-        // GET: CIPAEmpresas
+        // GET: Colaboradores
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterGrid(page, pesquisa);
+            var colaboradorViewModel = _colaboradorAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            ViewBag.Controller = "CIPAEmpresas";
-            ViewBag.TotalRegistros = _cipaEmpresaAppService.ObterTotalRegistros(pesquisa);
+            ViewBag.Controller = "colaboradores";
+            ViewBag.TotalRegistros = _colaboradorAppService.ObterTotalRegistros(pesquisa);
 
-            return View(cipaEmpresaViewModel);
+            return View(colaboradorViewModel);
         }
 
-        // GET: CIPAEmpresas/Details/5
+        // GET: Colaboradores/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterPorId(id.Value);
-            if (cipaEmpresaViewModel == null)
+            var colaboradorViewModel = _colaboradorAppService.ObterPorId(id.Value);
+            if (colaboradorViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(cipaEmpresaViewModel);
+            return View(colaboradorViewModel);
         }
 
-        // GET: CIPAEmpresas/Create
+        // GET: Colaboradores/Create
         public ActionResult Create()
         {
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
-            var cipaEmpresaViewModel = new CIPAEmpresaViewModel();
+            var colaboradorViewModel = new ColaboradorViewModel();
 
-            return View(cipaEmpresaViewModel);
+            return View(colaboradorViewModel);
         }
 
-        // POST: CIPAEmpresas/Create
+        // POST: Colaboradores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CIPAEmpresaViewModel cipaEmpresaViewModel)
+        public ActionResult Create(ColaboradorViewModel colaboradorViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_cipaEmpresaAppService.Adicionar(cipaEmpresaViewModel))
+                if (!_colaboradorAppService.Adicionar(colaboradorViewModel))
                 {
                     ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
                     //var cipaEmpresa = new CIPAEmpresaViewModel();
-                    TempData["Mensagem"] = "Atenção, CIPA já cadastrada para esta empresa e ano";
+                    TempData["Mensagem"] = "Atenção, Colaborador já cadastrado";
                     //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
 
-            return View(cipaEmpresaViewModel);
+            return View(colaboradorViewModel);
         }
 
-        // GET: CIPAEmpresas/Edit/5
+        // GET: Colaboradores/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterPorId(id.Value);
-            if (cipaEmpresaViewModel == null)
+            var colaboradorViewModel = _colaboradorAppService.ObterPorId(id.Value);
+            if (colaboradorViewModel == null)
             {
                 return HttpNotFound();
             }
 
-            return View(cipaEmpresaViewModel);
+            return View(colaboradorViewModel);
         }
 
-        // POST: CIPAEmpresas/Edit/5
+        // POST: Colaboradores/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CIPAEmpresaViewModel cipaEmpresaViewModel)
+        public ActionResult Edit(ColaboradorViewModel colaboradorViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_cipaEmpresaAppService.Atualizar(cipaEmpresaViewModel))
+                if (!_colaboradorAppService.Atualizar(colaboradorViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, CIPA já cadastrada para esta empresa e ano')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, Colaborador já cadastrado')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(cipaEmpresaViewModel);
+            return View(colaboradorViewModel);
         }
 
-        // GET: CIPAEmpresas/Delete/5
+        // GET: Colaboradores/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterPorId(id.Value);
-            if (cipaEmpresaViewModel == null)
+            var colaboradorViewModel = _colaboradorAppService.ObterPorId(id.Value);
+            if (colaboradorViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(cipaEmpresaViewModel);
+            return View(colaboradorViewModel);
         }
 
-        // POST: CIPAEmpresas/Delete/5
+        // POST: Colaboradores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_cipaEmpresaAppService.Excluir(id))
+            if (!_colaboradorAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
                 return null;
@@ -146,7 +145,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (disposing)
             {
-                _cipaEmpresaAppService.Dispose();
+                _colaboradorAppService.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -189,6 +189,7 @@
     <Compile Include="Controllers\AgenteRiscoCBOsController.cs" />
     <Compile Include="Controllers\CIPAEmpresasController.cs" />
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
+    <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -4660,6 +4661,11 @@
     <Content Include="Views\FonteRiscoCBOs\Edit.cshtml" />
     <Content Include="Views\FonteRiscoCBOs\Index.cshtml" />
     <Content Include="Views\CIPAEmpresas\_CipaEmpresaFuncionario.cshtml" />
+    <Content Include="Views\Colaboradores\Create.cshtml" />
+    <Content Include="Views\Colaboradores\Delete.cshtml" />
+    <Content Include="Views\Colaboradores\Details.cshtml" />
+    <Content Include="Views\Colaboradores\Edit.cshtml" />
+    <Content Include="Views\Colaboradores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -57,6 +57,7 @@
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
     <Compile Include="AppService\AgenteAcidenteAppService.cs" />
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
+    <Compile Include="AppService\ColaboradorAppService.cs" />
     <Compile Include="AppService\FonteRiscoCBOAppService.cs" />
     <Compile Include="AppService\AgenteRiscoCBOAppService.cs" />
     <Compile Include="AppService\AgenteErgonomicoAppService.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
+    <Compile Include="Interface\IColaboradorAppService.cs" />
     <Compile Include="Interface\IFonteRiscoCBOAppService.cs" />
     <Compile Include="Interface\IAgenteRiscoCBOAppService.cs" />
     <Compile Include="Interface\IAgenteErgonomicoAppService.cs" />
