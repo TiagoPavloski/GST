@@ -54,6 +54,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<ICIPAEmpresaFuncionarioAppService>().To<CIPAEmpresaFuncionarioAppService>();
             Bind<IGrupoCipaAppService>().To<GrupoCipaAppService>();
 			Bind<IFonteRiscoCBOAppService>().To<FonteRiscoCBOAppService>();
+			Bind<IOSAppService>().To<OSAppService>();
+
             Bind<IColaboradorAppService>().To<ColaboradorAppService>();
 
             //Servicos
@@ -96,10 +98,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IGrupoCipaService>().To<GrupoCipaService>();
             Bind<ICipaQuadroService>().To<CipaQuadroService>();
             Bind<ISesmtQuadroService>().To<SesmtQuadroService>();
+			Bind<IOSService>().To<OSService>();
             Bind<IColaboradorService>().To<ColaboradorService>();
 
-            //Data Repository
-            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+			//Data Repository
+			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
 			Bind<ITipoExameRepository>().To<TipoExameRepository>();
 			Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
 			Bind<ICursoRepository>().To<CursoRepository>();
@@ -138,11 +141,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IGrupoCipaRepository>().To<GrupoCipaRepository>();
             Bind<ICipaQuadroRepository>().To<CipaQuadroRepository>();
             Bind<ISesmtQuadroRepository>().To<SesmtQuadroRepository>();
+			Bind<IOSRepository>().To<OSRepository>();
             Bind<IColaboradorRepository>().To<ColaboradorRepository>();
 
 
-            //Data Configuration
-            Bind<IContextManager>().To<ContextManager>();
+			//Data Configuration
+			Bind<IContextManager>().To<ContextManager>();
 			Bind<IUnitOfWork>().To<UnitOfWork>();
 		}
 	}

@@ -11,11 +11,11 @@ namespace BI.GST.Infra.Data.EntityConfig
 
             Property(e => e.Consequencias)
                       .IsRequired()
-                      .HasMaxLength(100);
+                      .HasMaxLength(500);
 
             Property(e => e.MedidasPreventivas)
                     .IsRequired()
-                    .HasMaxLength(100);
+                    .HasMaxLength(500);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace BI.GST.Application.AppService
 			_enderecoService = enderecoService;
 			_funcionarioService = funcionarioService;
 		}
-		public bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId)
+		public bool Adicionar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId/*, int[] funcionarioId*/)
 		{
 			empresaViewModel.Endereco.UFId = empresaViewModel.UFId;
 			var empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
@@ -43,8 +43,8 @@ namespace BI.GST.Application.AppService
 			foreach (var item in cnaeSecundarioId)
 				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
 
-			foreach (var item in funcionarioId)
-				empresa.Responsaveis.Add(new Funcionario { FuncionarioId = item });
+			/*foreach (var item in funcionarioId)
+				empresa.Responsaveis.Add(new Funcionario { FuncionarioId = item });*/
 
 			BeginTransaction();
 			_empresaService.Adicionar(empresa);
@@ -53,9 +53,10 @@ namespace BI.GST.Application.AppService
 		}
 
 
-		public bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId)
+		public bool Atualizar(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId/*, int[] funcionarioId*/)
 		{
 			empresaViewModel.Endereco.UFId = empresaViewModel.UFId;
+			empresaViewModel.CnaePrincipal = new CnaeViewModel();
 			empresaViewModel.CnaePrincipal.CnaeId = empresaViewModel.CnaeId;
 
 			var empresa = Mapper.Map<EmpresaViewModel, Empresa>(empresaViewModel);
@@ -66,10 +67,10 @@ namespace BI.GST.Application.AppService
 			foreach (var item in cnaeSecundarioId)
 				empresa.CnaeSecundarios.Add(new Cnae { CnaeId = item });
 
-			foreach (var item in funcionarioId)
+			/*foreach (var item in funcionarioId)
 			{
 				empresa.Responsaveis.Add(new Funcionario { FuncionarioId = item, EmpresaId = empresaViewModel.EmpresaId });
-			}
+			}*/
 
 			foreach (var item in telefoneViewModel)
 			{

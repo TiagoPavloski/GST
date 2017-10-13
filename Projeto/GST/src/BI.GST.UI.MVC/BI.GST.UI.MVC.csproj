@@ -192,6 +192,7 @@
     <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\EscalasController.cs" />
@@ -4661,6 +4662,11 @@
     <Content Include="Views\FonteRiscoCBOs\Edit.cshtml" />
     <Content Include="Views\FonteRiscoCBOs\Index.cshtml" />
     <Content Include="Views\CIPAEmpresas\_CipaEmpresaFuncionario.cshtml" />
+    <Content Include="Views\OS\Create.cshtml" />
+    <Content Include="Views\OS\Delete.cshtml" />
+    <Content Include="Views\OS\Edit.cshtml" />
+    <Content Include="Views\OS\Index.cshtml" />
+    <Content Include="Views\OS\Gerar.cshtml" />
     <Content Include="Views\Colaboradores\Create.cshtml" />
     <Content Include="Views\Colaboradores\Delete.cshtml" />
     <Content Include="Views\Colaboradores\Details.cshtml" />

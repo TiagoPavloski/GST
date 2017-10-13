@@ -2,6 +2,7 @@
 using BI.GST.Domain.Interface.IRepository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,12 +38,6 @@ namespace BI.GST.Infra.Data.Repository
 				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
 			obj.Setores = setores;
 
-			//Adiciona lista de responsaveis completa com o setor id que foi pego na tela
-			List<Funcionario> reponsaveis = new List<Funcionario>();
-			foreach (var item in obj.Responsaveis)
-				reponsaveis.Add(new FuncionarioRepository().ObterPorId(item.FuncionarioId));
-			obj.Responsaveis = reponsaveis;
-
 			base.Adicionar(obj);
 
 			//adiciona telefone cadastrado na tela na tabela telefone
@@ -52,25 +47,26 @@ namespace BI.GST.Infra.Data.Repository
 
 		public override void Atualizar(Empresa obj)
 		{
+			//Adiciona Objeto CnaePrincipal
+			obj.CnaePrincipal = new CnaeRepository().ObterPorId(obj.CnaePrincipal.CnaeId);
+
 			//Adiciona lista de cnae completa com o cnae Id que foi pego na tela
 			List<Cnae> cnaes = new List<Cnae>();
 			foreach (var item in obj.CnaeSecundarios)
+			{
 				cnaes.Add(new CnaeRepository().ObterPorId(item.CnaeId));
+				item.Empresas.Add(obj);
+			}
 			obj.CnaeSecundarios = cnaes;
 
 			//Adiciona lista de setores completa com o setor id que foi pego na tela
 			List<Setor> setores = new List<Setor>();
 			foreach (var item in obj.Setores)
+			{
 				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
+				item.Empresas.Add(obj);
+			}
 			obj.Setores = setores;
-
-			//Adiciona lista de responsaveis completa com o setor id que foi pego na tela
-			List<Funcionario> reponsaveis = new List<Funcionario>();
-			foreach (var item in obj.Responsaveis)
-				reponsaveis.Add(new FuncionarioRepository().ObterPorId(item.FuncionarioId));
-			obj.Responsaveis = reponsaveis;
-			foreach (var item in obj.Responsaveis)
-				item.EmpresaId = obj.EmpresaId;
 
 			base.Atualizar(obj);
 
@@ -85,6 +81,26 @@ namespace BI.GST.Infra.Data.Repository
 
 			//Atualiza Endereco
 			new EnderecoRepository().Atualizar(obj.Endereco);
+
+			obj = new EmpresaRepository().ObterPorId(obj.EmpresaId);
+
+			//RemoverListas(obj.EmpresaId);
+			//base.Atualizar(obj);
+			//obj = new EmpresaRepository().ObterPorId(obj.EmpresaId);
+			//obj.Setores = setores;
+			//base.Atualizar(obj);
+		}
+
+		public void RemoverListas(int idEmpresa)
+		{
+			var empresa = base.ObterPorId(idEmpresa);
+			//empresa.CnaeSecundarios.Clear();
+			empresa.Setores.Clear();
+
+			var entry = Context.Entry(empresa);
+			DbSet.Attach(empresa);
+			entry.State = EntityState.Modified;
+			base.SaveChanges();
 		}
 	}
 }

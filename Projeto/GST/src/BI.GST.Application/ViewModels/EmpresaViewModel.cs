@@ -10,10 +10,8 @@ namespace BI.GST.Application.ViewModels
 			Telefones = new List<TelefoneViewModel>();
 			CnaeSecundarios = new List<CnaeViewModel>();
 			Setores = new List<SetorViewModel>();
-			CnaePrincipal = new CnaeViewModel();
-			UF = new UFViewModel();
-			Endereco = new EnderecoViewModel();
 			Responsaveis = new List<FuncionarioViewModel>();
+			//CnaePrincipal = new CnaeViewModel();
 		}
 		public int EmpresaId { get; set; }
 
