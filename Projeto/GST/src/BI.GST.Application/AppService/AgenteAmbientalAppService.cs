@@ -44,7 +44,8 @@ namespace BI.GST.Application.AppService
             var agenteAmbiental = Mapper.Map<AgenteAmbientalViewModel, AgenteAmbiental>(agenteAmbientalViewModel);
 
             var duplicado = _agenteAmbientalService.Find(x => (x.Nome == agenteAmbiental.Nome)
-                            && (x.Delete == false)).Any();
+                            && (x.Delete == false)
+                            && (x.AgenteAmbientalId != agenteAmbiental.AgenteAmbientalId)).Any();
             if (duplicado)
                 return false;
             else

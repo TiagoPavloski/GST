@@ -46,7 +46,8 @@ namespace BI.GST.Application.AppService
             var duplicado = _cipaEmpresaService.Find(e =>
                 (e.EmpresaId == cipaEmpresa.EmpresaId)
                 && (e.Ano == cipaEmpresa.Ano)
-                && (e.Delete == false)).Any();
+                && (e.Delete == false)
+                &&(e.CipaEmpresaID != cipaEmpresa.CipaEmpresaID)).Any();
             if (duplicado)
             {
                 return false;

@@ -56,6 +56,7 @@ namespace BI.GST.Application.AutoMapper
 			Mapper.CreateMap<FonteRiscoCBOViewModel, FonteRiscoCBO>();
 			Mapper.CreateMap<GrupoCipaViewModel, GrupoCipa>();
 			Mapper.CreateMap<OSViewModel, OS>();
+			Mapper.CreateMap<ColaboradorViewModel, Colaborador>();
 		}
 	}
 }

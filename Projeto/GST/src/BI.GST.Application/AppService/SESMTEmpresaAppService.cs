@@ -46,7 +46,8 @@ namespace BI.GST.Application.AppService
             var duplicado = _sesmtEmpresaService.Find(e =>
                 (e.EmpresaId == sesmtEmpresa.EmpresaId)
                 && (e.Ano == sesmtEmpresa.Ano)
-                && (e.Delete == false)).Any();
+                && (e.Delete == false)
+                &&(e.SESMTEmpresaID != sesmtEmpresa.SESMTEmpresaID)).Any();
             if (duplicado)
             {
                 return false;

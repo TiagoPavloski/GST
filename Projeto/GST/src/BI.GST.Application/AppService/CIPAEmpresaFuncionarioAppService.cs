@@ -48,7 +48,8 @@ namespace BI.GST.Application.AppService
                 (e.FuncionarioEmpresa.Funcionario.CPF == cipaEmpresaFunc.FuncionarioEmpresa.Funcionario.CPF)
                 && (e.CipaEmpresaId == cipaEmpresaFunc.CipaEmpresaId)
                 && (e.CipaEmpresa.Delete == false)
-                && (e.Delete == false)).Any();
+                && (e.Delete == false)
+                &&(e.CIPAEmpresaFuncionarioId != cipaEmpresaFunc.CIPAEmpresaFuncionarioId)).Any();
             if (duplicado)
             {
                 return false;
