@@ -47,7 +47,8 @@ namespace BI.GST.Application.AppService
             var duplicado = _agentePPRAService.Find(x => (x.MeioPropagacaoId == agentePPRA.MeioPropagacaoId)
                  && (x.AgenteAmbientalId == agentePPRA.AgenteAmbientalId)
                  && (x.PPRAId == agentePPRA.PPRAId)
-                 && (x.Delete == false)).Any();
+                 && (x.Delete == false)
+                 && (x.AgentePPRAId != agentePPRA.AgentePPRAId)).Any();
             if (duplicado)
                 return false;
             else

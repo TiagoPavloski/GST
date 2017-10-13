@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BI.GST.Application.ViewModels
 {
@@ -14,6 +14,7 @@ namespace BI.GST.Application.ViewModels
 
 		public bool Delete { get; set; }
 
-		public virtual EmpresaViewModel Empresa { get; set; }
+        [ForeignKey("EmpresaId")]
+        public virtual EmpresaViewModel Empresa { get; set; }
 	}
 }

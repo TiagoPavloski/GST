@@ -22,7 +22,7 @@ namespace BI.GST.UI.MVC.Controllers
             var colaboradorViewModel = _colaboradorAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            ViewBag.Controller = "colaboradores";
+            ViewBag.Controller = "Colaboradores";
             ViewBag.TotalRegistros = _colaboradorAppService.ObterTotalRegistros(pesquisa);
 
             return View(colaboradorViewModel);
@@ -87,7 +87,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", colaboradorViewModel.EmpresaId);
             return View(colaboradorViewModel);
         }
 
@@ -100,6 +100,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
                 if (!_colaboradorAppService.Atualizar(colaboradorViewModel))
                 {
                     System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, Colaborador já cadastrado')</SCRIPT>");

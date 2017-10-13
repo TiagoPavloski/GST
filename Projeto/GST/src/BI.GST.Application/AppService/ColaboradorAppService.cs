@@ -40,7 +40,8 @@ namespace BI.GST.Application.AppService
             var colaborador = Mapper.Map<ColaboradorViewModel, Colaborador>(colaboradorViewModel);
 
             var duplicado = _colaboradorService.Find(x => (x.CPF == colaborador.CPF)
-                                && (x.Delete == false)).Any();
+                                && (x.Delete == false)
+                                && (x.ColaboradorId != colaborador.ColaboradorId)).Any();
             if (duplicado)
                 return false;
             else
