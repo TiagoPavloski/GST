@@ -13,9 +13,9 @@ namespace BI.GST.Application.Interface
 
     FuncionarioViewModel ObterPorId(int id);
 
-    bool Adicionar(FuncionarioViewModel funcionarioViewModel);
+    bool Adicionar(FuncionarioViewModel funcionarioViewModel, int[] ExameId, int[] VacinaId, int[] CursoId);
 
-    bool Atualizar(FuncionarioViewModel funcionarioViewModel);
+    bool Atualizar(FuncionarioViewModel funcionarioViewModel, int[] ExameId, int[] VacinaId, int[] CursoId);
 
     bool Excluir(int id);
 

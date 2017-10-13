@@ -45,7 +45,7 @@ namespace BI.GST.Application.ViewModels
 
         public virtual FonteRiscoCBO FonteRiscoCBO { get; set; }
         public virtual AgenteCausadorCBO AgenteCausadorCBO { get; set; }
-        public virtual AgenteRiscoCBO AgenteRiscoCBOCurso { get; set; }
+        public virtual AgenteRiscoCBO AgenteRiscoCBO { get; set; }
 
     }
 }

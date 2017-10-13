@@ -1,0 +1,55 @@
+﻿@model BI.GST.Application.ViewModels.RiscoCBOViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RiscoCBO</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Agente do Risco")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgenteRiscoCBO.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayName("Fonte do Risco")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FonteRiscoCBO.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayName("Agente causador do Risco")
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgenteCausadorCBO.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Consequencias)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Consequencias)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MedidasPreventivas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MedidasPreventivas)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.RiscoCBOId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

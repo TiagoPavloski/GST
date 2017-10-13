@@ -191,6 +191,8 @@
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
+    <Compile Include="Controllers\RiscoCBOsController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\EscalasController.cs" />
@@ -4660,6 +4662,16 @@
     <Content Include="Views\FonteRiscoCBOs\Edit.cshtml" />
     <Content Include="Views\FonteRiscoCBOs\Index.cshtml" />
     <Content Include="Views\CIPAEmpresas\_CipaEmpresaFuncionario.cshtml" />
+    <Content Include="Views\RiscoCBOs\Create.cshtml" />
+    <Content Include="Views\RiscoCBOs\Delete.cshtml" />
+    <Content Include="Views\RiscoCBOs\Details.cshtml" />
+    <Content Include="Views\RiscoCBOs\Edit.cshtml" />
+    <Content Include="Views\RiscoCBOs\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Create.cshtml" />
+    <Content Include="Views\Funcionarios\Delete.cshtml" />
+    <Content Include="Views\Funcionarios\Details.cshtml" />
+    <Content Include="Views\Funcionarios\Edit.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,7 +19,7 @@ namespace BI.GST.Application.AppService
     {
       _funcionarioService = funcionarioService;
     }
-    public bool Adicionar(FuncionarioViewModel funcionarioViewModel)
+    public bool Adicionar(FuncionarioViewModel funcionarioViewModel, int[] ExameId, int[] VacinaId, int[] CursoId)
     {
       var funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
@@ -37,11 +37,11 @@ namespace BI.GST.Application.AppService
       }
     }
 
-    public bool Atualizar(FuncionarioViewModel funcionarioViewModel)
+    public bool Atualizar(FuncionarioViewModel funcionarioViewModel, int[] ExameId, int[] VacinaId, int[] CursoId)
     {
       var funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
-      var duplicado = _funcionarioService.Find(e => e.Nome == funcionario.Nome && e.FuncionarioId != funcionario.FuncionarioId).Any();
+      var duplicado = _funcionarioService.Find(e => e.CPF == funcionario.CPF && e.FuncionarioId != funcionario.FuncionarioId && e.Delete == false).Any();
 
       if (duplicado)
       {

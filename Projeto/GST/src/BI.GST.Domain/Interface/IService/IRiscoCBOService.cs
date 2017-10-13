@@ -14,6 +14,8 @@ namespace BI.GST.Domain.Interface.IService
 
         RiscoCBO ObterPorId(int id);
 
+        IEnumerable<RiscoCBO> Find(Expression<Func<RiscoCBO, bool>> predicate);
+
         void Adicionar(RiscoCBO riscoCBO);
 
         void Atualizar(RiscoCBO riscoCBO);

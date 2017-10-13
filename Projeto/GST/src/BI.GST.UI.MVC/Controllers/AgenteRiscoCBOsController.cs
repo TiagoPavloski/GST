@@ -62,7 +62,11 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteRiscoCBOs/Create
         public ActionResult Create()
         {
-            
+            List<SelectListItem> ddlStatus_Risco = new List<SelectListItem>();
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Riscos"] = ddlStatus_Risco;
+
             return View();
         }
 

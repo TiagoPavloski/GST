@@ -1,0 +1,59 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.RiscoCBOViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Fonte do Risco")
+        </th>
+        <th>
+            @Html.DisplayName("Agente Causador do Risco")
+        </th>
+        <th>
+            @Html.DisplayName("Agente do Risco")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Consequencias)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MedidasPreventivas)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FonteRiscoCBO.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgenteCausadorCBO.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AgenteRiscoCBO.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Consequencias)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MedidasPreventivas)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.RiscoCBOId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.RiscoCBOId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.RiscoCBOId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.Partial("_Paginacao")
