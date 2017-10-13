@@ -38,12 +38,6 @@ namespace BI.GST.Infra.Data.Repository
 				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
 			obj.Setores = setores;
 
-			//Adiciona lista de responsaveis completa com o setor id que foi pego na tela
-			List<Funcionario> reponsaveis = new List<Funcionario>();
-			foreach (var item in obj.Responsaveis)
-				reponsaveis.Add(new FuncionarioRepository().ObterPorId(item.FuncionarioId));
-			obj.Responsaveis = reponsaveis;
-
 			base.Adicionar(obj);
 
 			//adiciona telefone cadastrado na tela na tabela telefone
@@ -74,8 +68,6 @@ namespace BI.GST.Infra.Data.Repository
 			}
 			obj.Setores = setores;
 
-			RemoverCnaesSecundarios(obj.EmpresaId);
-
 			base.Atualizar(obj);
 
 			//Atualiza ou Insere Telefone
@@ -89,9 +81,17 @@ namespace BI.GST.Infra.Data.Repository
 
 			//Atualiza Endereco
 			new EnderecoRepository().Atualizar(obj.Endereco);
+
+			obj = new EmpresaRepository().ObterPorId(obj.EmpresaId);
+
+			//RemoverListas(obj.EmpresaId);
+			//base.Atualizar(obj);
+			//obj = new EmpresaRepository().ObterPorId(obj.EmpresaId);
+			//obj.Setores = setores;
+			//base.Atualizar(obj);
 		}
 
-		public void RemoverCnaesSecundarios(int idEmpresa)
+		public void RemoverListas(int idEmpresa)
 		{
 			var empresa = base.ObterPorId(idEmpresa);
 			//empresa.CnaeSecundarios.Clear();
