@@ -12,11 +12,7 @@ namespace BI.GST.Domain.Entities
 
 		public int FuncionarioEmpresaId { get; set; }
 
-		public virtual FuncionarioEmpresa FuncionarioEmpresa { get; set; }
-
 		public int ColaboradorId { get; set; }
-
-		public virtual Colaborador Colaborador { get; set; }
 
 		public string DataElaboracao { get; set; }
 
@@ -27,5 +23,11 @@ namespace BI.GST.Domain.Entities
 		public string Recomentacoes { get; set; }
 
 		public int Status { get; set; }
+
+		public bool Delete { get; set; }
+
+		public virtual FuncionarioEmpresa FuncionarioEmpresa { get; set; }
+
+		public virtual Colaborador Colaborador { get; set; }
 	}
 }

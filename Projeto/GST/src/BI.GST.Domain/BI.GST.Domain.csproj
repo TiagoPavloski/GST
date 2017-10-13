@@ -128,6 +128,7 @@
     <Compile Include="Interface\IRepository\IUFRepository.cs" />
     <Compile Include="Interface\IRepository\IVacinaRepository.cs" />
     <Compile Include="Interface\IRepository\ISesmtQuadroRepository.cs" />
+    <Compile Include="Interface\IRepository\IOSRepository.cs" />
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
     <Compile Include="Interface\IService\IRiscoCBOService.cs" />
     <Compile Include="Interface\IService\IFonteRiscoCBOService.cs" />
@@ -169,8 +170,10 @@
     <Compile Include="Interface\IService\ITipoVacinaService.cs" />
     <Compile Include="Interface\IService\IUFService.cs" />
     <Compile Include="Interface\IService\IVacinaService.cs" />
+    <Compile Include="Interface\IService\IOSService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AgenteAmbientalService.cs" />
+    <Compile Include="Services\OSService.cs" />
     <Compile Include="Services\RiscoCBOService.cs" />
     <Compile Include="Services\FonteRiscoCBOService.cs" />
     <Compile Include="Services\AgenteRiscoCBOService.cs" />

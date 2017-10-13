@@ -54,6 +54,7 @@ namespace BI.GST.Application.AutoMapper
 			Mapper.CreateMap<SESMTEmpresaFuncionario, SESMTEmpresaFuncionarioViewModel>();
 			Mapper.CreateMap<GrupoCipa, GrupoCipaViewModel>();
 			Mapper.CreateMap<Cnae, CnaeViewModel>();
+			Mapper.CreateMap<OS, OSViewModel>();
 		}
 	}
 }
