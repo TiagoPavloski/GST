@@ -72,6 +72,7 @@
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaAppService.cs" />
     <Compile Include="AppService\GrupoCipaAppService.cs" />
+    <Compile Include="AppService\OSAppService.cs" />
     <Compile Include="AppService\PPRAAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
@@ -116,6 +117,7 @@
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaAppService.cs" />
     <Compile Include="Interface\IGrupoCipaAppService.cs" />
+    <Compile Include="Interface\IOSAppService.cs" />
     <Compile Include="Interface\IPPRAAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />

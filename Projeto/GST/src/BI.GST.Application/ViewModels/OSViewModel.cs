@@ -12,11 +12,7 @@ namespace BI.GST.Application.ViewModels
 
 		public int FuncionarioEmpresaId { get; set; }
 
-		public virtual FuncionarioEmpresaViewModel FuncionarioEmpresa { get; set; }
-
 		public int ColaboradorId { get; set; }
-
-		public virtual ColaboradorViewModel Colaborador { get; set; }
 
 		public string DataElaboracao { get; set; }
 
@@ -27,5 +23,11 @@ namespace BI.GST.Application.ViewModels
 		public string Recomentacoes { get; set; }
 
 		public int Status { get; set; }
+
+		public bool Delete { get; set; }
+
+		public virtual FuncionarioEmpresaViewModel FuncionarioEmpresa { get; set; }
+
+		public virtual ColaboradorViewModel Colaborador { get; set; }
 	}
 }
