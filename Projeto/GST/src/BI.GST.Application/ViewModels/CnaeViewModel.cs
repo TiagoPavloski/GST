@@ -19,7 +19,7 @@ namespace BI.GST.Application.ViewModels
 
 		public bool Delete { get; set; }
 
-      //  public int GrupoCipaId { get; set; }
+        //public int? GrupoCipaId { get; set; }
 
         //public int EmpresaId { get; set; }
         //[ForeignKey("EmpresaId")]
