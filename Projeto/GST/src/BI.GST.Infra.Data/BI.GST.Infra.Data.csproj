@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="Context\ContextManager.cs" />
     <Compile Include="Context\ProjetoContext.cs" />
+    <Compile Include="Context\ProjetoContextInitializer.cs" />
     <Compile Include="EntityConfig\AgenteAcidenteConfiguration.cs" />
     <Compile Include="EntityConfig\AgenteAmbientalConfiguration.cs" />
     <Compile Include="EntityConfig\AgenteBiologicoConfiguration.cs" />

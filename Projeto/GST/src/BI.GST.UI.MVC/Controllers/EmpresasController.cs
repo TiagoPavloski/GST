@@ -22,9 +22,9 @@ namespace BI.GST.UI.MVC.Controllers
 		private readonly ICnaeAppService _cnaeAppService;
 		private readonly ISetorAppService _setorAppService;
 		private readonly IUFAppService _uFAppService;
-		private readonly IFuncionarioAppService _funcionarioAppService;
+		//private readonly IFuncionarioAppService _funcionarioAppService;
 
-		public EmpresasController(IEmpresaAppService empresaAppService, IEnderecoAppService enderecoAppService, ITelefoneAppService telefoneAppService, ICnaeAppService cnaeAppService, ISetorAppService setorAppService, IUFAppService uFAppService, IFuncionarioAppService funcionarioAppService)
+		public EmpresasController(IEmpresaAppService empresaAppService, IEnderecoAppService enderecoAppService, ITelefoneAppService telefoneAppService, ICnaeAppService cnaeAppService, ISetorAppService setorAppService, IUFAppService uFAppService/*, IFuncionarioAppService funcionarioAppService*/)
 		{
 			_empresaAppService = empresaAppService;
 			_enderecoAppService = enderecoAppService;
@@ -32,7 +32,7 @@ namespace BI.GST.UI.MVC.Controllers
 			_cnaeAppService = cnaeAppService;
 			_setorAppService = setorAppService;
 			_uFAppService = uFAppService;
-			_funcionarioAppService = funcionarioAppService;
+			/*_funcionarioAppService = funcionarioAppService;*/
 		}
 		// GET: Empresas
 		public ActionResult Index(string pesquisa, int page = 0)
@@ -74,7 +74,7 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
 			ViewBag.CnaeId = ViewBag.CnaeIdList;
 			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
-			ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
+			/*ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");*/
 
 			var empresaViewModel = new EmpresaViewModel();
 			return View(empresaViewModel);
@@ -85,11 +85,11 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId)
+		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId/*, int[] funcionarioId*/)
 		{
 			if (ModelState.IsValid)
 			{
-				if (!_empresaAppService.Adicionar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId, funcionarioId))
+				if (!_empresaAppService.Adicionar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId/*, funcionarioId*/))
 				{
 					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um empresa com os mesmos dados')</SCRIPT>");
 				}
@@ -116,7 +116,7 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaeSecundarios.Select(x => x.CnaeId));
 			ViewBag.CnaeId = new SelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaePrincipal.CnaeId);
 			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome", empresa.Setores.Select(x => x.SetorId));
-			ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", empresa.Responsaveis.Select(x => x.FuncionarioId));
+			/*ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", empresa.Responsaveis.Select(x => x.FuncionarioId));*/
 
 			return View(empresa);
 		}
@@ -126,11 +126,11 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, int[] funcionarioId)
+		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId/*, int[] funcionarioId*/)
 		{
 			//if (ModelState.IsValid)
 			//{
-			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId, funcionarioId))
+			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId/*, funcionarioId*/))
 			{
 				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Curso com os mesmos dados já cadastrada')</SCRIPT>");
 			}

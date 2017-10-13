@@ -16,7 +16,7 @@ namespace BI.GST.Infra.Data.Context
 		public ProjetoContext()
 			: base("ProjetoContext")
 		{
-
+			//Database.SetInitializer<ProjetoContext>(new ProjetoContextInitializer());
 		}
 
 		public DbSet<Cliente> Clientes { get; set; }
