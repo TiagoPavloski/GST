@@ -1,0 +1,88 @@
+﻿@model BI.GST.Application.ViewModels.OSViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>OS</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Colaborador.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Colaborador.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FuncionarioEmpresa.HoraEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FuncionarioEmpresa.HoraEntrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataElaboracao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataElaboracao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataRevisao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataRevisao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EPIRecomendado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EPIRecomendado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Recomentacoes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Recomentacoes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Delete)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Delete)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

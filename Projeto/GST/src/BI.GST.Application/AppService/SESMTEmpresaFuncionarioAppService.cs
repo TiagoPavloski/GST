@@ -48,7 +48,8 @@ namespace BI.GST.Application.AppService
                 (e.FuncionarioEmpresa.Funcionario.CPF == sesmtEmpresaFunc.FuncionarioEmpresa.Funcionario.CPF) 
                 && (e.SESMTEmpresaId == sesmtEmpresaFunc.SESMTEmpresaId)
                 && (e.SESMTEmpresa.Delete == false)
-                && (e.Delete == false)).Any();
+                && (e.Delete == false)
+                &&(e.SESMTEmpresaFuncionarioId != sesmtEmpresaFunc.SESMTEmpresaFuncionarioId)).Any();
             if (duplicado)
             {
                 return false;

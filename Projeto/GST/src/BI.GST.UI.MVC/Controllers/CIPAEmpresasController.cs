@@ -2,13 +2,14 @@
 using System.Web.Mvc;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
+
 namespace BI.GST.UI.MVC.Controllers
 {
     public class CIPAEmpresasController : Controller
     {
         private readonly ICIPAEmpresaAppService _cipaEmpresaAppService;
         private readonly IEmpresaAppService _empresaAppService;
-        //private readonly IFAppService _empresaAppService;
+        //private readonly IFuncionarioEmpresaAppService _FuncionarioempresaAppService;
 
         public CIPAEmpresasController(ICIPAEmpresaAppService cipaEmpresaAppService, IEmpresaAppService empresaAppService)
         {
@@ -87,6 +88,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", cipaEmpresaViewModel.EmpresaId);
 
             return View(cipaEmpresaViewModel);
         }
@@ -100,6 +102,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", cipaEmpresaViewModel.EmpresaId);
                 if (!_cipaEmpresaAppService.Atualizar(cipaEmpresaViewModel))
                 {
                     System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, CIPA já cadastrada para esta empresa e ano')</SCRIPT>");

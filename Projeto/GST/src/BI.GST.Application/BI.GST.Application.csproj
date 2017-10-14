@@ -57,6 +57,7 @@
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
     <Compile Include="AppService\AgenteAcidenteAppService.cs" />
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
+    <Compile Include="AppService\ColaboradorAppService.cs" />
     <Compile Include="AppService\CBOAppService.cs" />
     <Compile Include="AppService\RiscoCBOAppService.cs" />
     <Compile Include="AppService\FonteRiscoCBOAppService.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="AppService\CursoAppService.cs" />
     <Compile Include="AppService\EmpresaAppService.cs" />
     <Compile Include="AppService\GrupoCipaAppService.cs" />
+    <Compile Include="AppService\OSAppService.cs" />
     <Compile Include="AppService\PPRAAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
@@ -101,6 +103,7 @@
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
+    <Compile Include="Interface\IColaboradorAppService.cs" />
     <Compile Include="Interface\ICBOAppService.cs" />
     <Compile Include="Interface\IRiscoCBOAppService.cs" />
     <Compile Include="Interface\IFonteRiscoCBOAppService.cs" />
@@ -120,6 +123,7 @@
     <Compile Include="Interface\ICursoAppService.cs" />
     <Compile Include="Interface\IEmpresaAppService.cs" />
     <Compile Include="Interface\IGrupoCipaAppService.cs" />
+    <Compile Include="Interface\IOSAppService.cs" />
     <Compile Include="Interface\IPPRAAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />

@@ -9,6 +9,11 @@ namespace BI.GST.Domain.Entities
 {
     public class Setor
     {
+		public Setor()
+		{
+
+			Empresas = new List<Empresa>();
+		}
         public int SetorId { get; set; }
 
         public string Nome { get; set; }
