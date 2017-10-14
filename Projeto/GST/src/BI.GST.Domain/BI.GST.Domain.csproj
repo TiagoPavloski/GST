@@ -88,6 +88,7 @@
     <Compile Include="Entities\Vacina.cs" />
     <Compile Include="Interface\IRepository\ICipaQuadroRepository.cs" />
     <Compile Include="Interface\IRepository\IColaboradorRepository.cs" />
+    <Compile Include="Interface\IRepository\ICBORepository.cs" />
     <Compile Include="Interface\IRepository\IGrupoCipaRepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteAmbientalRepository.cs" />
     <Compile Include="Interface\IRepository\IRiscoCBORepository.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Interface\IRepository\IOSRepository.cs" />
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
     <Compile Include="Interface\IService\IColaboradorService.cs" />
+    <Compile Include="Interface\IService\ICBOService.cs" />
     <Compile Include="Interface\IService\IRiscoCBOService.cs" />
     <Compile Include="Interface\IService\IFonteRiscoCBOService.cs" />
     <Compile Include="Interface\IService\IAgenteRiscoCBOService.cs" />
@@ -177,6 +179,7 @@
     <Compile Include="Services\AgenteAmbientalService.cs" />
     <Compile Include="Services\OSService.cs" />
     <Compile Include="Services\ColaboradorService.cs" />
+    <Compile Include="Services\CBOService.cs" />
     <Compile Include="Services\RiscoCBOService.cs" />
     <Compile Include="Services\FonteRiscoCBOService.cs" />
     <Compile Include="Services\AgenteRiscoCBOService.cs" />

@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AgenteFisicosController.cs" />
     <Compile Include="Controllers\AgenteQuimicosController.cs" />
     <Compile Include="Controllers\AgenteRiscoCBOsController.cs" />
+    <Compile Include="Controllers\CBOsController.cs" />
     <Compile Include="Controllers\CIPAEmpresasController.cs" />
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
@@ -194,6 +195,8 @@
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
+    <Compile Include="Controllers\FuncionariosController.cs" />
+    <Compile Include="Controllers\RiscoCBOsController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\EscalasController.cs" />
@@ -4679,6 +4682,21 @@
     <Content Include="Views\SESMTEmpresas\Edit.cshtml" />
     <Content Include="Views\SESMTEmpresas\Index.cshtml" />
     <Content Include="Views\SESMTEmpresas\_SESMTEmpresaFuncionario.cshtml" />
+    <Content Include="Views\RiscoCBOs\Create.cshtml" />
+    <Content Include="Views\RiscoCBOs\Delete.cshtml" />
+    <Content Include="Views\RiscoCBOs\Details.cshtml" />
+    <Content Include="Views\RiscoCBOs\Edit.cshtml" />
+    <Content Include="Views\RiscoCBOs\Index.cshtml" />
+    <Content Include="Views\Funcionarios\Create.cshtml" />
+    <Content Include="Views\Funcionarios\Delete.cshtml" />
+    <Content Include="Views\Funcionarios\Details.cshtml" />
+    <Content Include="Views\Funcionarios\Edit.cshtml" />
+    <Content Include="Views\Funcionarios\Index.cshtml" />
+    <Content Include="Views\CBOs\Create.cshtml" />
+    <Content Include="Views\CBOs\Delete.cshtml" />
+    <Content Include="Views\CBOs\Details.cshtml" />
+    <Content Include="Views\CBOs\Edit.cshtml" />
+    <Content Include="Views\CBOs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.FuncionarioViewModel>
+
+@{
+    ViewBag.Title = "Funcionários";
+}
+
+<h2>Funcionários</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Empresa")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CPF)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataNascimento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CPF)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataNascimento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusNome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FuncionarioId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FuncionarioId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FuncionarioId })
+        </td>
+    </tr>
+}
+
+</table>
+
+@Html.Partial("_Paginacao")

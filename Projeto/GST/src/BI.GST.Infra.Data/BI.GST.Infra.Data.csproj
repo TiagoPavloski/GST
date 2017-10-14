@@ -118,6 +118,7 @@
     <Compile Include="Repository\AgenteAmbientalRepository.cs" />
     <Compile Include="Repository\OSRepository.cs" />
     <Compile Include="Repository\ColaboradorRepository.cs" />
+    <Compile Include="Repository\CBORepository.cs" />
     <Compile Include="Repository\RiscoCBORepository.cs" />
     <Compile Include="Repository\FonteRiscoCBORepository.cs" />
     <Compile Include="Repository\AgenteRiscoCBORepository.cs" />
