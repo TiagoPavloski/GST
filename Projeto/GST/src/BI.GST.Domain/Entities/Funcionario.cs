@@ -23,8 +23,8 @@ namespace BI.GST.Domain.Entities
 
 		public bool Delete { get; set; }
 
-		//Responsavel pela empresa
-		public int? EmpresaId { get; set; }
+        //Responsavel pela empresa
+        public int? EmpresaId { get; set; }
 		[ForeignKey("EmpresaId")]
 		public virtual Empresa Empresa { get; set; }
 	}

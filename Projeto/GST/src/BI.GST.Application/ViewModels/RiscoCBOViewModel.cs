@@ -13,6 +13,11 @@ namespace BI.GST.Application.ViewModels
     {
         public int RiscoCBOId { get; set; }
 
+        [Required(ErrorMessage = "Prencha um nome para este risco")]
+        [DisplayName("Nome do risco")]
+        [MaxLength(30, ErrorMessage = "Máximo de 30")]
+        public string Nome { get; set; }
+
         [Required]
         [DisplayName("Agente fonte do risco da Função")]
         public int FonteRiscoCBOId { get; set; }

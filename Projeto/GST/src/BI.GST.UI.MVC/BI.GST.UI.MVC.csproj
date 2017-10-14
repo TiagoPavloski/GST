@@ -187,6 +187,7 @@
     <Compile Include="Controllers\AgenteFisicosController.cs" />
     <Compile Include="Controllers\AgenteQuimicosController.cs" />
     <Compile Include="Controllers\AgenteRiscoCBOsController.cs" />
+    <Compile Include="Controllers\CBOsController.cs" />
     <Compile Include="Controllers\CIPAEmpresasController.cs" />
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
@@ -4672,6 +4673,11 @@
     <Content Include="Views\Funcionarios\Details.cshtml" />
     <Content Include="Views\Funcionarios\Edit.cshtml" />
     <Content Include="Views\Funcionarios\Index.cshtml" />
+    <Content Include="Views\CBOs\Create.cshtml" />
+    <Content Include="Views\CBOs\Delete.cshtml" />
+    <Content Include="Views\CBOs\Details.cshtml" />
+    <Content Include="Views\CBOs\Edit.cshtml" />
+    <Content Include="Views\CBOs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
