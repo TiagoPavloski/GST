@@ -10,7 +10,7 @@ namespace BI.GST.Domain.Entities
     {
         public int CipaQuadroId { get; set; }
 
-        public string Grupo { get; set; }
+        public int GrupoCipaId { get; set; }
 
         public int NumeroEmpregadosInicial { get; set; }
 
@@ -20,7 +20,11 @@ namespace BI.GST.Domain.Entities
 
         public int QuantidadeSuplentes { get; set; }
 
-        public int AcrescentarAcima10000 { get; set; }
+        public int AcrescentarAcima10000Efetivo { get; set; }
+
+        public int AcrescentarAcima10000Suplente { get; set; }
+
+        public virtual GrupoCipa GrupoCipa { get; set; }
     }
 
 }

@@ -64,7 +64,7 @@ namespace BI.GST.UI.MVC.Controllers
                 if (!_colaboradorAppService.Adicionar(colaboradorViewModel))
                 {
                     ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
-                    //var cipaEmpresa = new CIPAEmpresaViewModel();
+
                     TempData["Mensagem"] = "Atenção, Colaborador já cadastrado";
                     //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
                 }

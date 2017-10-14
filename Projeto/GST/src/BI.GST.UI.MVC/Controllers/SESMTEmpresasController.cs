@@ -5,135 +5,133 @@ using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class CIPAEmpresasController : Controller
+    public class SESMTEmpresasController : Controller
     {
-        private readonly ICIPAEmpresaAppService _cipaEmpresaAppService;
+        private readonly ISESMTEmpresaAppService _sesmtEmpresaAppService;
         private readonly IEmpresaAppService _empresaAppService;
-        //private readonly IFuncionarioEmpresaAppService _FuncionarioempresaAppService;
 
-        public CIPAEmpresasController(ICIPAEmpresaAppService cipaEmpresaAppService, IEmpresaAppService empresaAppService)
+        public SESMTEmpresasController(ISESMTEmpresaAppService sesmtEmpresaAppService, IEmpresaAppService empresaAppService)
         {
-            _cipaEmpresaAppService = cipaEmpresaAppService;
-            _empresaAppService     = empresaAppService;
+            _sesmtEmpresaAppService = sesmtEmpresaAppService;
+            _empresaAppService      = empresaAppService;
         }
 
-        // GET: CIPAEmpresas
+        // GET: SESMTEmpresas
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterGrid(page, pesquisa);
+            var sesmtEmpresaViewModel = _sesmtEmpresaAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            ViewBag.Controller = "CIPAEmpresas";
-            ViewBag.TotalRegistros = _cipaEmpresaAppService.ObterTotalRegistros(pesquisa);
+            ViewBag.Controller = "SESMTEmpresas";
+            ViewBag.TotalRegistros = _sesmtEmpresaAppService.ObterTotalRegistros(pesquisa);
 
-            return View(cipaEmpresaViewModel);
+            return View(sesmtEmpresaViewModel);
         }
 
-        // GET: CIPAEmpresas/Details/5
+        // GET: SESMTEmpresas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterPorId(id.Value);
-            if (cipaEmpresaViewModel == null)
+            var sesmtEmpresaViewModel = _sesmtEmpresaAppService.ObterPorId(id.Value);
+            if (sesmtEmpresaViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(cipaEmpresaViewModel);
+            return View(sesmtEmpresaViewModel);
         }
 
-        // GET: CIPAEmpresas/Create
+        // GET: SESMTEmpresas/Create
         public ActionResult Create()
         {
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
-            var cipaEmpresaViewModel = new CIPAEmpresaViewModel();
+            var sesmtEmpresaViewModel = new SESMTEmpresaViewModel();
 
-            return View(cipaEmpresaViewModel);
+            return View(sesmtEmpresaViewModel);
         }
 
-        // POST: CIPAEmpresas/Create
+        // POST: SESMTEmpresas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CIPAEmpresaViewModel cipaEmpresaViewModel)
+        public ActionResult Create(SESMTEmpresaViewModel sesmtEmpresaViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_cipaEmpresaAppService.Adicionar(cipaEmpresaViewModel))
+                if (!_sesmtEmpresaAppService.Adicionar(sesmtEmpresaViewModel))
                 {
                     ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
-                    //var cipaEmpresa = new CIPAEmpresaViewModel();
-                    TempData["Mensagem"] = "Atenção, CIPA já cadastrada para esta empresa e ano";
+                    TempData["Mensagem"] = "Atenção, SESMT já cadastrado para esta empresa";
                     //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
 
-            return View(cipaEmpresaViewModel);
+            return View(sesmtEmpresaViewModel);
         }
 
-        // GET: CIPAEmpresas/Edit/5
+        // GET: SESMTEmpresas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterPorId(id.Value);
-            if (cipaEmpresaViewModel == null)
+            var sesmtEmpresaViewModel = _sesmtEmpresaAppService.ObterPorId(id.Value);
+            if (sesmtEmpresaViewModel == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", cipaEmpresaViewModel.EmpresaId);
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", sesmtEmpresaViewModel.EmpresaId);
 
-            return View(cipaEmpresaViewModel);
+            return View(sesmtEmpresaViewModel);
         }
 
-        // POST: CIPAEmpresas/Edit/5
+        // POST: SESMTEmpresas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CIPAEmpresaViewModel cipaEmpresaViewModel)
+        public ActionResult Edit(SESMTEmpresaViewModel sesmtEmpresaViewModel)
         {
             if (ModelState.IsValid)
             {
-                ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", cipaEmpresaViewModel.EmpresaId);
-                if (!_cipaEmpresaAppService.Atualizar(cipaEmpresaViewModel))
+                ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", sesmtEmpresaViewModel.EmpresaId);
+                if (!_sesmtEmpresaAppService.Atualizar(sesmtEmpresaViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, CIPA já cadastrada para esta empresa e ano')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, SESMT já cadastrado para esta empresa')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(cipaEmpresaViewModel);
+            return View(sesmtEmpresaViewModel);
         }
 
-        // GET: CIPAEmpresas/Delete/5
+        // GET: SESMTEmpresas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var cipaEmpresaViewModel = _cipaEmpresaAppService.ObterPorId(id.Value);
-            if (cipaEmpresaViewModel == null)
+            var sesmtEmpresaViewModel = _sesmtEmpresaAppService.ObterPorId(id.Value);
+            if (sesmtEmpresaViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(cipaEmpresaViewModel);
+            return View(sesmtEmpresaViewModel);
         }
 
-        // POST: CIPAEmpresas/Delete/5
+        // POST: SESMTEmpresas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_cipaEmpresaAppService.Excluir(id))
+            if (!_sesmtEmpresaAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
                 return null;
@@ -148,7 +146,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (disposing)
             {
-                _cipaEmpresaAppService.Dispose();
+                _sesmtEmpresaAppService.Dispose();
             }
             base.Dispose(disposing);
         }
