@@ -193,6 +193,7 @@
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\OSController.cs" />
+    <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\EscalasController.cs" />
@@ -4672,6 +4673,12 @@
     <Content Include="Views\Colaboradores\Details.cshtml" />
     <Content Include="Views\Colaboradores\Edit.cshtml" />
     <Content Include="Views\Colaboradores\Index.cshtml" />
+    <Content Include="Views\SESMTEmpresas\Create.cshtml" />
+    <Content Include="Views\SESMTEmpresas\Delete.cshtml" />
+    <Content Include="Views\SESMTEmpresas\Details.cshtml" />
+    <Content Include="Views\SESMTEmpresas\Edit.cshtml" />
+    <Content Include="Views\SESMTEmpresas\Index.cshtml" />
+    <Content Include="Views\SESMTEmpresas\_SESMTEmpresaFuncionario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,4 +1,4 @@
-﻿@model BI.GST.Application.ViewModels.CIPAEmpresaViewModel
+﻿@model BI.GST.Application.ViewModels.SESMTEmpresaViewModel
 
 @{
     ViewBag.Title = "Create";
@@ -6,20 +6,22 @@
 
 <h2>Create</h2>
 
+
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>CIPA</h4>
+        <h4>SESMTEmpresa</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
             @Html.Label("Empresa", "Empresa", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("EmpresaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("EmpresaId", null ,htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EmpresaId, "", new { @class = "text-danger" })
+               
             </div>
         </div>
 
@@ -46,11 +48,11 @@
             </div>
         </div>
         <div id="tab-1" class="tab-pane">
-            @if (Model != null && Model.CIPAEmpresaFuncionarios != null)
+            @if (Model != null && Model.SESMTEmpresaFuncionarios != null)
             {
-                foreach (var funcionario in Model.CIPAEmpresaFuncionarios)
+                foreach (var funcionario in Model.SESMTEmpresaFuncionarios)
                 {
-                    Html.RenderPartial("_CipaEmpresaFuncionario", funcionario);
+                    Html.RenderPartial("_SESMTEmpresaFuncionario", funcionario);
 
                 }
             }
@@ -67,3 +69,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
