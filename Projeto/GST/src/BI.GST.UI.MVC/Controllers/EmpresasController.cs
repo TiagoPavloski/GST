@@ -86,7 +86,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_empresaAppService.Adicionar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId/*, funcionarioId*/))
 				{
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um empresa com os mesmos dados')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um empresa com os mesmos dados";
 				}
 				else
 					return RedirectToAction("Index");
@@ -127,7 +127,7 @@ namespace BI.GST.UI.MVC.Controllers
 			//{
 			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId/*, funcionarioId*/))
 			{
-				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Curso com os mesmos dados já cadastrada')</SCRIPT>");
+				TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
 			}
 			else
 				return RedirectToAction("Index");
@@ -157,7 +157,7 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			if (!_empresaAppService.Excluir(id))
 			{
-				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+				TempData["Mensagem"] = "Erro";
 				return null;
 			}
 			else

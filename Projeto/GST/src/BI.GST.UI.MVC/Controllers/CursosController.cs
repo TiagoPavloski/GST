@@ -86,7 +86,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_cursoAppService.Adicionar(cursoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Curso com os mesmos dados')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um Curso com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
@@ -126,7 +126,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_cursoAppService.Atualizar(cursoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Curso com os mesmos dados já cadastrada')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um Curso com os mesmos dados já cadastrada";
                 }
                 else
                     return RedirectToAction("Index");
@@ -158,8 +158,9 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_cursoAppService.Excluir(id))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
-                return null;
+				TempData["Mensagem"] = "Erro";
+
+				return null;
             }
             else
             {
