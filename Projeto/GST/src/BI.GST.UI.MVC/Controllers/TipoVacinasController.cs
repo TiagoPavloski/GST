@@ -65,7 +65,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_tipoVacinaAppService.Adicionar(tipoVacinaViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo Vacina com os mesmos dados')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um tipo Vacina com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
@@ -99,7 +99,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_tipoVacinaAppService.Atualizar(tipoVacinaViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Vacina com os mesmos dados já cadastrada')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um tipo de Vacina com os mesmos dados já cadastrada";
                 }
                 else
                     return RedirectToAction("Index");
@@ -129,7 +129,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_tipoVacinaAppService.Excluir(id))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+				TempData["Mensagem"] = "Erro ao excluir";
                 return null;
             }
             else
