@@ -1,10 +1,7 @@
 ﻿using BI.GST.Domain.Entities;
 using BI.GST.Domain.Interface.IRepository;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BI.GST.Infra.Data.Repository
 {
@@ -28,7 +25,7 @@ namespace BI.GST.Infra.Data.Repository
 
         public IEnumerable<Financeiro> ObterGrid(int page, string pesquisa)
         {
-            return DbSet.Where(x => pesquisa != null ? x.Titulo.Contains(pesquisa) : x.Titulo != null && (x.Delete == false))
+            return DbSet.Where(x => (pesquisa != null ? x.Titulo.Contains(pesquisa) : x.Titulo != null) && (x.Delete == false))
                .OrderBy(u => u.Titulo)
                .Skip((page) * 10)
                .Take(10);

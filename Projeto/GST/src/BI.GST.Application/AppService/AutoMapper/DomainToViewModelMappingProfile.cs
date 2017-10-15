@@ -56,6 +56,7 @@ namespace BI.GST.Application.AutoMapper
 			Mapper.CreateMap<Cnae, CnaeViewModel>();
 			Mapper.CreateMap<OS, OSViewModel>();
 			Mapper.CreateMap<Colaborador, ColaboradorViewModel>();
-		}
+            Mapper.CreateMap<FinanceiroParcela, FinanceiroParcelaViewModel>();
+        }
 	}
 }

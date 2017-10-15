@@ -2,8 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BI.GST.Domain.Entities;
 using AutoMapper;
 using BI.GST.Application.ViewModels;
@@ -32,6 +30,7 @@ namespace BI.GST.Application.AppService
             else
             {
                 BeginTransaction();
+                financeiro.Status = "0";
                 _financeiroService.Adicionar(financeiro);
                 Commit();
                 return true;

@@ -20,12 +20,6 @@ namespace BI.GST.Domain.Entities
 
     public string DataOperacao { get; set; }
 
-    public int NumeroParcelas { get; set; }
-
-    public string DataVencimento { get; set; }
-
-    public string DataQuitacao { get; set; }
-
     public double Valor { get; set; }
 
     public string Instituicao { get; set; }

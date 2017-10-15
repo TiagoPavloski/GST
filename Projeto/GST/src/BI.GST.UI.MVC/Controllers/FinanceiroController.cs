@@ -16,10 +16,12 @@ namespace BI.GST.UI.MVC.Controllers
     public class FinanceiroController : Controller
     {
         private readonly IFinanceiroAppService _financeiroAppService;
+        private readonly IFinanceiroParcelaAppService _financeiroParcelaAppService;
 
-        public FinanceiroController(IFinanceiroAppService financeiroAppService)
+        public FinanceiroController(IFinanceiroAppService financeiroAppService, IFinanceiroParcelaAppService financeiroParcelaAppService)
         {
-            _financeiroAppService = financeiroAppService;
+            _financeiroAppService        = financeiroAppService;
+            _financeiroParcelaAppService = financeiroParcelaAppService;
         }
 
         // GET: Financeiro
@@ -30,6 +32,25 @@ namespace BI.GST.UI.MVC.Controllers
             ViewBag.Busca = "&pesquisa=" + pesquisa;
             ViewBag.Controller = "Financeiro";
             ViewBag.TotalRegistros = _financeiroAppService.ObterTotalRegistros(pesquisa);
+
+
+            #region DDL Status
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+
+            foreach (var item in financeiroViewModel)
+            {
+                item.StatusNome     = ddlStatus.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+                item.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(item.Operacao.ToString())).First().Text;
+            }
+            #endregion
 
             return View(financeiroViewModel);
         }
@@ -46,12 +67,41 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            #region DDL Status
+
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+
+            financeiro.StatusNome     = ddlStatus.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
+            financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
+
+            #endregion
+
             return View(financeiro);
         }
 
         // GET: Financeiro/Create
         public ActionResult Create()
         {
+            #region DDL Status
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+            #endregion
             return View();
         }
 
@@ -71,6 +121,21 @@ namespace BI.GST.UI.MVC.Controllers
                 }
                 else
                     return RedirectToAction("Index");
+
+                #region DDL Status
+                List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+                ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+                ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+                TempData["ddlOperacao"] = ddlOperacao;
+
+                List<SelectListItem> ddlStatus = new List<SelectListItem>();
+                ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+                ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+                TempData["ddlStatus"] = ddlStatus;
+
+                financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
+                financeiroViewModel.StatusNome     = ddlStatus.Where(e => e.Value.Trim().Equals(financeiroViewModel.Status.ToString())).First().Text;
+                #endregion
             }
             return View(financeiroViewModel);
         }
@@ -87,6 +152,17 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            #region ddlStatus
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            var ddlOperacao2 = (List<SelectListItem>)TempData["ddlOperacao"];
+            financeiro.OperacaoStatus = ddlOperacao2.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
+            #endregion
+
             return View(financeiro);
         }
 
@@ -106,6 +182,17 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
             }
+
+            #region ddlStatus
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            var ddlOperacao2 = (List<SelectListItem>)TempData["ddlOperacao"];
+            financeiroViewModel.OperacaoStatus = ddlOperacao2.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
+            #endregion
+
             return View(financeiroViewModel);
         }
 
@@ -121,6 +208,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            var ddlOperacao = (List<SelectListItem>)TempData["ddlOperacao"];
+            financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
+
+            var ddlStatus = (List<SelectListItem>)TempData["ddlStatus"];
+            financeiro.StatusNome = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
+
             return View(financeiro);
         }
 

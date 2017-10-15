@@ -25,15 +25,6 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Data da Operação")]
         public string DataOperacao { get; set; }
 
-        //validar para preencher o numero de parcelas
-        [Required(ErrorMessage = "Prencher o Número de parcelas do título")]
-        [DisplayName("Número de parcelas")]
-        public int NumeroParcelas { get; set; }
-
-        // [Required(ErrorMessage = "Preencher a Data de Vencimento do título")]
-        [DisplayName("Data de Vencimento")]
-        public string DataVencimento { get; set; }
-
         //validar para preencher o valor maior que zero
         [Required(ErrorMessage = "Prencher o Valor do título")]
         [DisplayName("Valor")]
@@ -42,11 +33,14 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Descrição")]
         public string Descricao { get; set; }
 
-        [DisplayName("Data Quitação")]
-        public string DataQuitacao { get; set; }
-
         [DisplayName("Instituição")]
         public string Instituicao { get; set; }
+
+        public string OperacaoStatus { get; set; }
+
+        public string Status { get; set; }
+
+        public string StatusNome { get; set; }
 
         [ScaffoldColumn(false)]
         public bool Delete { get; set; }

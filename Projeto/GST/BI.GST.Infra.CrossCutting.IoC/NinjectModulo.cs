@@ -57,6 +57,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IOSAppService>().To<OSAppService>();
 
             Bind<IColaboradorAppService>().To<ColaboradorAppService>();
+            Bind<IFinanceiroParcelaAppService>().To<FinanceiroParcelaAppService>();
 
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -100,6 +101,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ISesmtQuadroService>().To<SesmtQuadroService>();
 			Bind<IOSService>().To<OSService>();
             Bind<IColaboradorService>().To<ColaboradorService>();
+            Bind<IFinanceiroParcelaService>().To<FinanceiroParcelaService>();
 
 			//Data Repository
 			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -143,6 +145,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ISesmtQuadroRepository>().To<SesmtQuadroRepository>();
 			Bind<IOSRepository>().To<OSRepository>();
             Bind<IColaboradorRepository>().To<ColaboradorRepository>();
+            Bind<IFinanceiroParcelaRepository>().To<FinanceiroParcelaRepository>();
 
 
 			//Data Configuration

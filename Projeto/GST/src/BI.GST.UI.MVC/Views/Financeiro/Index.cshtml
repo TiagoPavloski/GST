@@ -22,24 +22,21 @@
             @Html.DisplayNameFor(model => model.Titulo)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Instituicao)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Operacao)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataOperacao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NumeroParcelas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataVencimento)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Valor)
         </th>
+
         <th>
-            @Html.DisplayNameFor(model => model.Delete)
+            @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -48,20 +45,21 @@
             @Html.DisplayFor(modelItem => item.Titulo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Operacao)
+            @Html.DisplayFor(modelItem => item.Instituicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OperacaoStatus)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataOperacao)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NumeroParcelas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataVencimento)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Valor)
         </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusNome)
+        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.FinanceiroId }) |
             @Html.ActionLink("Details", "Details", new { id=item.FinanceiroId }) |

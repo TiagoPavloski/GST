@@ -23,7 +23,7 @@ namespace BI.GST.Domain.Entities
 
         public bool Delete { get; set; }
 
-        //public int? GrupoCipaId { get; set; }
+        public int? GrupoCipaId { get; set; }
 
         //public int? EmpresaId { get; set; }
         //[ForeignKey("EmpresaId")]
@@ -31,6 +31,6 @@ namespace BI.GST.Domain.Entities
 
         public virtual ICollection<Empresa> Empresas { get; set; }
 
-        //public virtual GrupoCipa GrupoCipa  { get; set; }
+        public virtual GrupoCipa GrupoCipa  { get; set; }
     }
 }
