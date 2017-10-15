@@ -57,8 +57,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_oSAppService.Adicionar(oSViewModel))
 				{
-					//TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert(Erro)</SCRIPT>");
+					TempData["Mensagem"] = "Erro";
 				}
 				else
 					return RedirectToAction("Index");
@@ -96,7 +95,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_oSAppService.Atualizar(oS))
 				{
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert(Erro)</SCRIPT>");
+					TempData["Mensagem"] = "Erro";
 				}
 				else
 					return RedirectToAction("Index");
@@ -128,7 +127,7 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			if (!_oSAppService.Excluir(id))
 			{
-				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+				TempData["Mensagem"] = "Erro";
 				return null;
 			}
 			else

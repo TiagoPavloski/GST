@@ -58,6 +58,8 @@
     <Compile Include="AppService\AgenteAcidenteAppService.cs" />
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
     <Compile Include="AppService\ColaboradorAppService.cs" />
+    <Compile Include="AppService\CBOAppService.cs" />
+    <Compile Include="AppService\RiscoCBOAppService.cs" />
     <Compile Include="AppService\FinanceiroParcelaAppService.cs" />
     <Compile Include="AppService\FonteRiscoCBOAppService.cs" />
     <Compile Include="AppService\AgenteRiscoCBOAppService.cs" />
@@ -103,6 +105,8 @@
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
     <Compile Include="Interface\IColaboradorAppService.cs" />
+    <Compile Include="Interface\ICBOAppService.cs" />
+    <Compile Include="Interface\IRiscoCBOAppService.cs" />
     <Compile Include="Interface\IFinanceiroParcelaAppService.cs" />
     <Compile Include="Interface\IFonteRiscoCBOAppService.cs" />
     <Compile Include="Interface\IAgenteRiscoCBOAppService.cs" />
@@ -145,6 +149,7 @@
     <Compile Include="ViewModels\AgenteAmbientalViewModel.cs" />
     <Compile Include="ViewModels\AgenteAcidenteViewModel.cs" />
     <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
+    <Compile Include="ViewModels\CBOViewModel.cs" />
     <Compile Include="ViewModels\FinanceiroParcelaViewModel.cs" />
     <Compile Include="ViewModels\RiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\FonteRiscoCBOViewModel.cs" />

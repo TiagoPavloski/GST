@@ -40,6 +40,11 @@ namespace BI.GST.Domain.Services
       _riscoCBORepository.Excluir(id);
     }
 
+    public IEnumerable<RiscoCBO> Find(Expression<Func<RiscoCBO, bool>> predicate)
+    {
+      return _riscoCBORepository.Find(predicate);
+    }
+
     public IEnumerable<RiscoCBO> ObterGrid(int page)
     {
       return _riscoCBORepository.ObterGrid(page);

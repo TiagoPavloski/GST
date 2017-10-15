@@ -67,7 +67,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_UsuarioAppService.Adicionar(UsuarioViewModel))
 				{
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Usuario com os mesmos dados')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um Usuario com os mesmos dados";
 				}
 				else
 					return RedirectToAction("Index");
@@ -105,7 +105,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_UsuarioAppService.Atualizar(UsuarioViewModel))
 				{
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipo de Usuario com os mesmos dados já cadastrada')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um tipo de Usuario com os mesmos dados já cadastrada";
 				}
 				else if(UsuarioViewModel.UsuarioId != (int)Session["usuarioId"])
 					return RedirectToAction("Index");
@@ -137,7 +137,7 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			if (!_UsuarioAppService.Excluir(id))
 			{
-				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+				TempData["Mensagem"] = "Erro";
 				return null;
 			}
 			else
@@ -166,7 +166,7 @@ namespace BI.GST.UI.MVC.Controllers
 			}
 			else
 			{
-				System.Web.HttpContext.Current.Response.Write("<SCRIPT> Dados Incorretos, tente novamente.</SCRIPT>");
+				TempData["Mensagem"] = "Dados Incorretos, tente novamente";
 				return View(usuarioViewModel);
 			}
 		}

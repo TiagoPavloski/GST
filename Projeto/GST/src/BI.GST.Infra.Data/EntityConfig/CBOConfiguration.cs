@@ -3,11 +3,24 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace BI.GST.Infra.Data.EntityConfig
 {
-  public class CBOConfiguration : EntityTypeConfiguration<CBO>
-  {
-    public CBOConfiguration()
+    public class CBOConfiguration : EntityTypeConfiguration<CBO>
     {
-      HasKey(e => e.CBOId);
+        public CBOConfiguration()
+        {
+            HasKey(e => e.CBOId);
+
+            Property(e => e.Nome)
+                .IsRequired()
+                .HasMaxLength(35);
+
+            Property(e => e.Descricao)
+                .IsRequired()
+                .HasMaxLength(400);
+
+            Property(e => e.CodigoCBO)
+                .IsRequired()
+                .HasMaxLength(20);
+
+        }
     }
-  }
 }
