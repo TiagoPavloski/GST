@@ -18,14 +18,33 @@ namespace BI.GST.Application.AppService
             _financeiroService = financeiroService;
         }
 
-        public bool Adicionar(FinanceiroViewModel financeiroViewModel)
+        public string Adicionar(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelaViewModel)
         {
+            double valorTotalParcelas = 0;
             var financeiro = Mapper.Map<FinanceiroViewModel, Financeiro>(financeiroViewModel);
+
+            if (parcelaViewModel == null){
+                return "Atenção, o título precisa ter no mínimo uma parcela";
+            }
+
+            List<FinanceiroParcela> parcelas = new List<FinanceiroParcela>();
+            foreach (var item in parcelaViewModel)
+            {
+                valorTotalParcelas = valorTotalParcelas + item.ValorParcela;
+                parcelas.Add(Mapper.Map<FinanceiroParcelaViewModel, FinanceiroParcela>(item));
+            }
+                
+            if (valorTotalParcelas != financeiro.Valor)
+            {
+                return "Atenção, a soma do valor das parcelas não bate com o valor do título";
+            }
+
+            financeiro.Parcelas = parcelas;
 
             var duplicado = _financeiroService.Find(e => e.Titulo == financeiro.Titulo).Any();
             if (duplicado)
             {
-                return false;
+                return "Atenção, já existe um título com esses dados cadastrado";
             }
             else
             {
@@ -33,26 +52,44 @@ namespace BI.GST.Application.AppService
                 financeiro.Status = "0";
                 _financeiroService.Adicionar(financeiro);
                 Commit();
-                return true;
+                return "";
             }
         }
 
-        public bool Atualizar(FinanceiroViewModel financeiroViewModel)
+        public string Atualizar(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelaViewModel)
         {
+            double valorTotalParcelas = 0;
             var financeiro = Mapper.Map<FinanceiroViewModel, Financeiro>(financeiroViewModel);
 
-            var duplicado = _financeiroService.Find(e => e.Titulo == financeiro.Titulo &&  e.FinanceiroId != financeiro.FinanceiroId).Any();
+            if (parcelaViewModel.Count < 0)
+            {
+                return "Atenção, o título precisa ter no mínimo uma parcela";
+            }
 
+            List<FinanceiroParcela> parcelas = new List<FinanceiroParcela>();
+            foreach (var item in parcelaViewModel)
+            {
+                valorTotalParcelas = valorTotalParcelas + item.ValorParcela;
+                parcelas.Add(Mapper.Map<FinanceiroParcelaViewModel, FinanceiroParcela>(item));
+            }
+            financeiro.Parcelas = parcelas;
+            if (valorTotalParcelas != financeiro.Valor)
+            {
+                return "Atenção, a soma do valor das parcelas não bate com o valor do título";
+            }
+
+            var duplicado = _financeiroService.Find(e => e.Titulo == financeiro.Titulo).Any();
             if (duplicado)
             {
-                return false;
+                return "Atenção, já existe um título com esses dados cadastrado";
             }
             else
             {
                 BeginTransaction();
+                financeiro.Status = "0";
                 _financeiroService.Atualizar(financeiro);
                 Commit();
-                return true;
+                return "";
             }
         }
 

@@ -32,6 +32,8 @@ namespace BI.GST.Application.ViewModels
 
         public string Status { get; set; }
 
+        public string StatusNome { get; set; }
+
         public bool Delete { get; set; }
     }
 }

@@ -10,6 +10,12 @@ namespace BI.GST.Application.ViewModels
 {
     public class FinanceiroViewModel
     {
+
+        public FinanceiroViewModel()
+        {
+            Parcelas = new List<FinanceiroParcelaViewModel>();
+        }
+
         public int FinanceiroId { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Título")]
@@ -44,5 +50,7 @@ namespace BI.GST.Application.ViewModels
 
         [ScaffoldColumn(false)]
         public bool Delete { get; set; }
+
+        public virtual List<FinanceiroParcelaViewModel> Parcelas { get; set; }
     }
 }

@@ -10,6 +10,9 @@
     <h4>Financeiro</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <h4>Título</h4>
+
         <dt>
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
@@ -65,6 +68,50 @@
         <dd>
             @Html.DisplayFor(model => model.StatusNome)
         </dd>
+
+       <h4>Parcelas</h4>
+
+        <hr />
+        @foreach (var item in Model.Parcelas)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => item.Parcela)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Parcela)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.ValorParcela)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.ValorParcela)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.DataVencimento)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.DataVencimento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.DataQuitacao)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.DataQuitacao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.StatusNome)
+            </dd>
+
+            <hr/>
+        }
 
     </dl>
 </div>

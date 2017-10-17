@@ -24,6 +24,21 @@ namespace BI.GST.UI.MVC.Controllers
             _financeiroParcelaAppService = financeiroParcelaAppService;
         }
 
+
+        public ActionResult Parcela()
+        {
+            var parcela = new FinanceiroParcelaViewModel();
+            parcela.Status = "0";
+            return PartialView("_FinanceiroParcela", parcela);
+        }
+
+        public ActionResult Pagar(FinanceiroParcelaViewModel financeiroParcelaViewModel)
+        {
+            financeiroParcelaViewModel.Status = "1";
+            return PartialView("_FinanceiroParcela", financeiroParcelaViewModel);
+        }
+
+
         // GET: Financeiro
         public ActionResult Index(string pesquisa, int page = 0)
         {
@@ -83,6 +98,10 @@ namespace BI.GST.UI.MVC.Controllers
             financeiro.StatusNome     = ddlStatus.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
             financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
 
+            foreach (var item in financeiro.Parcelas)
+                item.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+
+
             #endregion
 
             return View(financeiro);
@@ -102,7 +121,9 @@ namespace BI.GST.UI.MVC.Controllers
             ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
             TempData["ddlStatus"] = ddlStatus;
             #endregion
-            return View();
+
+            var financeiroViewModel = new FinanceiroViewModel();
+            return View(financeiroViewModel);
         }
 
         // POST: Financeiro/Create
@@ -110,14 +131,17 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(FinanceiroViewModel financeiroViewModel)
+        public ActionResult Create(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_financeiroAppService.Adicionar(financeiroViewModel))
+                financeiroViewModel.Status = "0";
+                var result = _financeiroAppService.Adicionar(financeiroViewModel, financeiroParcelaViewModel);
+
+                if (result != "")
                 {
-                    TempData["Mensagem"] = "Atenção, há um título financeiro com os mesmos dados";
-                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = result;
+
                 }
                 else
                     return RedirectToAction("Index");
@@ -171,13 +195,16 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(FinanceiroViewModel financeiroViewModel)
+        public ActionResult Edit(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelasViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_financeiroAppService.Atualizar(financeiroViewModel))
+                var result = _financeiroAppService.Atualizar(financeiroViewModel, parcelasViewModel);
+
+                if (result != "")
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um título Financeiro com os mesmos dados já cadastrado')</SCRIPT>");
+                    TempData["Mensagem"] = result;
+
                 }
                 else
                     return RedirectToAction("Index");

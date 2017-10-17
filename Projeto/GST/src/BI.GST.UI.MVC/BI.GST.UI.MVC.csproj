@@ -4697,6 +4697,7 @@
     <Content Include="Views\CBOs\Details.cshtml" />
     <Content Include="Views\CBOs\Edit.cshtml" />
     <Content Include="Views\CBOs\Index.cshtml" />
+    <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
