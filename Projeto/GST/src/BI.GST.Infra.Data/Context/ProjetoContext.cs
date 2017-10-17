@@ -72,22 +72,22 @@ namespace BI.GST.Infra.Data.Context
         public DbSet<FinanceiroParcela> FinanceiroParcela { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
-		{
-			//Convenções
-			modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //tira pluralização
-			modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>(); //não excluir e cascata
-			modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>(); //não excluir e cascata
+        {
+            //Convenções
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //tira pluralização
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>(); //não excluir e cascata
+            modelBuilder.Conventions.Remove<ManyToManyCascadeDeleteConvention>(); //não excluir e cascata
 
-			//Customizações gerais
-			modelBuilder.Properties()
-				.Where(p => p.Name == p.ReflectedType.Name + "Id") //Quando a propriedade tiver "Id" no final é setado como chave primaria
-				.Configure(p => p.IsKey());
+            //Customizações gerais
+            modelBuilder.Properties()
+                .Where(p => p.Name == p.ReflectedType.Name + "Id") //Quando a propriedade tiver "Id" no final é setado como chave primaria
+                .Configure(p => p.IsKey());
 
-			modelBuilder.Properties<string>()
-			   .Configure(p => p.HasColumnType("varchar")); //Quando a propriedade for string é convertida pra varchar
+            modelBuilder.Properties<string>()
+               .Configure(p => p.HasColumnType("varchar")); //Quando a propriedade for string é convertida pra varchar
 
-			modelBuilder.Properties<string>()
-			  .Configure(p => p.HasMaxLength(100));
+            modelBuilder.Properties<string>()
+              .Configure(p => p.HasMaxLength(100));
 
 			//Mapeando configurações especificas
 			modelBuilder.Configurations.Add(new ClienteConfiguration());
@@ -141,7 +141,7 @@ namespace BI.GST.Infra.Data.Context
             base.OnModelCreating(modelBuilder);
 		}
 
-		public override int SaveChanges()
+        public override int SaveChanges()
 		{
 			foreach (var entry in ChangeTracker.Entries().Where(Entry => Entry.Entity.GetType().GetProperty("DataCadastro") != null))
 			{

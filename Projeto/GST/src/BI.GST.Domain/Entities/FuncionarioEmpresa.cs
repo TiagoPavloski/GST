@@ -27,6 +27,8 @@ namespace BI.GST.Domain.Entities
 
         public virtual Escala Escala { get; set; }
 
+        public string Demissao { get; set; }
+
         public bool Delete { get; set; }
     }
 }

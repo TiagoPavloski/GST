@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace BI.GST.Domain.Interface.IRepository
 {
- public  interface IFuncionarioRepository : IBaseRepository<Funcionario>
+ public  interface IFuncionarioEmpresaRepository : IBaseRepository<FuncionarioEmpresa>
   {
-    IEnumerable<Funcionario> ObterGrid(int page, string pesquisa);
+    IEnumerable<FuncionarioEmpresa> ObterGrid(int page, string pesquisa);
 
     int ObterTotalRegistros(string pesquisa);
   }

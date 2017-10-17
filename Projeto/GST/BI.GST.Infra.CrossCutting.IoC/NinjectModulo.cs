@@ -58,6 +58,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IColaboradorAppService>().To<ColaboradorAppService>();
             Bind<IRiscoCBOAppService>().To<RiscoCBOAppService>();
             Bind<ICBOAppService>().To<CBOAppService>();
+            Bind<IFuncionarioEmpresaAppService>().To<FuncionarioEmpresaAppService>();
             Bind<IUsuarioAppService>().To<UsuarioAppService>();
             Bind<IColaboradorAppService>().To<ColaboradorAppService>();
             Bind<IColaboradorAppService>().To<ColaboradorAppService>();
@@ -107,6 +108,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IColaboradorService>().To<ColaboradorService>();
             Bind<IRiscoCBOService>().To<RiscoCBOService>();
             Bind<ICBOService>().To<CBOService>();
+            Bind<IFuncionarioEmpresaService>().To<FuncionarioEmpresaService>();
             Bind<IFinanceiroParcelaService>().To<FinanceiroParcelaService>();
             Bind<IUsuarioService>().To<UsuarioService>();
 
@@ -154,6 +156,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IColaboradorRepository>().To<ColaboradorRepository>();
             Bind<IRiscoCBORepository>().To<RiscoCBORepository>();
             Bind<ICBORepository>().To<CBORepository>();
+            Bind<IFuncionarioEmpresaRepository>().To<FuncionarioEmpresaRepository>();
             Bind<IFinanceiroParcelaRepository>().To<FinanceiroParcelaRepository>();
             Bind<IUsuarioRepository>().To<UsuarioRepository>();
 
