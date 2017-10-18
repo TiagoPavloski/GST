@@ -78,7 +78,8 @@ namespace BI.GST.Application.AppService
                 return "Atenção, a soma do valor das parcelas não bate com o valor do título";
             }
 
-            var duplicado = _financeiroService.Find(e => e.Titulo == financeiro.Titulo).Any();
+            var duplicado = _financeiroService.Find(e => (e.Titulo == financeiro.Titulo)
+                                                    && (e.FinanceiroId != financeiro.FinanceiroId)).Any();
             if (duplicado)
             {
                 return "Atenção, já existe um título com esses dados cadastrado";
@@ -86,7 +87,6 @@ namespace BI.GST.Application.AppService
             else
             {
                 BeginTransaction();
-                financeiro.Status = "0";
                 _financeiroService.Atualizar(financeiro);
                 Commit();
                 return "";
