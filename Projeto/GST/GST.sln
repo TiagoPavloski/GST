@@ -8,6 +8,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Application", "2 - Application", "{0E8EC2E6-400C-4380-9AC0-F0880EBDB882}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Domain", "3 - Domain", "{77FD9B1F-1F6C-498D-8CF6-DB8609B30B1A}"
+	ProjectSection(SolutionItems) = preProject
+		src\BI.GST.Application\packages.config = src\BI.GST.Application\packages.config
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{6C6BCB12-21A9-4880-9F91-CD955FE98902}"
 EndProject

@@ -194,6 +194,7 @@
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
+    <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
@@ -4703,6 +4704,11 @@
     <Content Include="Views\FuncionarioEmpresas\Details.cshtml" />
     <Content Include="Views\FuncionarioEmpresas\Edit.cshtml" />
     <Content Include="Views\FuncionarioEmpresas\Index.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Create.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Delete.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Details.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Edit.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
