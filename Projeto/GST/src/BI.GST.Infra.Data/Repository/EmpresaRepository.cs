@@ -26,16 +26,19 @@ namespace BI.GST.Infra.Data.Repository
 
 		public override void Adicionar(Empresa obj)
 		{
+			SetorRepository sr = new SetorRepository();
+			CnaeRepository cr = new CnaeRepository();
+
 			//Adiciona lista de cnae completa com o cnae Id que foi pego na tela
 			List<Cnae> cnaes = new List<Cnae>();
 			foreach (var item in obj.CnaeSecundarios)
-				cnaes.Add(new CnaeRepository().ObterPorId(item.CnaeId));
+				cnaes.Add(cr.ObterPorId(item.CnaeId));
 			obj.CnaeSecundarios = cnaes;
 
 			//Adiciona lista de setores completa com o setor id que foi pego na tela
 			List<Setor> setores = new List<Setor>();
 			foreach (var item in obj.Setores)
-				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
+				setores.Add(sr.ObterPorId(item.SetorId));
 			obj.Setores = setores;
 
 			base.Adicionar(obj);
@@ -47,6 +50,9 @@ namespace BI.GST.Infra.Data.Repository
 
 		public override void Atualizar(Empresa obj)
 		{
+			SetorRepository st = new SetorRepository();
+			CnaeRepository cr = new CnaeRepository();
+
 			//Adiciona Objeto CnaePrincipal
 			obj.CnaePrincipal = new CnaeRepository().ObterPorId(obj.CnaePrincipal.CnaeId);
 
@@ -54,7 +60,7 @@ namespace BI.GST.Infra.Data.Repository
 			List<Cnae> cnaes = new List<Cnae>();
 			foreach (var item in obj.CnaeSecundarios)
 			{
-				cnaes.Add(new CnaeRepository().ObterPorId(item.CnaeId));
+				cnaes.Add(cr.ObterPorId(item.CnaeId));
 				item.Empresas.Add(obj);
 			}
 			obj.CnaeSecundarios = cnaes;
@@ -63,7 +69,7 @@ namespace BI.GST.Infra.Data.Repository
 			List<Setor> setores = new List<Setor>();
 			foreach (var item in obj.Setores)
 			{
-				setores.Add(new SetorRepository().ObterPorId(item.SetorId));
+				setores.Add(st.ObterPorId(item.SetorId));
 				item.Empresas.Add(obj);
 			}
 			obj.Setores = setores;
@@ -81,20 +87,12 @@ namespace BI.GST.Infra.Data.Repository
 
 			//Atualiza Endereco
 			new EnderecoRepository().Atualizar(obj.Endereco);
-
-			obj = new EmpresaRepository().ObterPorId(obj.EmpresaId);
-
-			//RemoverListas(obj.EmpresaId);
-			//base.Atualizar(obj);
-			//obj = new EmpresaRepository().ObterPorId(obj.EmpresaId);
-			//obj.Setores = setores;
-			//base.Atualizar(obj);
 		}
 
 		public void RemoverListas(int idEmpresa)
 		{
 			var empresa = base.ObterPorId(idEmpresa);
-			//empresa.CnaeSecundarios.Clear();
+			empresa.CnaeSecundarios.Clear();
 			empresa.Setores.Clear();
 
 			var entry = Context.Entry(empresa);
