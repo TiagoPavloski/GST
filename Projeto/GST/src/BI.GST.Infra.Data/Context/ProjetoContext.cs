@@ -67,8 +67,8 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<CIPAEmpresaFuncionario> CIPAEmpresaFuncionarios { get; set; }
 		public DbSet<SESMTEmpresa> SESMTEmpresas { get; set; }
 		public DbSet<SESMTEmpresaFuncionario> SESMTEmpresaFuncionarios { get; set; }
-        public DbSet<CipaQuadro> CipaQuadro { get; set; }
-        public DbSet<SesmtQuadro> SesmtQuadro { get; set; }
+		public DbSet<CipaQuadro> CipaQuadro { get; set; }
+		public DbSet<SesmtQuadro> SesmtQuadro { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
