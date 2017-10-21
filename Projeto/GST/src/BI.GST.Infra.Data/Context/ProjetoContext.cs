@@ -40,7 +40,8 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<CronogramaDeAcoes> CronogramasDeAcoes { get; set; }
 		public DbSet<Curso> Cursos { get; set; }
 		public DbSet<Empresa> Empresas { get; set; }
-		public DbSet<Usuario> EmpresasUtilizadora { get; set; }
+        public DbSet<EPI> EPIs { get; set; }
+        public DbSet<Usuario> EmpresasUtilizadora { get; set; }
 		public DbSet<EquipamentoRuido> EquipamentosRuido { get; set; }
 		public DbSet<Escala> Escalas { get; set; }
 		public DbSet<Exame> Exames { get; set; }
@@ -89,55 +90,55 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Properties<string>()
               .Configure(p => p.HasMaxLength(100));
 
-			//Mapeando configurações especificas
-			modelBuilder.Configurations.Add(new ClienteConfiguration());
-			modelBuilder.Configurations.Add(new EnderecoExConfiguration());
-			modelBuilder.Configurations.Add(new EnderecoConfiguration());
-			modelBuilder.Configurations.Add(new AgenteAcidenteConfiguration());
-			modelBuilder.Configurations.Add(new AgenteAmbientalConfiguration());
-			modelBuilder.Configurations.Add(new AgenteBiologicoConfiguration());
-			modelBuilder.Configurations.Add(new AgenteCausadorCBOConfiguration());
-			modelBuilder.Configurations.Add(new AgenteErgonomicoConfiguration());
-			modelBuilder.Configurations.Add(new AgenteFisicoConfiguration());
-			modelBuilder.Configurations.Add(new AgentePPRAConfiguration());
-			modelBuilder.Configurations.Add(new AgenteQuimicoConfiguration());
-			modelBuilder.Configurations.Add(new AgenteRiscoCBOConfiguration());
-			modelBuilder.Configurations.Add(new AnexoConfiguration());
-			modelBuilder.Configurations.Add(new CBOConfiguration());
-			modelBuilder.Configurations.Add(new CertificadoConfiguration());
-			modelBuilder.Configurations.Add(new ClassificacaoEfeitoConfiguration());
-			modelBuilder.Configurations.Add(new CnaeConfiguration());
-			modelBuilder.Configurations.Add(new ColaboradorConfiguration());
-			modelBuilder.Configurations.Add(new CronogramaDeAcoesConfiguration());
-			modelBuilder.Configurations.Add(new CursoConfiguration());
-			modelBuilder.Configurations.Add(new EmpresaConfiguration());
-			modelBuilder.Configurations.Add(new EquipamentoRuidoConfiguration());
-			modelBuilder.Configurations.Add(new EscalaConfiguration());
-			modelBuilder.Configurations.Add(new ExameConfiguration());
-			modelBuilder.Configurations.Add(new FinanceiroConfiguration());
-			modelBuilder.Configurations.Add(new FonteRiscoCBOConfiguration());
-			modelBuilder.Configurations.Add(new FuncionarioConfiguration());
-			modelBuilder.Configurations.Add(new FuncionarioEmpresaConfiguration());
-			modelBuilder.Configurations.Add(new InstituicaoCursoConfiguration());
-			modelBuilder.Configurations.Add(new MedicaoAgenteConfiguration());
-			modelBuilder.Configurations.Add(new MeioPropagacaoConfiguration());
-			modelBuilder.Configurations.Add(new OSConfiguration());
-			modelBuilder.Configurations.Add(new PPRAConfiguration());
-			modelBuilder.Configurations.Add(new RiscoCBOConfiguration());
-			modelBuilder.Configurations.Add(new RiscoFuncionarioConfiguration());
-			modelBuilder.Configurations.Add(new SetorConfiguration());
-			modelBuilder.Configurations.Add(new TelefoneConfiguration());
-			modelBuilder.Configurations.Add(new TipoCursoConfiguration());
-			modelBuilder.Configurations.Add(new TipoExameConfiguration());
-			modelBuilder.Configurations.Add(new TipoSetorConfiguration());
-			modelBuilder.Configurations.Add(new TipoVacinaConfiguration());
-			modelBuilder.Configurations.Add(new UFConfiguration());
-			modelBuilder.Configurations.Add(new VacinaConfiguration());
-			modelBuilder.Configurations.Add(new CIPAEmpresaConfiguration());
-			modelBuilder.Configurations.Add(new CipaEmpresaFuncionarioConfiguration());
-			modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
-			modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
-            modelBuilder.Configurations.Add(new FinanceiroParcelaConfiguration());
+            //Mapeando configurações especificas
+            modelBuilder.Configurations.Add(new ClienteConfiguration());
+            modelBuilder.Configurations.Add(new EnderecoExConfiguration());
+            modelBuilder.Configurations.Add(new EnderecoConfiguration());
+            modelBuilder.Configurations.Add(new AgenteAcidenteConfiguration());
+            modelBuilder.Configurations.Add(new AgenteAmbientalConfiguration());
+            modelBuilder.Configurations.Add(new AgenteBiologicoConfiguration());
+            modelBuilder.Configurations.Add(new AgenteCausadorCBOConfiguration());
+            modelBuilder.Configurations.Add(new AgenteErgonomicoConfiguration());
+            modelBuilder.Configurations.Add(new AgenteFisicoConfiguration());
+            modelBuilder.Configurations.Add(new AgentePPRAConfiguration());
+            modelBuilder.Configurations.Add(new AgenteQuimicoConfiguration());
+            modelBuilder.Configurations.Add(new AgenteRiscoCBOConfiguration());
+            modelBuilder.Configurations.Add(new AnexoConfiguration());
+            modelBuilder.Configurations.Add(new CBOConfiguration());
+            modelBuilder.Configurations.Add(new CertificadoConfiguration());
+            modelBuilder.Configurations.Add(new ClassificacaoEfeitoConfiguration());
+            modelBuilder.Configurations.Add(new CnaeConfiguration());
+            modelBuilder.Configurations.Add(new ColaboradorConfiguration());
+            modelBuilder.Configurations.Add(new CronogramaDeAcoesConfiguration());
+            modelBuilder.Configurations.Add(new CursoConfiguration());
+            modelBuilder.Configurations.Add(new EmpresaConfiguration());
+            modelBuilder.Configurations.Add(new EPIConfiguration());
+            modelBuilder.Configurations.Add(new EquipamentoRuidoConfiguration());
+            modelBuilder.Configurations.Add(new EscalaConfiguration());
+            modelBuilder.Configurations.Add(new ExameConfiguration());
+            modelBuilder.Configurations.Add(new FinanceiroConfiguration());
+            modelBuilder.Configurations.Add(new FonteRiscoCBOConfiguration());
+            modelBuilder.Configurations.Add(new FuncionarioConfiguration());
+            modelBuilder.Configurations.Add(new FuncionarioEmpresaConfiguration());
+            modelBuilder.Configurations.Add(new InstituicaoCursoConfiguration());
+            modelBuilder.Configurations.Add(new MedicaoAgenteConfiguration());
+            modelBuilder.Configurations.Add(new MeioPropagacaoConfiguration());
+            modelBuilder.Configurations.Add(new OSConfiguration());
+            modelBuilder.Configurations.Add(new PPRAConfiguration());
+            modelBuilder.Configurations.Add(new RiscoCBOConfiguration());
+            modelBuilder.Configurations.Add(new RiscoFuncionarioConfiguration());
+            modelBuilder.Configurations.Add(new SetorConfiguration());
+            modelBuilder.Configurations.Add(new TelefoneConfiguration());
+            modelBuilder.Configurations.Add(new TipoCursoConfiguration());
+            modelBuilder.Configurations.Add(new TipoExameConfiguration());
+            modelBuilder.Configurations.Add(new TipoSetorConfiguration());
+            modelBuilder.Configurations.Add(new TipoVacinaConfiguration());
+            modelBuilder.Configurations.Add(new UFConfiguration());
+            modelBuilder.Configurations.Add(new VacinaConfiguration());
+            modelBuilder.Configurations.Add(new CIPAEmpresaConfiguration());
+            modelBuilder.Configurations.Add(new CipaEmpresaFuncionarioConfiguration());
+            modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
+            modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
             base.OnModelCreating(modelBuilder);
 		}
 
