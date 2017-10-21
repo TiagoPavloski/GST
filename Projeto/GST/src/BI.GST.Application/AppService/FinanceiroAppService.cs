@@ -26,7 +26,8 @@ namespace BI.GST.Application.AppService
             if (result != "")
                 return result;
 
-            var duplicado = _financeiroService.Find(e => e.Titulo == financeiro.Titulo).Any();
+            var duplicado = _financeiroService.Find(e => (e.Titulo == financeiro.Titulo)
+                                                      && (e.Delete == false)).Any();
             if (duplicado)
             {
                 return "Atenção, já existe um título com esses dados cadastrado";
@@ -49,7 +50,8 @@ namespace BI.GST.Application.AppService
                 return result;
 
             var duplicado = _financeiroService.Find(e => (e.Titulo == financeiro.Titulo)
-                                                    && (e.FinanceiroId != financeiro.FinanceiroId)).Any();
+                                                    && (e.FinanceiroId != financeiro.FinanceiroId)
+                                                    && (e.Delete == false)).Any();
             if (duplicado)
             {
                 return "Atenção, já existe um título com esses dados cadastrado";

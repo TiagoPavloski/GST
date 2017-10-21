@@ -147,6 +147,8 @@ namespace BI.GST.UI.MVC.Controllers
                 financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
                 financeiroViewModel.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(financeiroViewModel.Status.ToString())).First().Text;
                 #endregion
+
+                financeiroViewModel.Parcelas = financeiroParcelaViewModel;
             }
             return View(financeiroViewModel);
         }
