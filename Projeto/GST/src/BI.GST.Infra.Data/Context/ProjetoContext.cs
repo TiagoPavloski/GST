@@ -70,6 +70,7 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<SESMTEmpresaFuncionario> SESMTEmpresaFuncionarios { get; set; }
 		public DbSet<CipaQuadro> CipaQuadro { get; set; }
 		public DbSet<SesmtQuadro> SesmtQuadro { get; set; }
+        public DbSet<FinanceiroParcela> FinanceiroParcela { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -139,7 +140,7 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
             modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
             base.OnModelCreating(modelBuilder);
-        }
+		}
 
         public override int SaveChanges()
 		{

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteQuimicoViewModel>
+﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteFisicoViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -10,13 +10,12 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "Agentes Quimicos", new { pesquisa = "" }, FormMethod.Get))
+@using (Html.BeginForm("Index", "Agentes Físicos", new { pesquisa = "" }, FormMethod.Get))
 {
     <p>
         Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
     </p>
 }
-
 <table class="table">
     <tr>
         <th>
@@ -24,6 +23,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.LimiteTolerancia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NivelAcao)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Frequencia)
@@ -34,8 +36,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Tecnica)
         </th>
-       
-       <th></th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -47,6 +48,9 @@
             @Html.DisplayFor(modelItem => item.LimiteTolerancia)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.NivelAcao)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Frequencia)
         </td>
         <td>
@@ -55,11 +59,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Tecnica)
         </td>
-       
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AgenteQuimicoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AgenteQuimicoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AgenteQuimicoId })
+       <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AgenteFisicoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AgenteFisicoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AgenteFisicoId })
         </td>
     </tr>
 }

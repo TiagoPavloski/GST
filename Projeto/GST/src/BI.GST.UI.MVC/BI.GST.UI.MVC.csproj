@@ -4607,11 +4607,11 @@
     <Content Include="Views\AgenteBiologicos\Details.cshtml" />
     <Content Include="Views\AgenteBiologicos\Edit.cshtml" />
     <Content Include="Views\AgenteBiologicos\Index.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Create.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Delete.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Details.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Edit.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Index.cshtml" />
+    <Content Include="Views\AgenteFisicos\Create.cshtml" />
+    <Content Include="Views\AgenteFisicos\Delete.cshtml" />
+    <Content Include="Views\AgenteFisicos\Details.cshtml" />
+    <Content Include="Views\AgenteFisicos\Edit.cshtml" />
+    <Content Include="Views\AgenteFisicos\Index.cshtml" />
     <Content Include="Views\AgenteQuimicos\Create.cshtml" />
     <Content Include="Views\AgenteQuimicos\Delete.cshtml" />
     <Content Include="Views\AgenteQuimicos\Details.cshtml" />
@@ -4719,6 +4719,8 @@
     <Content Include="Views\EPIs\Details.cshtml" />
     <Content Include="Views\EPIs\Edit.cshtml" />
     <Content Include="Views\EPIs\Index.cshtml" />
+    <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

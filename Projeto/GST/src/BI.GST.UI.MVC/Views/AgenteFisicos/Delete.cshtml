@@ -1,11 +1,12 @@
 ﻿@model BI.GST.Application.ViewModels.AgenteFisicoViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
 }
 
-<h2>Details</h2>
+<h2>Delete</h2>
 
+<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>AgenteFisico</h4>
     <hr />
@@ -146,17 +147,14 @@
             @Html.DisplayFor(model => model.Observacao)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Delete)
-        </dt>
+   </dl>
 
-        <dd>
-            @Html.DisplayFor(model => model.Delete)
-        </dd>
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
 
-    </dl>
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AgenteFisicoId }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
