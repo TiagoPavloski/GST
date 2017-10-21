@@ -20,7 +20,7 @@ namespace BI.GST.UI.MVC.Controllers
 
         public FinanceiroController(IFinanceiroAppService financeiroAppService, IFinanceiroParcelaAppService financeiroParcelaAppService)
         {
-            _financeiroAppService        = financeiroAppService;
+            _financeiroAppService = financeiroAppService;
             _financeiroParcelaAppService = financeiroParcelaAppService;
         }
 
@@ -28,16 +28,8 @@ namespace BI.GST.UI.MVC.Controllers
         public ActionResult Parcela()
         {
             var parcela = new FinanceiroParcelaViewModel();
-            parcela.Status = "0";
             return PartialView("_FinanceiroParcela", parcela);
         }
-
-        public ActionResult Pagar(FinanceiroParcelaViewModel financeiroParcelaViewModel)
-        {
-            financeiroParcelaViewModel.Status = "1";
-            return PartialView("_FinanceiroParcela", financeiroParcelaViewModel);
-        }
-
 
         // GET: Financeiro
         public ActionResult Index(string pesquisa, int page = 0)
@@ -62,7 +54,7 @@ namespace BI.GST.UI.MVC.Controllers
 
             foreach (var item in financeiroViewModel)
             {
-                item.StatusNome     = ddlStatus.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+                item.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
                 item.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(item.Operacao.ToString())).First().Text;
             }
             #endregion
@@ -95,13 +87,8 @@ namespace BI.GST.UI.MVC.Controllers
             ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
             TempData["ddlStatus"] = ddlStatus;
 
-            financeiro.StatusNome     = ddlStatus.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
+            financeiro.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
             financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
-
-            foreach (var item in financeiro.Parcelas)
-                item.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
-
-
             #endregion
 
             return View(financeiro);
@@ -158,7 +145,7 @@ namespace BI.GST.UI.MVC.Controllers
                 TempData["ddlStatus"] = ddlStatus;
 
                 financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
-                financeiroViewModel.StatusNome     = ddlStatus.Where(e => e.Value.Trim().Equals(financeiroViewModel.Status.ToString())).First().Text;
+                financeiroViewModel.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(financeiroViewModel.Status.ToString())).First().Text;
                 #endregion
             }
             return View(financeiroViewModel);
@@ -195,20 +182,17 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelasViewModel)
+        public ActionResult Edit(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
-            if (ModelState.IsValid)
+            var result = _financeiroAppService.Atualizar(financeiroViewModel, financeiroParcelaViewModel);
+
+            if (result != "")
             {
-                var result = _financeiroAppService.Atualizar(financeiroViewModel, parcelasViewModel);
+                TempData["Mensagem"] = result;
 
-                if (result != "")
-                {
-                    TempData["Mensagem"] = result;
-
-                }
-                else
-                    return RedirectToAction("Index");
             }
+            else
+                return RedirectToAction("Index");
 
             #region ddlStatus
             List<SelectListItem> ddlOperacao = new List<SelectListItem>();
@@ -216,10 +200,11 @@ namespace BI.GST.UI.MVC.Controllers
             ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
             TempData["ddlOperacao"] = ddlOperacao;
 
-            var ddlOperacao2 = (List<SelectListItem>)TempData["ddlOperacao"];
-            financeiroViewModel.OperacaoStatus = ddlOperacao2.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
+            financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
             #endregion
 
+            financeiroViewModel.Parcelas = financeiroParcelaViewModel;
+           
             return View(financeiroViewModel);
         }
 
@@ -236,10 +221,17 @@ namespace BI.GST.UI.MVC.Controllers
                 return HttpNotFound();
             }
 
-            var ddlOperacao = (List<SelectListItem>)TempData["ddlOperacao"];
-            financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
 
-            var ddlStatus = (List<SelectListItem>)TempData["ddlStatus"];
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+
+            financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
             financeiro.StatusNome = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
 
             return View(financeiro);

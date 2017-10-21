@@ -30,7 +30,7 @@ namespace BI.GST.Application.ViewModels
 
         public virtual FinanceiroViewModel Financeiro { get; set; }
 
-        public string Status { get; set; }
+        public bool Pago { get; set; }
 
         public string StatusNome { get; set; }
 

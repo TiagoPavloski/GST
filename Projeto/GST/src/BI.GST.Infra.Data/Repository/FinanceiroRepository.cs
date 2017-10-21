@@ -35,5 +35,41 @@ namespace BI.GST.Infra.Data.Repository
         {
             return DbSet.Count(x => pesquisa != null ? x.Titulo.Contains(pesquisa) : x.Titulo != null && (x.Delete == false));
         }
+
+        public override void Atualizar(Financeiro obj)
+        {
+            var parcelaRepository = new FinanceiroParcelaRepository();
+
+            foreach (var item in obj.Parcelas)
+            {
+                if (item.FinanceiroParcelaId == 0)
+                {
+                    if (item.FinanceiroId == 0)
+                    {
+                        item.FinanceiroId = obj.FinanceiroId;
+                    }
+                    parcelaRepository.Adicionar(item);
+                }
+                else
+                    parcelaRepository.Atualizar(item);
+            }
+            base.Atualizar(obj);
+        }
+
+
+        public override void Adicionar(Financeiro obj)
+        {
+            var parcelaRepository = new FinanceiroParcelaRepository();
+            base.Adicionar(obj);
+
+            foreach (var item in obj.Parcelas)
+            {
+                item.FinanceiroId = obj.FinanceiroId;
+                parcelaRepository.Adicionar(item);
+            }
+                
+        }
+
+
     }
 }

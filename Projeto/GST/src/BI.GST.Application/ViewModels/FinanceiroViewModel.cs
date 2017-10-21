@@ -51,6 +51,7 @@ namespace BI.GST.Application.ViewModels
         [ScaffoldColumn(false)]
         public bool Delete { get; set; }
 
+        [ScaffoldColumn(false)]
         public virtual List<FinanceiroParcelaViewModel> Parcelas { get; set; }
     }
 }

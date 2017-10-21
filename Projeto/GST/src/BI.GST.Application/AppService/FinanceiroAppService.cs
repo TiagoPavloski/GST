@@ -20,26 +20,11 @@ namespace BI.GST.Application.AppService
 
         public string Adicionar(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelaViewModel)
         {
-            double valorTotalParcelas = 0;
             var financeiro = Mapper.Map<FinanceiroViewModel, Financeiro>(financeiroViewModel);
+            var result = ValidarParcelas(ref financeiro, ref parcelaViewModel);
 
-            if (parcelaViewModel == null){
-                return "Atenção, o título precisa ter no mínimo uma parcela";
-            }
-
-            List<FinanceiroParcela> parcelas = new List<FinanceiroParcela>();
-            foreach (var item in parcelaViewModel)
-            {
-                valorTotalParcelas = valorTotalParcelas + item.ValorParcela;
-                parcelas.Add(Mapper.Map<FinanceiroParcelaViewModel, FinanceiroParcela>(item));
-            }
-                
-            if (valorTotalParcelas != financeiro.Valor)
-            {
-                return "Atenção, a soma do valor das parcelas não bate com o valor do título";
-            }
-
-            financeiro.Parcelas = parcelas;
+            if (result != "")
+                return result;
 
             var duplicado = _financeiroService.Find(e => e.Titulo == financeiro.Titulo).Any();
             if (duplicado)
@@ -49,7 +34,6 @@ namespace BI.GST.Application.AppService
             else
             {
                 BeginTransaction();
-                financeiro.Status = "0";
                 _financeiroService.Adicionar(financeiro);
                 Commit();
                 return "";
@@ -58,25 +42,11 @@ namespace BI.GST.Application.AppService
 
         public string Atualizar(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelaViewModel)
         {
-            double valorTotalParcelas = 0;
             var financeiro = Mapper.Map<FinanceiroViewModel, Financeiro>(financeiroViewModel);
+            var result = ValidarParcelas(ref financeiro, ref parcelaViewModel);
 
-            if (parcelaViewModel.Count < 0)
-            {
-                return "Atenção, o título precisa ter no mínimo uma parcela";
-            }
-
-            List<FinanceiroParcela> parcelas = new List<FinanceiroParcela>();
-            foreach (var item in parcelaViewModel)
-            {
-                valorTotalParcelas = valorTotalParcelas + item.ValorParcela;
-                parcelas.Add(Mapper.Map<FinanceiroParcelaViewModel, FinanceiroParcela>(item));
-            }
-            financeiro.Parcelas = parcelas;
-            if (valorTotalParcelas != financeiro.Valor)
-            {
-                return "Atenção, a soma do valor das parcelas não bate com o valor do título";
-            }
+            if (result != "")
+                return result;
 
             var duplicado = _financeiroService.Find(e => (e.Titulo == financeiro.Titulo)
                                                     && (e.FinanceiroId != financeiro.FinanceiroId)).Any();
@@ -142,6 +112,68 @@ namespace BI.GST.Application.AppService
         public int ObterTotalRegistros(string pesquisa)
         {
             return _financeiroService.ObterTotalRegistros(pesquisa);
+        }
+
+        public string ValidarParcelas(ref Financeiro financeiro, ref List<FinanceiroParcelaViewModel> parcelaViewModel)
+        {
+            double valorTotalParcelas = 0;
+            string errosParcelas = "";
+            var dataOperacao = DateTime.Parse(financeiro.DataOperacao);
+            Boolean parcelasPagas = true;
+
+            if (parcelaViewModel.Count < 0)
+            {
+                return "Atenção, o título precisa ter no mínimo uma parcela";
+            }
+
+            List<FinanceiroParcela> parcelas = new List<FinanceiroParcela>();
+            foreach (var item in parcelaViewModel)
+            {
+                DateTime dataQuitacao = new DateTime();
+                DateTime dataVencimento = new DateTime();
+
+                if (item.DataVencimento != null)
+                    dataVencimento = DateTime.Parse(item.DataVencimento);
+
+                if (item.DataQuitacao != null)
+                    dataQuitacao = DateTime.Parse(item.DataQuitacao);
+
+                if (dataVencimento < dataOperacao)
+                    errosParcelas = errosParcelas + "Parcela: " + item.Parcela + " Tem data de vencimento anterior a data de operação do título. ";
+
+                if (item.DataQuitacao != null)
+                    item.Pago = true;
+                else
+                {
+                    parcelasPagas = false;
+                    item.Pago = false;
+                }
+                   
+                if (dataQuitacao < dataOperacao && item.DataQuitacao != null)
+                    errosParcelas = errosParcelas + "Parcela: " + item.Parcela + " Tem data de quitação preenchida anterior a data de operação do título. ";
+
+                valorTotalParcelas = valorTotalParcelas + item.ValorParcela;
+                parcelas.Add(Mapper.Map<FinanceiroParcelaViewModel, FinanceiroParcela>(item));
+            }
+
+            if (parcelasPagas == true)
+                financeiro.Status = "1";
+            else
+                financeiro.Status = "0";
+
+            financeiro.Parcelas = parcelas;
+
+            if (errosParcelas != "")
+            {
+                return errosParcelas;
+            }
+
+            if (valorTotalParcelas != financeiro.Valor)
+            {
+                return "Atenção, a soma do valor das parcelas não bate com o valor do título";
+            }
+
+            return "";
         }
     }
 }

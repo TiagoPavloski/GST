@@ -22,7 +22,7 @@ namespace BI.GST.Domain.Entities
 
         public virtual Financeiro Financeiro { get; set; }
 
-        public bool Status { get; set; }
+        public bool Pago { get; set; }
 
         public bool Delete { get; set; }
     }

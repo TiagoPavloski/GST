@@ -4,8 +4,7 @@
 {
     @Html.HiddenFor(model => model.FinanceiroParcelaId)
     @Html.HiddenFor(model => model.FinanceiroId)
-    @Html.HiddenFor(model => model.Status)
-
+    //  @Html.HiddenFor(model => model.Pago)
     <div class="form-group">
         @Html.LabelFor(model => model.Parcela, htmlAttributes: new { @class = "control-label col-md-2" })
 
@@ -33,16 +32,26 @@
         </div>
     </div>
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.DataQuitacao, htmlAttributes: new { @class = "control-label col-md-2" })
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.CheckBox(model.Status)
-                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-                </div>
+        <div class="col-md-2">
+            @Html.EditorFor(model => model.DataQuitacao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+            @Html.ValidationMessageFor(model => model.DataQuitacao, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Pago, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-2">
+            <div class="checkbox">
+                @Html.CheckBoxFor(model => model.Pago, new { @class = "col-sm-4 control-label" })
+                @Html.ValidationMessageFor(model => model.Pago, "", new { @class = "text-danger" })
             </div>
         </div>
+    </div>
 
+    <hr/>
 
 }
