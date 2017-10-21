@@ -7,7 +7,11 @@ namespace BI.GST.Domain.Entities
     {
         public int FuncionarioEmpresaId { get; set; }
 
+        public int EmpresaId { get; set; }
+
         public virtual Empresa Empresa { get; set; }
+
+        public int FuncionarioId { get; set; }
 
         public virtual Funcionario Funcionario { get; set; }
 
@@ -21,9 +25,15 @@ namespace BI.GST.Domain.Entities
 
         public string Admissao { get; set; }
 
+        public int CBOId { get; set; }
+
         public virtual CBO CBO { get; set; }
 
+        public int SetorId { get; set; }
+
         public virtual Setor Setor { get; set; }
+
+        public int EscalaId { get; set; }
 
         public virtual Escala Escala { get; set; }
 

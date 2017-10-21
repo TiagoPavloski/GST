@@ -59,9 +59,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IRiscoCBOAppService>().To<RiscoCBOAppService>();
             Bind<ICBOAppService>().To<CBOAppService>();
             Bind<IFuncionarioEmpresaAppService>().To<FuncionarioEmpresaAppService>();
+            Bind<IInstituicaoCursoAppService>().To<InstituicaoCursoAppService>();
+			Bind<IUsuarioAppService>().To<UsuarioAppService>();
 
-            //Servicos
-            Bind<ITipoCursoService>().To<TipoCursoService>();
+			//Servicos
+			Bind<ITipoCursoService>().To<TipoCursoService>();
 			Bind<ITipoExameService>().To<TipoExameService>();
 			Bind<ITipoVacinaService>().To<TipoVacinaService>();
 			Bind<ICursoService>().To<CursoService>();
@@ -105,9 +107,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IRiscoCBOService>().To<RiscoCBOService>();
             Bind<ICBOService>().To<CBOService>();
             Bind<IFuncionarioEmpresaService>().To<FuncionarioEmpresaService>();
+            Bind<IInstituicaoCursoService>().To<InstituicaoCursoService>();
+			Bind<IUsuarioService>().To<UsuarioService>();
 
-            //Data Repository
-            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+			//Data Repository
+			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
 			Bind<ITipoExameRepository>().To<TipoExameRepository>();
 			Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
 			Bind<ICursoRepository>().To<CursoRepository>();
@@ -151,10 +155,12 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IRiscoCBORepository>().To<RiscoCBORepository>();
             Bind<ICBORepository>().To<CBORepository>();
             Bind<IFuncionarioEmpresaRepository>().To<FuncionarioEmpresaRepository>();
+            Bind<IInstituicaoCursoRepository>().To<InstituicaoCursoRepository>();
+			Bind<IUsuarioRepository>().To<UsuarioRepository>();
 
 
-            //Data Configuration
-            Bind<IContextManager>().To<ContextManager>();
+			//Data Configuration
+			Bind<IContextManager>().To<ContextManager>();
 			Bind<IUnitOfWork>().To<UnitOfWork>();
 		}
 	}

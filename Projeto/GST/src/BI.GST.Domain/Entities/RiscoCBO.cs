@@ -9,9 +9,15 @@ namespace BI.GST.Domain.Entities
 
         public string Nome { get; set; }
 
+        public int AgenteRiscoCBOId { get; set; }
+
         public virtual AgenteRiscoCBO AgenteRiscoCBO { get; set; }
 
+        public int AgenteCausadorCBOId { get; set; }
+
         public virtual AgenteCausadorCBO AgenteCausadorCBO { get; set; }
+
+        public int FonteRiscoCBOId { get; set; }
 
         public virtual FonteRiscoCBO FonteRiscoCBO { get; set; }
 

@@ -194,6 +194,7 @@
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
+    <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
@@ -3702,7 +3703,6 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_LayoutOld.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -4565,7 +4565,6 @@
     <Content Include="vendors\validator\.bower.json" />
     <Content Include="vendors\validator\README.md" />
     <Content Include="vendors\validator\validator.jquery.json" />
-    <Content Include="Views\Shared\_Mensagem - Copy.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />
@@ -4703,6 +4702,11 @@
     <Content Include="Views\FuncionarioEmpresas\Details.cshtml" />
     <Content Include="Views\FuncionarioEmpresas\Edit.cshtml" />
     <Content Include="Views\FuncionarioEmpresas\Index.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Create.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Delete.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Details.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Edit.cshtml" />
+    <Content Include="Views\InstituicaoCursos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -24,9 +24,6 @@ namespace BI.GST.Application.ViewModels
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
         public string Descricao { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Status")]
-        public int Status { get; set; }
-
         public virtual ICollection<AgenteQuimico> AgenteQuimicos { get; set; }
 
         public virtual ICollection<AgenteFisico> AgenteFisicos { get; set; }
