@@ -1,0 +1,64 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.CertificadoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Certificados", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Funcionario.Nome)
+        </th>
+        <th>
+            @Html.DisplayName("Curso")
+        </th>
+        <th>
+            @Html.DisplayName("Instituição ministradora")
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEmissao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Funcionario.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Curso.TipoCurso.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstituicaoCurso.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEmissao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StatusNome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CertificadoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CertificadoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CertificadoId })
+        </td>
+    </tr>
+}
+
+</table>

@@ -116,6 +116,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AgenteAmbientalRepository.cs" />
+    <Compile Include="Repository\CertificadoRepository.cs" />
     <Compile Include="Repository\InstituicaoCursoRepository.cs" />
     <Compile Include="Repository\FuncionarioEmpresaRepository.cs" />
     <Compile Include="Repository\OSRepository.cs" />
