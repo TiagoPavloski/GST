@@ -1,0 +1,58 @@
+﻿@model BI.GST.Application.ViewModels.CertificadoViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Certificado</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Curso.Data)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Curso.Data)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Funcionario.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Funcionario.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InstituicaoCurso.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstituicaoCurso.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEmissao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEmissao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusNome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CertificadoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -61,10 +61,15 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ICBOAppService>().To<CBOAppService>();
             Bind<IFuncionarioEmpresaAppService>().To<FuncionarioEmpresaAppService>();
             Bind<IInstituicaoCursoAppService>().To<InstituicaoCursoAppService>();
+            Bind<ICertificadoAppService>().To<CertificadoAppService>();
+            Bind<IEPIAppService>().To<EPIAppService>();
 			Bind<IUsuarioAppService>().To<UsuarioAppService>();
+            Bind<IColaboradorAppService>().To<ColaboradorAppService>();
+            Bind<IFinanceiroParcelaAppService>().To<FinanceiroParcelaAppService>();
 
-			//Servicos
-			Bind<ITipoCursoService>().To<TipoCursoService>();
+
+            //Servicos
+            Bind<ITipoCursoService>().To<TipoCursoService>();
 			Bind<ITipoExameService>().To<TipoExameService>();
 			Bind<ITipoVacinaService>().To<TipoVacinaService>();
 			Bind<ICursoService>().To<CursoService>();
@@ -110,10 +115,14 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ICBOService>().To<CBOService>();
             Bind<IFuncionarioEmpresaService>().To<FuncionarioEmpresaService>();
             Bind<IInstituicaoCursoService>().To<InstituicaoCursoService>();
+            Bind<ICertificadoService>().To<CertificadoService>();
+            Bind<IEPIService>().To<EPIService>();
 			Bind<IUsuarioService>().To<UsuarioService>();
+            Bind<IFinanceiroParcelaService>().To<FinanceiroParcelaService>();
 
-			//Data Repository
-			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+
+            //Data Repository
+            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
 			Bind<ITipoExameRepository>().To<TipoExameRepository>();
 			Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
 			Bind<ICursoRepository>().To<CursoRepository>();
@@ -159,11 +168,14 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ICBORepository>().To<CBORepository>();
             Bind<IFuncionarioEmpresaRepository>().To<FuncionarioEmpresaRepository>();
             Bind<IInstituicaoCursoRepository>().To<InstituicaoCursoRepository>();
+            Bind<ICertificadoRepository>().To<CertificadoRepository>();
+            Bind<IEPIRepository>().To<EPIRepository>();
 			Bind<IUsuarioRepository>().To<UsuarioRepository>();
+            Bind<IFinanceiroParcelaRepository>().To<FinanceiroParcelaRepository>();
 
 
-			//Data Configuration
-			Bind<IContextManager>().To<ContextManager>();
+            //Data Configuration
+            Bind<IContextManager>().To<ContextManager>();
 			Bind<IUnitOfWork>().To<UnitOfWork>();
 		}
 	}

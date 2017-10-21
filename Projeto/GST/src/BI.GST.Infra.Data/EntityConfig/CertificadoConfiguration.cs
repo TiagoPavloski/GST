@@ -3,11 +3,15 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace BI.GST.Infra.Data.EntityConfig
 {
-  public class CertificadoConfiguration : EntityTypeConfiguration<Certificado>
-  {
-    public CertificadoConfiguration()
+    public class CertificadoConfiguration : EntityTypeConfiguration<Certificado>
     {
-      HasKey(e => e.CertificadoId);
+        public CertificadoConfiguration()
+        {
+            HasKey(e => e.CertificadoId);
+
+            Property(e => e.DataEmissao)
+                .IsRequired();
+
+        }
     }
-  }
 }

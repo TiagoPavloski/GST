@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using BI.GST.Application.ViewModels;
 using BI.GST.Domain.Entities;
 using System;
@@ -63,7 +63,11 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<CBO, CBOViewModel>();
             Mapper.CreateMap<FuncionarioEmpresa, FuncionarioEmpresaViewModel>();
             Mapper.CreateMap<InstituicaoCurso, InstituicaoCursoViewModel>();
+            Mapper.CreateMap<Certificado, CertificadoViewModel>();
+            Mapper.CreateMap<EPI, EPIViewModel>();
 			Mapper.CreateMap<Usuario, UsuarioViewModel>();
-		}
-    }
+			Mapper.CreateMap<FinanceiroParcela, FinanceiroParcelaViewModel>();
+        }
+	}
 }
+

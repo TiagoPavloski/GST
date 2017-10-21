@@ -188,11 +188,13 @@
     <Compile Include="Controllers\AgenteQuimicosController.cs" />
     <Compile Include="Controllers\AgenteRiscoCBOsController.cs" />
     <Compile Include="Controllers\CBOsController.cs" />
+    <Compile Include="Controllers\CertificadosController.cs" />
     <Compile Include="Controllers\CIPAEmpresasController.cs" />
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="Controllers\EPIsController.cs" />
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
     <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
@@ -4708,6 +4710,18 @@
     <Content Include="Views\InstituicaoCursos\Details.cshtml" />
     <Content Include="Views\InstituicaoCursos\Edit.cshtml" />
     <Content Include="Views\InstituicaoCursos\Index.cshtml" />
+    <Content Include="Views\Certificados\Create.cshtml" />
+    <Content Include="Views\Certificados\Delete.cshtml" />
+    <Content Include="Views\Certificados\Details.cshtml" />
+    <Content Include="Views\Certificados\Edit.cshtml" />
+    <Content Include="Views\Certificados\Index.cshtml" />
+    <Content Include="Views\EPIs\Create.cshtml" />
+    <Content Include="Views\EPIs\Delete.cshtml" />
+    <Content Include="Views\EPIs\Details.cshtml" />
+    <Content Include="Views\EPIs\Edit.cshtml" />
+    <Content Include="Views\EPIs\Index.cshtml" />
+    <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
+
     <Content Include="Views\RiscoFuncionarios\Create.cshtml" />
     <Content Include="Views\RiscoFuncionarios\Delete.cshtml" />
     <Content Include="Views\RiscoFuncionarios\Details.cshtml" />
