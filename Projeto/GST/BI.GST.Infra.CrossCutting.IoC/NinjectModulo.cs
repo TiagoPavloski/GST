@@ -63,6 +63,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ICertificadoAppService>().To<CertificadoAppService>();
             Bind<IEPIAppService>().To<EPIAppService>();
 			Bind<IUsuarioAppService>().To<UsuarioAppService>();
+            Bind<IColaboradorAppService>().To<ColaboradorAppService>();
+            Bind<IFinanceiroParcelaAppService>().To<FinanceiroParcelaAppService>();
 
 
             //Servicos
@@ -114,6 +116,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ICertificadoService>().To<CertificadoService>();
             Bind<IEPIService>().To<EPIService>();
 			Bind<IUsuarioService>().To<UsuarioService>();
+            Bind<IFinanceiroParcelaService>().To<FinanceiroParcelaService>();
 
 
             //Data Repository
@@ -165,6 +168,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ICertificadoRepository>().To<CertificadoRepository>();
             Bind<IEPIRepository>().To<EPIRepository>();
 			Bind<IUsuarioRepository>().To<UsuarioRepository>();
+            Bind<IFinanceiroParcelaRepository>().To<FinanceiroParcelaRepository>();
 
 
             //Data Configuration

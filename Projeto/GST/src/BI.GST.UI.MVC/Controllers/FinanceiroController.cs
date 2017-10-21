@@ -16,10 +16,19 @@ namespace BI.GST.UI.MVC.Controllers
     public class FinanceiroController : Controller
     {
         private readonly IFinanceiroAppService _financeiroAppService;
+        private readonly IFinanceiroParcelaAppService _financeiroParcelaAppService;
 
-        public FinanceiroController(IFinanceiroAppService financeiroAppService)
+        public FinanceiroController(IFinanceiroAppService financeiroAppService, IFinanceiroParcelaAppService financeiroParcelaAppService)
         {
             _financeiroAppService = financeiroAppService;
+            _financeiroParcelaAppService = financeiroParcelaAppService;
+        }
+
+
+        public ActionResult Parcela()
+        {
+            var parcela = new FinanceiroParcelaViewModel();
+            return PartialView("_FinanceiroParcela", parcela);
         }
 
         // GET: Financeiro
@@ -30,6 +39,25 @@ namespace BI.GST.UI.MVC.Controllers
             ViewBag.Busca = "&pesquisa=" + pesquisa;
             ViewBag.Controller = "Financeiro";
             ViewBag.TotalRegistros = _financeiroAppService.ObterTotalRegistros(pesquisa);
+
+
+            #region DDL Status
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+
+            foreach (var item in financeiroViewModel)
+            {
+                item.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+                item.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(item.Operacao.ToString())).First().Text;
+            }
+            #endregion
 
             return View(financeiroViewModel);
         }
@@ -46,13 +74,43 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            #region DDL Status
+
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+
+            financeiro.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
+            financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
+            #endregion
+
             return View(financeiro);
         }
 
         // GET: Financeiro/Create
         public ActionResult Create()
         {
-            return View();
+            #region DDL Status
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+            #endregion
+
+            var financeiroViewModel = new FinanceiroViewModel();
+            return View(financeiroViewModel);
         }
 
         // POST: Financeiro/Create
@@ -60,17 +118,37 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(FinanceiroViewModel financeiroViewModel)
+        public ActionResult Create(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_financeiroAppService.Adicionar(financeiroViewModel))
+                financeiroViewModel.Status = "0";
+                var result = _financeiroAppService.Adicionar(financeiroViewModel, financeiroParcelaViewModel);
+
+                if (result != "")
                 {
-                    TempData["Mensagem"] = "Atenção, há um título financeiro com os mesmos dados";
-                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = result;
+
                 }
                 else
                     return RedirectToAction("Index");
+
+                #region DDL Status
+                List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+                ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+                ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+                TempData["ddlOperacao"] = ddlOperacao;
+
+                List<SelectListItem> ddlStatus = new List<SelectListItem>();
+                ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+                ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+                TempData["ddlStatus"] = ddlStatus;
+
+                financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
+                financeiroViewModel.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(financeiroViewModel.Status.ToString())).First().Text;
+                #endregion
+
+                financeiroViewModel.Parcelas = financeiroParcelaViewModel;
             }
             return View(financeiroViewModel);
         }
@@ -87,6 +165,17 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            #region ddlStatus
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            var ddlOperacao2 = (List<SelectListItem>)TempData["ddlOperacao"];
+            financeiro.OperacaoStatus = ddlOperacao2.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
+            #endregion
+
             return View(financeiro);
         }
 
@@ -95,17 +184,29 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(FinanceiroViewModel financeiroViewModel)
+        public ActionResult Edit(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
-            if (ModelState.IsValid)
+            var result = _financeiroAppService.Atualizar(financeiroViewModel, financeiroParcelaViewModel);
+
+            if (result != "")
             {
-                if (!_financeiroAppService.Atualizar(financeiroViewModel))
-                {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um título Financeiro com os mesmos dados já cadastrado')</SCRIPT>");
-                }
-                else
-                    return RedirectToAction("Index");
+                TempData["Mensagem"] = result;
+
             }
+            else
+                return RedirectToAction("Index");
+
+            #region ddlStatus
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
+            #endregion
+
+            financeiroViewModel.Parcelas = financeiroParcelaViewModel;
+           
             return View(financeiroViewModel);
         }
 
@@ -121,6 +222,20 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+
+            financeiro.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Operacao.ToString())).First().Text;
+            financeiro.StatusNome = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiro.Status.ToString())).First().Text;
+
             return View(financeiro);
         }
 

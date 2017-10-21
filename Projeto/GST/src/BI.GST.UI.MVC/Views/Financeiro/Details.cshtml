@@ -10,6 +10,9 @@
     <h4>Financeiro</h4>
     <hr />
     <dl class="dl-horizontal">
+
+        <h4>Título</h4>
+
         <dt>
             @Html.DisplayNameFor(model => model.Titulo)
         </dt>
@@ -23,7 +26,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Operacao)
+            @Html.DisplayFor(model => model.OperacaoStatus)
         </dd>
 
         <dt>
@@ -43,30 +46,6 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NumeroParcelas)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumeroParcelas)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataVencimento)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataVencimento)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DataQuitacao)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DataQuitacao)
-        </dd>
-
-        <dt>
             @Html.DisplayNameFor(model => model.Valor)
         </dt>
 
@@ -83,12 +62,56 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Delete)
+            @Html.DisplayNameFor(model => model.Status)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Delete)
+            @Html.DisplayFor(model => model.StatusNome)
         </dd>
+
+       <h4>Parcelas</h4>
+
+        <hr />
+        @foreach (var item in Model.Parcelas)
+        {
+            <dt>
+                @Html.DisplayNameFor(model => item.Parcela)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.Parcela)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.ValorParcela)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.ValorParcela)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.DataVencimento)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.DataVencimento)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.DataQuitacao)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => item.DataQuitacao)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => item.Pago)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => item.Pago)
+            </dd>
+
+            <hr/>
+        }
 
     </dl>
 </div>
