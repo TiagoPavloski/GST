@@ -10,12 +10,19 @@ using BI.GST.Domain.Entities;
 using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
+using System.Web.Routing;
 
 namespace BI.GST.UI.MVC.Controllers
 {
 	public class UsuariosController : Controller
 	{
 		private readonly IUsuarioAppService _UsuarioAppService;
+		private readonly IEmpresaAppService _empresaAppService;
+		private readonly IEnderecoAppService _enderecoAppService;
+		private readonly ITelefoneAppService _telefoneAppService;
+		private readonly ICnaeAppService _cnaeAppService;
+		private readonly ISetorAppService _setorAppService;
+		private readonly IUFAppService _uFAppService;
 
 
 		public UsuariosController(IUsuarioAppService UsuarioAppService)
@@ -107,7 +114,7 @@ namespace BI.GST.UI.MVC.Controllers
 				{
 					TempData["Mensagem"] = "Atenção, há um tipo de Usuario com os mesmos dados já cadastrada";
 				}
-				else if(UsuarioViewModel.UsuarioId != (int)Session["usuarioId"])
+				else if (UsuarioViewModel.UsuarioId != (int)Session["usuarioId"])
 					return RedirectToAction("Index");
 				else
 					return RedirectToAction("Index", "Home");
@@ -168,6 +175,22 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				TempData["Mensagem"] = "Dados Incorretos, tente novamente";
 				return View(usuarioViewModel);
+			}
+		}
+
+		// GET: Usuarios/Edit/5
+		public ActionResult EditEmpresa(int? id)
+		{
+			if (id.HasValue)
+			{
+				Session["actionUsuario"] = id.Value;
+				return RedirectToAction("Edit", "Empresas", new { @id = id.Value});
+			}
+			else
+			{
+				TempData["Mensagem"] = "Empresa não encontrada";
+				var usuario = _UsuarioAppService.ObterPorId(id.Value);
+				return View(usuario);
 			}
 		}
 
