@@ -142,6 +142,7 @@
     <Compile Include="Repository\CursoRepository.cs" />
     <Compile Include="Repository\EmpresaRepository.cs" />
     <Compile Include="Repository\GrupoCipaRepository.cs" />
+    <Compile Include="Repository\RiscoFuncionarioRepository.cs" />
     <Compile Include="Repository\SESMTEmpresaFuncionarioRepository.cs" />
     <Compile Include="Repository\SESMTEmpresaRepository.cs" />
     <Compile Include="Repository\SesmtQuadroRepository.cs" />

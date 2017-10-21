@@ -57,6 +57,7 @@ namespace BI.GST.Application.AutoMapper
 			Mapper.CreateMap<OS, OSViewModel>();
 			Mapper.CreateMap<Colaborador, ColaboradorViewModel>();
             Mapper.CreateMap<RiscoCBO, RiscoCBOViewModel>();
+            Mapper.CreateMap<RiscoFuncionario, RiscoFuncionarioViewModel>();
             Mapper.CreateMap<AgenteRiscoCBO, AgenteRiscoCBOViewModel>();
             Mapper.CreateMap<Funcionario, FuncionarioViewModel>();
             Mapper.CreateMap<CBO, CBOViewModel>();

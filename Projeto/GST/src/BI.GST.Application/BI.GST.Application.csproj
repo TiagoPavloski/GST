@@ -79,6 +79,7 @@
     <Compile Include="AppService\GrupoCipaAppService.cs" />
     <Compile Include="AppService\OSAppService.cs" />
     <Compile Include="AppService\PPRAAppService.cs" />
+    <Compile Include="AppService\RiscoFuncionarioAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="AppService\UsuarioAppService.cs" />
@@ -129,6 +130,7 @@
     <Compile Include="Interface\IGrupoCipaAppService.cs" />
     <Compile Include="Interface\IOSAppService.cs" />
     <Compile Include="Interface\IPPRAAppService.cs" />
+    <Compile Include="Interface\IRiscoFuncionarioAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="Interface\IUsuarioAppService.cs" />
@@ -172,6 +174,7 @@
     <Compile Include="ViewModels\FuncionarioEmpresaViewModel.cs" />
     <Compile Include="ViewModels\OSViewModel.cs" />
     <Compile Include="ViewModels\GrupoCipaViewModel.cs" />
+    <Compile Include="ViewModels\RiscoFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
