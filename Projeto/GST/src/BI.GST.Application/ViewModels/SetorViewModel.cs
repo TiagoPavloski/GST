@@ -15,7 +15,7 @@ namespace BI.GST.Application.ViewModels
         public int SetorId { get; set; }
 
         [Required]
-        [DisplayName("Setor")]
+        [DisplayName("Nome")]
         public string Nome { get; set; }
 
         public virtual TipoSetorViewModel TipoSetor { get; set; }

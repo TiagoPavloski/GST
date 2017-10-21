@@ -12,7 +12,7 @@ namespace BI.GST.Application.ViewModels
     {
         public int AgenteBiologicoId { get; set; }
 
-        [DisplayName("Agente Físico")]
+        [DisplayName("Agente Biológico")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Fonte geradora")]
