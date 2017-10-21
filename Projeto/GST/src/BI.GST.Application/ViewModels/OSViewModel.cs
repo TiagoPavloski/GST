@@ -24,6 +24,8 @@ namespace BI.GST.Application.ViewModels
 
 		public int Status { get; set; }
 
+		public string StatusNome { get; set; }
+
 		public bool Delete { get; set; }
 
 		public virtual FuncionarioEmpresaViewModel FuncionarioEmpresa { get; set; }

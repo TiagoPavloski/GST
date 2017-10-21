@@ -22,8 +22,6 @@ namespace BI.GST.Domain.Entities
 
         public string Descricao { get; set; }
 
-        public int Status { get; set; }
-
         public virtual ICollection<AgenteQuimico> AgenteQuimicos { get; set; }
 
         public virtual ICollection<AgenteFisico> AgenteFisicos { get; set; }

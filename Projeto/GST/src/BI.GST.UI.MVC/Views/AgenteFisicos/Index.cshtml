@@ -1,0 +1,71 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.AgenteFisicoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Agentes Físicos", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LimiteTolerancia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NivelAcao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Frequencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TempoExposicao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tecnica)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LimiteTolerancia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NivelAcao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Frequencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TempoExposicao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tecnica)
+        </td>
+       <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AgenteFisicoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AgenteFisicoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AgenteFisicoId })
+        </td>
+    </tr>
+}
+
+</table>
+@Html.Partial("_Paginacao")

@@ -15,7 +15,7 @@ namespace BI.GST.Application.ViewModels
         public int SetorId { get; set; }
 
         [Required]
-        [DisplayName("Setor")]
+        [DisplayName("Nome")]
         public string Nome { get; set; }
 
         public virtual TipoSetorViewModel TipoSetor { get; set; }
@@ -23,9 +23,6 @@ namespace BI.GST.Application.ViewModels
         [Required(ErrorMessage = "Prencher campo Descrição")]
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
         public string Descricao { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo Status")]
-        public int Status { get; set; }
 
         public virtual ICollection<AgenteQuimico> AgenteQuimicos { get; set; }
 

@@ -87,10 +87,12 @@
     <Compile Include="Entities\TipoVacina.cs" />
     <Compile Include="Entities\UF.cs" />
     <Compile Include="Entities\Vacina.cs" />
+    <Compile Include="Interface\IRepository\ICertificadoRepository.cs" />
     <Compile Include="Interface\IRepository\ICipaQuadroRepository.cs" />
     <Compile Include="Interface\IRepository\IColaboradorRepository.cs" />
     <Compile Include="Interface\IRepository\ICBORepository.cs" />
     <Compile Include="Interface\IRepository\IFuncionarioEmpresaRepository.cs" />
+    <Compile Include="Interface\IRepository\IInstituicaoCursoRepository.cs" />
     <Compile Include="Interface\IRepository\IFinanceiroParcelaRepository.cs" />
     <Compile Include="Interface\IRepository\IGrupoCipaRepository.cs" />
     <Compile Include="Interface\IRepository\IAgenteAmbientalRepository.cs" />
@@ -135,6 +137,8 @@
     <Compile Include="Interface\IRepository\ISesmtQuadroRepository.cs" />
     <Compile Include="Interface\IRepository\IOSRepository.cs" />
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
+    <Compile Include="Interface\IService\ICertificadoService.cs" />
+    <Compile Include="Interface\IService\IInstituicaoCursoService.cs" />
     <Compile Include="Interface\IService\IColaboradorService.cs" />
     <Compile Include="Interface\IService\ICBOService.cs" />
     <Compile Include="Interface\IService\IFuncionarioEmprsaService.cs" />
@@ -182,6 +186,8 @@
     <Compile Include="Interface\IService\IOSService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AgenteAmbientalService.cs" />
+    <Compile Include="Services\CertificadoService.cs" />
+    <Compile Include="Services\InstituicaoCursoService.cs" />
     <Compile Include="Services\FuncionarioEmpresaService.cs" />
     <Compile Include="Services\FinanceiroParcelaService.cs" />
     <Compile Include="Services\OSService.cs" />

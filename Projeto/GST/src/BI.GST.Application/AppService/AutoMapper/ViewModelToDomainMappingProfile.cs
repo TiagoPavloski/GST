@@ -62,8 +62,10 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
             Mapper.CreateMap<CBOViewModel, CBO>();
             Mapper.CreateMap<FuncionarioEmpresaViewModel, FuncionarioEmpresa>();
+            Mapper.CreateMap<InstituicaoCursoViewModel, InstituicaoCurso>();
+            Mapper.CreateMap<CertificadoViewModel, Certificado>();
+			Mapper.CreateMap<UsuarioViewModel, Usuario>();
             Mapper.CreateMap<FinanceiroParcelaViewModel, FinanceiroParcela>();
-            Mapper.CreateMap<UsuarioViewModel, Usuario>();
         }
 	}
 }

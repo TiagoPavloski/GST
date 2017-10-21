@@ -8,6 +8,10 @@ namespace BI.GST.Infra.Data.EntityConfig
     public InstituicaoCursoConfiguration()
     {
       HasKey(e => e.InstituicaoCursoId);
+
+            Property(e => e.Nome)
+                .IsRequired()
+                .HasMaxLength(55);
     }
   }
 }

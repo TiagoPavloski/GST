@@ -57,6 +57,8 @@
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
     <Compile Include="AppService\AgenteAcidenteAppService.cs" />
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
+    <Compile Include="AppService\CertificadoAppService.cs" />
+    <Compile Include="AppService\InstituicaoCursoAppService.cs" />
     <Compile Include="AppService\ColaboradorAppService.cs" />
     <Compile Include="AppService\CBOAppService.cs" />
     <Compile Include="AppService\FuncionarioEmpresaAppService.cs" />
@@ -105,6 +107,8 @@
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
+    <Compile Include="Interface\ICertificadoAppService.cs" />
+    <Compile Include="Interface\IInstituicaoCursoAppService.cs" />
     <Compile Include="Interface\IColaboradorAppService.cs" />
     <Compile Include="Interface\ICBOAppService.cs" />
     <Compile Include="Interface\IFuncionarioEmpresaAppService.cs" />
@@ -151,6 +155,8 @@
     <Compile Include="ViewModels\AgenteAmbientalViewModel.cs" />
     <Compile Include="ViewModels\AgenteAcidenteViewModel.cs" />
     <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
+    <Compile Include="ViewModels\CertificadoViewModel.cs" />
+    <Compile Include="ViewModels\InstituicaoCursoViewModel.cs" />
     <Compile Include="ViewModels\CBOViewModel.cs" />
     <Compile Include="ViewModels\FinanceiroParcelaViewModel.cs" />
     <Compile Include="ViewModels\RiscoCBOViewModel.cs" />
