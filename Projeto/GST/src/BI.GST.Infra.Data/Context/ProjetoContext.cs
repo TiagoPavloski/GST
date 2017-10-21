@@ -40,7 +40,8 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<CronogramaDeAcoes> CronogramasDeAcoes { get; set; }
 		public DbSet<Curso> Cursos { get; set; }
 		public DbSet<Empresa> Empresas { get; set; }
-		public DbSet<Usuario> EmpresasUtilizadora { get; set; }
+        public DbSet<EPI> EPIs { get; set; }
+        public DbSet<Usuario> EmpresasUtilizadora { get; set; }
 		public DbSet<EquipamentoRuido> EquipamentosRuido { get; set; }
 		public DbSet<Escala> Escalas { get; set; }
 		public DbSet<Exame> Exames { get; set; }
@@ -110,6 +111,7 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new CronogramaDeAcoesConfiguration());
             modelBuilder.Configurations.Add(new CursoConfiguration());
             modelBuilder.Configurations.Add(new EmpresaConfiguration());
+            modelBuilder.Configurations.Add(new EPIConfiguration());
             modelBuilder.Configurations.Add(new EquipamentoRuidoConfiguration());
             modelBuilder.Configurations.Add(new EscalaConfiguration());
             modelBuilder.Configurations.Add(new ExameConfiguration());

@@ -37,6 +37,7 @@
     <Compile Include="Entities\AgenteAcidente.cs" />
     <Compile Include="Entities\AgenteAmbiental.cs" />
     <Compile Include="Entities\AgenteBiologico.cs" />
+    <Compile Include="Entities\EPI.cs" />
     <Compile Include="Entities\AgenteCausadorCBO.cs" />
     <Compile Include="Entities\AgenteErgonomico.cs" />
     <Compile Include="Entities\AgenteFisico.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Entities\TipoVacina.cs" />
     <Compile Include="Entities\UF.cs" />
     <Compile Include="Entities\Vacina.cs" />
+    <Compile Include="Interface\IRepository\IEPIRepository.cs" />
     <Compile Include="Interface\IRepository\ICertificadoRepository.cs" />
     <Compile Include="Interface\IRepository\ICipaQuadroRepository.cs" />
     <Compile Include="Interface\IRepository\IColaboradorRepository.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="Interface\IRepository\ISesmtQuadroRepository.cs" />
     <Compile Include="Interface\IRepository\IOSRepository.cs" />
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
+    <Compile Include="Interface\IService\IEPIService.cs" />
     <Compile Include="Interface\IService\ICertificadoService.cs" />
     <Compile Include="Interface\IService\IInstituicaoCursoService.cs" />
     <Compile Include="Interface\IService\IColaboradorService.cs" />
@@ -183,6 +186,7 @@
     <Compile Include="Interface\IService\IOSService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AgenteAmbientalService.cs" />
+    <Compile Include="Services\EPIService.cs" />
     <Compile Include="Services\CertificadoService.cs" />
     <Compile Include="Services\InstituicaoCursoService.cs" />
     <Compile Include="Services\FuncionarioEmpresaService.cs" />
