@@ -4720,6 +4720,7 @@
     <Content Include="Views\EPIs\Edit.cshtml" />
     <Content Include="Views\EPIs\Index.cshtml" />
     <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -67,6 +67,5 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<EPIViewModel, EPI>();
 			Mapper.CreateMap<UsuarioViewModel, Usuario>();
             Mapper.CreateMap<FinanceiroParcelaViewModel, FinanceiroParcela>();
-        }
-    }
+
 }
