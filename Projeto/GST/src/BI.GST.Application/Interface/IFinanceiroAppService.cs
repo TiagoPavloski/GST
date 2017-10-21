@@ -10,9 +10,9 @@ namespace BI.GST.Application.Interface
 {
     public interface IFinanceiroAppService : IDisposable
     {
-        bool Adicionar(FinanceiroViewModel financeiroViewModel);
+        string Adicionar(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelaViewModel);
 
-        bool Atualizar(FinanceiroViewModel financeiroViewModel);
+        string Atualizar(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelaViewModel);
 
         bool Excluir(int id);
 

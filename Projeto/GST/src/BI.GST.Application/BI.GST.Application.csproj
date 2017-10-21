@@ -63,6 +63,7 @@
     <Compile Include="AppService\CBOAppService.cs" />
     <Compile Include="AppService\FuncionarioEmpresaAppService.cs" />
     <Compile Include="AppService\RiscoCBOAppService.cs" />
+    <Compile Include="AppService\FinanceiroParcelaAppService.cs" />
     <Compile Include="AppService\FonteRiscoCBOAppService.cs" />
     <Compile Include="AppService\AgenteRiscoCBOAppService.cs" />
     <Compile Include="AppService\AgenteErgonomicoAppService.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="Interface\ICBOAppService.cs" />
     <Compile Include="Interface\IFuncionarioEmpresaAppService.cs" />
     <Compile Include="Interface\IRiscoCBOAppService.cs" />
+    <Compile Include="Interface\IFinanceiroParcelaAppService.cs" />
     <Compile Include="Interface\IFonteRiscoCBOAppService.cs" />
     <Compile Include="Interface\IAgenteRiscoCBOAppService.cs" />
     <Compile Include="Interface\IAgenteErgonomicoAppService.cs" />
@@ -156,6 +158,7 @@
     <Compile Include="ViewModels\CertificadoViewModel.cs" />
     <Compile Include="ViewModels\InstituicaoCursoViewModel.cs" />
     <Compile Include="ViewModels\CBOViewModel.cs" />
+    <Compile Include="ViewModels\FinanceiroParcelaViewModel.cs" />
     <Compile Include="ViewModels\RiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\FonteRiscoCBOViewModel.cs" />
     <Compile Include="ViewModels\AgenteRiscoCBOViewModel.cs" />

@@ -4713,6 +4713,7 @@
     <Content Include="Views\Certificados\Details.cshtml" />
     <Content Include="Views\Certificados\Edit.cshtml" />
     <Content Include="Views\Certificados\Index.cshtml" />
+    <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,5 +1,6 @@
 ﻿@model BI.GST.Application.ViewModels.FinanceiroViewModel
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js" type="text/javascript"></script>
 @{
     ViewBag.Title = "Edit";
 }
@@ -15,66 +16,46 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.FinanceiroId)
+        @Html.HiddenFor(model => model.Status)
+        @Html.HiddenFor(model => model.Parcelas)
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Operacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Operacao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Operacao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.Operacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.DropDownList("Operacao", (IEnumerable<SelectListItem>)TempData["ddlOperacao"], new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Operacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
             @Html.LabelFor(model => model.DataOperacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataOperacao, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.DataOperacao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.DataOperacao, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NumeroParcelas, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.NumeroParcelas, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.NumeroParcelas, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataVencimento, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataVencimento, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataVencimento, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataQuitacao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataQuitacao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DataQuitacao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.Valor, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Valor, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Valor, "", new { @class = "text-danger" })
             </div>
@@ -82,21 +63,35 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Instituicao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-md-2">
                 @Html.EditorFor(model => model.Instituicao, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Instituicao, "", new { @class = "text-danger" })
             </div>
         </div>
 
+
+        @* ----------------------------------------------- PARCELAS ----------------------------------------- *@
+        <h4>Parcelas</h4>
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Delete, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Parcela", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Delete)
-                    @Html.ValidationMessageFor(model => model.Delete, "", new { @class = "text-danger" })
-                </div>
+                <p><a id="add-parcela" class="btn">Adicionar Nova Parcela</a></p>
             </div>
         </div>
+
+
+        <div id="tab-1" class="tab-pane">
+            @if (Model != null && Model.Parcelas != null)
+            {
+                foreach (var parcela in Model.Parcelas)
+                {
+                    Html.RenderPartial("_FinanceiroParcela", parcela);
+
+                }
+            }
+        </div>
+        @* ----------------------------------------------- PARCELAS ----------------------------------------- *@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -109,3 +104,11 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@Html.Partial("_Mensagem")
+<script type="text/javascript">
+	$("#add-parcela").click(function () {
+	    $.get('/Financeiro/Parcela', function (template) {
+			$("#tab-1").append(template);
+		});
+	});
+</script>
