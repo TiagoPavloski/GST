@@ -86,7 +86,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_exameAppService.Adicionar(exameViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Exame com os mesmos dados')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um Exame com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
@@ -124,7 +124,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_exameAppService.Atualizar(exameViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Exame com os mesmos dados já cadastrada')</SCRIPT>");
+					TempData["Mensagem"] = "Atenção, há um Exame com os mesmos dados já cadastrada')</SCRIPT>";
                 }
                 else
                     return RedirectToAction("Index");
@@ -156,8 +156,9 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_exameAppService.Excluir(id))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
-                return null;
+				TempData["Mensagem"] = "Erro";
+
+				return null;
             }
             else
             {

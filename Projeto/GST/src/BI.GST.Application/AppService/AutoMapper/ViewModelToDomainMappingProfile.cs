@@ -65,6 +65,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<InstituicaoCursoViewModel, InstituicaoCurso>();
             Mapper.CreateMap<CertificadoViewModel, Certificado>();
             Mapper.CreateMap<EPIViewModel, EPI>();
+			Mapper.CreateMap<UsuarioViewModel, Usuario>();
         }
     }
 }

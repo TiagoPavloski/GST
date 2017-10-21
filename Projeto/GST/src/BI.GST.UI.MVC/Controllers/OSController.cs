@@ -16,32 +16,44 @@ namespace BI.GST.UI.MVC.Controllers
 	public class OSController : Controller
 	{
 		private readonly IOSAppService _oSAppService;
-		//private readonly IColaboradorAppService _colaboradorAppService;
+		private readonly IColaboradorAppService _colaboradorAppService;
 		//private readonly IFuncionarioEmpresaAppService _funcionarioEmpresaAppService;
 
-		public OSController(IOSAppService oSAppService/*, IColaboradorAppService colaboradorAppService, IFuncionarioEmpresaAppService funcionarioEmpresaAppService*/)
+		public OSController(IOSAppService oSAppService, IColaboradorAppService colaboradorAppService/*, IFuncionarioEmpresaAppService funcionarioEmpresaAppService*/)
 		{
 			_oSAppService = oSAppService;
-			//_colaboradorAppService = colaboradorAppService;
+			_colaboradorAppService = colaboradorAppService;
 			//_funcionarioEmpresaAppService = funcionarioEmpresaAppService;
 		}
 		// GET: OS
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
-			var tipoCursoViewModel = _oSAppService.ObterGrid(page, pesquisa);
+			var osViewModel = _oSAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
 			ViewBag.Controller = "OS";
 			ViewBag.TotalRegistros = _oSAppService.ObterTotalRegistros(pesquisa);
-			return View(tipoCursoViewModel);
 
+			#region DDL Status
+			List<SelectListItem> ddlStatus_OS = new List<SelectListItem>();
+			ddlStatus_OS.Add(new SelectListItem() { Text = "Ativa", Value = "1" });
+			ddlStatus_OS.Add(new SelectListItem() { Text = "Cancelada", Value = "2" });
+			TempData["ddlStatus_OS"] = ddlStatus_OS;
+
+			foreach (var item in osViewModel)
+			{
+				item.StatusNome = ddlStatus_OS.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+			}
+			#endregion
+
+			return View(osViewModel);
 			//var oSs = db.OSs.Include(o => o.Colaborador).Include(o => o.FuncionarioEmpresa);
 		}
 
 		// GET: OS/Create
 		public ActionResult Create()
 		{
-			//ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome");
+			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome");
 			//ViewBag.FuncionarioEmpresaId = new SelectList(_funcionarioEmpresaAppService.ObterTodos(), "FuncionarioEmpresaId", "HoraEntrada");
 			return View();
 		}
@@ -57,13 +69,12 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_oSAppService.Adicionar(oSViewModel))
 				{
-					//TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert(Erro)</SCRIPT>");
+					TempData["Mensagem"] = "Erro";
 				}
 				else
 					return RedirectToAction("Index");
 			}
-			//ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.Colaboradores, "ColaboradorId", "Nome", oS.ColaboradorId);
+			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome");
 			//ViewBag.FuncionarioEmpresaId = new SelectList(_funcionarioEmpresaAppService.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
 			return View(oSViewModel);
 		}
@@ -80,7 +91,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				return HttpNotFound();
 			}
-			//ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.Colaboradores, "ColaboradorId", "Nome", oS.ColaboradorId);
+			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
 			//ViewBag.FuncionarioEmpresaId = new SelectList(_funcionarioEmpresaAppService.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
 			return View(oS);
 		}
@@ -96,12 +107,12 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				if (!_oSAppService.Atualizar(oS))
 				{
-					System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert(Erro)</SCRIPT>");
+					TempData["Mensagem"] = "Erro";
 				}
 				else
 					return RedirectToAction("Index");
 			}
-			//ViewBag.ColaboradorId = new SelectList(db.Colaboradores, "ColaboradorId", "Nome", oS.ColaboradorId);
+			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
 			//ViewBag.FuncionarioEmpresaId = new SelectList(db.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
 			return View(oS);
 		}
@@ -128,7 +139,7 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			if (!_oSAppService.Excluir(id))
 			{
-				System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+				TempData["Mensagem"] = "Erro";
 				return null;
 			}
 			else

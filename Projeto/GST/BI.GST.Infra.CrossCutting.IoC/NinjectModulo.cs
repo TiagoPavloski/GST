@@ -62,6 +62,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IInstituicaoCursoAppService>().To<InstituicaoCursoAppService>();
             Bind<ICertificadoAppService>().To<CertificadoAppService>();
             Bind<IEPIAppService>().To<EPIAppService>();
+			Bind<IUsuarioAppService>().To<UsuarioAppService>();
+
 
             //Servicos
             Bind<ITipoCursoService>().To<TipoCursoService>();
@@ -111,6 +113,8 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IInstituicaoCursoService>().To<InstituicaoCursoService>();
             Bind<ICertificadoService>().To<CertificadoService>();
             Bind<IEPIService>().To<EPIService>();
+			Bind<IUsuarioService>().To<UsuarioService>();
+
 
             //Data Repository
             Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
@@ -160,6 +164,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IInstituicaoCursoRepository>().To<InstituicaoCursoRepository>();
             Bind<ICertificadoRepository>().To<CertificadoRepository>();
             Bind<IEPIRepository>().To<EPIRepository>();
+			Bind<IUsuarioRepository>().To<UsuarioRepository>();
 
 
             //Data Configuration
