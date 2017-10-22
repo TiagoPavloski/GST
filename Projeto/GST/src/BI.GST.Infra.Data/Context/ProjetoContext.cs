@@ -70,35 +70,6 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<SESMTEmpresaFuncionario> SESMTEmpresaFuncionarios { get; set; }
 		public DbSet<CipaQuadro> CipaQuadro { get; set; }
 		public DbSet<SesmtQuadro> SesmtQuadro { get; set; }
-		public DbSet<Usuario> EmpresasUtilizadora { get; set; }
-		public DbSet<EquipamentoRuido> EquipamentosRuido { get; set; }
-		public DbSet<Escala> Escalas { get; set; }
-		public DbSet<Exame> Exames { get; set; }
-		public DbSet<Financeiro> Financeiros { get; set; }
-		public DbSet<FonteRiscoCBO> FontesRiscoCBO { get; set; }
-		public DbSet<Funcionario> Funcionarios { get; set; }
-		public DbSet<FuncionarioEmpresa> FuncionariosEmpresas { get; set; }
-		public DbSet<InstituicaoCurso> InstituicoesCurso { get; set; }
-		public DbSet<MedicaoAgente> MedicoesAgente { get; set; }
-		public DbSet<MeioPropagacao> MeiosPropagacao { get; set; }
-		public DbSet<OS> OSs { get; set; }
-		public DbSet<PPRA> PPRAs { get; set; }
-		public DbSet<RiscoCBO> RiscosCBO { get; set; }
-		public DbSet<RiscoFuncionario> RiscosFuncionario { get; set; }
-		public DbSet<Setor> Setores { get; set; }
-		public DbSet<Telefone> Telefones { get; set; }
-		public DbSet<TipoCurso> TiposCurso { get; set; }
-		public DbSet<TipoExame> TiposExame { get; set; }
-		public DbSet<TipoSetor> TiposSetor { get; set; }
-		public DbSet<TipoVacina> TiposVacina { get; set; }
-		public DbSet<UF> UFs { get; set; }
-		public DbSet<Vacina> Vacinas { get; set; }
-		public DbSet<CIPAEmpresa> CIPAEmpresas { get; set; }
-		public DbSet<CIPAEmpresaFuncionario> CIPAEmpresaFuncionarios { get; set; }
-		public DbSet<SESMTEmpresa> SESMTEmpresas { get; set; }
-		public DbSet<SESMTEmpresaFuncionario> SESMTEmpresaFuncionarios { get; set; }
-		public DbSet<CipaQuadro> CipaQuadro { get; set; }
-		public DbSet<SesmtQuadro> SesmtQuadro { get; set; }
         public DbSet<FinanceiroParcela> FinanceiroParcela { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -161,43 +132,14 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new SetorConfiguration());
             modelBuilder.Configurations.Add(new TelefoneConfiguration());
             modelBuilder.Configurations.Add(new TipoCursoConfiguration());
-            modelBuilder.Configurations.Add(new TipoExameConfiguration());
             modelBuilder.Configurations.Add(new TipoSetorConfiguration());
             modelBuilder.Configurations.Add(new TipoVacinaConfiguration());
             modelBuilder.Configurations.Add(new UFConfiguration());
             modelBuilder.Configurations.Add(new VacinaConfiguration());
             modelBuilder.Configurations.Add(new CIPAEmpresaConfiguration());
-            modelBuilder.Configurations.Add(new CipaEmpresaFuncionarioConfiguration());
-            modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
-            modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
-            modelBuilder.Configurations.Add(new EPIConfiguration());
-            modelBuilder.Configurations.Add(new EquipamentoRuidoConfiguration());
-            modelBuilder.Configurations.Add(new EscalaConfiguration());
-            modelBuilder.Configurations.Add(new ExameConfiguration());
-            modelBuilder.Configurations.Add(new FinanceiroConfiguration());
-            modelBuilder.Configurations.Add(new FonteRiscoCBOConfiguration());
-            modelBuilder.Configurations.Add(new FuncionarioConfiguration());
-            modelBuilder.Configurations.Add(new FuncionarioEmpresaConfiguration());
-            modelBuilder.Configurations.Add(new InstituicaoCursoConfiguration());
-            modelBuilder.Configurations.Add(new MedicaoAgenteConfiguration());
-            modelBuilder.Configurations.Add(new MeioPropagacaoConfiguration());
-            modelBuilder.Configurations.Add(new OSConfiguration());
-            modelBuilder.Configurations.Add(new PPRAConfiguration());
-            modelBuilder.Configurations.Add(new RiscoCBOConfiguration());
-            modelBuilder.Configurations.Add(new RiscoFuncionarioConfiguration());
-            modelBuilder.Configurations.Add(new SetorConfiguration());
-            modelBuilder.Configurations.Add(new TelefoneConfiguration());
-            modelBuilder.Configurations.Add(new TipoCursoConfiguration());
             modelBuilder.Configurations.Add(new TipoExameConfiguration());
-            modelBuilder.Configurations.Add(new TipoSetorConfiguration());
-            modelBuilder.Configurations.Add(new TipoVacinaConfiguration());
-            modelBuilder.Configurations.Add(new UFConfiguration());
-            modelBuilder.Configurations.Add(new VacinaConfiguration());
-            modelBuilder.Configurations.Add(new CIPAEmpresaConfiguration());
             modelBuilder.Configurations.Add(new CipaEmpresaFuncionarioConfiguration());
             modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
-            modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
-            modelBuilder.Configurations.Add(new FinanceiroParcelaConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

@@ -4,20 +4,20 @@ using System.Collections.Generic;
 
 namespace BI.GST.Application.Interface
 {
-  public interface IFuncionarioAppService : IDisposable
-  {
-    IEnumerable<FuncionarioViewModel> ObterTodos();
+    public interface IFuncionarioAppService : IDisposable
+    {
+        IEnumerable<FuncionarioViewModel> ObterTodos();
 
-    FuncionarioViewModel ObterPorId(int id);
+        FuncionarioViewModel ObterPorId(int id);
 
-    bool Adicionar(FuncionarioViewModel funcionarioViewModel, int[] ExameId, int[] VacinaId, int[] CursoId);
+        bool Adicionar(FuncionarioViewModel funcionarioViewModel);
 
-    bool Atualizar(FuncionarioViewModel funcionarioViewModel, int[] ExameId, int[] VacinaId, int[] CursoId);
+        bool Atualizar(FuncionarioViewModel funcionarioViewModel);
 
-    bool Excluir(int id);
+        bool Excluir(int id);
 
-    IEnumerable<FuncionarioViewModel> ObterGrid(int page, string pesquisa);
+        IEnumerable<FuncionarioViewModel> ObterGrid(int page, string pesquisa);
 
-    int ObterTotalRegistros(string pesquisa);
-  }
+        int ObterTotalRegistros(string pesquisa);
+    }
 }

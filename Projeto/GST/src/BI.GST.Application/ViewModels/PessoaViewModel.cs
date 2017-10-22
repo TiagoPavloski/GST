@@ -12,20 +12,16 @@ namespace BI.GST.Application.ViewModels
         [MaxLength(100, ErrorMessage = "Máximo de 100")]
         [DisplayName("Nome")]
         public string Nome { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo CPF")]
+        
         [DisplayName("CPF")]
         public string CPF { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo RG")]
+        
         [DisplayName("RG")]
         public string RG { get; set; }
-
-        [Required(ErrorMessage = "Prencher Data nascimento")]
+        
         [DisplayName("Data Nascimento")]
         public string DataNascimento { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo email")]
         [MaxLength(100, ErrorMessage = "Máximo de 100")]
         [DisplayName("Email")]
         public string Email { get; set; }
