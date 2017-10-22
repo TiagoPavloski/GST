@@ -10,20 +10,15 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.ViewModels
 {
-	public class FuncionarioViewModel : PessoaViewModel
-	{
-		public int FuncionarioId { get; set; }
+    public class FuncionarioViewModel : PessoaViewModel
+    {
 
-		public int Status { get; set; }
+        public int FuncionarioId { get; set; }
+
+        public int Status { get; set; }
 
         [DisplayName("Status")]
         public string StatusNome { get; set; }
-
-        ICollection<ExameViewModel> Exames { get; set; }
-
-		ICollection<VacinaViewModel> Vacinas { get; set; }
-
-		ICollection<CursoViewModel> Cursos { get; set; }
 
         [DisplayName("PIS")]
         [MaxLength(16, ErrorMessage = "Máximo de 16 caracteres")]
@@ -37,13 +32,39 @@ namespace BI.GST.Application.ViewModels
         [MaxLength(16, ErrorMessage = "Máximo de 16 caracteres")]
         public string Serie { get; set; }
 
-		public virtual UFViewModel UF { get; set; }
+        [DisplayName("Admissão")]
+        public string Admissao { get; set; }
 
-		public bool Delete { get; set; }
+        [DisplayName("Demissão")]
+        public string Demissao { get; set; }
 
-		//ID Responsavel pela empresa
-		public int? EmpresaId { get; set; }
-		[ForeignKey("EmpresaId")]
-		public virtual EmpresaViewModel Empresa { get; set; }
-	}
+        [DisplayName("Responsável da Empresa?")]
+        public bool Responsavel { get; set; }
+
+        [DisplayName("Inicio do turno")]
+        public string HoraEntrada { get; set; }
+
+        [DisplayName("Fim do Turno")]
+        public string HoraSaida { get; set; }
+
+        public bool Delete { get; set; }
+
+        [DisplayName("Empresa")]
+        public int EmpresaId { get; set; }
+        public virtual EmpresaViewModel Empresa { get; set; }
+
+        [DisplayName("Função na empresa")]
+        public int CBOId { get; set; }
+        public virtual CBOViewModel CBO { get; set; }
+
+        [DisplayName("Setor do funcionário")]
+        public int SetorId { get; set; }
+        public virtual SetorViewModel Setor { get; set; }
+
+        [DisplayName("Tipo de escala do funcionário")]
+        public int EscalaId { get; set; }
+        public virtual EscalaViewModel Escala { get; set; }
+
+
+    }
 }

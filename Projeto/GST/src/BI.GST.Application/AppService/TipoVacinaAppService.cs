@@ -25,7 +25,7 @@ namespace BI.GST.Application.AppService
     {
       var tipoVacina = Mapper.Map<TipoVacinaViewModel, TipoVacina>(tipoVacinaViewModel);
 
-      var duplicado = _tipoVacinaService.Find(e => e.Nome == tipoVacina.Nome).Any();
+      var duplicado = _tipoVacinaService.Find(e => (e.Nome == tipoVacina.Nome) && (e.Delete == false)).Any();
       if (duplicado)
       {
         return false;
@@ -43,7 +43,7 @@ namespace BI.GST.Application.AppService
     {
       var tipoVacina = Mapper.Map<TipoVacinaViewModel, TipoVacina>(TipoVacinaViewModel);
 
-      var duplicado = _tipoVacinaService.Find(e => e.Nome == tipoVacina.Nome && e.TipoVacinaId != tipoVacina.TipoVacinaId).Any();
+      var duplicado = _tipoVacinaService.Find(e => (e.Nome == tipoVacina.Nome) && (e.TipoVacinaId != tipoVacina.TipoVacinaId) && (e.Delete == false)).Any();
 
       if (duplicado)
       {
@@ -66,7 +66,7 @@ namespace BI.GST.Application.AppService
 
     public bool Excluir(int id)
     {
-      bool existente = _tipoVacinaService.Find(e => e.TipoVacinaId == id).Any();
+      bool existente = _tipoVacinaService.Find(e => (e.TipoVacinaId == id) && (e.Delete == false)).Any();
       bool vacinaUtiliza = _vacinaService.Find(c => c.TipoVacinaId == id && c.Delete == false).Any();
 
       if (existente && !vacinaUtiliza)

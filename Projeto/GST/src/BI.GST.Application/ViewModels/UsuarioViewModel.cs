@@ -4,9 +4,6 @@ namespace BI.GST.Application.ViewModels
 {
 	public class UsuarioViewModel
 	{
-		public UsuarioViewModel()
-		{
-		}
 		public int UsuarioId { get; set; }
 
 		public string Nome { get; set; }
@@ -15,7 +12,11 @@ namespace BI.GST.Application.ViewModels
 
 		public string Senha { get; set; }
 
+		public int EmpresaId { get; set; }
+
 		public bool Delete { get; set; }
 
+
+		public virtual EmpresaViewModel Empresa { get; set; }
 	}
 }

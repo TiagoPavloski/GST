@@ -16,7 +16,8 @@
 		<hr />
 		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 		@Html.HiddenFor(model => model.UsuarioId)
-	
+		@Html.HiddenFor(model => model.EmpresaId)
+
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,6 +42,9 @@
 				@Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
 			</div>
 		</div>
+
+		@Html.ActionLink("Minha Empresa", "EditEmpresa", new { id = Model.EmpresaId })
+
 
 		<div class="form-group">
 			<div class="col-md-offset-2 col-md-10">

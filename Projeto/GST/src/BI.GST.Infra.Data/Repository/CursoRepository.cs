@@ -17,7 +17,7 @@ namespace BI.GST.Infra.Data.Repository
 
     public IEnumerable<Curso> ObterGrid(int page, string pesquisa)
     {
-      return DbSet.Where(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Data != null) && (x.Delete == false))
+      return DbSet.Where(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Funcionario.Nome != null) && (x.Delete == false))
                  .OrderBy(u => u.Funcionario.Nome)
                  .Skip((page) * 10)
                  .Take(10);

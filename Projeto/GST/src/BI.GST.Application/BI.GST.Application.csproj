@@ -57,6 +57,7 @@
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
     <Compile Include="AppService\AgenteAcidenteAppService.cs" />
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
+    <Compile Include="AppService\EPIAppService.cs" />
     <Compile Include="AppService\CertificadoAppService.cs" />
     <Compile Include="AppService\InstituicaoCursoAppService.cs" />
     <Compile Include="AppService\ColaboradorAppService.cs" />
@@ -81,6 +82,7 @@
     <Compile Include="AppService\GrupoCipaAppService.cs" />
     <Compile Include="AppService\OSAppService.cs" />
     <Compile Include="AppService\PPRAAppService.cs" />
+    <Compile Include="AppService\RiscoFuncionarioAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="AppService\UsuarioAppService.cs" />
@@ -107,6 +109,7 @@
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
+    <Compile Include="Interface\IEPIAppService.cs" />
     <Compile Include="Interface\ICertificadoAppService.cs" />
     <Compile Include="Interface\IInstituicaoCursoAppService.cs" />
     <Compile Include="Interface\IColaboradorAppService.cs" />
@@ -133,6 +136,7 @@
     <Compile Include="Interface\IGrupoCipaAppService.cs" />
     <Compile Include="Interface\IOSAppService.cs" />
     <Compile Include="Interface\IPPRAAppService.cs" />
+    <Compile Include="Interface\IRiscoFuncionarioAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="Interface\IUsuarioAppService.cs" />
@@ -155,6 +159,7 @@
     <Compile Include="ViewModels\AgenteAmbientalViewModel.cs" />
     <Compile Include="ViewModels\AgenteAcidenteViewModel.cs" />
     <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
+    <Compile Include="ViewModels\EPIViewModel.cs" />
     <Compile Include="ViewModels\CertificadoViewModel.cs" />
     <Compile Include="ViewModels\InstituicaoCursoViewModel.cs" />
     <Compile Include="ViewModels\CBOViewModel.cs" />
@@ -178,6 +183,7 @@
     <Compile Include="ViewModels\FuncionarioEmpresaViewModel.cs" />
     <Compile Include="ViewModels\OSViewModel.cs" />
     <Compile Include="ViewModels\GrupoCipaViewModel.cs" />
+    <Compile Include="ViewModels\RiscoFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />

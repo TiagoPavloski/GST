@@ -3,18 +3,18 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace BI.GST.Infra.Data.EntityConfig
 {
-  public class VacinaConfiguration : EntityTypeConfiguration<Vacina>
-  {
-    public VacinaConfiguration()
-    {
-      HasKey(e => e.VacinaId);
+	public class VacinaConfiguration : EntityTypeConfiguration<Vacina>
+	{
+		public VacinaConfiguration()
+		{
+			HasKey(e => e.VacinaId);
 
-      Property(c => c.Status)
-                .IsRequired();
+			Property(c => c.Data)
+					 .HasMaxLength(10)
+					 .IsRequired();
 
-      Property(c => c.Data)
-               .HasMaxLength(10)
-               .IsRequired();
-    }
-  }
+			Property(c => c.Delete)
+					.IsRequired();
+		}
+	}
 }

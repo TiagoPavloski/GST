@@ -49,6 +49,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             var agenteCausadorCBO = _agenteCausadorCBOAppService.ObterPorId(id.Value);
             if (agenteCausadorCBO == null)
             {

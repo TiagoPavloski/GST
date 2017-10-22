@@ -8,19 +8,25 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Infra.Data.Repository
 {
-  public class FuncionarioRepository : BaseRepository<Funcionario>, IFuncionarioRepository
-  {
-    public int ObterTotalRegistros(string pesquisa)
+    public class FuncionarioRepository : BaseRepository<Funcionario>, IFuncionarioRepository
     {
-      return DbSet.Count(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false));
-    }
+        public int ObterTotalRegistros(string pesquisa)
+        {
+            return DbSet.Count(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false));
+        }
 
-    public IEnumerable<Funcionario> ObterGrid(int page, string pesquisa)
-    {
-      return DbSet.Where(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false))
-                 .OrderBy(u => u.Nome)
-                 .Skip((page) * 10)
-                 .Take(10);
+        public IEnumerable<Funcionario> ObterGrid(int page, string pesquisa)
+        {
+            return DbSet.Where(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false))
+                       .OrderBy(u => u.Nome)
+                       .Skip((page) * 10)
+                       .Take(10);
+        }
+
+        public IEnumerable<Funcionario> ObterPorEmpresa(int empresaId)
+        {
+            return DbSet.Where(x => (x.EmpresaId == empresaId) && (x.Delete == false))
+                       .OrderBy(u => u.Nome);
+        }
     }
-  }
 }

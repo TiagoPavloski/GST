@@ -24,7 +24,6 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<VacinaViewModel, Vacina>();
             Mapper.CreateMap<CursoViewModel, Curso>();
             Mapper.CreateMap<ExameViewModel, Exame>();
-            Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
             Mapper.CreateMap<UsuarioViewModel, Usuario>();
             Mapper.CreateMap<TelefoneViewModel, Telefone>();
             Mapper.CreateMap<UFViewModel, UF>();
@@ -47,7 +46,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<EscalaViewModel, Escala>();
             Mapper.CreateMap<AgenteCausadorCBOViewModel, AgenteCausadorCBO>();
             Mapper.CreateMap<AnexoViewModel, Anexo>();
-			Mapper.CreateMap<CnaeViewModel, Cnae>();
+            Mapper.CreateMap<CnaeViewModel, Cnae>();
             Mapper.CreateMap<PPRAViewModel, PPRA>();
             Mapper.CreateMap<CIPAEmpresaViewModel, CIPAEmpresa>();
             Mapper.CreateMap<CIPAEmpresaFuncionarioViewModel, CIPAEmpresaFuncionario>();
@@ -55,17 +54,20 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<SESMTEmpresaFuncionarioViewModel, SESMTEmpresaFuncionario>();
             Mapper.CreateMap<FonteRiscoCBOViewModel, FonteRiscoCBO>();
             Mapper.CreateMap<GrupoCipaViewModel, GrupoCipa>();
-			Mapper.CreateMap<OSViewModel, OS>();
-			Mapper.CreateMap<ColaboradorViewModel, Colaborador>();
+            Mapper.CreateMap<OSViewModel, OS>();
+            Mapper.CreateMap<ColaboradorViewModel, Colaborador>();
             Mapper.CreateMap<RiscoCBOViewModel, RiscoCBO>();
+            Mapper.CreateMap<RiscoFuncionarioViewModel, RiscoFuncionario>();
             Mapper.CreateMap<AgenteRiscoCBOViewModel, AgenteRiscoCBO>();
             Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
             Mapper.CreateMap<CBOViewModel, CBO>();
             Mapper.CreateMap<FuncionarioEmpresaViewModel, FuncionarioEmpresa>();
             Mapper.CreateMap<InstituicaoCursoViewModel, InstituicaoCurso>();
             Mapper.CreateMap<CertificadoViewModel, Certificado>();
-			Mapper.CreateMap<UsuarioViewModel, Usuario>();
+            Mapper.CreateMap<EPIViewModel, EPI>();
+            Mapper.CreateMap<UsuarioViewModel, Usuario>();
             Mapper.CreateMap<FinanceiroParcelaViewModel, FinanceiroParcela>();
         }
-	}
+
+    }
 }
