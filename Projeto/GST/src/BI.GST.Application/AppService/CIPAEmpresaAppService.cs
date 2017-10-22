@@ -12,15 +12,21 @@ namespace BI.GST.Application.AppService
     public class CIPAEmpresaAppService : BaseAppService, ICIPAEmpresaAppService
     {
         private readonly ICIPAEmpresaService _cipaEmpresaService;
+        private readonly ICIPAEmpresaFuncionarioAppService _cipaEmpresaFuncionarioAppService;
 
-        public CIPAEmpresaAppService(ICIPAEmpresaService cipaEmpresaService)
+        public CIPAEmpresaAppService(ICIPAEmpresaService cipaEmpresaService, ICIPAEmpresaFuncionarioAppService cipaEmpresaFuncionarioAppService)
         {
-            _cipaEmpresaService = cipaEmpresaService;
+            _cipaEmpresaService    = cipaEmpresaService;
+            _cipaEmpresaFuncionarioAppService = cipaEmpresaFuncionarioAppService;
         }
 
-        public bool Adicionar(CIPAEmpresaViewModel cipaEmpresaViewModel)
+        public bool Adicionar(CIPAEmpresaViewModel cipaEmpresaViewModel, int[] FuncionariosEfetivos, int[] FuncionariosSuplentes)
         {
             var cipaEmpresa = Mapper.Map<CIPAEmpresaViewModel, CIPAEmpresa>(cipaEmpresaViewModel);
+            //adicionar na lista de funcionarios cipa
+           // foreach (var item in FuncionariosEfetivos)
+           //   cipaEmpresa.CIPAEmpresaFuncionarios.Add(Mapper.Map<CIPAEmpresaFuncionarioViewModel, CIPAEmpresaFuncionario>(item));
+
 
             var duplicado = _cipaEmpresaService.Find(e =>
                 (e.EmpresaId == cipaEmpresa.EmpresaId)
@@ -39,7 +45,7 @@ namespace BI.GST.Application.AppService
             }
         }
 
-        public bool Atualizar(CIPAEmpresaViewModel cipaEmpresaViewModel)
+        public bool Atualizar(CIPAEmpresaViewModel cipaEmpresaViewModel, int[] FuncionariosEfetivos, int[] FuncionariosSuplentes)
         {
             var cipaEmpresa = Mapper.Map<CIPAEmpresaViewModel, CIPAEmpresa>(cipaEmpresaViewModel);
 

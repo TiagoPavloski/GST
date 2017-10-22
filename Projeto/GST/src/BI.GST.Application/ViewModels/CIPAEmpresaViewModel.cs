@@ -26,6 +26,12 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Número de Funcionários")]
         public int NumeroFuncionarios { get; set; }
 
+        [DisplayName("Funcionários Efetivos")]
+        public int NumeroFuncionariosEfetivos { get; set; }
+
+        [DisplayName("Funcionários Suplentes")]
+        public int NumeroFuncionariosSuplentes { get; set; }
+
         [Required(ErrorMessage = "Prencher campo Empresa")]
         public int EmpresaId { get; set; }
 

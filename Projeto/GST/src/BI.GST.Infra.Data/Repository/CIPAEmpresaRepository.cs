@@ -20,5 +20,46 @@ namespace BI.GST.Infra.Data.Repository
         {
             return DbSet.Count(x => (pesquisa != null ? x.Empresa.RazaoSocial.Contains(pesquisa) : x.Empresa.RazaoSocial != null) && (x.Delete == false));
         }
+
+        public override void Adicionar(CIPAEmpresa obj)
+        {
+            var funcionarioCipaRepository = new CIPAEmpresaFuncionarioRepository();
+            var funcionariosCipa = new List<CIPAEmpresaFuncionario>();
+
+            foreach (var item in obj.CIPAEmpresaFuncionarios)
+                funcionariosCipa.Add(funcionarioCipaRepository.ObterPorId(item.FuncionarioId));
+
+            obj.CIPAEmpresaFuncionarios = funcionariosCipa;
+
+            base.Adicionar(obj);
+
+            foreach (var item in obj.CIPAEmpresaFuncionarios)
+            {
+                item.CipaEmpresaId = obj.CipaEmpresaID;
+                funcionarioCipaRepository.Adicionar(item);
+            }
+        }
+
+        public override void Atualizar(CIPAEmpresa obj)
+        {
+            var cipaFuncionarioRepository = new CIPAEmpresaFuncionarioRepository();
+
+            foreach (var funcionario in obj.CIPAEmpresaFuncionarios)
+            {
+                if (funcionario.CIPAEmpresaFuncionarioId == 0)
+                {
+                    if (funcionario.CipaEmpresaId == 0)
+                    {
+                        funcionario.CipaEmpresaId = obj.CipaEmpresaID;
+                    }
+                    cipaFuncionarioRepository.Adicionar(funcionario);
+                }
+                else
+                    cipaFuncionarioRepository.Atualizar(funcionario);
+            }
+
+            base.Atualizar(obj);
+        }
+
     }
 }

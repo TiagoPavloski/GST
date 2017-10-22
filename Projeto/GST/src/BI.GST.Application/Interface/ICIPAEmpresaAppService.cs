@@ -10,9 +10,9 @@ namespace BI.GST.Application.Interface
 
         CIPAEmpresaViewModel ObterPorId(int id);
 
-        bool Adicionar(CIPAEmpresaViewModel cipaEmpresaViewModel);
+        bool Adicionar(CIPAEmpresaViewModel cipaEmpresaViewModel, int[] FuncionariosEfetivos, int[] FuncionariosSuplentes);
 
-        bool Atualizar(CIPAEmpresaViewModel cipaEmpresaViewModel);
+        bool Atualizar(CIPAEmpresaViewModel cipaEmpresaViewModel, int[] FuncionariosEfetivos, int[] FuncionariosSuplentes);
 
         bool Excluir(int id);
 

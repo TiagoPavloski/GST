@@ -12,7 +12,7 @@ namespace BI.GST.Infra.Data.Repository
     {
         public IEnumerable<PPRA> ObterGrid(int page, string pesquisa)
         {
-            return DbSet.Where(x => (pesquisa != null ? x.EmpresaContratante.RazaoSocial.Contains(pesquisa) : x.EmpresaContratante.RazaoSocial != null) && (x.Delete == false))
+            return DbSet.Where(x => (pesquisa != null ? x.EmpresaContratante.NomeFantasia.Contains(pesquisa) : x.EmpresaContratante.NomeFantasia != null) && (x.Delete == false))
                 .OrderBy(u => u.EmpresaContratante.RazaoSocial)
                 .Skip((page) * 10)
                 .Take(10);
@@ -20,7 +20,7 @@ namespace BI.GST.Infra.Data.Repository
 
         public int ObterTotalRegistros(string pesquisa)
         {
-            return DbSet.Count(x => (pesquisa != null ? x.EmpresaContratante.RazaoSocial.Contains(pesquisa) : x.EmpresaContratante.RazaoSocial != null) && (x.Delete == false));
+            return DbSet.Count(x => (pesquisa != null ? x.EmpresaContratante.NomeFantasia.Contains(pesquisa) : x.EmpresaContratante.NomeFantasia != null) && (x.Delete == false));
         }
     }
 }

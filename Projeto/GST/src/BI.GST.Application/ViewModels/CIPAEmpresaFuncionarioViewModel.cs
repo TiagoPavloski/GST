@@ -19,9 +19,9 @@ namespace BI.GST.Application.ViewModels
 
         [Required(ErrorMessage = "Prencher campo Funcionario")]
         [DisplayName("Funcionário")]
-        public int FuncionarioEmpresaId { get; set; }
+        public int FuncionarioId { get; set; }
 
-        public virtual FuncionarioEmpresa FuncionarioEmpresa { get; set; }
+        public virtual Funcionario Funcionario { get; set; }
 
         [DisplayName("Efetivo")]
         public bool Efetivo { get; set; }

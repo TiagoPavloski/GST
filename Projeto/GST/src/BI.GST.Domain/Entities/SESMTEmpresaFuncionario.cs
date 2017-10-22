@@ -14,9 +14,9 @@ namespace BI.GST.Domain.Entities
 
         public virtual SESMTEmpresa SESMTEmpresa { get; set; }
 
-        public int FuncionarioEmpresaId { get; set; }
+        public int FuncionarioId { get; set; }
 
-        public virtual FuncionarioEmpresa FuncionarioEmpresa { get; set; }
+        public virtual Funcionario Funcionario { get; set; }
 
         public bool Efetivo { get; set; }
 
