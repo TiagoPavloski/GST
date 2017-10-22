@@ -6,9 +6,6 @@ using BI.GST.Domain.Interface.IService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BI.GST.Application.AppService
 {
@@ -24,7 +21,7 @@ namespace BI.GST.Application.AppService
         {
             var funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
-            var duplicado = _funcionarioService.Find(e => e.Nome == funcionario.Nome).Any();
+            var duplicado = _funcionarioService.Find(e => e.CPF == funcionario.CPF && e.FuncionarioId != funcionario.FuncionarioId && e.Delete == false).Any();
             if (duplicado)
             {
                 return false;
@@ -81,9 +78,9 @@ namespace BI.GST.Application.AppService
             return false;
         }
 
-        public IEnumerable<FuncionarioViewModel> ObterGrid(int page, string pesquisa)
+        public IEnumerable<FuncionarioViewModel> ObterGrid(string pesquisa, int page)
         {
-            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterGrid(page, pesquisa));
+            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterGrid(pesquisa, page));
         }
 
         public FuncionarioViewModel ObterPorId(int id)
@@ -93,7 +90,7 @@ namespace BI.GST.Application.AppService
 
         public IEnumerable<FuncionarioViewModel> ObterPorEmpresa(int empresaId)
         {
-            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable < FuncionarioViewModel >> (_funcionarioService.ObterPorEmpresa(empresaId));
+            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>> (_funcionarioService.ObterPorEmpresa(empresaId));
         }
 
         public IEnumerable<FuncionarioViewModel> ObterTodos()

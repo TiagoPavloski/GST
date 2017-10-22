@@ -59,6 +59,7 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<RiscoCBOViewModel, RiscoCBO>();
             Mapper.CreateMap<RiscoFuncionarioViewModel, RiscoFuncionario>();
             Mapper.CreateMap<AgenteRiscoCBOViewModel, AgenteRiscoCBO>();
+            Mapper.CreateMap<PessoaViewModel, Pessoa>();
             Mapper.CreateMap<FuncionarioViewModel, Funcionario>();
             Mapper.CreateMap<CBOViewModel, CBO>();
             Mapper.CreateMap<FuncionarioEmpresaViewModel, FuncionarioEmpresa>();
@@ -67,6 +68,8 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<EPIViewModel, EPI>();
             Mapper.CreateMap<UsuarioViewModel, Usuario>();
             Mapper.CreateMap<FinanceiroParcelaViewModel, FinanceiroParcela>();
+            Mapper.CreateMap<TipoSetorViewModel, TipoSetor>();
+            
         }
 
     }
