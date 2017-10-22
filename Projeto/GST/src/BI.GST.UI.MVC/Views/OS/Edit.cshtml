@@ -16,21 +16,13 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.OsId)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.FuncionarioEmpresaId, "FuncionarioEmpresaId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("FuncionarioEmpresaId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.FuncionarioEmpresaId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ColaboradorId, "ColaboradorId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ColaboradorId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ColaboradorId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Funcionario.FuncionarioId, "FuncionarioId", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-10">
+				@Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.Funcionario.FuncionarioId, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.DataElaboracao, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -63,14 +55,6 @@
                 @Html.ValidationMessageFor(model => model.Recomentacoes, "", new { @class = "text-danger" })
             </div>
         </div>
-
-		<div class="form-group">
-			@Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.DropDownList("Status", (IEnumerable<SelectListItem>)TempData["ddlStatus_OS"], new { @class = "form-control" })
-				@Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-			</div>
-		</div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Delete, htmlAttributes: new { @class = "control-label col-md-2" })

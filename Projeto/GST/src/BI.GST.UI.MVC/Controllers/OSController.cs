@@ -35,15 +35,15 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.TotalRegistros = _oSAppService.ObterTotalRegistros(pesquisa);
 
 			#region DDL Status
-			List<SelectListItem> ddlStatus_OS = new List<SelectListItem>();
-			ddlStatus_OS.Add(new SelectListItem() { Text = "Ativa", Value = "1" });
-			ddlStatus_OS.Add(new SelectListItem() { Text = "Cancelada", Value = "2" });
-			TempData["ddlStatus_OS"] = ddlStatus_OS;
+			//List<SelectListItem> ddlStatus_OS = new List<SelectListItem>();
+			//ddlStatus_OS.Add(new SelectListItem() { Text = "Ativa", Value = "1" });
+			//ddlStatus_OS.Add(new SelectListItem() { Text = "Cancelada", Value = "2" });
+			//TempData["ddlStatus_OS"] = ddlStatus_OS;
 
-			foreach (var item in osViewModel)
-			{
-				item.StatusNome = ddlStatus_OS.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
-			}
+			//foreach (var item in osViewModel)
+			//{
+			//	item.StatusNome = ddlStatus_OS.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
+			//}
 			#endregion
 
 			return View(osViewModel);
@@ -91,7 +91,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				return HttpNotFound();
 			}
-			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
+			//ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
 			//ViewBag.FuncionarioEmpresaId = new SelectList(_funcionarioEmpresaAppService.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
 			return View(oS);
 		}
@@ -112,8 +112,8 @@ namespace BI.GST.UI.MVC.Controllers
 				else
 					return RedirectToAction("Index");
 			}
-			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
-			//ViewBag.FuncionarioEmpresaId = new SelectList(db.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
+			//ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
+			////ViewBag.FuncionarioEmpresaId = new SelectList(db.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
 			return View(oS);
 		}
 
