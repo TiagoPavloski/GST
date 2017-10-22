@@ -11,75 +11,89 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.AppService
 {
-  public class CursoAppService : BaseAppService, ICursoAppService
-  {
-    private readonly ICursoService _cursoService;
+	public class CursoAppService : BaseAppService, ICursoAppService
+	{
+		private readonly ICursoService _cursoService;
 
-    public CursoAppService(ICursoService cursoService)
-    {
-      _cursoService = cursoService;
-    }
-    public bool Adicionar(CursoViewModel cursoViewModel)
-    {
-      var Curso = Mapper.Map<CursoViewModel, Curso>(cursoViewModel);
+		public CursoAppService(ICursoService cursoService)
+		{
+			_cursoService = cursoService;
+		}
+		public bool Adicionar(CursoViewModel cursoViewModel)
+		{
+			cursoViewModel.Renovado = false;
+			var curso = Mapper.Map<CursoViewModel, Curso>(cursoViewModel);
 
-      BeginTransaction();
-      _cursoService.Adicionar(Curso);
-      Commit();
-      return true;
-    }
+			var cursospRenovar = _cursoService.Find(e => (e.FuncionarioId == curso.FuncionarioId) && (e.TipoCursoId == curso.TipoCursoId) && (e.Renovado == false) && (e.Delete == false)).FirstOrDefault();
+
+			BeginTransaction();
+			if (cursospRenovar != null)
+			{
+				cursospRenovar.Renovado = true;
+				_cursoService.Atualizar(cursospRenovar);
+			}
+			_cursoService.Adicionar(curso);
+			Commit();
+			return true;
+		}
+
+		public bool Atualizar(CursoViewModel cursoViewModel)
+		{
+			var curso = Mapper.Map<CursoViewModel, Curso>(cursoViewModel);
+
+			var cursospRenovar = _cursoService.Find(e => (e.FuncionarioId == curso.FuncionarioId) && (e.TipoCursoId == curso.TipoCursoId) && (e.Renovado == false) && (e.Delete == false) && (e.CursoId != curso.CursoId)).FirstOrDefault();
+
+			BeginTransaction();
+			if (cursospRenovar != null)
+			{
+				cursospRenovar.Renovado = true;
+				_cursoService.Atualizar(cursospRenovar);
+			}
+			_cursoService.Atualizar(curso);
+			Commit();
+			return true;
+		}
 
 
-    public bool Atualizar(CursoViewModel cursoViewModel)
-    {
-      var Curso = Mapper.Map<CursoViewModel, Curso>(cursoViewModel);
+		public void Dispose()
+		{
+			_cursoService.Dispose();
+			GC.SuppressFinalize(this);
+		}
 
-      BeginTransaction();
-      _cursoService.Atualizar(Curso);
-      Commit();
-      return true;
-    }
+		public bool Excluir(int id)
+		{
+			bool existente = _cursoService.Find(e => e.CursoId == id).Any();
+			if (existente)
+			{
+				BeginTransaction();
+				var curso = _cursoService.ObterPorId(id);
+				curso.Delete = true;
+				_cursoService.Atualizar(curso);
+				Commit();
+				return true;
+			}
+			return false;
+		}
 
+		public IEnumerable<CursoViewModel> ObterGrid(int page, string pesquisa)
+		{
+			return Mapper.Map<IEnumerable<Curso>, IEnumerable<CursoViewModel>>(_cursoService.ObterGrid(page, pesquisa));
+		}
 
-    public void Dispose()
-    {
-      _cursoService.Dispose();
-      GC.SuppressFinalize(this);
-    }
+		public CursoViewModel ObterPorId(int id)
+		{
+			return Mapper.Map<Curso, CursoViewModel>(_cursoService.ObterPorId(id));
+		}
 
-    public bool Excluir(int id)
-    {
-      bool existente = _cursoService.Find(e => e.CursoId == id).Any();
-      if (existente)
-      {
-        BeginTransaction();
-        var tipoCurso = _cursoService.ObterPorId(id);
-        tipoCurso.Delete = true;
-        _cursoService.Atualizar(tipoCurso);
-        Commit();
-        return true;
-      }
-      return false;
-    }
+		public IEnumerable<CursoViewModel> ObterTodos()
+		{
+			return Mapper.Map<IEnumerable<Curso>, IEnumerable<CursoViewModel>>(_cursoService.ObterTodos());
+		}
 
-    public IEnumerable<CursoViewModel> ObterGrid(int page, string pesquisa)
-    {
-      return Mapper.Map<IEnumerable<Curso>, IEnumerable<CursoViewModel>>(_cursoService.ObterGrid(page, pesquisa));
-    }
-
-    public CursoViewModel ObterPorId(int id)
-    {
-      return Mapper.Map<Curso, CursoViewModel>(_cursoService.ObterPorId(id));
-    }
-
-    public IEnumerable<CursoViewModel> ObterTodos()
-    {
-      return Mapper.Map<IEnumerable<Curso>, IEnumerable<CursoViewModel>>(_cursoService.ObterTodos());
-    }
-
-    public int ObterTotalRegistros(string pesquisa)
-    {
-      return _cursoService.ObterTotalRegistros(pesquisa);
-    }
-  }
+		public int ObterTotalRegistros(string pesquisa)
+		{
+			return _cursoService.ObterTotalRegistros(pesquisa);
+		}
+	}
 }

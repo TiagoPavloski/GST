@@ -14,9 +14,7 @@ namespace BI.GST.Infra.Data.EntityConfig
            .HasMaxLength(150)
            .IsRequired();
 
-
-      Property(c => c.Validade)
-               .HasMaxLength(10)
+      Property(c => c.MesesValidade)
                .IsRequired();
 
       Property(c => c.Delete)

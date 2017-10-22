@@ -188,6 +188,7 @@
     <Compile Include="Controllers\AgenteQuimicosController.cs" />
     <Compile Include="Controllers\AgenteRiscoCBOsController.cs" />
     <Compile Include="Controllers\CBOsController.cs" />
+    <Compile Include="Controllers\CertificadosController.cs" />
     <Compile Include="Controllers\CIPAEmpresasController.cs" />
     <Compile Include="Controllers\ClassificacaoEfeitosController.cs" />
     <Compile Include="Controllers\ColaboradoresController.cs" />
@@ -4605,11 +4606,11 @@
     <Content Include="Views\AgenteBiologicos\Details.cshtml" />
     <Content Include="Views\AgenteBiologicos\Edit.cshtml" />
     <Content Include="Views\AgenteBiologicos\Index.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Create.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Delete.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Details.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Edit.cshtml" />
-    <Content Include="Views\AgenteErgonomicos\AgenteFisicos\Index.cshtml" />
+    <Content Include="Views\AgenteFisicos\Create.cshtml" />
+    <Content Include="Views\AgenteFisicos\Delete.cshtml" />
+    <Content Include="Views\AgenteFisicos\Details.cshtml" />
+    <Content Include="Views\AgenteFisicos\Edit.cshtml" />
+    <Content Include="Views\AgenteFisicos\Index.cshtml" />
     <Content Include="Views\AgenteQuimicos\Create.cshtml" />
     <Content Include="Views\AgenteQuimicos\Delete.cshtml" />
     <Content Include="Views\AgenteQuimicos\Details.cshtml" />
@@ -4707,6 +4708,12 @@
     <Content Include="Views\InstituicaoCursos\Details.cshtml" />
     <Content Include="Views\InstituicaoCursos\Edit.cshtml" />
     <Content Include="Views\InstituicaoCursos\Index.cshtml" />
+    <Content Include="Views\Certificados\Create.cshtml" />
+    <Content Include="Views\Certificados\Delete.cshtml" />
+    <Content Include="Views\Certificados\Details.cshtml" />
+    <Content Include="Views\Certificados\Edit.cshtml" />
+    <Content Include="Views\Certificados\Index.cshtml" />
+    <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

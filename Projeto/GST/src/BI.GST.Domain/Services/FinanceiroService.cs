@@ -1,9 +1,6 @@
 ﻿using BI.GST.Domain.Interface.IService;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using BI.GST.Domain.Entities;
 using BI.GST.Domain.Interface.IRepository;
 using System.Linq.Expressions;

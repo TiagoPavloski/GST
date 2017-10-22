@@ -31,22 +31,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Fonte)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Efeito)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Orientacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MedidasPropostas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fundamentacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
-        </th>
-        <th></th>
+       <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -62,21 +47,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Fonte)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Efeito)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Orientacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MedidasPropostas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fundamentacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delete)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.AgenteAcidenteId }) |
