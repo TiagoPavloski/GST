@@ -26,7 +26,7 @@ namespace BI.GST.Application.AppService
     {
       var tipoCurso = Mapper.Map<TipoCursoViewModel, TipoCurso>(tipoCursoViewModel);
 
-      var duplicado = _tipoCursoService.Find(e => e.Nome == tipoCurso.Nome).Any();
+      var duplicado = _tipoCursoService.Find(e => (e.Nome == tipoCurso.Nome) && (e.Delete == false)).Any();
       if (duplicado)
       {
         return false;
@@ -44,7 +44,7 @@ namespace BI.GST.Application.AppService
     {
       var tipoCurso = Mapper.Map<TipoCursoViewModel, TipoCurso>(tipoCursoViewModel);
 
-      var duplicado = _tipoCursoService.Find(e => e.Nome == tipoCurso.Nome && e.TipoCursoId != tipoCurso.TipoCursoId).Any();
+      var duplicado = _tipoCursoService.Find(e => (e.Nome == tipoCurso.Nome) && (e.TipoCursoId != tipoCurso.TipoCursoId) && (e.Delete == false)).Any();
 
       if (duplicado)
       {
@@ -68,7 +68,7 @@ namespace BI.GST.Application.AppService
 
     public bool Excluir(int id)
     {
-      bool existente = _tipoCursoService.Find(e => e.TipoCursoId == id).Any();
+      bool existente = _tipoCursoService.Find(e => (e.TipoCursoId) == id && (e.Delete == false)).Any();
       bool cursoUtiliza = _cursoService.Find(c => c.TipoCursoId == id && c.Delete == false).Any();
 
       if (existente && !cursoUtiliza)

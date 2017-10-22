@@ -9,31 +9,29 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.ViewModels
 {
-    public class CursoViewModel
-    {
-        public int CursoId { get; set; }
+	public class CursoViewModel
+	{
+		public int CursoId { get; set; }
 
-        [Required]
-        [DisplayName("Funcionario")]
-        public int FuncionarioId { get; set; }
+		[Required]
+		[DisplayName("Funcionario")]
+		public int FuncionarioId { get; set; }
 
-        [Required]
-        [DisplayName("Tipo Curso")]
-        public int TipoCursoId { get; set; }
+		[Required]
+		[DisplayName("Tipo Curso")]
+		public int TipoCursoId { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Data")]
-        [MaxLength(150, ErrorMessage = "Máximo de 150")]
-        public string Data { get; set; }
+		[Required(ErrorMessage = "Prencher campo Data")]
+		[MaxLength(150, ErrorMessage = "Máximo de 150")]
+		[DisplayName("Data Realização")]
+		public string Data { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Status")]
-        public int Status { get; set; }
+		public bool Renovado { get; set; }
 
-        public string StatusNome { get; set; }
-
-        public bool Delete { get; set; }
+		public bool Delete { get; set; }
 
 
-        public virtual FuncionarioViewModel Funcionario { get; set; }
-        public virtual TipoCursoViewModel TipoCurso { get; set; }
-    }
+		public virtual FuncionarioViewModel Funcionario { get; set; }
+		public virtual TipoCursoViewModel TipoCurso { get; set; }
+	}
 }

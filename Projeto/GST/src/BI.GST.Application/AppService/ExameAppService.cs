@@ -11,75 +11,90 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.AppService
 {
-  public class ExameAppService : BaseAppService, IExameAppService
-  {
-    private readonly IExameService _exameService;
+	public class ExameAppService : BaseAppService, IExameAppService
+	{
+		private readonly IExameService _exameService;
 
-    public ExameAppService(IExameService vacinaService)
-    {
-      _exameService = vacinaService;
-    }
-    public bool Adicionar(ExameViewModel exameViewModel)
-    {
-      var vacina = Mapper.Map<ExameViewModel, Exame>(exameViewModel);
+		public ExameAppService(IExameService vacinaService)
+		{
+			_exameService = vacinaService;
+		}
+		public bool Adicionar(ExameViewModel exameViewModel)
+		{
+			exameViewModel.Renovado = false;
+			var exame = Mapper.Map<ExameViewModel, Exame>(exameViewModel);
 
-      BeginTransaction();
-      _exameService.Adicionar(vacina);
-      Commit();
-      return true;
-    }
+			var examespRenovar = _exameService.Find(e => (e.FuncionarioId == exame.FuncionarioId) && (e.TipoExameId == exame.TipoExameId) && (e.Renovado == false) && (e.Delete == false)).FirstOrDefault();
 
-
-    public bool Atualizar(ExameViewModel exameViewModel)
-    {
-      var vacina = Mapper.Map<ExameViewModel, Exame>(exameViewModel);
-
-      BeginTransaction();
-      _exameService.Atualizar(vacina);
-      Commit();
-      return true;
-    }
+			BeginTransaction();
+			if (examespRenovar != null)
+			{
+				examespRenovar.Renovado = true;
+				_exameService.Atualizar(examespRenovar);
+			}
+			_exameService.Adicionar(exame);
+			Commit();
+			return true;
+		}
 
 
-    public void Dispose()
-    {
-      _exameService.Dispose();
-      GC.SuppressFinalize(this);
-    }
+		public bool Atualizar(ExameViewModel exameViewModel)
+		{
+			var exame = Mapper.Map<ExameViewModel, Exame>(exameViewModel);
 
-    public bool Excluir(int id)
-    {
-      bool existente = _exameService.Find(e => e.ExameId == id).Any();
-      if (existente)
-      {
-        BeginTransaction();
-        var tipoExame = _exameService.ObterPorId(id);
-        tipoExame.Delete = true;
-        _exameService.Atualizar(tipoExame);
-        Commit();
-        return true;
-      }
-      return false;
-    }
+			var examespRenovar = _exameService.Find(e => (e.FuncionarioId == exame.FuncionarioId) && (e.TipoExameId == exame.TipoExameId) && (e.Renovado == false) && (e.Delete == false) && (e.ExameId != exame.ExameId)).FirstOrDefault();
 
-    public IEnumerable<ExameViewModel> ObterGrid(int page, string pesquisa)
-    {
-      return Mapper.Map<IEnumerable<Exame>, IEnumerable<ExameViewModel>>(_exameService.ObterGrid(page, pesquisa));
-    }
+			BeginTransaction();
+			if (examespRenovar != null)
+			{
+				examespRenovar.Renovado = true;
+				_exameService.Atualizar(examespRenovar);
+			}
+			_exameService.Atualizar(exame);
+			Commit();
+			return true;
+		}
 
-    public ExameViewModel ObterPorId(int id)
-    {
-      return Mapper.Map<Exame, ExameViewModel>(_exameService.ObterPorId(id));
-    }
 
-    public IEnumerable<ExameViewModel> ObterTodos()
-    {
-      return Mapper.Map<IEnumerable<Exame>, IEnumerable<ExameViewModel>>(_exameService.ObterTodos());
-    }
+		public void Dispose()
+		{
+			_exameService.Dispose();
+			GC.SuppressFinalize(this);
+		}
 
-    public int ObterTotalRegistros(string pesquisa)
-    {
-      return _exameService.ObterTotalRegistros(pesquisa);
-    }
-  }
+		public bool Excluir(int id)
+		{
+			bool existente = _exameService.Find(e => e.ExameId == id).Any();
+			if (existente)
+			{
+				BeginTransaction();
+				var tipoExame = _exameService.ObterPorId(id);
+				tipoExame.Delete = true;
+				_exameService.Atualizar(tipoExame);
+				Commit();
+				return true;
+			}
+			return false;
+		}
+
+		public IEnumerable<ExameViewModel> ObterGrid(int page, string pesquisa)
+		{
+			return Mapper.Map<IEnumerable<Exame>, IEnumerable<ExameViewModel>>(_exameService.ObterGrid(page, pesquisa));
+		}
+
+		public ExameViewModel ObterPorId(int id)
+		{
+			return Mapper.Map<Exame, ExameViewModel>(_exameService.ObterPorId(id));
+		}
+
+		public IEnumerable<ExameViewModel> ObterTodos()
+		{
+			return Mapper.Map<IEnumerable<Exame>, IEnumerable<ExameViewModel>>(_exameService.ObterTodos());
+		}
+
+		public int ObterTotalRegistros(string pesquisa)
+		{
+			return _exameService.ObterTotalRegistros(pesquisa);
+		}
+	}
 }

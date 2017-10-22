@@ -121,18 +121,23 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId/*, int[] funcionarioId*/)
+		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
 		{
 			//if (ModelState.IsValid)
 			//{
-			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId/*, funcionarioId*/))
+			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
 			{
 				TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
+				return View(empresaViewModel);
 			}
-			else
-				return RedirectToAction("Index");
+			if (Session["actionUsuario"] != null)
+			{
+				Session["actionUsuario"] = null;
+				return RedirectToAction("Edit", "Usuarios");
+			}
+			return RedirectToAction("Index");
 			//}
-			return View(empresaViewModel);
+			//return View(empresaViewModel);
 		}
 
 		// GET: Empresas/Delete/5

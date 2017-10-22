@@ -15,6 +15,7 @@ namespace BI.GST.Domain.Entities
 			CnaeSecundarios = new List<Cnae>();
 			Setores = new List<Setor>();
 			Responsaveis = new List<Funcionario>();
+			Usuarios = new List<Usuario>();
 		}
 		public int EmpresaId { get; set; }
 
@@ -42,5 +43,6 @@ namespace BI.GST.Domain.Entities
 		public virtual ICollection<Cnae> CnaeSecundarios { get; set; }
 		public virtual ICollection<Setor> Setores { get; set; }
 		public virtual ICollection<Funcionario> Responsaveis { get; set; }
+		public virtual ICollection<Usuario> Usuarios { get; set; }
 	}
 }
