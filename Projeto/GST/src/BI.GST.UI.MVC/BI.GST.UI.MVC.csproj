@@ -4721,7 +4721,7 @@
     <Content Include="Views\EPIs\Edit.cshtml" />
     <Content Include="Views\EPIs\Index.cshtml" />
     <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
-
+    <Content Include="Views\Funcionarios\_FuncionarioEmpresa.cshtml" />
     <Content Include="Views\RiscoFuncionarios\Create.cshtml" />
     <Content Include="Views\RiscoFuncionarios\Delete.cshtml" />
     <Content Include="Views\RiscoFuncionarios\Details.cshtml" />

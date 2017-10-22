@@ -10,59 +10,64 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Services
 {
-  public class FuncionarioService : IFuncionarioService
-  {
-    private readonly IFuncionarioRepository _funcionarioRepository;
-
-    public FuncionarioService(IFuncionarioRepository funcionarioRepository)
+    public class FuncionarioService : IFuncionarioService
     {
-      _funcionarioRepository = funcionarioRepository;
-    }
+        private readonly IFuncionarioRepository _funcionarioRepository;
 
-    public void Adicionar(Funcionario funcionario)
-    {
-      _funcionarioRepository.Adicionar(funcionario);
-    }
+        public FuncionarioService(IFuncionarioRepository funcionarioRepository)
+        {
+            _funcionarioRepository = funcionarioRepository;
+        }
 
-    public void Atualizar(Funcionario funcionario)
-    {
-      _funcionarioRepository.Atualizar(funcionario);
-    }
+        public void Adicionar(Funcionario funcionario)
+        {
+            _funcionarioRepository.Adicionar(funcionario);
+        }
 
-    public void Dispose()
-    {
-      _funcionarioRepository.Dispose();
-      GC.SuppressFinalize(this);
-    }
+        public void Atualizar(Funcionario funcionario)
+        {
+            _funcionarioRepository.Atualizar(funcionario);
+        }
 
-    public void Excluir(int id)
-    {
-      _funcionarioRepository.Excluir(id);
-    }
+        public void Dispose()
+        {
+            _funcionarioRepository.Dispose();
+            GC.SuppressFinalize(this);
+        }
 
-    public IEnumerable<Funcionario> Find(Expression<Func<Funcionario, bool>> predicate)
-    {
-      return _funcionarioRepository.Find(predicate);
-    }
+        public void Excluir(int id)
+        {
+            _funcionarioRepository.Excluir(id);
+        }
 
-    public IEnumerable<Funcionario> ObterGrid(int page, string pesquisa)
-    {
-      return _funcionarioRepository.ObterGrid(page, pesquisa);
-    }
+        public IEnumerable<Funcionario> Find(Expression<Func<Funcionario, bool>> predicate)
+        {
+            return _funcionarioRepository.Find(predicate);
+        }
 
-    public Funcionario ObterPorId(int id)
-    {
-      return _funcionarioRepository.ObterPorId(id);
-    }
+        public IEnumerable<Funcionario> ObterGrid(int page, string pesquisa)
+        {
+            return _funcionarioRepository.ObterGrid(page, pesquisa);
+        }
 
-    public IEnumerable<Funcionario> ObterTodos()
-    {
-      return _funcionarioRepository.ObterTodos();
-    }
+        public Funcionario ObterPorId(int id)
+        {
+            return _funcionarioRepository.ObterPorId(id);
+        }
 
-    public int ObterTotalRegistros(string pesquisa)
-    {
-      return _funcionarioRepository.ObterTotalRegistros(pesquisa);
+        public IEnumerable<Funcionario> ObterPorEmpresa(int empresaId)
+        {
+            return _funcionarioRepository.ObterPorEmpresa(empresaId);
+        }
+
+        public IEnumerable<Funcionario> ObterTodos()
+        {
+            return _funcionarioRepository.ObterTodos();
+        }
+
+        public int ObterTotalRegistros(string pesquisa)
+        {
+            return _funcionarioRepository.ObterTotalRegistros(pesquisa);
+        }
     }
-  }
 }

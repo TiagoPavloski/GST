@@ -6,8 +6,15 @@
 
 <h2>Funcionários</h2>
 
+@using (Html.BeginForm("Index", "Funcionarios", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Adicionar funcionário", "Create")
 </p>
 <table class="table">
     <tr>
@@ -53,9 +60,9 @@
             @Html.DisplayFor(modelItem => item.StatusNome)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FuncionarioId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FuncionarioId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.FuncionarioId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.FuncionarioId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.FuncionarioId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.FuncionarioId })
         </td>
     </tr>
 }
@@ -63,3 +70,4 @@
 </table>
 
 @Html.Partial("_Paginacao")
+@Html.Partial("_Mensagem")

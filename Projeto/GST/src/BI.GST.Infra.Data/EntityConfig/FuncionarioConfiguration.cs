@@ -3,11 +3,11 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace BI.GST.Infra.Data.EntityConfig
 {
-  public class FuncionarioConfiguration : EntityTypeConfiguration<Funcionario>
-  {
-    public FuncionarioConfiguration()
+    public class FuncionarioConfiguration : EntityTypeConfiguration<Funcionario>
     {
-        HasKey(e => e.FuncionarioId);
+        public FuncionarioConfiguration()
+        {
+            HasKey(e => e.FuncionarioId);
 
             Property(e => e.Nome)
                     .IsRequired()
@@ -35,11 +35,18 @@ namespace BI.GST.Infra.Data.EntityConfig
                .HasMaxLength(10)
                .IsRequired();
 
-            Property(c => c.Delete)
-              .IsRequired();
+            Property(e => e.HoraEntrada)
+                .IsRequired();
+
+            Property(e => e.HoraSaida)
+                .IsRequired();
+
+            Property(e => e.Admissao)
+                .IsRequired();
+            
 
             Property(c => c.Status)
-           .IsRequired();
+                .IsRequired();
 
         }
     }
