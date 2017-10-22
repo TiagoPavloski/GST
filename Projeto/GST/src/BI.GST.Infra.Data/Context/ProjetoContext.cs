@@ -112,7 +112,6 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new CronogramaDeAcoesConfiguration());
             modelBuilder.Configurations.Add(new CursoConfiguration());
             modelBuilder.Configurations.Add(new EmpresaConfiguration());
-            modelBuilder.Configurations.Add(new FinanceiroParcelaConfiguration());
             modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
             modelBuilder.Configurations.Add(new EquipamentoRuidoConfiguration());
             modelBuilder.Configurations.Add(new EscalaConfiguration());
