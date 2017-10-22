@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Interface.IService
 {
-    public interface IAgenteErgonomicoService:IDisposable
+    public interface IAgenteErgonomicoService : IDisposable
     {
         IEnumerable<AgenteErgonomico> ObterTodos();
 

@@ -198,6 +198,7 @@
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
     <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
+    <Compile Include="Controllers\RiscoFuncionariosController.cs" />
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\RiscoCBOsController.cs" />
@@ -4721,6 +4722,11 @@
     <Content Include="Views\EPIs\Index.cshtml" />
     <Content Include="Views\Financeiro\_FinanceiroParcela.cshtml" />
     <Content Include="Views\Funcionarios\_FuncionarioEmpresa.cshtml" />
+    <Content Include="Views\RiscoFuncionarios\Create.cshtml" />
+    <Content Include="Views\RiscoFuncionarios\Delete.cshtml" />
+    <Content Include="Views\RiscoFuncionarios\Details.cshtml" />
+    <Content Include="Views\RiscoFuncionarios\Edit.cshtml" />
+    <Content Include="Views\RiscoFuncionarios\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

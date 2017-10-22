@@ -25,7 +25,7 @@ namespace BI.GST.Application.AppService
     {
       var tipoExame = Mapper.Map<TipoExameViewModel, TipoExame>(tipoExameViewModel);
 
-      var duplicado = _tipoExameService.Find(e => e.Nome == tipoExame.Nome).Any();
+      var duplicado = _tipoExameService.Find(e => (e.Nome == tipoExame.Nome) && (e.Delete == false)).Any();
       if (duplicado)
       {
         return false;
@@ -43,7 +43,7 @@ namespace BI.GST.Application.AppService
     {
       var tipoExame = Mapper.Map<TipoExameViewModel, TipoExame>(tipoExameViewModel);
 
-      var duplicado = _tipoExameService.Find(e => e.Nome == tipoExame.Nome && e.TipoExameId != tipoExame.TipoExameId).Any();
+      var duplicado = _tipoExameService.Find(e => (e.Nome == tipoExame.Nome) && (e.TipoExameId != tipoExame.TipoExameId) && (e.Delete == false)).Any();
 
       if (duplicado)
       {
@@ -66,7 +66,7 @@ namespace BI.GST.Application.AppService
 
     public bool Excluir(int id)
     {
-      bool existente = _tipoExameService.Find(e => e.TipoExameId == id).Any();
+      bool existente = _tipoExameService.Find(e => e.TipoExameId == id && (e.Delete == false)).Any();
       bool exameUtiliza = _exameService.Find(c => c.TipoExameId == id && c.Delete == false).Any();
 
       if (existente && !exameUtiliza)

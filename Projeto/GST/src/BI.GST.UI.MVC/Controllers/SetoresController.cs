@@ -49,9 +49,12 @@ namespace BI.GST.UI.MVC.Controllers
         }
 
         // GET: setors/Create
-        public ActionResult Create()
+        public ActionResult Create(int? empresaId)
         {
-            return View();
+            SetorViewModel setor = new SetorViewModel();
+            EmpresaViewModel empresa = new EmpresaViewModel();
+            setor.Empresas.Add(empresa);
+            return View(setor);
         }
 
         // POST: setors/Create
