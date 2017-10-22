@@ -66,6 +66,7 @@
     <Compile Include="EntityConfig\AgenteAcidenteConfiguration.cs" />
     <Compile Include="EntityConfig\AgenteAmbientalConfiguration.cs" />
     <Compile Include="EntityConfig\AgenteBiologicoConfiguration.cs" />
+    <Compile Include="EntityConfig\EPIConfiguration.cs" />
     <Compile Include="EntityConfig\AgenteCausadorCBOConfiguration.cs" />
     <Compile Include="EntityConfig\AgenteErgonomicoConfiguration.cs" />
     <Compile Include="EntityConfig\AgenteFisicoConfiguration.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AgenteAmbientalRepository.cs" />
+    <Compile Include="Repository\EPIRepository.cs" />
     <Compile Include="Repository\CertificadoRepository.cs" />
     <Compile Include="Repository\InstituicaoCursoRepository.cs" />
     <Compile Include="Repository\FuncionarioEmpresaRepository.cs" />
@@ -145,6 +147,7 @@
     <Compile Include="Repository\CursoRepository.cs" />
     <Compile Include="Repository\EmpresaRepository.cs" />
     <Compile Include="Repository\GrupoCipaRepository.cs" />
+    <Compile Include="Repository\RiscoFuncionarioRepository.cs" />
     <Compile Include="Repository\SESMTEmpresaFuncionarioRepository.cs" />
     <Compile Include="Repository\SESMTEmpresaRepository.cs" />
     <Compile Include="Repository\SesmtQuadroRepository.cs" />

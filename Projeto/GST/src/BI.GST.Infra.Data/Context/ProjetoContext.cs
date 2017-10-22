@@ -40,7 +40,8 @@ namespace BI.GST.Infra.Data.Context
 		public DbSet<CronogramaDeAcoes> CronogramasDeAcoes { get; set; }
 		public DbSet<Curso> Cursos { get; set; }
 		public DbSet<Empresa> Empresas { get; set; }
-		public DbSet<Usuario> EmpresasUtilizadora { get; set; }
+        public DbSet<EPI> EPIs { get; set; }
+        public DbSet<Usuario> EmpresasUtilizadora { get; set; }
 		public DbSet<EquipamentoRuido> EquipamentosRuido { get; set; }
 		public DbSet<Escala> Escalas { get; set; }
 		public DbSet<Exame> Exames { get; set; }
@@ -138,6 +139,7 @@ namespace BI.GST.Infra.Data.Context
 			modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
 			modelBuilder.Configurations.Add(new SESMTEmpresaFuncionarioConfiguration());
 			modelBuilder.Configurations.Add(new FinanceiroParcelaConfiguration());
+            modelBuilder.Configurations.Add(new EPIConfiguration());
 			base.OnModelCreating(modelBuilder);
 		}
 

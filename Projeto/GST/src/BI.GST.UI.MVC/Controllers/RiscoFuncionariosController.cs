@@ -13,125 +13,124 @@ using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class SetoresController : Controller
+    public class RiscoFuncionariosController : Controller
     {
-        private readonly ISetorAppService _setorAppService;
+        private readonly IRiscoFuncionarioAppService _riscoFuncionarioAppService;
 
-        public SetoresController(ISetorAppService setorAppService)
+        public RiscoFuncionariosController(IRiscoFuncionarioAppService riscoFuncionarioAppService)
         {
-            _setorAppService = setorAppService;
+            _riscoFuncionarioAppService = riscoFuncionarioAppService;
         }
 
-        // GET: setors
+        // GET: RiscoFuncionarios
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var setorViewModel = _setorAppService.ObterGrid(page, pesquisa);
+            var riscoFuncionarioViewModel = _riscoFuncionarioAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
-            ViewBag.Controller = "setors";
-            ViewBag.TotalRegistros = _setorAppService.ObterTotalRegistros(pesquisa);
-            return View(setorViewModel);
+            ViewBag.Controller = "RiscoFuncionario";
+            ViewBag.TotalRegistros = _riscoFuncionarioAppService.ObterTotalRegistros(pesquisa);
+
+            return View(riscoFuncionarioViewModel);
         }
 
-        // GET: setors/Details/5
+        // GET: RiscoFuncionarios/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SetorViewModel setor = _setorAppService.ObterPorId(id.Value);
-            if (setor == null)
+            var riscoFuncionario = _riscoFuncionarioAppService.ObterPorId(id.Value);
+            if (riscoFuncionario == null)
             {
                 return HttpNotFound();
             }
-            return View(setor);
+            return View(riscoFuncionario);
         }
 
-        // GET: setors/Create
-        public ActionResult Create(int? empresaId)
+        // GET: RiscoFuncionarios/Create
+        public ActionResult Create()
         {
-            SetorViewModel setor = new SetorViewModel();
-            EmpresaViewModel empresa = new EmpresaViewModel();
-            setor.Empresas.Add(empresa);
-            return View(setor);
+            return View();
         }
 
-        // POST: setors/Create
+        // POST: RiscoFuncionario/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SetorViewModel setorViewModel)
+        public ActionResult Create(RiscoFuncionarioViewModel riscoFuncionarioViewModel)
         {
+
             if (ModelState.IsValid)
             {
-                if (!_setorAppService.Adicionar(setorViewModel))
+                if (!_riscoFuncionarioAppService.Adicionar(riscoFuncionarioViewModel))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um setor com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um Risco Funcionário com os mesmos dados";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Risco Funcionário com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(setorViewModel);
+            return View(riscoFuncionarioViewModel);
         }
 
-        // GET: setors/Edit/5
+        // GET: RiscoFuncionarios/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var setor = _setorAppService.ObterPorId(id.Value);
-            if (setor == null)
+            var riscoFuncionario = _riscoFuncionarioAppService.ObterPorId(id.Value);
+            if (riscoFuncionario == null)
             {
                 return HttpNotFound();
             }
-            return View(setor);
+            return View(riscoFuncionario);
         }
 
-        // POST: setors/Edit/5
+        // POST: RiscoFuncionario/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(SetorViewModel setorViewModel)
+        public ActionResult Edit(RiscoFuncionarioViewModel riscoFuncionarioViewModel)
         {
             if (ModelState.IsValid)
             {
-                if (!_setorAppService.Atualizar(setorViewModel))
+                if (!_riscoFuncionarioAppService.Atualizar(riscoFuncionarioViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
+                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Risco Funcionário com os mesmos dados já cadastrado')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
-            return View(setorViewModel);
+            return View(riscoFuncionarioViewModel);
         }
 
-        // GET: setors/Delete/5
+        // GET: RiscoFuncionarios/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SetorViewModel setor = _setorAppService.ObterPorId(id.Value);
-            if (setor == null)
+            var riscoFuncionario = _riscoFuncionarioAppService.ObterPorId(id.Value);
+            if (riscoFuncionario == null)
             {
                 return HttpNotFound();
             }
-            return View(setor);
+            return View(riscoFuncionario);
         }
 
-        // POST: setors/Delete/5
+        // POST: RiscoFuncionarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_setorAppService.Excluir(id))
+            if (!_riscoFuncionarioAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
                 return null;
@@ -146,7 +145,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (disposing)
             {
-                _setorAppService.Dispose();
+                _riscoFuncionarioAppService.Dispose();
             }
             base.Dispose(disposing);
         }
