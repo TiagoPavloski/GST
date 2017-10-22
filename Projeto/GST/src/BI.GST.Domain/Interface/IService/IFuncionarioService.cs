@@ -22,7 +22,7 @@ namespace BI.GST.Domain.Interface.IService
 
         void Excluir(int id);
 
-        IEnumerable<Funcionario> ObterGrid(int page, string pesquisa);
+        IEnumerable<Funcionario> ObterGrid(string pesquisa, int page);
 
         IEnumerable<Funcionario> ObterPorEmpresa(int empresaId);
 

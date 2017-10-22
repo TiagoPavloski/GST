@@ -23,7 +23,6 @@ namespace BI.GST.Domain.Entities
 	public string CLT { get; set; }
 
 	public string Serie { get; set; }
-
-    public virtual ICollection<Telefone> Telefones { get; set; }
+        
   }
 }

@@ -17,13 +17,6 @@ namespace BI.GST.UI.MVC.Controllers
 	public class UsuariosController : Controller
 	{
 		private readonly IUsuarioAppService _UsuarioAppService;
-		private readonly IEmpresaAppService _empresaAppService;
-		private readonly IEnderecoAppService _enderecoAppService;
-		private readonly ITelefoneAppService _telefoneAppService;
-		private readonly ICnaeAppService _cnaeAppService;
-		private readonly ISetorAppService _setorAppService;
-		private readonly IUFAppService _uFAppService;
-
 
 		public UsuariosController(IUsuarioAppService UsuarioAppService)
 		{

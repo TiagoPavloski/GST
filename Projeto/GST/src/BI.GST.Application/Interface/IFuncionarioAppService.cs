@@ -16,7 +16,7 @@ namespace BI.GST.Application.Interface
 
         bool Excluir(int id);
 
-        IEnumerable<FuncionarioViewModel> ObterGrid(int page, string pesquisa);
+        IEnumerable<FuncionarioViewModel> ObterGrid(string pesquisa, int page);
 
         int ObterTotalRegistros(string pesquisa);
     }

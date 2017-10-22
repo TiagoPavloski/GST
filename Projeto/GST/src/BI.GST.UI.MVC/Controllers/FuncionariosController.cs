@@ -13,14 +13,12 @@ namespace BI.GST.UI.MVC.Controllers
     {
         private readonly IFuncionarioAppService _funcionarioAppService;
         private readonly IEmpresaAppService _empresaAppService;
-        private readonly IFuncionarioEmpresaAppService _funcionarioEmprepsaAppService;
         private readonly ICBOAppService _cboAppService;
         private readonly ISetorAppService _setorAppService;
         private readonly IEscalaAppService _escalaAppService;
 
         public FuncionariosController(IFuncionarioAppService funcionarioAppService, IEmpresaAppService empresaAppService,
-            IFuncionarioEmpresaAppService funcionarioEmpresaAppService, ICBOAppService cboAppService,
-            ISetorAppService setorAppService, IEscalaAppService escalaAppService)
+            ICBOAppService cboAppService, ISetorAppService setorAppService, IEscalaAppService escalaAppService)
         {
             _funcionarioAppService = funcionarioAppService;
             _empresaAppService = empresaAppService;
@@ -29,25 +27,10 @@ namespace BI.GST.UI.MVC.Controllers
             _escalaAppService = escalaAppService;
         }
 
-        public ActionResult Empresa()
-        {
-            
-
-            #region DDL Status
-            List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
-            ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
-            ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
-            TempData["ddlStatus"] = ddlStatus_Funcionario;
-            #endregion
-
-            var empresa = new FuncionarioEmpresaViewModel();
-            return PartialView("_FuncionarioEmpresa", empresa);
-        }
-
         // GET: Funcionarios
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var funcionarioViewModel = _funcionarioAppService.ObterGrid(page, pesquisa);
+            var funcionarioViewModel = _funcionarioAppService.ObterGrid(pesquisa, page);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
             ViewBag.Controller = "Funcionarios";
@@ -81,7 +64,11 @@ namespace BI.GST.UI.MVC.Controllers
                 return HttpNotFound();
             }
 
-            var ddlStatus_Funcionario = (List<SelectListItem>)TempData["ddlStatus_Funcionarios"];
+            List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
+            ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Funcionarios"] = ddlStatus_Funcionario;
+
             funcionario.StatusNome = ddlStatus_Funcionario.Where(e => e.Value.Trim().Equals(funcionario.Status.ToString())).First().Text;
 
             return View(funcionario);
@@ -115,11 +102,16 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_funcionarioAppService.Adicionar(funcionarioViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um funcionário com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um funcionario com o mesmo CPF já cadastrado";
                 }
                 else
                     return RedirectToAction("Index");
             }
+
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
+            ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome");
+            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+            ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome");
 
             List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
@@ -144,10 +136,10 @@ namespace BI.GST.UI.MVC.Controllers
                 return HttpNotFound();
             }
 
-            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
-            ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome");
-            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
-            ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome");
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", funcionario.EmpresaId);
+            ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome", funcionario.CBOId);
+            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome", funcionario.SetorId);
+            ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome", funcionario.EscalaId);
 
             List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
@@ -170,7 +162,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_funcionarioAppService.Atualizar(funcionarioViewModel))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um funcionario com os mesmos dados já cadastrado')</SCRIPT>");
+                TempData["Mensagem"] = "Atenção, há um funcionario com o mesmo CPF já cadastrado";
             }
             else
                 return RedirectToAction("Index");
@@ -200,7 +192,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_funcionarioAppService.Excluir(id))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+                TempData["Mensagem"] = "Erro na operação, atualize a pagina";
                 return null;
             }
             else

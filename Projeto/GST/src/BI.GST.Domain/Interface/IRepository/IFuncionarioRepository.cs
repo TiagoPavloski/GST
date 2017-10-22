@@ -5,7 +5,7 @@ namespace BI.GST.Domain.Interface.IRepository
 {
     public interface IFuncionarioRepository : IBaseRepository<Funcionario>
     {
-        IEnumerable<Funcionario> ObterGrid(int page, string pesquisa);
+        IEnumerable<Funcionario> ObterGrid(string pesquisa, int page);
 
         int ObterTotalRegistros(string pesquisa);
 

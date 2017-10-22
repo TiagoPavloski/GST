@@ -15,7 +15,7 @@ namespace BI.GST.Infra.Data.Repository
             return DbSet.Count(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false));
         }
 
-        public IEnumerable<Funcionario> ObterGrid(int page, string pesquisa)
+        public IEnumerable<Funcionario> ObterGrid(string pesquisa, int page)
         {
             return DbSet.Where(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false))
                        .OrderBy(u => u.Nome)
