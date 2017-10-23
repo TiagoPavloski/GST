@@ -23,7 +23,7 @@ namespace BI.GST.Application.AppService
             var sesmtEmpresaFunc = Mapper.Map<SESMTEmpresaFuncionarioViewModel, SESMTEmpresaFuncionario>(sesmtEmpresaFuncionarioViewModel);
 
             var duplicado = _sesmtEmpresaFuncionarioService.Find(e => 
-                (e.FuncionarioEmpresa.Funcionario.CPF == sesmtEmpresaFunc.FuncionarioEmpresa.Funcionario.CPF)
+                (e.Funcionario.CPF == sesmtEmpresaFunc.Funcionario.CPF)
                 && (e.SESMTEmpresaId == sesmtEmpresaFunc.SESMTEmpresaId)
                 && (e.SESMTEmpresa.Delete == false)
                 && (e.Delete == false)).Any();
@@ -45,7 +45,7 @@ namespace BI.GST.Application.AppService
             var sesmtEmpresaFunc = Mapper.Map<SESMTEmpresaFuncionarioViewModel, SESMTEmpresaFuncionario>(sesmtEmpresaFuncionarioViewModel);
 
             var duplicado = _sesmtEmpresaFuncionarioService.Find(e => 
-                (e.FuncionarioEmpresa.Funcionario.CPF == sesmtEmpresaFunc.FuncionarioEmpresa.Funcionario.CPF) 
+                (e.Funcionario.CPF == sesmtEmpresaFunc.Funcionario.CPF) 
                 && (e.SESMTEmpresaId == sesmtEmpresaFunc.SESMTEmpresaId)
                 && (e.SESMTEmpresa.Delete == false)
                 && (e.Delete == false)

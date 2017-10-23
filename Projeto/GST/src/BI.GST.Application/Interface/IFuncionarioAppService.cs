@@ -19,5 +19,7 @@ namespace BI.GST.Application.Interface
         IEnumerable<FuncionarioViewModel> ObterGrid(string pesquisa, int page);
 
         int ObterTotalRegistros(string pesquisa);
+
+        IEnumerable<FuncionarioViewModel> ObterPorEmpresa(int empresaId);
     }
 }

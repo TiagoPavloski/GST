@@ -23,7 +23,7 @@ namespace BI.GST.Application.AppService
             var cipaEmpresaFunc = Mapper.Map<CIPAEmpresaFuncionarioViewModel, CIPAEmpresaFuncionario>(cipaEmpresaFuncionarioViewModel);
 
             var duplicado = _cipaEmpresaFuncionarioService.Find(e =>
-                (e.FuncionarioEmpresa.Funcionario.CPF == cipaEmpresaFunc.FuncionarioEmpresa.Funcionario.CPF)
+                (e.Funcionario.CPF == cipaEmpresaFunc.Funcionario.CPF)
                 && (e.CipaEmpresaId == cipaEmpresaFunc.CipaEmpresaId)
                 && (e.CipaEmpresa.Delete == false)
                 && (e.Delete == false)).Any();
@@ -45,7 +45,7 @@ namespace BI.GST.Application.AppService
             var cipaEmpresaFunc = Mapper.Map<CIPAEmpresaFuncionarioViewModel, CIPAEmpresaFuncionario>(cipaEmpresaFuncionarioViewModel);
 
             var duplicado = _cipaEmpresaFuncionarioService.Find(e =>
-                (e.FuncionarioEmpresa.Funcionario.CPF == cipaEmpresaFunc.FuncionarioEmpresa.Funcionario.CPF)
+                (e.Funcionario.CPF == cipaEmpresaFunc.Funcionario.CPF)
                 && (e.CipaEmpresaId == cipaEmpresaFunc.CipaEmpresaId)
                 && (e.CipaEmpresa.Delete == false)
                 && (e.Delete == false)
