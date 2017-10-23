@@ -11,15 +11,9 @@
 </p>
 <table class="table">
     <tr>
-		<th>
-			@Html.DisplayName("Empresa")
-		</th>
         <th>
             @Html.DisplayName("Funcionario")
         </th>
-		<th>
-			@Html.DisplayName("Colaborador")
-		</th>
         <th>
             @Html.DisplayNameFor(model => model.DataElaboracao)
         </th>
@@ -33,9 +27,6 @@
             @Html.DisplayNameFor(model => model.Recomentacoes)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Delete)
         </th>
         <th></th>
@@ -44,17 +35,8 @@
 @foreach (var item in Model) {
     <tr>
 		<td>
-			@Html.DisplayFor(modelItem => item.FuncionarioEmpresa.Empresa.NomeFantasia)
+			@Html.DisplayFor(modelItem => item.Funcionario.Nome)
 		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.FuncionarioEmpresa.Funcionario.Nome)
-		</td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Colaborador.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FuncionarioEmpresa.Funcionario.Nome)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataElaboracao)
         </td>
@@ -66,9 +48,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Recomentacoes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StatusNome)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Delete)

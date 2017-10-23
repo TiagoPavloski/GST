@@ -3,7 +3,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detalhes do funcionário</h2>
 
 <div>
     <h4>Funcionario</h4>
@@ -83,8 +83,64 @@
         </dd>
 
     </dl>
+
+    <h4>Empresa</h4>
+
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.NomeFantasia)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.NomeFantasia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CBO.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CBO.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Setor.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Setor.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Admissao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Admissao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraEntrada)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoraEntrada)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.HoraSaida)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HoraSaida)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Escala.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Escala.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Responsavel)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Responsavel)
+        </dd>
+    </dl>
+
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.FuncionarioId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.FuncionarioId }) |
+    @Html.ActionLink("Voltar para lista", "Index")
 </p>

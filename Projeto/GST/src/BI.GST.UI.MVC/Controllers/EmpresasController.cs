@@ -69,8 +69,7 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
 			ViewBag.CnaeId = ViewBag.CnaeIdList;
 			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
-			/*ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");*/
-
+			
 			var empresaViewModel = new EmpresaViewModel();
 			return View(empresaViewModel);
 		}
@@ -91,6 +90,10 @@ namespace BI.GST.UI.MVC.Controllers
 				else
 					return RedirectToAction("Index");
 			}
+			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
+			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
+			ViewBag.CnaeId = ViewBag.CnaeIdList;
+			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
 			return View(empresaViewModel);
 		}
 

@@ -8,11 +8,11 @@ namespace BI.GST.Domain.Entities
 
         public int FuncionarioId { get; set; }
 
+        public int Status { get; set; }
+
         public bool Responsavel { get; set; }
 
         public int EmpresaId { get; set; }
-
-		public virtual Empresa Empresa { get; set; }
 
         public string HoraEntrada { get; set; }
 
@@ -20,22 +20,19 @@ namespace BI.GST.Domain.Entities
 
         public string Admissao { get; set; }
 
-        public int CBOId { get; set; }
-
-        public virtual CBO CBO { get; set; }
+        public int CBOId { get; set; }    
 
         public int SetorId { get; set; }
-
-        public virtual Setor Setor { get; set; }
-
+    
         public int EscalaId { get; set; }
-
-        public virtual Escala Escala { get; set; }
 
         public string Demissao { get; set; }
 
-        public int Status { get; set; }
-
         public bool Delete { get; set; }
+
+        public virtual Empresa Empresa { get; set; }
+        public virtual CBO CBO { get; set; }
+        public virtual Setor Setor { get; set; }
+        public virtual Escala Escala { get; set; }
     }
 }
