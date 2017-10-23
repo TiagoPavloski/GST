@@ -120,9 +120,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
+            financeiroViewModel.Status = "0";
             if (ModelState.IsValid)
-            {
-                financeiroViewModel.Status = "0";
+            { 
                 var result = _financeiroAppService.Adicionar(financeiroViewModel, financeiroParcelaViewModel);
 
                 if (result != "")
@@ -132,24 +132,24 @@ namespace BI.GST.UI.MVC.Controllers
                 }
                 else
                     return RedirectToAction("Index");
-
-                #region DDL Status
-                List<SelectListItem> ddlOperacao = new List<SelectListItem>();
-                ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
-                ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
-                TempData["ddlOperacao"] = ddlOperacao;
-
-                List<SelectListItem> ddlStatus = new List<SelectListItem>();
-                ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
-                ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
-                TempData["ddlStatus"] = ddlStatus;
-
-                financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
-                financeiroViewModel.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(financeiroViewModel.Status.ToString())).First().Text;
-                #endregion
-
-                financeiroViewModel.Parcelas = financeiroParcelaViewModel;
             }
+            #region DDL Status
+            List<SelectListItem> ddlOperacao = new List<SelectListItem>();
+            ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
+            ddlOperacao.Add(new SelectListItem() { Text = "A Receber", Value = "1" });
+            TempData["ddlOperacao"] = ddlOperacao;
+
+            List<SelectListItem> ddlStatus = new List<SelectListItem>();
+            ddlStatus.Add(new SelectListItem() { Text = "Pendente", Value = "0" });
+            ddlStatus.Add(new SelectListItem() { Text = "Quitado", Value = "1" });
+            TempData["ddlStatus"] = ddlStatus;
+
+            financeiroViewModel.OperacaoStatus = ddlOperacao.Where(e => e.Value.Trim().Equals(financeiroViewModel.Operacao.ToString())).First().Text;
+            financeiroViewModel.StatusNome = ddlStatus.Where(e => e.Value.Trim().Equals(financeiroViewModel.Status.ToString())).First().Text;
+            #endregion
+
+            financeiroViewModel.Parcelas = financeiroParcelaViewModel;
+
             return View(financeiroViewModel);
         }
 
@@ -186,16 +186,19 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
-            var result = _financeiroAppService.Atualizar(financeiroViewModel, financeiroParcelaViewModel);
-
-            if (result != "")
+            if (ModelState.IsValid)
             {
-                TempData["Mensagem"] = result;
+                var result = _financeiroAppService.Atualizar(financeiroViewModel, financeiroParcelaViewModel);
+
+                if (result != "")
+                {
+                    TempData["Mensagem"] = result;
+
+                }
+                else
+                    return RedirectToAction("Index");
 
             }
-            else
-                return RedirectToAction("Index");
-
             #region ddlStatus
             List<SelectListItem> ddlOperacao = new List<SelectListItem>();
             ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });
@@ -206,7 +209,7 @@ namespace BI.GST.UI.MVC.Controllers
             #endregion
 
             financeiroViewModel.Parcelas = financeiroParcelaViewModel;
-           
+
             return View(financeiroViewModel);
         }
 

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -19,11 +20,16 @@ namespace BI.GST.UI.MVC.Controllers
             _funcionarioAppService = funcionarioAppService;
         }
 
-        public ActionResult Funcionario(int? empresaId)
+        public async Task<JsonResult> Funcionario(int id)
         {
-            var funcionario = new CIPAEmpresaFuncionarioViewModel();
-           // ViewBag.FuncionariosEfetivos = new SelectList(_funcionarioAppService.ObterPorEmpresa(empresaId), "FuncionarioId", "Nome");
-            return PartialView("_CipaEmpresaFuncionario", funcionario);
+            return Json(_funcionarioAppService.ObterPorEmpresa(id), JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<JsonResult> DadosCipa(int id)
+        {
+            var cipaEmpresa = new CIPAEmpresaViewModel();
+
+                return Json(_funcionarioAppService.ObterPorEmpresa(id), JsonRequestBehavior.AllowGet);
         }
 
 
@@ -59,7 +65,8 @@ namespace BI.GST.UI.MVC.Controllers
         {
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             var cipaEmpresaViewModel = new CIPAEmpresaViewModel();
-
+            ViewBag.FuncionariosEfetivos = new SelectList(_funcionarioAppService.ObterPorEmpresa(cipaEmpresaViewModel.EmpresaId), "FuncionarioId", "Nome");
+            ViewBag.FuncionariosSuplentes = new SelectList(_funcionarioAppService.ObterPorEmpresa(cipaEmpresaViewModel.EmpresaId), "FuncionarioId", "Nome");
             return View(cipaEmpresaViewModel);
         }
 
@@ -68,11 +75,11 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CIPAEmpresaViewModel cipaEmpresaViewModel, List<CIPAEmpresaFuncionarioViewModel> cipaEmpresaFuncionarioViewModel)
+        public ActionResult Create(CIPAEmpresaViewModel cipaEmpresaViewModel, int[] FuncionariosEfetivos, int[] FuncionariosSuplentes)
         {
             if (ModelState.IsValid)
             {
-                if (!_cipaEmpresaAppService.Adicionar(cipaEmpresaViewModel, cipaEmpresaFuncionarioViewModel))
+                if (!_cipaEmpresaAppService.Adicionar(cipaEmpresaViewModel, FuncionariosEfetivos, FuncionariosSuplentes))
                 {
                     ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
                     //var cipaEmpresa = new CIPAEmpresaViewModel();
@@ -100,6 +107,8 @@ namespace BI.GST.UI.MVC.Controllers
             }
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", cipaEmpresaViewModel.EmpresaId);
             ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
+            ViewBag.FuncionariosEfetivos = new SelectList(_funcionarioAppService.ObterPorEmpresa(cipaEmpresaViewModel.EmpresaId), "FuncionarioId", "Nome");
+            ViewBag.FuncionariosSuplentes = new SelectList(_funcionarioAppService.ObterPorEmpresa(cipaEmpresaViewModel.EmpresaId), "FuncionarioId", "Nome");
             return View(cipaEmpresaViewModel);
         }
 
@@ -108,12 +117,12 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(CIPAEmpresaViewModel cipaEmpresaViewModel, List<CIPAEmpresaFuncionarioViewModel> cipaEmpresaFuncionarioViewModel)
+        public ActionResult Edit(CIPAEmpresaViewModel cipaEmpresaViewModel, int[] FuncionariosEfetivos, int[] FuncionariosSuplentes)
         {
             if (ModelState.IsValid)
             {
                 ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", cipaEmpresaViewModel.EmpresaId);
-                if (!_cipaEmpresaAppService.Atualizar(cipaEmpresaViewModel, cipaEmpresaFuncionarioViewModel))
+                if (!_cipaEmpresaAppService.Atualizar(cipaEmpresaViewModel, FuncionariosEfetivos, FuncionariosSuplentes))
                 {
                     System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, CIPA já cadastrada para esta empresa e ano')</SCRIPT>");
                 }

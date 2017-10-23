@@ -27,11 +27,10 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Operação")]
         public int Operacao { get; set; }
 
-        // [Required(ErrorMessage = "Prencher Data do título")]
+        [Required(ErrorMessage = "Prencher Data do título")]
         [DisplayName("Data da Operação")]
         public string DataOperacao { get; set; }
 
-        //validar para preencher o valor maior que zero
         [Required(ErrorMessage = "Prencher o Valor do título")]
         [DisplayName("Valor")]
         public double Valor { get; set; }
