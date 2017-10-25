@@ -12,6 +12,16 @@ namespace BI.GST.Application.ViewModels
 {
     public class SetorViewModel
     {
+        public SetorViewModel()
+        {
+            AgenteQuimicos = new List<AgenteQuimico>();
+            AgenteFisicos = new List<AgenteFisico>();
+            AgenteAcidentes = new List<AgenteAcidente>();
+            AgenteErgonomicos = new List<AgenteErgonomico>();
+            AgenteBiologicos = new List<AgenteBiologico>();
+
+        }
+
         public int SetorId { get; set; }
 
         [Required]
