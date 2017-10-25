@@ -14,7 +14,7 @@ namespace BI.GST.Application.ViewModels
         public int AgenteAcidenteId { get; set; }
 
         [Required]
-        [DisplayName("Agente Acidente")]
+        [DisplayName("Nome agente")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Frequência")]

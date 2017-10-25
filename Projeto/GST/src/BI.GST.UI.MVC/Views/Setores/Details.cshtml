@@ -27,8 +27,49 @@
             @Html.DisplayFor(model => model.Descricao)
         </dd>
 
-                
-    </dl>
+        <dt>
+            @Html.DisplayName("Agente Acidente")
+        </dt>
+        @foreach (var item in Model.AgenteAcidentes)
+        {
+            <dd>
+                @Html.DisplayFor(model => item.Nome)
+            </dd>}
+        <dt>
+
+            @Html.DisplayName("Agente Biologico")
+        </dt>
+        @foreach (var item in Model.AgenteBiologicos)
+        {
+            <dd>
+                @Html.DisplayFor(model => item.Nome)
+            </dd>}
+        <dt>
+            @Html.DisplayName("Agente Ergonomico")
+        </dt>
+        @foreach (var item in Model.AgenteErgonomicos)
+        {
+            <dd>
+                @Html.DisplayFor(model => item.Nome)
+            </dd>}
+        <dt>
+            @Html.DisplayName("Agente Fisico")
+        </dt>
+        @foreach (var item in Model.AgenteFisicos)
+        {
+            <dd>
+                @Html.DisplayFor(model => item.Nome)
+            </dd>}
+        <dt>
+            @Html.DisplayName("Agente Quimico")
+        </dt>
+        @foreach (var item in Model.AgenteQuimicos)
+        {
+            <dd>
+                @Html.DisplayFor(model => item.Nome)
+            </dd>}
+        
+</dl>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.SetorId }) |
