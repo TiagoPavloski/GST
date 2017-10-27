@@ -33,7 +33,6 @@ namespace BI.GST.Application.ViewModels
 
 		[Required]
 		[MaxLength(150, ErrorMessage = "Máximo de 30 caracteres")]
-		[RegularExpression(@"b[A-Z0-9._%-]+@[A-Z0-9.-]+.[A-Z]{2,4}b", ErrorMessage = "E-mail em formato inválido.")]
 		public string Email { get; set; }
 
 		public int CnaeId { get; set; }

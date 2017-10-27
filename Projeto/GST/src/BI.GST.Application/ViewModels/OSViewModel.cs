@@ -12,7 +12,7 @@ namespace BI.GST.Application.ViewModels
 	{
 		public int OsId { get; set; }
 
-		public int FuncionarioEmpresaId { get; set; }
+		public int FuncionarioId { get; set; }
 
 		[Required(ErrorMessage = "Prencher campo Data Elaboração")]
 		[MaxLength(10, ErrorMessage = "Máximo de 10")]

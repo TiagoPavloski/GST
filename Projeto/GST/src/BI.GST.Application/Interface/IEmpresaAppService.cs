@@ -21,10 +21,6 @@ namespace BI.GST.Application.Interface
 
 		IEnumerable<EmpresaViewModel> ObterGrid(int page, string pesquisa);
 
-		bool AdicionarResponsavel(string CPF);
-
-		bool DeletarResponsavel(int id);
-
 		int ObterTotalRegistros(string pesquisa);
 	}
 }
