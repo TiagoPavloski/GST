@@ -25,6 +25,10 @@ namespace BI.GST.Domain.Entities
 
         public bool Delete { get; set; }
 
+        public int NumeroFuncionariosEfetivos { get; set; }
+
+        public int NumeroFuncionariosSuplentes { get; set; }
+
         public virtual ICollection<CIPAEmpresaFuncionario> CIPAEmpresaFuncionarios { get; set; }
 
     }

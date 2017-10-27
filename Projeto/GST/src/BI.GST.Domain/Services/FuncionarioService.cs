@@ -69,5 +69,10 @@ namespace BI.GST.Domain.Services
         {
             return _funcionarioRepository.ObterTotalRegistros(pesquisa);
         }
+
+        public int ObterTotalPorEmpresa(int idEmpresa)
+        {
+            return _funcionarioRepository.ObterTotalPorEmpresa(idEmpresa);
+        }
     }
 }

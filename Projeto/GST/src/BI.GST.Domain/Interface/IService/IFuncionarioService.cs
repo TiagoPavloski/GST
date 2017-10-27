@@ -27,5 +27,7 @@ namespace BI.GST.Domain.Interface.IService
         IEnumerable<Funcionario> ObterPorEmpresa(int empresaId);
 
         int ObterTotalRegistros(string pesquisa);
+
+        int ObterTotalPorEmpresa(int idEmpresa);
     }
 }
