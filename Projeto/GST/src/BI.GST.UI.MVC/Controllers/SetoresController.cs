@@ -92,6 +92,11 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
+            ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
+            ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome");
+            ViewBag.AgenteFisicos = new MultiSelectList(_agenteFisicoAppService.ObterTodos(), "AgenteFisicoId", "Nome");
+            ViewBag.AgenteQuimicos = new MultiSelectList(_agenteQuimicoAppService.ObterTodos(), "AgenteQuimicoId", "Nome");
             return View(setorViewModel);
         }
 
@@ -132,7 +137,11 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
             }
-            
+            ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
+            ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
+            ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome");
+            ViewBag.AgenteFisicos = new MultiSelectList(_agenteFisicoAppService.ObterTodos(), "AgenteFisicoId", "Nome");
+            ViewBag.AgenteQuimicos = new MultiSelectList(_agenteQuimicoAppService.ObterTodos(), "AgenteQuimicoId", "Nome");
             return View(setorViewModel);
         }
 
