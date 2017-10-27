@@ -138,15 +138,5 @@ namespace BI.GST.Application.AppService
 		{
 			return _empresaService.ObterTotalRegistros(pesquisa);
 		}
-
-		public bool AdicionarResponsavel(string CPF)
-		{
-			throw new NotImplementedException();
-		}
-
-		public bool DeletarResponsavel(int id)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }
