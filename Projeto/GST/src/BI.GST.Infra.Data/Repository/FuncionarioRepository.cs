@@ -28,5 +28,10 @@ namespace BI.GST.Infra.Data.Repository
             return DbSet.Where(x => (x.EmpresaId == empresaId) && (x.Delete == false))
                        .OrderBy(u => u.Nome);
         }
+
+        public int ObterTotalPorEmpresa(int idEmpresa)
+        {
+            return DbSet.Count(x => (x.EmpresaId == idEmpresa) && (x.Delete == false));
+        }
     }
 }

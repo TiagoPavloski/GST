@@ -11,5 +11,7 @@ namespace BI.GST.Domain.Interface.IRepository
 
         IEnumerable<Funcionario> ObterPorEmpresa(int idEmpresa);
 
+        int ObterTotalPorEmpresa(int idEmpresa);
+
     }
 }

@@ -17,5 +17,7 @@ namespace BI.GST.Application.Interface
         IEnumerable<CIPAEmpresaFuncionarioViewModel> ObterGrid(int page, string pesquisa, int cipaEmpresaId);
 
         int ObterTotalRegistros(string pesquisa, int cipaEmpresaId);
+
+        IEnumerable<CIPAEmpresaFuncionarioViewModel> BuscarFuncionarioCIPAPorEmpresa(int empresaId, int FuncionarioId);
     }
 }
