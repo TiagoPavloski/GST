@@ -38,7 +38,7 @@ namespace BI.GST.Application.ViewModels
 		public string Pais { get; set; }
 
 		[Required]
-		[MaxLength(50, ErrorMessage = "Máximo de 8")]
+		[MaxLength(8, ErrorMessage = "Máximo de 8")]
 		public string CEP { get; set; }
 
 		[Required]
