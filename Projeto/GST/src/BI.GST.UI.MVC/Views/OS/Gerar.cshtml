@@ -1,28 +1,135 @@
 ﻿@model BI.GST.Application.ViewModels.OSViewModel
-	
+
 @{
 	Layout = null;
 }
 
-@*<itext creationdate="@DateTime.Now.ToString()" producer="RazorPDF">
-	<table width="100%" cellpadding="0.5" cellspacing="0.5" widths="30;70" borderwidth="1.0" left="false" right="false" top="false" bottom="false" red="0" green="0" blue="0">
-		<row>
-			<cell>
-				<chunk style="font-weight:bold;">Today:</chunk>
-			</cell>
-			<cell>
-				<chunk style="">@DateTime.Now.ToString("MM/dd/yyyy")</chunk>
-			</cell>
-		</row>
-		<row>
-			<cell>
-				<chunk style="font-weight:bold;">Yesterday:</chunk>
-			</cell>
-			<cell>
-				<chunk style="">@DateTime.Now.AddDays(-1).ToString("MM/dd/yyyy")</chunk>
-			</cell>
-		</row>
-	</table>
-</itext>*@
+<h2>ORDEM DE SERVIÇO</h2>
 
+<div>
+	<h4>Dados Gerais da O.S.</h4>
+	<hr />
+	<dl class="dl-horizontal">
+		<dt>
+			@Html.DisplayName("Nome Completo")
+		</dt>
 
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.Nome)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("CPF")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.CPF)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Função")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.CBO.Nome)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("CBO")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.CBO.CodigoCBO)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Data Elaboração")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DataElaboracao)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Próxima Revisão")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DataRevisao)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Definição da Função")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.CBO.Descricao)
+		</dd>
+
+		<h4>Riscos Ambientais Encontrados</h4>
+	
+		<dt>
+			@Html.DisplayName("Fisico")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteFisicos)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Quimico")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteQuimicos)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Biologico")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteBiologicos)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Ergonomico")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteErgonomicos)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Acidente")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteAcidentes)
+		</dd>
+
+		<h4>EPI Recomendado para PPRA</h4>
+
+		<dd>
+			@Html.DisplayFor(model => model.EPIRecomendado)
+		</dd>
+
+		<dt>
+			@Html.DisplayName("Recomendações Técnicas")
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Recomentacoes)
+		</dd>
+
+		<h4>Assinatura do Colaborador</h4>
+
+		<h4>Data</h4>
+
+		<h4>Representantes da Empresa</h4>
+
+		<h4>Técnico de Segurança</h4>
+
+		<h4>Responsável</h4>
+	</dl>
+</div>

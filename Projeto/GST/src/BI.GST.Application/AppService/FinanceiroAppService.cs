@@ -21,10 +21,10 @@ namespace BI.GST.Application.AppService
         public string Adicionar(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> parcelaViewModel)
         {
             var financeiro = Mapper.Map<FinanceiroViewModel, Financeiro>(financeiroViewModel);
-            var result = ValidarParcelas(ref financeiro, ref parcelaViewModel);
+           var result = ValidarParcelas(ref financeiro, ref parcelaViewModel);
 
-            if (result != "")
-                return result;
+           if (result != "")
+              return result;
 
             var duplicado = _financeiroService.Find(e => (e.Titulo == financeiro.Titulo)
                                                       && (e.Delete == false)).Any();
