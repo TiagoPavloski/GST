@@ -11,16 +11,16 @@ namespace BI.GST.Infra.Data.Repository
 
         public IEnumerable<CIPAEmpresaFuncionario> ObterGrid(int page, string pesquisa, int idCIPAEmpresa)
         {
-            return DbSet.Where(x => (pesquisa != null ? x.FuncionarioEmpresa.Funcionario.Nome.Contains(pesquisa) : x.FuncionarioEmpresa.Funcionario.Nome != null) 
+            return DbSet.Where(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Funcionario.Nome != null) 
                 && (x.Delete == false) && (x.CipaEmpresaId.Equals(idCIPAEmpresa)))
-                    .OrderBy(u => u.FuncionarioEmpresa.Funcionario.Nome)
+                    .OrderBy(u => u.Funcionario.Nome)
                     .Skip((page) * 10)
                     .Take(10);
         }
 
         public int ObterTotalRegistros(string pesquisa, int idCIPAEmpresa)
         {
-            return DbSet.Count(x => (pesquisa != null ? x.FuncionarioEmpresa.Funcionario.Nome.Contains(pesquisa) : x.FuncionarioEmpresa.Funcionario.Nome != null) 
+            return DbSet.Count(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Funcionario.Nome != null) 
                 && (x.Delete == false) && (x.CipaEmpresaId.Equals(idCIPAEmpresa)));
         }
     }

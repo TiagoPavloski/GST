@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BI.GST.Domain.Entities;
-using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class CursosController : Controller
+	public class CursosController : Controller
     {
         private readonly ICursoAppService _cursoAppService;
         private readonly ITipoCursoAppService _tipoCursoAppService;

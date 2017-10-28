@@ -16,14 +16,12 @@ namespace BI.GST.UI.MVC.Controllers
 	public class OSController : Controller
 	{
 		private readonly IOSAppService _oSAppService;
-		private readonly IColaboradorAppService _colaboradorAppService;
-		//private readonly IFuncionarioEmpresaAppService _funcionarioEmpresaAppService;
+		private readonly IFuncionarioAppService _funcionarioAppService;
 
-		public OSController(IOSAppService oSAppService, IColaboradorAppService colaboradorAppService/*, IFuncionarioEmpresaAppService funcionarioEmpresaAppService*/)
+		public OSController(IOSAppService oSAppService, IFuncionarioAppService funcionarioAppService)
 		{
 			_oSAppService = oSAppService;
-			_colaboradorAppService = colaboradorAppService;
-			//_funcionarioEmpresaAppService = funcionarioEmpresaAppService;
+			_funcionarioAppService = funcionarioAppService;
 		}
 		// GET: OS
 		public ActionResult Index(string pesquisa, int page = 0)
@@ -34,27 +32,14 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.Controller = "OS";
 			ViewBag.TotalRegistros = _oSAppService.ObterTotalRegistros(pesquisa);
 
-			#region DDL Status
-			List<SelectListItem> ddlStatus_OS = new List<SelectListItem>();
-			ddlStatus_OS.Add(new SelectListItem() { Text = "Ativa", Value = "1" });
-			ddlStatus_OS.Add(new SelectListItem() { Text = "Cancelada", Value = "2" });
-			TempData["ddlStatus_OS"] = ddlStatus_OS;
-
-			foreach (var item in osViewModel)
-			{
-				item.StatusNome = ddlStatus_OS.Where(e => e.Value.Trim().Equals(item.Status.ToString())).First().Text;
-			}
-			#endregion
-
 			return View(osViewModel);
-			//var oSs = db.OSs.Include(o => o.Colaborador).Include(o => o.FuncionarioEmpresa);
+
 		}
 
 		// GET: OS/Create
 		public ActionResult Create()
 		{
-			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome");
-			//ViewBag.FuncionarioEmpresaId = new SelectList(_funcionarioEmpresaAppService.ObterTodos(), "FuncionarioEmpresaId", "HoraEntrada");
+			ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
 			return View();
 		}
 
@@ -74,8 +59,7 @@ namespace BI.GST.UI.MVC.Controllers
 				else
 					return RedirectToAction("Index");
 			}
-			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome");
-			//ViewBag.FuncionarioEmpresaId = new SelectList(_funcionarioEmpresaAppService.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
+			ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
 			return View(oSViewModel);
 		}
 
@@ -91,8 +75,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				return HttpNotFound();
 			}
-			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
-			//ViewBag.FuncionarioEmpresaId = new SelectList(_funcionarioEmpresaAppService.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
+			ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
 			return View(oS);
 		}
 
@@ -112,8 +95,7 @@ namespace BI.GST.UI.MVC.Controllers
 				else
 					return RedirectToAction("Index");
 			}
-			ViewBag.ColaboradorId = new SelectList(_colaboradorAppService.ObterTodos(), "ColaboradorId", "Nome", oS.ColaboradorId);
-			//ViewBag.FuncionarioEmpresaId = new SelectList(db.FuncionariosEmpresas, "FuncionarioEmpresaId", "HoraEntrada", oS.FuncionarioEmpresaId);
+			ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
 			return View(oS);
 		}
 
@@ -158,26 +140,16 @@ namespace BI.GST.UI.MVC.Controllers
 		}
 
 
-		// GET: OS/Edit/5
-		//public ActionResult Gerar(int? id)
-		//{
-		//	//if (id == null)
-		//	//{
-		//	//	return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-		//	//}
-		//	//var oS = _oSAppService.ObterPorId(id.Value);
-		//	//if (oS == null)
-		//	//{
-		//	//	return HttpNotFound();
-		//	//}
+		//GET: OS/Edit/5
+		public ActionResult Gerar(int? id)
+		{
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var oS = _oSAppService.ObterPorId(id.Value);
 
-		//	var oS = new OS();
-		//	oS.Recomentacoes = "Recomendações";
-		//	oS.DataElaboracao = "DataElaboração";
-
-		//	var pdfResult = new PdfResult(oS, "Gerar");
-		//	pdfResult.ViewBag.Title = "Teste Titulo";
-		//	return pdfResult;
-		//}
+			return View(oS);
+		}
 	}
 }

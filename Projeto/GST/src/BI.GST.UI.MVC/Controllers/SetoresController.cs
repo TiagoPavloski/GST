@@ -16,10 +16,23 @@ namespace BI.GST.UI.MVC.Controllers
     public class SetoresController : Controller
     {
         private readonly ISetorAppService _setorAppService;
+        private readonly IAgenteAcidenteAppService _agenteAcidenteAppService;
+        private readonly IAgenteBiologicoAppService _agenteBiologicoAppService;
+        private readonly IAgenteErgonomicoAppService _agenteErgonomicoAppService;
+        private readonly IAgenteFisicoAppService _agenteFisicoAppService;
+        private readonly IAgenteQuimicoAppService _agenteQuimicoAppService;
 
-        public SetoresController(ISetorAppService setorAppService)
+
+        public SetoresController(ISetorAppService setorAppService, IAgenteAcidenteAppService agenteAcidenteAppService,
+            IAgenteBiologicoAppService agenteBiologicoAppService, IAgenteErgonomicoAppService agenteErgonomicoAppService,
+            IAgenteFisicoAppService agenteFisicoAppService, IAgenteQuimicoAppService agenteQuimicoAppService)
         {
             _setorAppService = setorAppService;
+            _agenteAcidenteAppService = agenteAcidenteAppService;
+            _agenteBiologicoAppService = agenteBiologicoAppService;
+            _agenteErgonomicoAppService = agenteErgonomicoAppService;
+            _agenteFisicoAppService = agenteFisicoAppService;
+            _agenteQuimicoAppService = agenteQuimicoAppService;
         }
 
         // GET: setors
@@ -49,11 +62,15 @@ namespace BI.GST.UI.MVC.Controllers
         }
 
         // GET: setors/Create
-        public ActionResult Create(int? empresaId)
+        public ActionResult Create()
         {
-            SetorViewModel setor = new SetorViewModel();
-            EmpresaViewModel empresa = new EmpresaViewModel();
-            setor.Empresas.Add(empresa);
+            ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
+            ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
+            ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome");
+            ViewBag.AgenteFisicos = new MultiSelectList(_agenteFisicoAppService.ObterTodos(), "AgenteFisicoId", "Nome");
+            ViewBag.AgenteQuimicos = new MultiSelectList(_agenteQuimicoAppService.ObterTodos(), "AgenteQuimicoId", "Nome");
+            var setor = new SetorViewModel();
+
             return View(setor);
         }
 
@@ -62,11 +79,12 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(SetorViewModel setorViewModel)
+        public ActionResult Create(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId
+            , int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId)
         {
             if (ModelState.IsValid)
             {
-                if (!_setorAppService.Adicionar(setorViewModel))
+                if (!_setorAppService.Adicionar(setorViewModel, agenteAcidenteId, agenteBiologicoId, agenteErgonomicoId, agenteFisicoId, agenteQuimicoId))
                 {
                     //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
                     System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um setor com os mesmos dados')</SCRIPT>");
@@ -74,6 +92,11 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
+            ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
+            ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome");
+            ViewBag.AgenteFisicos = new MultiSelectList(_agenteFisicoAppService.ObterTodos(), "AgenteFisicoId", "Nome");
+            ViewBag.AgenteQuimicos = new MultiSelectList(_agenteQuimicoAppService.ObterTodos(), "AgenteQuimicoId", "Nome");
             return View(setorViewModel);
         }
 
@@ -89,6 +112,11 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome", setor.AgenteAcidentes.Select(x => x.AgenteAcidenteId));
+            ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome", setor.AgenteBiologicos.Select(x => x.AgenteBiologicoId));
+            ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome", setor.AgenteErgonomicos.Select(x => x.AgenteErgonomicoId));
+            ViewBag.AgenteFisicos = new MultiSelectList(_agenteFisicoAppService.ObterTodos(), "AgenteFisicoId", "Nome", setor.AgenteFisicos.Select(x => x.AgenteFisicoId));
+            ViewBag.AgenteQuimicos = new MultiSelectList(_agenteQuimicoAppService.ObterTodos(), "AgenteQuimicoId", "Nome", setor.AgenteQuimicos.Select(x => x.AgenteQuimicoId));
             return View(setor);
         }
 
@@ -97,17 +125,23 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(SetorViewModel setorViewModel)
+        public ActionResult Edit(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId
+            , int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId)
         {
             if (ModelState.IsValid)
             {
-                if (!_setorAppService.Atualizar(setorViewModel))
+                if (!_setorAppService.Atualizar(setorViewModel, agenteAcidenteId, agenteBiologicoId, agenteErgonomicoId, agenteFisicoId, agenteQuimicoId))
                 {
                     System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
+            ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
+            ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome");
+            ViewBag.AgenteFisicos = new MultiSelectList(_agenteFisicoAppService.ObterTodos(), "AgenteFisicoId", "Nome");
+            ViewBag.AgenteQuimicos = new MultiSelectList(_agenteQuimicoAppService.ObterTodos(), "AgenteQuimicoId", "Nome");
             return View(setorViewModel);
         }
 

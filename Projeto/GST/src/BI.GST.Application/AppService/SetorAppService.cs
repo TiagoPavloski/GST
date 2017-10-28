@@ -20,9 +20,43 @@ namespace BI.GST.Application.AppService
             _setorService = setorService;
         }
 
-        public bool Adicionar(SetorViewModel setorViewModel)
+        public bool Adicionar(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId,
+             int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId)
         {
             var setor = Mapper.Map<SetorViewModel, Setor>(setorViewModel);
+
+            if(agenteAcidenteId != null)
+            {
+                foreach (var item in agenteAcidenteId)
+                setor.AgenteAcidentes.Add(new AgenteAcidente { AgenteAcidenteId = item });
+            }
+
+            if (agenteBiologicoId != null)
+            {
+                foreach (var item in agenteBiologicoId)
+                setor.AgenteBiologicos.Add(new AgenteBiologico { AgenteBiologicoId = item });
+            }
+
+            if (agenteErgonomicoId != null)
+            {
+                foreach (var item in agenteErgonomicoId)
+                setor.AgenteErgonomicos.Add(new AgenteErgonomico { AgenteErgonomicoId = item });
+
+            }
+
+            if (agenteFisicoId != null)
+            {
+                foreach (var item in agenteFisicoId)
+                setor.AgenteFisicos.Add(new AgenteFisico { AgenteFisicoId = item });
+            }
+
+            if (agenteQuimicoId != null)
+            {
+                foreach (var item in agenteQuimicoId)
+                setor.AgenteQuimicos.Add(new AgenteQuimico { AgenteQuimicoId = item });
+            }
+                           
+
             var duplicado = _setorService.Find(e => e.Nome == setor.Nome).Any();
             if (duplicado)
             {
@@ -37,9 +71,41 @@ namespace BI.GST.Application.AppService
             }
         }
 
-        public bool Atualizar(SetorViewModel setorViewModel)
+        public bool Atualizar(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId,
+                                       int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId)
         {
             var setor = Mapper.Map<SetorViewModel, Setor>(setorViewModel);
+
+            if (agenteAcidenteId != null)
+            {
+                foreach (var item in agenteAcidenteId)
+                    setor.AgenteAcidentes.Add(new AgenteAcidente { AgenteAcidenteId = item });
+            }
+
+            if (agenteBiologicoId != null)
+            {
+                foreach (var item in agenteBiologicoId)
+                    setor.AgenteBiologicos.Add(new AgenteBiologico { AgenteBiologicoId = item });
+            }
+
+            if (agenteErgonomicoId != null)
+            {
+                foreach (var item in agenteErgonomicoId)
+                    setor.AgenteErgonomicos.Add(new AgenteErgonomico { AgenteErgonomicoId = item });
+
+            }
+
+            if (agenteFisicoId != null)
+            {
+                foreach (var item in agenteFisicoId)
+                    setor.AgenteFisicos.Add(new AgenteFisico { AgenteFisicoId = item });
+            }
+
+            if (agenteQuimicoId != null)
+            {
+                foreach (var item in agenteQuimicoId)
+                    setor.AgenteQuimicos.Add(new AgenteQuimico { AgenteQuimicoId = item });
+            }
 
             var duplicado = _setorService.Find(e => e.Nome == setor.Nome && e.SetorId != setor.SetorId).Any();
 
@@ -96,5 +162,7 @@ namespace BI.GST.Application.AppService
         {
             return _setorService.ObterTotalRegistros(pesquisa);
         }
+
+       
     }
 }

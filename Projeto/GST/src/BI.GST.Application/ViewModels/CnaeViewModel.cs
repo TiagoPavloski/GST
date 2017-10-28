@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -24,7 +26,7 @@ namespace BI.GST.Application.ViewModels
         //public int EmpresaId { get; set; }
         //[ForeignKey("EmpresaId")]
         //public virtual EmpresaViewModel Empresa { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<EmpresaViewModel> Empresas { get; set; }
 
         public virtual GrupoCipaViewModel GrupoCipa { get; set; }

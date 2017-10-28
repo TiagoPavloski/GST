@@ -17,7 +17,6 @@ namespace BI.GST.UI.MVC.Controllers
 		private readonly ICnaeAppService _cnaeAppService;
 		private readonly ISetorAppService _setorAppService;
 		private readonly IUFAppService _uFAppService;
-		//private readonly IFuncionarioAppService _funcionarioAppService;
 
 		public EmpresasController(IEmpresaAppService empresaAppService, IEnderecoAppService enderecoAppService, ITelefoneAppService telefoneAppService, ICnaeAppService cnaeAppService, ISetorAppService setorAppService, IUFAppService uFAppService/*, IFuncionarioAppService funcionarioAppService*/)
 		{
@@ -27,7 +26,6 @@ namespace BI.GST.UI.MVC.Controllers
 			_cnaeAppService = cnaeAppService;
 			_setorAppService = setorAppService;
 			_uFAppService = uFAppService;
-			/*_funcionarioAppService = funcionarioAppService;*/
 		}
 		// GET: Empresas
 		public ActionResult Index(string pesquisa, int page = 0)
@@ -69,7 +67,6 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
 			ViewBag.CnaeId = ViewBag.CnaeIdList;
 			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
-			/*ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");*/
 
 			var empresaViewModel = new EmpresaViewModel();
 			return View(empresaViewModel);
@@ -91,6 +88,10 @@ namespace BI.GST.UI.MVC.Controllers
 				else
 					return RedirectToAction("Index");
 			}
+			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
+			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
+			ViewBag.CnaeId = ViewBag.CnaeIdList;
+			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
 			return View(empresaViewModel);
 		}
 
@@ -123,19 +124,19 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
 		{
-			//if (ModelState.IsValid)
+			//if (ModelState.IsValid) //verificar por que erro converter telefoneViewModel to String
 			//{
-			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
-			{
-				TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
-				return View(empresaViewModel);
-			}
-			if (Session["actionUsuario"] != null)
-			{
-				Session["actionUsuario"] = null;
-				return RedirectToAction("Edit", "Usuarios");
-			}
-			return RedirectToAction("Index");
+				if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
+				{
+					TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
+					return View(empresaViewModel);
+				}
+				if (Session["actionUsuario"] != null)
+				{
+					Session["actionUsuario"] = null;
+					return RedirectToAction("Edit", "Usuarios");
+				}
+				return RedirectToAction("Index");
 			//}
 			//return View(empresaViewModel);
 		}

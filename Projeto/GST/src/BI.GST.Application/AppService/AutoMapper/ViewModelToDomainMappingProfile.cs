@@ -69,7 +69,8 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<UsuarioViewModel, Usuario>();
             Mapper.CreateMap<FinanceiroParcelaViewModel, FinanceiroParcela>();
             Mapper.CreateMap<TipoSetorViewModel, TipoSetor>();
-            
+            Mapper.CreateMap<CipaQuadroViewModel, CipaQuadro>();
+
         }
 
     }

@@ -13,9 +13,9 @@ namespace BI.GST.Application.Interface
 
         SetorViewModel ObterPorId(int id);
 
-        bool Adicionar(SetorViewModel setorViewModel);
+        bool Adicionar(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId, int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId);
 
-        bool Atualizar(SetorViewModel setorViewModel);
+        bool Atualizar(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId, int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId);
 
         bool Excluir(int id);
 

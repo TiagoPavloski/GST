@@ -15,13 +15,13 @@ namespace BI.GST.Application.ViewModels
 
         public int CipaEmpresaId { get; set; }
 
-        public virtual CIPAEmpresa CipaEmpresa { get; set; }
+        public virtual CIPAEmpresaViewModel CipaEmpresa { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Funcionario")]
         [DisplayName("Funcionário")]
-        public int FuncionarioEmpresaId { get; set; }
+        public int FuncionarioId { get; set; }
 
-        public virtual FuncionarioEmpresa FuncionarioEmpresa { get; set; }
+        public virtual FuncionarioViewModel Funcionario { get; set; }
 
         [DisplayName("Efetivo")]
         public bool Efetivo { get; set; }

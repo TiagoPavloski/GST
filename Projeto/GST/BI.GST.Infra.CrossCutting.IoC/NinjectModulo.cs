@@ -55,7 +55,6 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IGrupoCipaAppService>().To<GrupoCipaAppService>();
 			Bind<IFonteRiscoCBOAppService>().To<FonteRiscoCBOAppService>();
 			Bind<IOSAppService>().To<OSAppService>();
-			Bind<IColaboradorAppService>().To<ColaboradorAppService>();
             Bind<IRiscoCBOAppService>().To<RiscoCBOAppService>();
             Bind<IRiscoFuncionarioAppService>().To<RiscoFuncionarioAppService>();
             Bind<ICBOAppService>().To<CBOAppService>();
@@ -66,6 +65,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUsuarioAppService>().To<UsuarioAppService>();
             Bind<IColaboradorAppService>().To<ColaboradorAppService>();
             Bind<IFinanceiroParcelaAppService>().To<FinanceiroParcelaAppService>();
+            Bind<ICipaQuadroAppService>().To<CipaQuadroAppService>();
 
 
             //Servicos
