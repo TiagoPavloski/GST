@@ -4,11 +4,20 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Classificação Brasileira de Ocupações</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Adicionar CBO", "Create")
 </p>
+
+
+@using (Html.BeginForm("Index", "CBOs", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -16,12 +25,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CodigoCBO)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descricao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
         </th>
         <th></th>
     </tr>
@@ -35,17 +38,14 @@
             @Html.DisplayFor(modelItem => item.CodigoCBO)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Delete)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CBOId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CBOId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CBOId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CBOId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.CBOId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.CBOId })
         </td>
     </tr>
 }
 
 </table>
+
+@Html.Partial("_Paginacao")
+@Html.Partial("_Mensagem")
