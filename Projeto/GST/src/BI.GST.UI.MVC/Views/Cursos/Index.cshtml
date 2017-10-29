@@ -7,7 +7,7 @@
 <h2>Cursos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar", "Create")
 </p>
 
 @using (Html.BeginForm("Index", "Cursos", new { pesquisa = "" }, FormMethod.Get))
@@ -43,9 +43,9 @@
             @Html.DisplayFor(modelItem => item.Data)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CursoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CursoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CursoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CursoId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.CursoId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.CursoId })
         </td>
     </tr>
 }
