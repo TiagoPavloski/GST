@@ -42,6 +42,10 @@
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -57,6 +61,7 @@
     <Compile Include="AppService\AgenteAmbientalAppService.cs" />
     <Compile Include="AppService\AgenteAcidenteAppService.cs" />
     <Compile Include="AppService\AgenteBiologicoAppService.cs" />
+    <Compile Include="AppService\CipaQuadroAppService.cs" />
     <Compile Include="AppService\EPIAppService.cs" />
     <Compile Include="AppService\CertificadoAppService.cs" />
     <Compile Include="AppService\InstituicaoCursoAppService.cs" />
@@ -85,6 +90,8 @@
     <Compile Include="AppService\RiscoFuncionarioAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
+    <Compile Include="AppService\TipoSetorAppService.cs" />
+    <Compile Include="AppService\SesmtQuadroAppService.cs" />
     <Compile Include="AppService\UsuarioAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
     <Compile Include="AppService\EquipamentoRuidoAppService.cs" />
@@ -109,6 +116,7 @@
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
+    <Compile Include="Interface\ICipaQuadroAppService.cs" />
     <Compile Include="Interface\IEPIAppService.cs" />
     <Compile Include="Interface\ICertificadoAppService.cs" />
     <Compile Include="Interface\IInstituicaoCursoAppService.cs" />
@@ -139,6 +147,8 @@
     <Compile Include="Interface\IRiscoFuncionarioAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />
+    <Compile Include="Interface\ITipoSetorAppService.cs" />
+    <Compile Include="Interface\ISesmtQuadroAppService.cs" />
     <Compile Include="Interface\IUsuarioAppService.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
     <Compile Include="Interface\IEquipamentoRuidoAppService.cs" />
@@ -159,6 +169,7 @@
     <Compile Include="ViewModels\AgenteAmbientalViewModel.cs" />
     <Compile Include="ViewModels\AgenteAcidenteViewModel.cs" />
     <Compile Include="ViewModels\AgenteBiologicoViewModel.cs" />
+    <Compile Include="ViewModels\CipaQuadroViewModel.cs" />
     <Compile Include="ViewModels\EPIViewModel.cs" />
     <Compile Include="ViewModels\CertificadoViewModel.cs" />
     <Compile Include="ViewModels\InstituicaoCursoViewModel.cs" />
@@ -186,6 +197,7 @@
     <Compile Include="ViewModels\RiscoFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
+    <Compile Include="ViewModels\SesmtQuadroViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />

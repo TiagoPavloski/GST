@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
@@ -120,6 +124,7 @@
     <Compile Include="Interface\IRepository\IRiscoFuncionarioRepository.cs" />
     <Compile Include="Interface\IRepository\ISESMTEmpresaFuncionarioRepository.cs" />
     <Compile Include="Interface\IRepository\ISESMTEmpresaRepository.cs" />
+    <Compile Include="Interface\IRepository\ITipoSetorRepository.cs" />
     <Compile Include="Interface\IRepository\IUsuarioRepository.cs" />
     <Compile Include="Interface\IRepository\IEnderecoRepository.cs" />
     <Compile Include="Interface\IRepository\IEquipamentoRuidoRepository.cs" />
@@ -171,6 +176,7 @@
     <Compile Include="Interface\IService\ISESMTEmpresaFuncionarioService.cs" />
     <Compile Include="Interface\IService\ISESMTEmpresaService.cs" />
     <Compile Include="Interface\IService\ISesmtQuadroService.cs" />
+    <Compile Include="Interface\IService\ITipoSetorService.cs" />
     <Compile Include="Interface\IService\IUsuarioService.cs" />
     <Compile Include="Interface\IService\IEnderecoService.cs" />
     <Compile Include="Interface\IService\IEquipamentoRuidoService.cs" />
@@ -223,6 +229,7 @@
     <Compile Include="Services\SESMTEmpresaFuncionarioService.cs" />
     <Compile Include="Services\SESMTEmpresaService.cs" />
     <Compile Include="Services\SesmtQuadroService.cs" />
+    <Compile Include="Services\TipoSetorService.cs" />
     <Compile Include="Services\UsuarioService.cs" />
     <Compile Include="Services\EnderecoService.cs" />
     <Compile Include="Services\EquipamentoRuidoService.cs" />
@@ -241,7 +248,9 @@
     <Compile Include="Services\UFService.cs" />
     <Compile Include="Services\VacinaService.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -8,6 +8,17 @@ namespace BI.GST.Infra.Data.EntityConfig
     public TipoSetorConfiguration()
     {
       HasKey(e => e.TipoSetorId);
-    }
+
+            Property(c => c.Nome)
+           .HasMaxLength(150)
+           .IsRequired();
+
+            Property(c => c.Descricao)
+           .HasMaxLength(200)
+           .IsRequired();
+
+            Property(c => c.Delete)
+           .IsRequired();
+        }
   }
 }

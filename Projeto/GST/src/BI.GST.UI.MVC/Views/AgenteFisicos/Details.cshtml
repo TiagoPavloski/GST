@@ -1,13 +1,13 @@
 ﻿@model BI.GST.Application.ViewModels.AgenteFisicoViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
-    <h4>AgenteFisico</h4>
+    <h4>Agente Fisico</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -48,14 +48,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.TempoExposicao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tecnica)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tecnica)
         </dd>
 
         <dt>
@@ -130,12 +122,29 @@
             @Html.DisplayFor(model => model.EfeitosPotenciais)
         </dd>
 
+
         <dt>
-            @Html.DisplayNameFor(model => model.Fundamentacao)
+            @Html.DisplayNameFor(model => model.ClassificacaoEfeito.Classificacao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fundamentacao)
+            @Html.DisplayFor(model => model.ClassificacaoEfeito.Classificacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tecnica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tecnica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FundamentacaoLegal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundamentacaoLegal)
         </dd>
 
         <dt>
@@ -149,6 +158,6 @@
       </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.AgenteFisicoId }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.AgenteFisicoId }) |
+    @Html.ActionLink("Voltar para lista", "Index")
 </p>

@@ -14,6 +14,7 @@ namespace BI.GST.Domain.Interface.IService
 
         CipaQuadro ObterPorId(int id);
 
-        IEnumerable<CipaQuadro> Find(Expression<Func<CipaQuadro, bool>> predicate);
+        CipaQuadro obterCipaPorGrupo(int numeroFuncionarios, int grupoCipaID);
+
     }
 }

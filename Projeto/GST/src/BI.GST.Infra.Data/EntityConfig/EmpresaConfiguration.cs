@@ -19,21 +19,16 @@ namespace BI.GST.Infra.Data.EntityConfig
 				});
 
 			Property(e => e.NomeFantasia)
-			.HasMaxLength(150)
+			.HasMaxLength(70)
 			.IsRequired();
 
 			Property(e => e.RazaoSocial)
 		    .HasMaxLength(150)
 		    .IsRequired();
 
-			Property(e => e.RazaoSocial)
-			.HasMaxLength(20)
-			.IsRequired();
-
 			Property(e => e.Email)
-			.HasMaxLength(30)
+            .HasMaxLength(100)
 			.IsRequired();
-
 
 		}
 	}

@@ -123,7 +123,7 @@ namespace BI.GST.Application.AppService
             var dataOperacao = DateTime.Parse(financeiro.DataOperacao);
             Boolean parcelasPagas = true;
 
-            if (parcelaViewModel.Count < 0)
+            if (parcelaViewModel == null)
             {
                 return "Atenção, o título precisa ter no mínimo uma parcela";
             }
@@ -131,6 +131,8 @@ namespace BI.GST.Application.AppService
             List<FinanceiroParcela> parcelas = new List<FinanceiroParcela>();
             foreach (var item in parcelaViewModel)
             {
+                if (item.ValorParcela <= 0)
+                    errosParcelas = errosParcelas + "O valor da Parcela: " + item.Parcela + " tem que ser maior que zero ";
                 DateTime dataQuitacao = new DateTime();
                 DateTime dataVencimento = new DateTime();
 
@@ -172,7 +174,7 @@ namespace BI.GST.Application.AppService
 
             if (valorTotalParcelas != financeiro.Valor)
             {
-                return "Atenção, a soma do valor das parcelas não bate com o valor do título";
+                return "Atenção, a soma do valor das parcelas não condiz com o valor do título";
             }
 
             return "";

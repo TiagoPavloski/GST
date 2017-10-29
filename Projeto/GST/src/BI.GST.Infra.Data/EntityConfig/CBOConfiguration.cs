@@ -11,7 +11,7 @@ namespace BI.GST.Infra.Data.EntityConfig
 
             Property(e => e.Nome)
                 .IsRequired()
-                .HasMaxLength(35);
+                .HasMaxLength(70);
 
             Property(e => e.Descricao)
                 .IsRequired()

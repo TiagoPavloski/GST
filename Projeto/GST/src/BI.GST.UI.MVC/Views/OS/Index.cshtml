@@ -7,7 +7,8 @@
 <h2>Index</h2>
 
 <p>
-	@Html.ActionLink("Create New", "Create")
+
+    @Html.ActionLink("Criar", "Create")
 </p>
 <table class="table">
 	<tr>
@@ -23,6 +24,7 @@
 		<th></th>
 	</tr>
 
+
 	@foreach (var item in Model)
 	{
 		<tr>
@@ -37,7 +39,7 @@
 			</td>
 			<td>
 				@Html.ActionLink("Gerar", "Gerar", new { id = item.OsId }) |
-				@Html.ActionLink("Delete", "Delete", new { id = item.OsId }) @*|*@
+				@Html.ActionLink("Deletar", "Delete", new { id = item.OsId }) @*|*@
 				@*<button type="button" class="btn btn-default" onclick="btnImprimir(new { id: item.OsId })">Gerar</button>*@
 				@*<input type="button" class="btn btn-confirmar" style="width:99%;height:35px;" value="OK" id="btnImprimir" />*@
 

@@ -18,8 +18,6 @@ namespace BI.GST.Domain.Entities
 
         public string TempoExposicao { get; set; }
 
-        public string Tecnica { get; set; }
-
         public string Metodo { get; set; }
 
         public string Fonte { get; set; }
@@ -40,7 +38,9 @@ namespace BI.GST.Domain.Entities
 
         public string EfeitosPotenciais { get; set; }
 
-        public string Fundamentacao { get; set; }
+        public string Tecnica { get; set; }
+
+        public string FundamentacaoLegal { get; set; }
 
         public string Observacao { get; set; }
 
@@ -51,6 +51,8 @@ namespace BI.GST.Domain.Entities
         public virtual ICollection<MedicaoAgente> MedicoesAgente { get; set; }
 
         public virtual ICollection<Setor> Setores { get; set; }
+
+        public int ClassificacaoEfeitoId { get; set; }
 
         public virtual ClassificacaoEfeito ClassificacaoEfeito { get; set; }
     }

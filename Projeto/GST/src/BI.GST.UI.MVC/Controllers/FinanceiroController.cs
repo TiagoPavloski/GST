@@ -120,6 +120,8 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
+            if (financeiroViewModel.Valor <= 0)
+                TempData["Mensagem"] = "O valor do título tem que ser maior que zero"; 
             financeiroViewModel.Status = "0";
             if (ModelState.IsValid)
             { 
@@ -186,8 +188,8 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
-            if (ModelState.IsValid)
-            {
+          //  if (ModelState.IsValid)
+         //   {
                 var result = _financeiroAppService.Atualizar(financeiroViewModel, financeiroParcelaViewModel);
 
                 if (result != "")
@@ -198,7 +200,7 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
 
-            }
+          //  }
             #region ddlStatus
             List<SelectListItem> ddlOperacao = new List<SelectListItem>();
             ddlOperacao.Add(new SelectListItem() { Text = "A Pagar", Value = "0" });

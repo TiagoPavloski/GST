@@ -72,6 +72,11 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Certificados/Create
         public ActionResult Create()
         {
+            List<SelectListItem> ddlStatusCertificado = new List<SelectListItem>();
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
+            TempData["ddlStatusCertificado"] = ddlStatusCertificado;
+
             ViewBag.CursoId = new SelectList(_cursoAppService.ObterTodos(), "CursoId", "Data");
             ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
             ViewBag.InstituicaoCursoId = new SelectList(_instituicaoCursoAppService.ObterTodos(), "InstituicaoCursoId", "Nome");
@@ -91,15 +96,20 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_certificadoAppService.Adicionar(certificadoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Curso com os mesmos dados')</SCRIPT>");
-                }
+                        TempData["Mensagem"] = "Atenção, há um certificado com os mesmos dados já cadastrado";
+                    }
                 else
                     return RedirectToAction("Index");
             }
 
-            ViewBag.CursoId = new SelectList(_cursoAppService.ObterTodos(), "CursoId", "Data", certificadoViewModel.CursoId);
-            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", certificadoViewModel.FuncionarioId);
-            ViewBag.InstituicaoCursoId = new SelectList(_instituicaoCursoAppService.ObterTodos(), "InstituicaoCursoId", "Nome", certificadoViewModel.InstituicaoCursoId);
+            List<SelectListItem> ddlStatusCertificado = new List<SelectListItem>();
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
+            TempData["ddlStatusCertificado"] = ddlStatusCertificado;
+
+            ViewBag.CursoId = new SelectList(_cursoAppService.ObterTodos(), "CursoId", "Data");
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
+            ViewBag.InstituicaoCursoId = new SelectList(_instituicaoCursoAppService.ObterTodos(), "InstituicaoCursoId", "Nome");
 
             return View(certificadoViewModel);
         }
@@ -116,6 +126,11 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
+            List<SelectListItem> ddlStatusCertificado = new List<SelectListItem>();
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
+            TempData["ddlStatusCertificado"] = ddlStatusCertificado;
 
             ViewBag.CursoId = new SelectList(_cursoAppService.ObterTodos(), "CursoId", "Data", certificado.CursoId);
             ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", certificado.FuncionarioId);
@@ -135,7 +150,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_certificadoAppService.Atualizar(certificadoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Curso com os mesmos dados já cadastrada')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um certificado com os mesmos dados já cadastrado";
                 }
                 else
                     return RedirectToAction("Index");
@@ -168,7 +183,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_certificadoAppService.Excluir(id))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+                TempData["Mensagem"] = "Erro, atualize a página";
                 return null;
             }
             else

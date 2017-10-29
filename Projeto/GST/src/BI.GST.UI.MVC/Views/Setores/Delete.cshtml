@@ -4,20 +4,28 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Excluir</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que deseja excluir este registro?</h3>
 <div>
     <h4>Setor</h4>
     <hr />
     <dl class="dl-horizontal">
-       
+
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoSetor.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoSetor.Nome)
         </dd>
 
         <dt>
@@ -28,15 +36,99 @@
             @Html.DisplayFor(model => model.Descricao)
         </dd>
 
-                     
+        <dt>
+            @Html.DisplayName("Agente Acidente")
+        </dt>
+        @if (Model.AgenteAcidentes.Count == 0 || Model.AgenteAcidentes == null)
+        {
+            <dd>
+            </dd>
+        }
+        else
+        {
+            foreach (var item in Model.AgenteAcidentes)
+            {
+                <dd>
+                    @Html.DisplayFor(model => item.Nome)
+                </dd>
+            }
+        }
+        <dt>
+
+            @Html.DisplayName("Agente Biologico")
+        </dt>
+        @if (Model.AgenteBiologicos.Count == 0 || Model.AgenteBiologicos == null)
+        {
+            <dd>
+            </dd>
+        }
+        else
+        {
+            foreach (var item in Model.AgenteBiologicos)
+            {
+                <dd>
+                    @Html.DisplayFor(model => item.Nome)
+                </dd>
+            }
+
+        }
+        <dt>
+            @Html.DisplayName("Agente Ergonomico")
+        </dt>
+        @if (Model.AgenteErgonomicos.Count == 0 || Model.AgenteErgonomicos == null)
+        {
+            <dd>
+            </dd>
+        }
+        else
+        {
+            foreach (var item in Model.AgenteErgonomicos)
+            {
+                <dd>
+                    @Html.DisplayFor(model => item.Nome)
+                </dd>}
+        }
+        <dt>
+            @Html.DisplayName("Agente Fisico")
+        </dt>
+        @if (Model.AgenteFisicos.Count == 0 || Model.AgenteFisicos == null)
+        {
+            <dd>
+            </dd>
+        }
+        else
+        {
+            foreach (var item in Model.AgenteFisicos)
+            {
+                <dd>
+                    @Html.DisplayFor(model => item.Nome)
+                </dd>}
+        }
+        <dt>
+            @Html.DisplayName("Agente Quimico")
+        </dt>
+        @if (Model.AgenteQuimicos.Count == 0 || Model.AgenteQuimicos == null)
+        {
+            <dd>
+            </dd>
+        }
+        else
+        {
+            foreach (var item in Model.AgenteQuimicos)
+            {
+                <dd>
+                    @Html.DisplayFor(model => item.Nome)
+                </dd>}
+        }
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para lista", "Index")
         </div>
     }
 </div>

@@ -23,12 +23,16 @@ namespace BI.GST.Domain.Entities
         public string Orientacao { get; set; }
 
         public string MedidasPropostas { get; set; }
+        
+        public string Tecnica { get; set; }
 
-        public string Fundamentacao { get; set; }
+        public string FundamentacaoLegal { get; set; }
 
         public bool Delete { get; set; }
 
         public virtual ICollection<Setor> Setores { get; set; }
+
+        public int ClassificacaoEfeitoId { get; set; }
 
         public virtual ClassificacaoEfeito ClassificacaoEfeito { get; set; }
     }

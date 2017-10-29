@@ -137,8 +137,9 @@ namespace BI.GST.Infra.Data.Context
             modelBuilder.Configurations.Add(new CIPAEmpresaConfiguration());
             modelBuilder.Configurations.Add(new CipaEmpresaFuncionarioConfiguration());
             modelBuilder.Configurations.Add(new SESMTEmpresaConfiguration());
-			modelBuilder.Configurations.Add(new FinanceiroParcelaConfiguration());
+            modelBuilder.Configurations.Add(new FinanceiroParcelaConfiguration());
             modelBuilder.Configurations.Add(new EPIConfiguration());
+            modelBuilder.Configurations.Add(new CipaQuadroConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 
