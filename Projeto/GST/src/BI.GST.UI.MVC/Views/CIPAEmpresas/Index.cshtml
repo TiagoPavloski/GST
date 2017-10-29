@@ -10,7 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "CIPA", new { pesquisa = "" }, FormMethod.Get))
+@using (Html.BeginForm("Index", "CIPAEmpresas", new { pesquisa = "" }, FormMethod.Get))
 {
     <p>
         Pesquisar Por Nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
@@ -27,9 +27,6 @@
         <th>
             @Html.DisplayNameFor(model => model.NumeroFuncionarios)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Delete)
-        </th>
         <th></th>
     </tr>
 
@@ -45,11 +42,7 @@
             @Html.DisplayFor(modelItem => item.NumeroFuncionarios)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Delete)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CipaEmpresaID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CipaEmpresaID }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.CipaEmpresaID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.CipaEmpresaID })
         </td>
     </tr>

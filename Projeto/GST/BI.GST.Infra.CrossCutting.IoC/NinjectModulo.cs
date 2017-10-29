@@ -66,6 +66,7 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<IColaboradorAppService>().To<ColaboradorAppService>();
             Bind<IFinanceiroParcelaAppService>().To<FinanceiroParcelaAppService>();
             Bind<ICipaQuadroAppService>().To<CipaQuadroAppService>();
+            Bind<ISesmtQuadroAppService>().To<SesmtQuadroAppService>();
 
 
             //Servicos

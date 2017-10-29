@@ -13,7 +13,7 @@
 @using (Html.BeginForm("Index", "Financeiro", new { pesquisa = "" }, FormMethod.Get))
 {
     <p>
-        Pesquisar Por Titulo: @Html.Editor("pesquisa") <input type="submit" value="PesquisarPorTitulo" class="btn btn-default"  />
+        Pesquisar Por Titulo: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar Por Titulo" class="btn btn-default"  />
     </p>
 }
 <table class="table">
@@ -61,8 +61,8 @@
         </td>
 
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.FinanceiroId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.FinanceiroId }) |
+            @Html.ActionLink("Editar", "Edit", new { id = item.FinanceiroId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.FinanceiroId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.FinanceiroId })
         </td>
     </tr>

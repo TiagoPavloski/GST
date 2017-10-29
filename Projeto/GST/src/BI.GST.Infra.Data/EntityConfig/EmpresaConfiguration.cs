@@ -27,12 +27,11 @@ namespace BI.GST.Infra.Data.EntityConfig
 		    .IsRequired();
 
 			Property(e => e.RazaoSocial)
-			.HasMaxLength(20)
+			.HasMaxLength(150)
 			.IsRequired();
 
-			Property(e => e.Email)
-			.HasMaxLength(30)
-			.IsRequired();
+            Property(e => e.Email)
+            .HasMaxLength(100);
 
 
 		}

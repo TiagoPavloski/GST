@@ -20,7 +20,7 @@ namespace BI.GST.Infra.Data.EntityConfig
                 .HasMaxLength(15);
 
             Property(e => e.Email)
-                .HasMaxLength(40);
+                .HasMaxLength(100);
 
             Property(e => e.PIS)
                 .HasMaxLength(16);
