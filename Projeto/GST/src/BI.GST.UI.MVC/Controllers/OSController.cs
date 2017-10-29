@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using BI.GST.Domain.Entities;
-using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
+using Rotativa.MVC;
+using Rotativa.Core.Options;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -139,17 +133,29 @@ namespace BI.GST.UI.MVC.Controllers
 			base.Dispose(disposing);
 		}
 
-
 		//GET: OS/Edit/5
+		//public ActionResult Gerar(int? id)
+		//{
+		//	if (id == null)
+		//	{
+		//		return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+		//	}
+		//	var oS = _oSAppService.ObterPorId(id.Value);
+
+		//	return View(oS);
+		//}
+
 		public ActionResult Gerar(int? id)
 		{
-			if (id == null)
-			{
-				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-			}
 			var oS = _oSAppService.ObterPorId(id.Value);
 
-			return View(oS);
+			var pdf = new ViewAsPdf
+			{
+				ViewName = "Gerar",
+				Model = oS
+			};
+
+			return pdf;
 		}
 	}
 }
