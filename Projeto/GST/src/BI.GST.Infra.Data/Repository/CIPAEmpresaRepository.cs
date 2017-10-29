@@ -10,25 +10,29 @@ namespace BI.GST.Infra.Data.Repository
     {
         public IEnumerable<CIPAEmpresa> ObterGrid(int page, string pesquisa)
         {
-            return DbSet.Where(x => (pesquisa != null ? x.Empresa.RazaoSocial.Contains(pesquisa) : x.Empresa.RazaoSocial != null) && (x.Delete == false))
-                    .OrderBy(u => u.Empresa.RazaoSocial)
+            return DbSet.Where(x => (pesquisa != null ? x.Empresa.NomeFantasia.Contains(pesquisa) : x.Empresa.NomeFantasia != null) && (x.Delete == false))
+                    .OrderBy(u => u.Empresa.NomeFantasia)
                     .Skip((page) * 10)
                     .Take(10);
         }
 
         public int ObterTotalRegistros(string pesquisa)
         {
-            return DbSet.Count(x => (pesquisa != null ? x.Empresa.RazaoSocial.Contains(pesquisa) : x.Empresa.RazaoSocial != null) && (x.Delete == false));
+            return DbSet.Count(x => (pesquisa != null ? x.Empresa.NomeFantasia.Contains(pesquisa) : x.Empresa.NomeFantasia != null) && (x.Delete == false));
         }
 
         public override void Adicionar(CIPAEmpresa obj)
         {
+            var empresaRepository = new EmpresaRepository();
+            var funcionarioRepository = new FuncionarioRepository();
+            obj.Empresa = empresaRepository.ObterPorId(obj.EmpresaId);
             var funcionarioCipaRepository = new CIPAEmpresaFuncionarioRepository();
 
             base.Adicionar(obj);
 
             foreach (var item in obj.CIPAEmpresaFuncionarios)
             {
+                item.Funcionario = funcionarioRepository.ObterPorId(item.FuncionarioId);
                 item.CipaEmpresaId = obj.CipaEmpresaID;
                 funcionarioCipaRepository.Adicionar(item);
             }

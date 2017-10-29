@@ -15,5 +15,7 @@ namespace BI.GST.Domain.Interface.IService
         SesmtQuadro ObterPorId(int id);
 
         IEnumerable<SesmtQuadro> Find(Expression<Func<SesmtQuadro, bool>> predicate);
+
+        SesmtQuadro ObterSesmtPorGrauDeRisco(int numeroFuncionarios, int grauDeRisco);
     }
 }

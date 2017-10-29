@@ -21,16 +21,15 @@ namespace BI.GST.Application.AppService
             _cipaQuadroService = cipaQuadroService;
         }
 
-
         public void Dispose()
         {
             _cipaQuadroService.Dispose();
             GC.SuppressFinalize(this);
         }
 
-        public CipaQuadroViewModel obterCipaPorGrupo(int numeroFuncionarios, int grupoCipaID)
+        public CipaQuadroViewModel obterCipaPorGrupo(int numeroFuncionarios, int grauDeRisco)
         {
-            return Mapper.Map<CipaQuadro, CipaQuadroViewModel>(_cipaQuadroService.obterCipaPorGrupo(numeroFuncionarios, grupoCipaID));
+            return Mapper.Map<CipaQuadro, CipaQuadroViewModel>(_cipaQuadroService.obterCipaPorGrupo(numeroFuncionarios, grauDeRisco));
         }
 
         public CipaQuadroViewModel ObterPorId(int id)

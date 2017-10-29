@@ -35,6 +35,11 @@ namespace BI.GST.Domain.Services
             return _sesmtQuadroRepository.ObterPorId(id);
         }
 
+        public SesmtQuadro ObterSesmtPorGrauDeRisco(int numeroFuncionarios, int grauDeRisco)
+        {
+            return _sesmtQuadroRepository.ObterSesmtPorGrauDeRisco(numeroFuncionarios, grauDeRisco);
+        }
+
         public IEnumerable<SesmtQuadro> ObterTodos()
         {
             return _sesmtQuadroRepository.ObterTodos();

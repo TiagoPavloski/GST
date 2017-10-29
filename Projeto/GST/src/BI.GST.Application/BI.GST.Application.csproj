@@ -91,6 +91,7 @@
     <Compile Include="AppService\SESMTEmpresaAppService.cs" />
     <Compile Include="AppService\SESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="AppService\TipoSetorAppService.cs" />
+    <Compile Include="AppService\SesmtQuadroAppService.cs" />
     <Compile Include="AppService\UsuarioAppService.cs" />
     <Compile Include="AppService\EnderecoAppService.cs" />
     <Compile Include="AppService\EquipamentoRuidoAppService.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Interface\ISESMTEmpresaAppService.cs" />
     <Compile Include="Interface\ISESMTEmpresaFuncionarioAppService.cs" />
     <Compile Include="Interface\ITipoSetorAppService.cs" />
+    <Compile Include="Interface\ISesmtQuadroAppService.cs" />
     <Compile Include="Interface\IUsuarioAppService.cs" />
     <Compile Include="Interface\IEnderecoAppService.cs" />
     <Compile Include="Interface\IEquipamentoRuidoAppService.cs" />
@@ -195,6 +197,7 @@
     <Compile Include="ViewModels\RiscoFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaFuncionarioViewModel.cs" />
     <Compile Include="ViewModels\SESMTEmpresaViewModel.cs" />
+    <Compile Include="ViewModels\SesmtQuadroViewModel.cs" />
     <Compile Include="ViewModels\UsuarioViewModel.cs" />
     <Compile Include="ViewModels\EmpresaViewModel.cs" />
     <Compile Include="ViewModels\EnderecoViewModel.cs" />

@@ -9,5 +9,6 @@ namespace BI.GST.Domain.Interface.IRepository
 {
     public interface ISesmtQuadroRepository : IBaseRepository<SesmtQuadro>
     {
+        SesmtQuadro ObterSesmtPorGrauDeRisco(int numeroFuncionarios, int grauDeRisco);
     }
 }

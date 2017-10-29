@@ -26,7 +26,6 @@ namespace BI.GST.UI.MVC.Controllers
         }
 
         public JsonResult Funcionario(int id)
-
         {
             return Json(_funcionarioAppService.ObterPorEmpresa(id), JsonRequestBehavior.AllowGet);
         }
@@ -98,9 +97,7 @@ namespace BI.GST.UI.MVC.Controllers
                 if (result != "")
                 {
                     ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
-                    //var cipaEmpresa = new CIPAEmpresaViewModel();
                     TempData["Mensagem"] = result;
-                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um tipoCurso com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
@@ -130,8 +127,12 @@ namespace BI.GST.UI.MVC.Controllers
 
             var listaFuncionarios = _funcionarioAppService.ObterPorEmpresa(cipaEmpresaViewModel.EmpresaId);
 
-            ViewBag.FuncionariosEfetivos  = new SelectList(listaFuncionarios, "FuncionarioId", "Nome", cipaEmpresaViewModel.CIPAEmpresaFuncionarios.Select(x => x.FuncionarioId));
-            ViewBag.FuncionariosSuplentes = new SelectList(listaFuncionarios, "FuncionarioId", "Nome", cipaEmpresaViewModel.CIPAEmpresaFuncionarios.Select(x => x.FuncionarioId));
+            int[] suplentes = new int[10];
+            int[] efetivos = new int[10];
+            PreencherArrayFuncionarios(ref efetivos, ref suplentes, cipaEmpresaViewModel);
+
+            ViewBag.FuncionariosEfetivos = new SelectList(listaFuncionarios, "FuncionarioId", "Nome", efetivos);
+            ViewBag.FuncionariosSuplentes = new SelectList(listaFuncionarios, "FuncionarioId", "Nome", suplentes);
 
             return View(cipaEmpresaViewModel);
         }
@@ -146,11 +147,15 @@ namespace BI.GST.UI.MVC.Controllers
             if (ModelState.IsValid)
             {
                 ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia", cipaEmpresaViewModel.EmpresaId);
-                var result = _cipaEmpresaAppService.Adicionar(ref cipaEmpresaViewModel, FuncionariosEfetivos, FuncionariosSuplentes);
+                var result = _cipaEmpresaAppService.Atualizar(ref cipaEmpresaViewModel, FuncionariosEfetivos, FuncionariosSuplentes);
                 if (result != "")
                     TempData["Mensagem"] = result;
                 else
                     return RedirectToAction("Index");
+
+                var listaFuncionarios = _funcionarioAppService.ObterPorEmpresa(cipaEmpresaViewModel.EmpresaId);
+                ViewBag.FuncionariosEfetivos = new SelectList(listaFuncionarios, "FuncionarioId", "Nome", FuncionariosEfetivos);
+                ViewBag.FuncionariosSuplentes = new SelectList(listaFuncionarios, "FuncionarioId", "Nome", FuncionariosSuplentes);
             }
             return View(cipaEmpresaViewModel);
         }
@@ -193,6 +198,27 @@ namespace BI.GST.UI.MVC.Controllers
                 _cipaEmpresaAppService.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        protected void PreencherArrayFuncionarios(ref int[] efetivos, ref int[] suplentes, CIPAEmpresaViewModel cipaEmpresaViewModel)
+        {
+            var countEfetivos = 0;
+            var countsuplentes = 0;
+            foreach (var item in cipaEmpresaViewModel.CIPAEmpresaFuncionarios)
+            {
+
+                if (item.Efetivo == true)
+                {
+                    efetivos[countEfetivos] = item.CIPAEmpresaFuncionarioId;
+                    countEfetivos++;
+                }
+                else
+                {
+                    suplentes[countsuplentes] = item.CIPAEmpresaFuncionarioId;
+                    countsuplentes++;
+                }
+
+            }
         }
     }
 }

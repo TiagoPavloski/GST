@@ -17,7 +17,7 @@ namespace BI.GST.Application.AppService
 
         public CIPAEmpresaAppService(ICIPAEmpresaService cipaEmpresaService, ICIPAEmpresaFuncionarioAppService cipaEmpresaFuncionarioAppService, IFuncionarioAppService funcionarioAppService)
         {
-            _cipaEmpresaService    = cipaEmpresaService;
+            _cipaEmpresaService = cipaEmpresaService;
             _cipaEmpresaFuncionarioAppService = cipaEmpresaFuncionarioAppService;
             _funcionarioAppService = funcionarioAppService;
 
@@ -66,7 +66,7 @@ namespace BI.GST.Application.AppService
                 (e.EmpresaId == cipaEmpresa.EmpresaId)
                 && (e.Ano == cipaEmpresa.Ano)
                 && (e.Delete == false)
-                &&(e.CipaEmpresaID != cipaEmpresa.CipaEmpresaID)).Any();
+                && (e.CipaEmpresaID != cipaEmpresa.CipaEmpresaID)).Any();
             if (duplicado)
             {
                 return "CIPA já cadastrada para esta empresa e ano";
@@ -134,8 +134,9 @@ namespace BI.GST.Application.AppService
             foreach (var id in FuncionariosEfetivos)
             {
                 bool reeleito = false;
+                bool eleito = false;
 
-                funcionario = Mapper.Map <FuncionarioViewModel, Funcionario >( _funcionarioAppService.ObterPorId(id));
+                funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(_funcionarioAppService.ObterPorId(id));
                 if (FuncionariosSuplentes.Contains(id))
                     return funcionario.Nome + " não pode estar na lista de efetivos e suplentes da CIPA ao mesmo tempo";
 
@@ -143,43 +144,49 @@ namespace BI.GST.Application.AppService
 
                 foreach (var funcionarioCipa in listaFuncionariosCipa)
                 {
-                    if (funcionarioCipa.Reeleito)
-                        reeleito = true;
+                    if (funcionarioCipa.CipaEmpresaId != cipaEmpresa.CipaEmpresaID)
+                    {
+                        eleito = true;
+                        if (funcionarioCipa.Reeleito)
+                            reeleito = true;
+                    }
 
                     if (reeleito)
                         return funcionario.Nome + " não pode ser selecionado como efetivo pois ele já foi reeleito na cipa do ano: " + funcionarioCipa.CipaEmpresa.Ano;
                 }
 
                 CIPAEmpresaFuncionario cipaFuncionario = new CIPAEmpresaFuncionario();
-                cipaFuncionario.Funcionario = funcionario;
                 cipaFuncionario.FuncionarioId = funcionario.FuncionarioId;
                 cipaFuncionario.Efetivo = true;
-                cipaFuncionario.Reeleito = reeleito;
+                cipaFuncionario.Reeleito = eleito;
                 cipaEmpresa.CIPAEmpresaFuncionarios.Add(cipaFuncionario);
             }
 
             foreach (var id in FuncionariosSuplentes)
             {
                 bool reeleito = false;
+                bool eleito = false;
 
-                funcionario = Mapper.Map < FuncionarioViewModel, Funcionario > (_funcionarioAppService.ObterPorId(id));
+                funcionario = Mapper.Map<FuncionarioViewModel, Funcionario>(_funcionarioAppService.ObterPorId(id));
 
                 var listaFuncionariosCipa = _cipaEmpresaFuncionarioAppService.BuscarFuncionarioCIPAPorEmpresa(cipaEmpresa.EmpresaId, id);
 
                 foreach (var funcionarioCipa in listaFuncionariosCipa)
                 {
-                    if (funcionarioCipa.Reeleito)
-                        reeleito = true;
-
+                    if (funcionarioCipa.CipaEmpresaId != cipaEmpresa.CipaEmpresaID)
+                    {
+                        eleito = true;
+                        if (funcionarioCipa.Reeleito)
+                            reeleito = true;
+                    }
                     if (reeleito)
                         return funcionario.Nome + " não pode ser selecionado como suplente pois ele já foi reeleito na cipa do ano: " + funcionarioCipa.CipaEmpresa.Ano;
                 }
 
                 CIPAEmpresaFuncionario cipaFuncionario = new CIPAEmpresaFuncionario();
-                cipaFuncionario.Funcionario = funcionario;
                 cipaFuncionario.FuncionarioId = funcionario.FuncionarioId;
                 cipaFuncionario.Efetivo = false;
-                cipaFuncionario.Reeleito = reeleito;
+                cipaFuncionario.Reeleito = eleito;
                 cipaEmpresa.CIPAEmpresaFuncionarios.Add(cipaFuncionario);
             }
 
