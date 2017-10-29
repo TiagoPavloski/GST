@@ -13,7 +13,7 @@ namespace BI.GST.Application.ViewModels
         public int TipoSetorId { get; set; }
 
         [Required]
-        [DisplayName("Nome do Tipo Setor")]
+        [DisplayName("Tipo Setor")]
         public string Nome { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Descrição")]
