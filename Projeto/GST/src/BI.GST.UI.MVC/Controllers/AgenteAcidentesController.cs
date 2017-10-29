@@ -16,10 +16,12 @@ namespace BI.GST.UI.MVC.Controllers
     public class AgenteAcidentesController : Controller
     {
         private readonly IAgenteAcidenteAppService _agenteAcidenteAppService;
+        private readonly IClassificacaoEfeitoAppService _classificacaoEfeitoAppService;
 
-        public AgenteAcidentesController(IAgenteAcidenteAppService agenteAcidenteAppService)
+        public AgenteAcidentesController(IAgenteAcidenteAppService agenteAcidenteAppService, IClassificacaoEfeitoAppService clasificacaoEfeitoAppService)
         {
             _agenteAcidenteAppService = agenteAcidenteAppService;
+            _classificacaoEfeitoAppService = clasificacaoEfeitoAppService;
         }
 
         public ActionResult Index(string pesquisa, int page = 0)
@@ -50,7 +52,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteAcidentes/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+            var agenteAcidenteViewModel = new AgenteAcidenteViewModel();
+            return View(agenteAcidenteViewModel);
         }
 
         // POST: agenteAcidentes/Create
@@ -64,12 +68,14 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteAcidenteAppService.Adicionar(agenteAcidenteViewModel))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Agente Acidente com os mesmos dados')</SCRIPT>");
+                    ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+                    TempData["Mensagem"] = "Atenção, há um Agente Acidente com os mesmos dados";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Agente Acidente com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
+            
             return View(agenteAcidenteViewModel);
         }
 
@@ -80,12 +86,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var agenteAcidente = _agenteAcidenteAppService.ObterPorId(id.Value);
-            if (agenteAcidente == null)
+            var agenteAcidenteViewModel = _agenteAcidenteAppService.ObterPorId(id.Value);
+            if (agenteAcidenteViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(agenteAcidente);
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteAcidenteViewModel.ClassificacaoEfeitoId);
+            return View(agenteAcidenteViewModel);
         }
 
         // POST: AgenteAcidentes/Edit/5
@@ -97,9 +104,11 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteAcidenteViewModel.ClassificacaoEfeitoId);
                 if (!_agenteAcidenteAppService.Atualizar(agenteAcidenteViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agente de Acidente com os mesmos dados já cadastrada')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um Agente Acidente com os mesmos dados já cadastrado";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agente de Acidente com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");

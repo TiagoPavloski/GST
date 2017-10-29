@@ -16,18 +16,20 @@ namespace BI.GST.UI.MVC.Controllers
     public class SetoresController : Controller
     {
         private readonly ISetorAppService _setorAppService;
+        private readonly ITipoSetorAppService _tipoSetorAppService;
         private readonly IAgenteAcidenteAppService _agenteAcidenteAppService;
         private readonly IAgenteBiologicoAppService _agenteBiologicoAppService;
         private readonly IAgenteErgonomicoAppService _agenteErgonomicoAppService;
         private readonly IAgenteFisicoAppService _agenteFisicoAppService;
         private readonly IAgenteQuimicoAppService _agenteQuimicoAppService;
+        
 
-
-        public SetoresController(ISetorAppService setorAppService, IAgenteAcidenteAppService agenteAcidenteAppService,
+        public SetoresController(ISetorAppService setorAppService, ITipoSetorAppService tipoSetorAppService, IAgenteAcidenteAppService agenteAcidenteAppService,
             IAgenteBiologicoAppService agenteBiologicoAppService, IAgenteErgonomicoAppService agenteErgonomicoAppService,
             IAgenteFisicoAppService agenteFisicoAppService, IAgenteQuimicoAppService agenteQuimicoAppService)
         {
             _setorAppService = setorAppService;
+            _tipoSetorAppService = tipoSetorAppService;
             _agenteAcidenteAppService = agenteAcidenteAppService;
             _agenteBiologicoAppService = agenteBiologicoAppService;
             _agenteErgonomicoAppService = agenteErgonomicoAppService;
@@ -64,6 +66,7 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: setors/Create
         public ActionResult Create()
         {
+            ViewBag.TipoSetorId = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome");
             ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
             ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
             ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome");
@@ -86,8 +89,8 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_setorAppService.Adicionar(setorViewModel, agenteAcidenteId, agenteBiologicoId, agenteErgonomicoId, agenteFisicoId, agenteQuimicoId))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um setor com os mesmos dados')</SCRIPT>");
+                    ViewBag.TipoSetores = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome");
+                    TempData["Mensagem"] = "Atenção, há um setor com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
@@ -112,6 +115,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.TipoSetorId = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome", setor.TipoSetorId);
             ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome", setor.AgenteAcidentes.Select(x => x.AgenteAcidenteId));
             ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome", setor.AgenteBiologicos.Select(x => x.AgenteBiologicoId));
             ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome", setor.AgenteErgonomicos.Select(x => x.AgenteErgonomicoId));
@@ -130,9 +134,10 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.TipoSetorId = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome", setorViewModel.TipoSetorId);
                 if (!_setorAppService.Atualizar(setorViewModel, agenteAcidenteId, agenteBiologicoId, agenteErgonomicoId, agenteFisicoId, agenteQuimicoId))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um setor com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
