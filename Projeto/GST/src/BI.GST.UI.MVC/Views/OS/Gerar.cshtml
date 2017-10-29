@@ -4,132 +4,134 @@
 	Layout = null;
 }
 
-<h2>ORDEM DE SERVIÇO</h2>
+<style>
+	table, th, td {
+		border: 4px solid white;
+		border-collapse: collapse;
+	}
 
-<div>
-	<h4>Dados Gerais da O.S.</h4>
-	<hr />
-	<dl class="dl-horizontal">
-		<dt>
-			@Html.DisplayName("Nome Completo")
-		</dt>
+	th, td {
+		padding: 5px;
+		text-align: left;
+	}
 
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.Nome)
-		</dd>
+	.backgroundcolor {
+		background-color: #c7cac959;
+	}
 
-		<dt>
-			@Html.DisplayName("CPF")
-		</dt>
+	.titulo {
+		color: #928888;
+		text-align: center;
+	}
 
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.CPF)
-		</dd>
+	.center {
+		text-align: center;
+	}
+</style>
 
-		<dt>
-			@Html.DisplayName("Função")
-		</dt>
 
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.CBO.Nome)
-		</dd>
 
-		<dt>
-			@Html.DisplayName("CBO")
-		</dt>
+<div id="HTMLtoPDF" class="backgroundcolor">
 
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.CBO.CodigoCBO)
-		</dd>
+	<h2 class="titulo">ORDEM DE SERVIÇO</h2>
 
-		<dt>
-			@Html.DisplayName("Data Elaboração")
-		</dt>
+	<div>
+		<table style="width:100%">
+			<tr>
+				<th colspan="5" class="center">DADOS GERAIS DA O.S</th>
+			</tr>
+			<tr>
+				<td colspan="3">Nome Completo: @Html.DisplayFor(model => model.Funcionario.Nome)</td>
 
-		<dd>
-			@Html.DisplayFor(model => model.DataElaboracao)
-		</dd>
+				<td colspan="2">CPF: @Html.DisplayFor(model => model.Funcionario.CPF)</td>
+			</tr>
+			<tr>
+				<td colspan="3">Função: @Html.DisplayFor(model => model.Funcionario.CBO.Nome)</td>
 
-		<dt>
-			@Html.DisplayName("Próxima Revisão")
-		</dt>
+				<td colspan="2">CBO: @Html.DisplayFor(model => model.Funcionario.CBO.CodigoCBO)</td>
+			</tr>
+			<tr>
+				<td colspan="3">Data Elaboração: @Html.DisplayFor(model => model.DataElaboracao)</td>
 
-		<dd>
-			@Html.DisplayFor(model => model.DataRevisao)
-		</dd>
+				<td colspan="2">Próxima Revisão: @Html.DisplayFor(model => model.DataRevisao)</td>
+			</tr>
+			<tr>
+				<td colspan="5">Descrição da Função: @Html.DisplayFor(model => model.Funcionario.CBO.Descricao)</td>
 
-		<dt>
-			@Html.DisplayName("Definição da Função")
-		</dt>
+			</tr>
+			<tr>
+				<th colspan="5" class="center">RISCOS AMBIENTAIS ENCONTRADOS</th>
+			</tr>
+			<tr>
+				<td>
+					FISICO: @foreach (var item in Model.Funcionario.Setor.AgenteFisicos)
+					{
+						@Html.DisplayFor(model => item.Nome)
+					}
+				</td>
 
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.CBO.Descricao)
-		</dd>
+				<td>
+					QUIMICO: @foreach (var item in Model.Funcionario.Setor.AgenteQuimicos)
+					{
+						@Html.DisplayFor(model => item.Nome)
+					}
+				</td>
+				<td>
+					BIOLOGICO: @foreach (var item in Model.Funcionario.Setor.AgenteBiologicos)
+					{
+						@Html.DisplayFor(model => item.Nome)
+					}
+				</td>
+				<td>
+					ERGONIMICO: @foreach (var item in Model.Funcionario.Setor.AgenteErgonomicos)
+					{
+						@Html.DisplayFor(model => item.Nome)
+					}
+				</td>
+				<td>
+					ACIDENTE: @foreach (var item in Model.Funcionario.Setor.AgenteAcidentes)
+					{
+						@Html.DisplayFor(model => item.Nome)
+					}
+				</td>
+				<td>
+			</tr>
+			<tr>
+				<th colspan="5" class="center">RISCOS AMBIENTAIS ENCONTRADOS</th>
+			</tr>
+			<tr>
+				<td colspan="5">@Html.DisplayFor(model => model.EPIRecomendado)</td>
+			</tr>
+			<tr>
+				<th colspan="5" class="center">RECOMENDAÇÕES TÉCNICA | MEDIDAS PREVENTIVAS</th>
+			</tr>
+			<tr>
+				<td colspan="5">@Html.DisplayFor(model => model.Recomentacoes)</td>
+			</tr>
+			<tr>
+				<th colspan="3" class="center">ASSINATURA DO COLABORADOR</th>
 
-		<h4>Riscos Ambientais Encontrados</h4>
-	
-		<dt>
-			@Html.DisplayName("Fisico")
-		</dt>
+				<th colspan="2" class="center">DATA</th>
+			</tr>
+			<tr>
+				<td colspan="3" class="center"></td>
 
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteFisicos)
-		</dd>
+				<td colspan="2" class="center"></td>
+			</tr>
+			<tr>
+				<th colspan="3" class="center">REPRESENTANTES DA EMPRESA</th>
+			</tr>
+			<tr>
+				<td colspan="3" class="center">TÉCNICO DE SEGURANÇA</td>
 
-		<dt>
-			@Html.DisplayName("Quimico")
-		</dt>
+				<td colspan="2" class="center">RESPONSÁVEL</td>
+			</tr>
+			<tr>
+				<td colspan="3" class="center"></td>
 
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteQuimicos)
-		</dd>
-
-		<dt>
-			@Html.DisplayName("Biologico")
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteBiologicos)
-		</dd>
-
-		<dt>
-			@Html.DisplayName("Ergonomico")
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteErgonomicos)
-		</dd>
-
-		<dt>
-			@Html.DisplayName("Acidente")
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.Funcionario.Setor.AgenteAcidentes)
-		</dd>
-
-		<h4>EPI Recomendado para PPRA</h4>
-
-		<dd>
-			@Html.DisplayFor(model => model.EPIRecomendado)
-		</dd>
-
-		<dt>
-			@Html.DisplayName("Recomendações Técnicas")
-		</dt>
-
-		<dd>
-			@Html.DisplayFor(model => model.Recomentacoes)
-		</dd>
-
-		<h4>Assinatura do Colaborador</h4>
-
-		<h4>Data</h4>
-
-		<h4>Representantes da Empresa</h4>
-
-		<h4>Técnico de Segurança</h4>
-
-		<h4>Responsável</h4>
-	</dl>
+				<td colspan="2" class="center"></td>
+			</tr>
+		</table>
+	</div>
 </div>
+

@@ -1,46 +1,64 @@
 ﻿@model IEnumerable<BI.GST.Application.ViewModels.OSViewModel>
 
 @{
-    ViewBag.Title = "Index";
+	ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
 <p>
+
     @Html.ActionLink("Criar", "Create")
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayName("Funcionario")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataElaboracao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataRevisao)
-        </th>
-        <th></th>
-    </tr>
+	<tr>
+		<th>
+			@Html.DisplayName("Funcionario")
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DataElaboracao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DataRevisao)
+		</th>
+		<th></th>
+	</tr>
 
-@foreach (var item in Model) {
-    <tr>
-		<td>
-			@Html.DisplayFor(modelItem => item.Funcionario.Nome)
-		</td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataElaboracao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataRevisao)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.OsId }) |
-			@Html.ActionLink("Gerar", "Gerar", new { id = item.OsId }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.OsId })
-        </td>
-    </tr>
-}
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.Funcionario.Nome)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DataElaboracao)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.DataRevisao)
+			</td>
+			<td>
+				@Html.ActionLink("Gerar", "Gerar", new { id = item.OsId }) |
+				@Html.ActionLink("Deletar", "Delete", new { id = item.OsId }) @*|*@
+				@*<button type="button" class="btn btn-default" onclick="btnImprimir(new { id: item.OsId })">Gerar</button>*@
+				@*<input type="button" class="btn btn-confirmar" style="width:99%;height:35px;" value="OK" id="btnImprimir" />*@
+
+			</td>
+		</tr>
+	}
 
 </table>
 @Html.Partial("_Mensagem")
+
+@*<script>
+	
+	var AbrirContrato = function (data) {
+		var mywindow = window.open('', '', 'height=540,width=860');
+		mywindow.document.write('<html><head><title>Contrato de Uso do Sistema</title></head><body>');
+		mywindow.document.write(data);
+		mywindow.document.write('</body></html>');
+		mywindow.print();
+		mywindow.close();
+		return true;
+	};
+</script>*@
