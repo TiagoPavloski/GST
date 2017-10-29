@@ -16,10 +16,12 @@ namespace BI.GST.UI.MVC.Controllers
     public class AgenteFisicosController : Controller
     {
         private readonly IAgenteFisicoAppService _agenteFisicoAppService;
+        private readonly IClassificacaoEfeitoAppService _classificacaoEfeitoAppService;
 
-        public AgenteFisicosController(IAgenteFisicoAppService agenteFisicoAppService)
+        public AgenteFisicosController(IAgenteFisicoAppService agenteFisicoAppService, IClassificacaoEfeitoAppService clasificacaoEfeitoAppService)
         {
             _agenteFisicoAppService = agenteFisicoAppService;
+            _classificacaoEfeitoAppService = clasificacaoEfeitoAppService;
         }
 
         // GET: agenteFisicos
@@ -51,7 +53,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteFisicos/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+            var agenteFisicoViewModel = new AgenteFisicoViewModel();
+            return View(agenteFisicoViewModel);
         }
 
         // POST: agenteFisicos/Create
@@ -65,8 +69,9 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteFisicoAppService.Adicionar(agenteFisicoViewModel))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteFisico com os mesmos dados')</SCRIPT>");
+                    ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+                    TempData["Mensagem"] = "Atenção, há um Agente Fisico com os mesmos dados";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteFisico com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
@@ -81,12 +86,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var agenteFisico = _agenteFisicoAppService.ObterPorId(id.Value);
-            if (agenteFisico == null)
+            var agenteFisicoViewModel = _agenteFisicoAppService.ObterPorId(id.Value);
+            if (agenteFisicoViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(agenteFisico);
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteFisicoViewModel.ClassificacaoEfeitoId);
+            return View(agenteFisicoViewModel);
         }
 
         // POST: agenteFisicos/Edit/5
@@ -100,11 +106,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteFisicoAppService.Atualizar(agenteFisicoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um Agente Fisico com os mesmos dados já cadastrado";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteFisicoViewModel.ClassificacaoEfeitoId);
             return View(agenteFisicoViewModel);
         }
 

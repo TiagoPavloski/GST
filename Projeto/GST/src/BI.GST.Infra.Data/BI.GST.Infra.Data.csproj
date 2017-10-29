@@ -151,6 +151,7 @@
     <Compile Include="Repository\SESMTEmpresaFuncionarioRepository.cs" />
     <Compile Include="Repository\SESMTEmpresaRepository.cs" />
     <Compile Include="Repository\SesmtQuadroRepository.cs" />
+    <Compile Include="Repository\TipoSetorRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="Repository\EnderecoRepository.cs" />
     <Compile Include="Repository\EquipamentoRuidoRepository.cs" />

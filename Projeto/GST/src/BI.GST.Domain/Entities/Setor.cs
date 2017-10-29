@@ -22,6 +22,8 @@ namespace BI.GST.Domain.Entities
 
         public string Nome { get; set; }
 
+        public int TipoSetorId { get; set; }
+
         public virtual TipoSetor TipoSetor { get; set; }
 
         public string Descricao { get; set; }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,10 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Frequência")]
         public string Frequencia { get; set; }
 
+        [Required(ErrorMessage = "Prencher campo Classificação Efeito")]
+        public int ClassificacaoEfeitoId { get; set; }
+
+        [ForeignKey("ClassificacaoEfeitoId")]
         public virtual ClassificacaoEfeitoViewModel ClassificacaoEfeito { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Tempo Exposição")]
@@ -42,11 +47,6 @@ namespace BI.GST.Application.ViewModels
         public string TempoExposicao { get; set; }
 
         public virtual ICollection<MedicaoAgente> MedicoesAgente { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo Técnica")]
-        [MaxLength(150, ErrorMessage = "Máximo de 150")]
-        [DisplayName("Técnica")]
-        public string Tecnica { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Fonte geradora")]
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
@@ -94,9 +94,14 @@ namespace BI.GST.Application.ViewModels
         public string EfeitosPotenciais { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Fundamentação")]
-        [MaxLength(500, ErrorMessage = "Máximo de 500")]
-        [DisplayName("Fundamentação")]
-        public string Fundamentacao { get; set; }
+        [MaxLength(100, ErrorMessage = "Máximo de 100")]
+        [DisplayName("Técnica Utilizada")]
+        public string Tecnica { get; set; }
+
+        [Required(ErrorMessage = "Prencher campo Fundamentação")]
+        [MaxLength(200, ErrorMessage = "Máximo de 200")]
+        [DisplayName("Fundamentação Legal")]
+        public string FundamentacaoLegal { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Observação")]
         [MaxLength(500, ErrorMessage = "Máximo de 500")]

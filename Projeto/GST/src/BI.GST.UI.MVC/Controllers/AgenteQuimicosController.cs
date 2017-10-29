@@ -16,10 +16,12 @@ namespace BI.GST.UI.MVC.Controllers
     public class AgenteQuimicosController : Controller
     {
         private readonly IAgenteQuimicoAppService _agenteQuimicoAppService;
+        private readonly IClassificacaoEfeitoAppService _classificacaoEfeitoAppService;
 
-        public AgenteQuimicosController(IAgenteQuimicoAppService agenteQuimicoAppService)
+        public AgenteQuimicosController(IAgenteQuimicoAppService agenteQuimicoAppService, IClassificacaoEfeitoAppService clasificacaoEfeitoAppService)
         {
             _agenteQuimicoAppService = agenteQuimicoAppService;
+            _classificacaoEfeitoAppService = clasificacaoEfeitoAppService;
         }
 
         // GET: agenteQuimicos
@@ -51,7 +53,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteQuimicos/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+            var agenteQuimicoViewModel = new AgenteQuimicoViewModel();
+            return View(agenteQuimicoViewModel);
         }
 
         // POST: agenteQuimicos/Create
@@ -65,8 +69,9 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteQuimicoAppService.Adicionar(agenteQuimicoViewModel))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteQuimico com os mesmos dados')</SCRIPT>");
+                    ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+                    TempData["Mensagem"] = "Atenção, há um Agente Quimico com os mesmos dados";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteQuimico com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
@@ -81,12 +86,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var agenteQuimico = _agenteQuimicoAppService.ObterPorId(id.Value);
-            if (agenteQuimico == null)
+            var agenteQuimicoViewModel = _agenteQuimicoAppService.ObterPorId(id.Value);
+            if (agenteQuimicoViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(agenteQuimico);
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteQuimicoViewModel.ClassificacaoEfeitoId);
+            return View(agenteQuimicoViewModel);
         }
 
         // POST: agenteQuimicos/Edit/5
@@ -100,11 +106,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteQuimicoAppService.Atualizar(agenteQuimicoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um Agente Químico com os mesmos dados já cadastrado";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteQuimicoViewModel.ClassificacaoEfeitoId);
             return View(agenteQuimicoViewModel);
         }
 

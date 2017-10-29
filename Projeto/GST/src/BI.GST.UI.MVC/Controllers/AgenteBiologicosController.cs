@@ -8,10 +8,12 @@ namespace BI.GST.UI.MVC.Controllers
     public class AgenteBiologicosController : Controller
     {
         private readonly IAgenteBiologicoAppService _agenteBiologicoAppService;
+        private readonly IClassificacaoEfeitoAppService _classificacaoEfeitoAppService;
 
-        public AgenteBiologicosController(IAgenteBiologicoAppService agenteBiologicoAppService)
+        public AgenteBiologicosController(IAgenteBiologicoAppService agenteBiologicoAppService, IClassificacaoEfeitoAppService clasificacaoEfeitoAppService)
         {
             _agenteBiologicoAppService = agenteBiologicoAppService;
+            _classificacaoEfeitoAppService = clasificacaoEfeitoAppService;
         }
 
         // GET: agenteBiologicos
@@ -43,7 +45,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteBiologicos/Create
         public ActionResult Create()
         {
-            return View();
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+            var agenteBiologicoViewModel = new AgenteBiologicoViewModel();
+            return View(agenteBiologicoViewModel);
         }
 
         // POST: agenteBiologicos/Create
@@ -57,8 +61,9 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteBiologicoAppService.Adicionar(agenteBiologicoViewModel))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteBiologico com os mesmos dados')</SCRIPT>");
+                    ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+                    TempData["Mensagem"] = "Atenção, há um Agente Biológico com os mesmos dados";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteBiologico com os mesmos dados')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
@@ -73,12 +78,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var agenteBiologico = _agenteBiologicoAppService.ObterPorId(id.Value);
-            if (agenteBiologico == null)
+            var agenteBiologicoViewModel = _agenteBiologicoAppService.ObterPorId(id.Value);
+            if (agenteBiologicoViewModel == null)
             {
                 return HttpNotFound();
             }
-            return View(agenteBiologico);
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteBiologicoViewModel.ClassificacaoEfeitoId);
+            return View(agenteBiologicoViewModel);
         }
 
         // POST: agenteBiologicos/Edit/5
@@ -92,11 +98,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteBiologicoAppService.Atualizar(agenteBiologicoViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, há um Agente Biológico com os mesmos dados já cadastrado";
+                    //System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um agenteErgonômico com os mesmos dados já cadastrada')</SCRIPT>");
                 }
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteBiologicoViewModel.ClassificacaoEfeitoId);
             return View(agenteBiologicoViewModel);
         }
 
