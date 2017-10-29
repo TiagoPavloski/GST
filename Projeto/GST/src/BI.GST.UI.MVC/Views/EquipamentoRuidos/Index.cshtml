@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar", "Create")
 </p>
 
 @using (Html.BeginForm("Index", "EquipamentoRuidos", new { pesquisa = "" }, FormMethod.Get))
@@ -54,9 +54,9 @@
             @Html.DisplayFor(modelItem => item.Resposta)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.EquipamentoRuidoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.EquipamentoRuidoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.EquipamentoRuidoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.EquipamentoRuidoId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.EquipamentoRuidoId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.EquipamentoRuidoId })
         </td>
     </tr>
 }
