@@ -1,10 +1,10 @@
 ﻿@model BI.GST.Application.ViewModels.CIPAEmpresaViewModel
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
     <h4>CIPAEmpresa</h4>
@@ -34,57 +34,9 @@
             @Html.DisplayFor(model => model.NumeroFuncionarios)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroFuncionariosEfetivos)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumeroFuncionariosEfetivos)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NumeroFuncionariosSuplentes)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumeroFuncionariosSuplentes)
-        </dd>
-
-        <h4>Funcionarios</h4>
-
-        <hr />
-        @foreach (var item in Model.CIPAEmpresaFuncionarios)
-        {
-
-            <dt>
-                @Html.DisplayNameFor(model => item.Funcionario.Nome)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => item.Funcionario.Nome)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => item.Efetivo)
-            </dt>
-
-
-            <dd>
-                @Html.DisplayFor(Model => item.Efetivo)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => item.Reeleito)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(Model => item.Reeleito)
-            </dd>
-
-            <hr />
-        }
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.CipaEmpresaID }) |
+    @Html.ActionLink("Voltar para lista", "Index")
 </p>

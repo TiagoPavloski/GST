@@ -38,8 +38,12 @@ namespace BI.GST.Infra.Data.EntityConfig
            .HasMaxLength(200)
            .IsRequired();
 
-            Property(c => c.Fundamentacao)
-           .HasMaxLength(500)
+            Property(c => c.Tecnica)
+           .HasMaxLength(100)
+           .IsRequired();
+
+            Property(c => c.FundamentacaoLegal)
+           .HasMaxLength(200)
            .IsRequired();
 
             Property(c => c.Delete)

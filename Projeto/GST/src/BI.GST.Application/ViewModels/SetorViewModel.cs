@@ -28,6 +28,10 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Nome do Setor")]
         public string Nome { get; set; }
 
+        [Required(ErrorMessage = "Prencher campo Tipo Setor")]
+        public int TipoSetorId { get; set; }
+
+        [ForeignKey("TipoSetorId")]
         public virtual TipoSetorViewModel TipoSetor { get; set; }
 
         [Required(ErrorMessage = "Prencher campo Descrição")]

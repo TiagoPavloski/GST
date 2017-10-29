@@ -1,17 +1,17 @@
 ﻿@model BI.GST.Application.ViewModels.AgenteQuimicoViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Criar";
 }
 
-<h2>Create</h2>
+<h2>Criar</h2>
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>AgenteQuimico</h4>
+        <h4>Agente Quimico</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -37,20 +37,12 @@
                 @Html.ValidationMessageFor(model => model.Frequencia, "", new { @class = "text-danger" })
             </div>
         </div>
-
+              
         <div class="form-group">
             @Html.LabelFor(model => model.TempoExposicao, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.TempoExposicao, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.TempoExposicao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Tecnica, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Tecnica, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Tecnica, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -135,10 +127,26 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Fundamentacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.Label("Classificação Efeito", "Classificação Efeito", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.DropDownList("ClassificacaoEfeitoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ClassificacaoEfeitoId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tecnica, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Fundamentacao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fundamentacao, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.Tecnica, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tecnica, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FundamentacaoLegal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FundamentacaoLegal, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.FundamentacaoLegal, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -152,12 +160,12 @@
 
        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista", "Index")
 </div>

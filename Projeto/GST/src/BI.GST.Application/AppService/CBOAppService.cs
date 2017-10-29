@@ -58,22 +58,33 @@ namespace BI.GST.Application.AppService
         }
 
 
-        public bool Atualizar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacina)
+        public bool Atualizar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacinaId)
         {
 
             var cbo = Mapper.Map<CBOViewModel, CBO>(cboViewModel);
 
-            foreach (var item in riscoCBOId)
-                cbo.RiscoCBOs.Add(new RiscoCBO { RiscoCBOId = item });
+            if (riscoCBOId != null)
+            {
+                foreach (var item in riscoCBOId)
+                    cbo.RiscoCBOs.Add(new RiscoCBO { RiscoCBOId = item });
+            }
+            
+            if(tipoCursoId != null)
+            {
+                foreach (var item in tipoCursoId)
+                    cbo.TipoCursos.Add(new TipoCurso { TipoCursoId = item });
+            }
 
-            foreach (var item in tipoCursoId)
-                cbo.TipoCursos.Add(new TipoCurso { TipoCursoId = item });
+            if(tipoExameId != null)
+            {
+                foreach (var item in tipoExameId)
+                    cbo.TipoExames.Add(new TipoExame { TipoExameId = item });
+            }
 
-            foreach (var item in tipoExameId)
-                cbo.TipoExames.Add(new TipoExame { TipoExameId = item });
-
-            foreach (var item in tipoVacina)
-                cbo.TipoVacinas.Add(new TipoVacina { TipoVacinaId = item });
+            if (tipoVacinaId != null) {
+                foreach (var item in tipoVacinaId)
+                    cbo.TipoVacinas.Add(new TipoVacina { TipoVacinaId = item });
+            }
 
             BeginTransaction();
             _cboService.Atualizar(cbo);

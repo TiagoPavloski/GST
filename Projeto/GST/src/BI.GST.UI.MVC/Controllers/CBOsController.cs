@@ -98,6 +98,7 @@ namespace BI.GST.UI.MVC.Controllers
                 return HttpNotFound();
             }
 
+
             ViewBag.RiscoCBOId = new MultiSelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome", cbo.RiscoCBOs.Select(x => x.RiscoCBOId));
             ViewBag.TipoCursoId = new MultiSelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome", cbo.TipoCursos.Select(x => x.TipoCursoId));
             ViewBag.TipoExameId = new MultiSelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome", cbo.TipoExames.Select(x => x.TipoExameId));
@@ -115,6 +116,11 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                ViewBag.RiscoCBOId = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
+                ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
+                ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
+                ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
+
                 if (!_cboAppService.Atualizar(cboViewModel, riscoCBOId, tipoCursoId, tipoExameId, tipoVacina))
                 {
                     System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há uma função com os mesmos dados')</SCRIPT>");

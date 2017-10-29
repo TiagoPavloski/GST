@@ -4,11 +4,11 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Excluir</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Tem certeza que deseja excluir este registro?</h3>
 <div>
-    <h4>AgenteQuimico</h4>
+    <h4>Agente Quimico</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -41,14 +41,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.TempoExposicao)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tecnica)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tecnica)
         </dd>
 
         <dt>
@@ -132,11 +124,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Fundamentacao)
+            @Html.DisplayNameFor(model => model.ClassificacaoEfeito.Classificacao)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Fundamentacao)
+            @Html.DisplayFor(model => model.ClassificacaoEfeito.Classificacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tecnica)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tecnica)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FundamentacaoLegal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FundamentacaoLegal)
         </dd>
 
         <dt>
@@ -153,8 +161,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Deletar" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para lista", "Index")
         </div>
     }
 </div>

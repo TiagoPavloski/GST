@@ -202,6 +202,7 @@
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
     <Compile Include="Controllers\RiscoCBOsController.cs" />
+    <Compile Include="Controllers\TipoSetoresController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
     <Compile Include="Controllers\EquipamentoRuidosController.cs" />
     <Compile Include="Controllers\EscalasController.cs" />
@@ -4726,6 +4727,11 @@
     <Content Include="Views\RiscoFuncionarios\Details.cshtml" />
     <Content Include="Views\RiscoFuncionarios\Edit.cshtml" />
     <Content Include="Views\RiscoFuncionarios\Index.cshtml" />
+    <Content Include="Views\TipoSetores\Create.cshtml" />
+    <Content Include="Views\TipoSetores\Delete.cshtml" />
+    <Content Include="Views\TipoSetores\Details.cshtml" />
+    <Content Include="Views\TipoSetores\Edit.cshtml" />
+    <Content Include="Views\TipoSetores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

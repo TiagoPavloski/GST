@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar", "Create")
 </p>
 
 @using (Html.BeginForm("Index", "Agente Acidentes", new { pesquisa = "" }, FormMethod.Get))
@@ -49,14 +49,14 @@
             @Html.DisplayFor(modelItem => item.Fonte)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.AgenteAcidenteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.AgenteAcidenteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.AgenteAcidenteId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.AgenteAcidenteId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.AgenteAcidenteId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.AgenteAcidenteId })
         </td>
     </tr>
 }
 
 </table>
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista", "Index")
 </div>
