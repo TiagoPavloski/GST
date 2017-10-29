@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Certificados</h2>
 
 @using (Html.BeginForm("Index", "Certificados", new { pesquisa = "" }, FormMethod.Get))
 {
@@ -14,7 +14,7 @@
 }
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Criar certificado", "Create")
 </p>
 <table class="table">
     <tr>
@@ -54,11 +54,14 @@
             @Html.DisplayFor(modelItem => item.StatusNome)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.CertificadoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.CertificadoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.CertificadoId })
+            @Html.ActionLink("Editar", "Edit", new { id=item.CertificadoId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.CertificadoId }) |
+            @Html.ActionLink("Deletar", "Delete", new { id=item.CertificadoId })
         </td>
     </tr>
 }
 
 </table>
+
+@Html.Partial("_Paginacao")
+@Html.Partial("_Mensagem")

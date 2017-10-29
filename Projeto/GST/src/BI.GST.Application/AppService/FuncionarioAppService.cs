@@ -102,5 +102,10 @@ namespace BI.GST.Application.AppService
         {
             return _funcionarioService.ObterTotalRegistros(pesquisa);
         }
+
+        public int ObterTotalPorEmpresa(int empresaId)
+        {
+            return _funcionarioService.ObterTotalPorEmpresa(empresaId);
+        }
     }
 }

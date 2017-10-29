@@ -9,5 +9,6 @@ namespace BI.GST.Domain.Interface.IRepository
 {
     public interface ICipaQuadroRepository : IBaseRepository<CipaQuadro>
     {
+        CipaQuadro ObterCipaPorGrupo(int numeroFuncionarios, int grupoCipaID);
     }
 }

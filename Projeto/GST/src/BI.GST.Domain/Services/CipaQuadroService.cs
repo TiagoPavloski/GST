@@ -25,9 +25,9 @@ namespace BI.GST.Domain.Services
             GC.SuppressFinalize(this);
         }
 
-        public IEnumerable<CipaQuadro> Find(Expression<Func<CipaQuadro, bool>> predicate)
+        public CipaQuadro obterCipaPorGrupo(int numeroFuncionarios, int grupoCipaID)
         {
-            return _cipaQuadroRepository.Find(predicate);
+            return _cipaQuadroRepository.ObterCipaPorGrupo(numeroFuncionarios, grupoCipaID);
         }
 
         public CipaQuadro ObterPorId(int id)

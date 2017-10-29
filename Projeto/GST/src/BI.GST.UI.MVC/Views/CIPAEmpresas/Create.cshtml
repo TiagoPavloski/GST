@@ -82,34 +82,19 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar para lista", "Index")
 </div>
 
 @Html.Partial("_Mensagem")
 
-<script>
-    $("#EmpresaId").ready(function () {
-        $.ajax({
-            url: "/CIPAEmpresas/Funcionario/" + $('#EmpresaId').val() ,
-            success: function (data) {
-                $("#FuncionariosEfetivos").empty();
-                $.each(data, function (index, element) {
-                    $("#FuncionariosEfetivos").append('<option value="' + element.FuncionarioId + '">' + element.Nome + '</option>');
-                });
-                $("#FuncionariosSuplentes").empty();
-                $.each(data, function (index, element) {
-                    $("#FuncionariosSuplentes").append('<option value="' + element.FuncionarioId + '">' + element.Nome + '</option>');
-                });
-            }
-        });
-    })
-</script>
+
+
 
 
 <script>
     $("#EmpresaId").change(function () {
         $.ajax({
-            url: "/CIPAEmpresas/Funcionario/" + $('#EmpresaId').val() ,
+            url: "/CIPAEmpresas/Funcionario/" + $('#EmpresaId').val(),
             success: function (data) {
                 $("#FuncionariosEfetivos").empty();
                 $("#FuncionariosSuplentes").empty();
@@ -119,6 +104,18 @@
                 $.each(data, function (index, element) {
                     $("#FuncionariosSuplentes").append('<option value="' + element.FuncionarioId + '">' + element.Nome + '</option>');
                 });
+            }
+        });
+
+        $.ajax({
+            url: "/CIPAEmpresas/DadosCipa/" + $('#EmpresaId').val(),
+            success: function (data) {
+                $("#NumeroFuncionarios").empty();
+                $("#NumeroFuncionarios").val(data.NumeroFuncionarios);
+                $("#NumeroFuncionarios").empty();
+                $("#NumeroFuncionariosEfetivos").val(data.NumeroFuncionariosEfetivos);
+                $("#NumeroFuncionarios").empty();
+                $("#NumeroFuncionariosSuplentes").val(data.NumeroFuncionariosSuplentes);
             }
         });
     })

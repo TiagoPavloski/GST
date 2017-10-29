@@ -24,12 +24,6 @@ namespace BI.GST.Infra.Data.Repository
         public override void Adicionar(CIPAEmpresa obj)
         {
             var funcionarioCipaRepository = new CIPAEmpresaFuncionarioRepository();
-            var funcionariosCipa = new List<CIPAEmpresaFuncionario>();
-
-            foreach (var item in obj.CIPAEmpresaFuncionarios)
-                funcionariosCipa.Add(funcionarioCipaRepository.ObterPorId(item.FuncionarioId));
-
-            obj.CIPAEmpresaFuncionarios = funcionariosCipa;
 
             base.Adicionar(obj);
 
