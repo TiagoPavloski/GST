@@ -9,5 +9,7 @@ namespace BI.GST.Domain.Interface.IRepository
         IEnumerable<Colaborador> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
+
+        IEnumerable<Colaborador> ObterTodosPorEmpresa(int EmpresaId);
     }
 }

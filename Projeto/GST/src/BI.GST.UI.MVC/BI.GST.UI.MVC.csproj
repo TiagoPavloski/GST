@@ -214,6 +214,7 @@
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
     <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
+    <Compile Include="Controllers\PPRAsController.cs" />
     <Compile Include="Controllers\RiscoFuncionariosController.cs" />
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
@@ -4751,6 +4752,12 @@
     <Content Include="Views\TipoSetores\Details.cshtml" />
     <Content Include="Views\TipoSetores\Edit.cshtml" />
     <Content Include="Views\TipoSetores\Index.cshtml" />
+    <Content Include="Views\PPRAs\Create.cshtml" />
+    <Content Include="Views\PPRAs\Delete.cshtml" />
+    <Content Include="Views\PPRAs\Details.cshtml" />
+    <Content Include="Views\PPRAs\Index.cshtml" />
+    <Content Include="Views\PPRAs\PPRA.cshtml" />
+    <Content Include="Views\PPRAs\_AgentePPRA.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

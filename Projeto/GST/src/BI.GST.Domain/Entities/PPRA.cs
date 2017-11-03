@@ -26,7 +26,7 @@ namespace BI.GST.Domain.Entities
 
         public int EmpresaClienteId { get; set; }
 
-        public int EmpresaContratanteId { get; set; }
+        public int EmpresaLocalId { get; set; }
 
         public int UsuarioId { get; set; }
 
@@ -62,7 +62,7 @@ namespace BI.GST.Domain.Entities
         public virtual Colaborador ResponsavelAmbiental { get; set; }
         public virtual EquipamentoRuido EquipamentoRuido { get; set; }
         public virtual Empresa EmpresaCliente { get; set; }
-        public virtual Empresa EmpresaContratante { get; set; }
+        public virtual Empresa EmpresaLocal { get; set; }
         public virtual Usuario Usuario { get; set; }
         public virtual CIPAEmpresa CipaEmpresa { get; set; }
         public virtual SESMTEmpresa SESMTEmpresa { get; set; }

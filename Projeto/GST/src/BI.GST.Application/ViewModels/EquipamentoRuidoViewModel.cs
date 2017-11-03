@@ -32,5 +32,6 @@ namespace BI.GST.Application.ViewModels
 
         [DisplayName("Tempo Resposta")]
         public string Resposta { get; set; }
+
     }
 }
