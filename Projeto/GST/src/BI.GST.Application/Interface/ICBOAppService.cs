@@ -13,11 +13,11 @@ namespace BI.GST.Application.Interface
 
         CBOViewModel ObterPorId(int id);
 
-		bool Adicionar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] TipoCursoId, int[] TipoExameId, int[] TipoVacina);
+		string Adicionar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] TipoCursoId, int[] TipoExameId, int[] TipoVacina);
 
-		bool Atualizar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] TipoCursoId, int[] TipoExameId, int[] TipoVacina);
+		string Atualizar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] TipoCursoId, int[] TipoExameId, int[] TipoVacina);
 
-		bool Excluir(int id);
+		string Excluir(int id);
 
 		IEnumerable<CBOViewModel> ObterGrid(int page, string pesquisa);
 

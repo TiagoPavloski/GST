@@ -19,16 +19,15 @@ namespace BI.GST.Application.ViewModels
 
         [DisplayName("Função")]
         [Required(ErrorMessage = "Prencher a Função")]
-        [MaxLength(35, ErrorMessage = "Máximo de 35 caracteres")]
+        [MaxLength(70, ErrorMessage = "Máximo de 70 caracteres")]
         public string Nome { get; set; }
 
         [DisplayName("Código da Função")]
         [Required(ErrorMessage = "Prencher o código")]
-        [MaxLength(35, ErrorMessage = "Máximo de 35 caracteres")]
+        [MaxLength(20, ErrorMessage = "Máximo de 20 caracteres")]
         public string CodigoCBO { get; set; }
 
         [DisplayName("Descrição")]
-        [Required(ErrorMessage = "Prencher descrição da função")]
         [MaxLength(400, ErrorMessage = "Máximo de 400 caracteres")]
         public string Descricao { get; set; }
 
