@@ -26,9 +26,8 @@ namespace BI.GST.Infra.Data.EntityConfig
 		    .HasMaxLength(150)
 		    .IsRequired();
 
-			Property(e => e.Email)
-            .HasMaxLength(100)
-			.IsRequired();
+            Property(e => e.Email)
+            .HasMaxLength(100);
 
 		}
 	}

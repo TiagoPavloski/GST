@@ -127,13 +127,13 @@ namespace BI.GST.UI.MVC.Controllers
             { 
                 var result = _financeiroAppService.Adicionar(financeiroViewModel, financeiroParcelaViewModel);
 
-                if (result != "")
-                {
-                    TempData["Mensagem"] = result;
+                    if (result != "")
+                    {
+                        TempData["Mensagem"] = result;
 
-                }
-                else
-                    return RedirectToAction("Index");
+                    }
+                    else
+                        return RedirectToAction("Index");
             }
             #region DDL Status
             List<SelectListItem> ddlOperacao = new List<SelectListItem>();

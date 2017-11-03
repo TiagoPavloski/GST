@@ -73,11 +73,18 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacina)
         {
+            ViewBag.RiscoCBOId = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
+            ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
+            ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
+            ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
+
             if (ModelState.IsValid)
             {
-                if (!_cboAppService.Adicionar(cboViewModel, riscoCBOId, tipoCursoId, tipoExameId, tipoVacina))
+                var result = _cboAppService.Adicionar(cboViewModel, riscoCBOId, tipoCursoId, tipoExameId, tipoVacina);
+                if (result != "")
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há uma função com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = result;
+
                 }
                 else
                     return RedirectToAction("Index");
@@ -121,9 +128,11 @@ namespace BI.GST.UI.MVC.Controllers
                 ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
                 ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
 
-                if (!_cboAppService.Atualizar(cboViewModel, riscoCBOId, tipoCursoId, tipoExameId, tipoVacina))
+                var result = _cboAppService.Atualizar(cboViewModel, riscoCBOId, tipoCursoId, tipoExameId, tipoVacina);
+                if (result != "")
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há uma função com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = result;
+
                 }
                 else
                     return RedirectToAction("Index");
@@ -151,15 +160,14 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_cboAppService.Excluir(id))
+            var result = _cboAppService.Excluir(id);
+            if (result != "")
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
-                return null;
-            }
-            else
-            {
+                TempData["Mensagem"] = result;
                 return RedirectToAction("Index");
             }
+            else
+                return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)

@@ -12,21 +12,23 @@ namespace BI.GST.Application.AppService
     public class CBOAppService : BaseAppService, ICBOAppService
     {
         private readonly ICBOService _cboService;
+        private readonly IFuncionarioService _funcionarioService;
         private readonly IRiscoCBOService _riscoCBOService;
         private readonly ITipoCursoService _tipoCursoService;
         private readonly ITipoExameService _tipoExameService;
         private readonly ITipoVacinaService _tipoVacinaService;
 
-        public CBOAppService(ICBOService cboService, IRiscoCBOService riscoCBOService, ITipoCursoService tipoCursoService, ITipoExameService tipoExameService, ITipoVacinaService tipoVacinaService)
+        public CBOAppService(ICBOService cboService, IFuncionarioService funcionarioService, IRiscoCBOService riscoCBOService, ITipoCursoService tipoCursoService, ITipoExameService tipoExameService, ITipoVacinaService tipoVacinaService)
         {
             _cboService = cboService;
+            _funcionarioService = funcionarioService;
             _riscoCBOService = riscoCBOService;
             _tipoCursoService = tipoCursoService;
             _tipoExameService = tipoExameService;
             _tipoVacinaService = tipoVacinaService;
 
         }
-        public bool Adicionar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacina)
+        public string Adicionar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacina)
         {
             var cbo = Mapper.Map<CBOViewModel, CBO>(cboViewModel);
 
@@ -51,14 +53,25 @@ namespace BI.GST.Application.AppService
                 foreach (var item in tipoVacina)
                     cbo.TipoVacinas.Add(new TipoVacina { TipoVacinaId = item });
             }
-            BeginTransaction();
-            _cboService.Adicionar(cbo);
-            Commit();
-            return true;
+
+            var duplicado = _cboService.Find(e => (e.Nome == cbo.Nome) && (e.Delete == false)).Any();
+
+            if (duplicado)
+            {
+                return "Atenção, já existe um CBO com o nome informado";
+            }
+            else
+            {
+                BeginTransaction();
+                _cboService.Adicionar(cbo);
+                Commit();
+
+                return "";
+            }
         }
 
 
-        public bool Atualizar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacinaId)
+        public string Atualizar(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacinaId)
         {
 
             var cbo = Mapper.Map<CBOViewModel, CBO>(cboViewModel);
@@ -86,10 +99,20 @@ namespace BI.GST.Application.AppService
                     cbo.TipoVacinas.Add(new TipoVacina { TipoVacinaId = item });
             }
 
-            BeginTransaction();
-            _cboService.Atualizar(cbo);
-            Commit();
-            return true;
+            var duplicado = _cboService.Find(e => (e.Nome == cbo.Nome) && (e.Delete == false)).Any();
+            if (duplicado)
+            {
+                return "Atenção, já existe um CBO com o nome informado";
+            }
+            else
+            {
+                BeginTransaction();
+                _cboService.Atualizar(cbo);
+                Commit();
+
+                return "";
+            }
+            
         }
 
 
@@ -99,9 +122,16 @@ namespace BI.GST.Application.AppService
             GC.SuppressFinalize(this);
         }
 
-        public bool Excluir(int id)
+        public string Excluir(int id)
         {
             bool existente = _cboService.Find(e => e.CBOId == id).Any();
+            bool usado = _funcionarioService.Find(f => f.CBOId == id && f.Delete == false).Any();
+
+            if (usado)
+            {
+                return "Operação negada, há funcionários ativos vinculados à esta função.";
+            }
+            
             var cbo = _cboService.ObterPorId(id);
 
             if (existente)
@@ -111,9 +141,13 @@ namespace BI.GST.Application.AppService
                 _cboService.Atualizar(cbo);
 
                 Commit();
-                return true;
+                return "";
             }
-            return false;
+            else
+            {
+                return "Função não encontrada no banco, atualize a página.";
+            }
+            
         }
 
         public IEnumerable<CBOViewModel> ObterGrid(int page, string pesquisa)

@@ -274,6 +274,7 @@
     <Content Include="images\user.png" />
     <Content Include="images\visa.png" />
     <Content Include="js\datepicker\daterangepicker.js" />
+    <Content Include="js\mask\maskInput.js" />
     <Content Include="js\moment\moment.min.js" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
