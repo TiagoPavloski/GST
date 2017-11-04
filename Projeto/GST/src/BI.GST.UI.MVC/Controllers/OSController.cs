@@ -133,18 +133,6 @@ namespace BI.GST.UI.MVC.Controllers
 			base.Dispose(disposing);
 		}
 
-		//GET: OS/Edit/5
-		//public ActionResult Gerar(int? id)
-		//{
-		//	if (id == null)
-		//	{
-		//		return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-		//	}
-		//	var oS = _oSAppService.ObterPorId(id.Value);
-
-		//	return View(oS);
-		//}
-
 		public ActionResult Gerar(int? id)
 		{
 			var oS = _oSAppService.ObterPorId(id.Value);
