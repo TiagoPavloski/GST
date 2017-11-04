@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
-using System.Net;
-using System.Web;
+﻿using System.Net;
 using System.Web.Mvc;
-using BI.GST.Domain.Entities;
-using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
-using System.Web.Routing;
 
 namespace BI.GST.UI.MVC.Controllers
 {
