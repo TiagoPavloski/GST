@@ -14,20 +14,27 @@
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstituicaoCliente)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.InstituicaoCursoId }) |
-            @Html.ActionLink("Detalhar", "Details", new { id=item.InstituicaoCursoId }) |
-            @Html.ActionLink("Deletar", "Delete", new { id=item.InstituicaoCursoId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <th>
+                @Html.DisplayFor(modelItem => item.InstituicaoCliente)
+            </th>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.InstituicaoCursoId }) |
+                @Html.ActionLink("Detalhar", "Details", new { id = item.InstituicaoCursoId }) |
+                @Html.ActionLink("Deletar", "Delete", new { id = item.InstituicaoCursoId })
+            </td>
+        </tr>
+    }
 
 </table>

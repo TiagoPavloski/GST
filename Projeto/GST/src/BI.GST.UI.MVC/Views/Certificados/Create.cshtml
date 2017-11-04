@@ -65,3 +65,18 @@
 <div>
     @Html.ActionLink("Voltar para lista", "Index")
 </div>
+
+@Html.Partial("_Mensagem")
+
+<script>
+    $("#FuncionarioId").change(function () {
+        $.ajax({
+            url: "/Certificados/Funcionario/" + $('#EmpresaId').val(),
+            success: function (data) {
+                $.each(data, function (index, element) {
+                    $("#CursoId").append('<option value="' + element.CursoId + '">' + element.TipoCurso.Nome + '</option>');
+                });
+            }
+        });
+    });
+</script>

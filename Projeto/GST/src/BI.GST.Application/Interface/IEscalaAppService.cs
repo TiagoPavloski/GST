@@ -13,11 +13,11 @@ namespace BI.GST.Application.Interface
 
     EscalaViewModel ObterPorId(int id);
 
-    bool Adicionar(EscalaViewModel escalaViewModel);
+    string Adicionar(EscalaViewModel escalaViewModel);
 
-    bool Atualizar(EscalaViewModel escalaViewModel);
+    string Atualizar(EscalaViewModel escalaViewModel);
 
-    bool Excluir(int id);
+    string Excluir(int id);
 
     IEnumerable<EscalaViewModel> ObterGrid(int page, string pesquisa);
 

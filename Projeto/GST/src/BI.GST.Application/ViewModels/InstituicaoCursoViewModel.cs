@@ -19,6 +19,9 @@ namespace BI.GST.Application.ViewModels
         [MaxLength(55, ErrorMessage = "Máximo de 55 caracteres")]
         public string Nome { get; set; }
 
+        [DisplayName("Minha Empresa")]
+        public bool InstituicaoCliente { get; set; }
+
         public bool Delete { get; set; }
     }
 }

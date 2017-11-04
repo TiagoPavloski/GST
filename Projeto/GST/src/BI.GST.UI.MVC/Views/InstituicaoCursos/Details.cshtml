@@ -7,7 +7,7 @@
 <h2>Detalhes</h2>
 
 <div>
-    <h4>InstituicaoCurso</h4>
+    <h4>Instituição ministradora de Cursos</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -16,6 +16,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.InstituicaoCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InstituicaoCliente)
         </dd>
 
     </dl>
