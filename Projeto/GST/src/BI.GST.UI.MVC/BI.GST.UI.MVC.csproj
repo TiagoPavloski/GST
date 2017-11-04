@@ -4758,6 +4758,8 @@
     <Content Include="Views\PPRAs\Index.cshtml" />
     <Content Include="Views\PPRAs\PPRA.cshtml" />
     <Content Include="Views\PPRAs\_AgentePPRA.cshtml" />
+    <Content Include="Views\PPRAs\_CronogramaDeAcoes.cshtml" />
+    <Content Include="Views\PPRAs\_Anexos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

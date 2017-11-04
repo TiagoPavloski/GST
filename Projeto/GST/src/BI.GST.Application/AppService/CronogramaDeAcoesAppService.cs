@@ -72,6 +72,11 @@ namespace BI.GST.Application.AppService
             return Mapper.Map<CronogramaDeAcoes, CronogramaDeAcoesViewModel> (_cronogramaDeAcoesService.ObterPorId(id));
         }
 
+        public IEnumerable<CronogramaDeAcoesViewModel> ObterPorPPRA(int ppraId)
+        {
+            return Mapper.Map<IEnumerable<CronogramaDeAcoes>, IEnumerable<CronogramaDeAcoesViewModel>>(_cronogramaDeAcoesService.ObterPorPPRA(ppraId));
+        }
+
         public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
             return _cronogramaDeAcoesService.ObterTotalRegistros(pesquisa, ppraId);

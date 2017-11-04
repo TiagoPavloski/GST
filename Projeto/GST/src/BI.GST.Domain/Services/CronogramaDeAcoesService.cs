@@ -55,6 +55,11 @@ namespace BI.GST.Domain.Services
             return _cronogramaDeAcoesRepository.ObterPorId(id);
         }
 
+        public IEnumerable<CronogramaDeAcoes> ObterPorPPRA(int ppraId)
+        {
+            return _cronogramaDeAcoesRepository.ObterPorPPRA(ppraId);
+        }
+
         public int ObterTotalRegistros(string pesquisa, int ppraId)
         {
             return _cronogramaDeAcoesRepository.ObterTotalRegistros(pesquisa, ppraId);

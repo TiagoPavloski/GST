@@ -26,9 +26,12 @@ namespace BI.GST.UI.MVC.Controllers
         private readonly IUsuarioAppService _usuarioAppService;
         private readonly ICIPAEmpresaAppService _cipaEmpresaAppService;
         private readonly IFuncionarioAppService _funcionarioAppService;
+        private readonly IMeioPropagacaoAppService _meioPropagacaoAppService;
+        private readonly IAgenteAmbientalAppService _agenteAmbientalAppService;
 
-        public PPRAsController(IPPRAAppService ppraAppService, IAgentePPRAAppService agentePPRAAppService, ICronogramaDeAcoesAppService cronogramaDeAcoesAppService, IAnexoAppService anexoAppService, IColaboradorAppService colaboradorAppService,
-            IEquipamentoRuidoAppService equipamentoRuidoAppService, IEmpresaAppService empresaAppService, IUsuarioAppService usuarioAppService, ICIPAEmpresaAppService cipaEmpresaAppService, IFuncionarioAppService funcionarioAppService)
+        public PPRAsController(IPPRAAppService ppraAppService, IAgentePPRAAppService agentePPRAAppService, ICronogramaDeAcoesAppService cronogramaDeAcoesAppService, IAnexoAppService anexoAppService,
+            IColaboradorAppService colaboradorAppService, IEquipamentoRuidoAppService equipamentoRuidoAppService, IEmpresaAppService empresaAppService, IUsuarioAppService usuarioAppService, 
+            ICIPAEmpresaAppService cipaEmpresaAppService, IFuncionarioAppService funcionarioAppService, IAgenteAmbientalAppService agenteAmbientalAppService, IMeioPropagacaoAppService meioPropagacaoAppService)
         {
             _PPRAAppService              = ppraAppService;
             _agentePPRAAppService        = agentePPRAAppService;
@@ -40,7 +43,21 @@ namespace BI.GST.UI.MVC.Controllers
             _usuarioAppService           = usuarioAppService;
             _cipaEmpresaAppService       = cipaEmpresaAppService;
             _funcionarioAppService       = funcionarioAppService;
+            _agenteAmbientalAppService   = agenteAmbientalAppService;
+            _meioPropagacaoAppService    = meioPropagacaoAppService;
 
+        }
+
+        public ActionResult Cronograma()
+        {
+            var cronograma = new CronogramaDeAcoesViewModel();
+            return PartialView("_CronogramaDeAcoes", cronograma);
+        }
+
+        public ActionResult AgentePPRA()
+        {
+            var agentePPRA = new AgentePPRAViewModel();
+            return PartialView("_AgentePPRA", agentePPRA);
         }
 
         // GET: PPRAs
@@ -79,6 +96,10 @@ namespace BI.GST.UI.MVC.Controllers
             ViewBag.EmpresaClienteId       = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             ViewBag.EmpresaLocalId         = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
 
+            //Agente PPRA
+            ViewBag.AgenteAmbientalId = new SelectList(_agenteAmbientalAppService.ObterTodos(), "AgenteAmbientalId", "Nome");
+            ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Meio");
+
             var ppraViewModel = new PPRAViewModel();
             return View(ppraViewModel);
         }
@@ -88,7 +109,7 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PPRAViewModel ppraViewModel)
+        public ActionResult Create(PPRAViewModel ppraViewModel, List<AgentePPRAViewModel> agentePPRAViewModel, List<CronogramaDeAcoesViewModel> cronogramaDeAcoesViewModel)
         {
             if (ModelState.IsValid)
             {
@@ -104,6 +125,13 @@ namespace BI.GST.UI.MVC.Controllers
 
             ViewBag.EmpresaClienteId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             ViewBag.EmpresaLocalId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
+
+            //Agente PPRA
+            ViewBag.AgenteAmbientalId = new SelectList(_agenteAmbientalAppService.ObterTodos(), "AgenteAmbientalId", "Nome");
+            ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Nome");
+
+            ppraViewModel.CronogramasDeAcao = cronogramaDeAcoesViewModel;
+            ppraViewModel.AgentesAmbientais = agentePPRAViewModel;
 
             return View(ppraViewModel);
         }

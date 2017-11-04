@@ -20,5 +20,7 @@ namespace BI.GST.Application.Interface
         IEnumerable<CronogramaDeAcoesViewModel> ObterGrid(int page, string pesquisa, int ppraId);
 
         int ObterTotalRegistros(string pesquisa, int ppraId);
+
+        IEnumerable<CronogramaDeAcoesViewModel> ObterPorPPRA(int ppraId);
     }
 }

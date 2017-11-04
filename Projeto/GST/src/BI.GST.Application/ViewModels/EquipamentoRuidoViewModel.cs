@@ -27,7 +27,7 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Modelo Equipamento")]
         public string ModeloEquipamento { get; set; }
 
-        [DisplayName("Comepensação")]
+        [DisplayName("Compensação")]
         public string Compensacao { get; set; }
 
         [DisplayName("Tempo Resposta")]
