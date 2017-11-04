@@ -64,5 +64,10 @@ namespace BI.GST.Domain.Services
         {
             return _CIPAEmpresaRepository.ObterTotalRegistros(pesquisa);
         }
+
+        public CIPAEmpresa ObterUltimaCipaPorEmpresa(int empresaId)
+        {
+            return _CIPAEmpresaRepository.ObterUltimaCipaPorEmpresa(empresaId);
+        }
     }
 }

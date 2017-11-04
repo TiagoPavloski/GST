@@ -57,7 +57,16 @@ namespace BI.GST.UI.MVC.Controllers
         public ActionResult AgentePPRA()
         {
             var agentePPRA = new AgentePPRAViewModel();
+            //Agente PPRA
+            ViewBag.AgenteAmbientalId = new SelectList(_agenteAmbientalAppService.ObterTodos(), "AgenteAmbientalId", "Nome");
+            ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Meio");
             return PartialView("_AgentePPRA", agentePPRA);
+        }
+
+        public JsonResult CipaEmpresa(int id)
+        {
+            CIPAEmpresaViewModel cipaEmpresa = _cipaEmpresaAppService.ObterUltimaCipaPorEmpresa(id);
+            return Json(cipaEmpresa, JsonRequestBehavior.AllowGet);
         }
 
         // GET: PPRAs
@@ -131,7 +140,7 @@ namespace BI.GST.UI.MVC.Controllers
             ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Nome");
 
             ppraViewModel.CronogramasDeAcao = cronogramaDeAcoesViewModel;
-            ppraViewModel.AgentesAmbientais = agentePPRAViewModel;
+            ppraViewModel.AgentesPPRA = agentePPRAViewModel;
 
             return View(ppraViewModel);
         }

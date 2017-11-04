@@ -14,7 +14,7 @@ namespace BI.GST.Application.ViewModels
     {
         public PPRAViewModel()
         {
-            AgentesAmbientais = new List<AgentePPRAViewModel>();
+            AgentesPPRA = new List<AgentePPRAViewModel>();
             CronogramasDeAcao = new List<CronogramaDeAcoesViewModel>();
             Anexos = new List<AnexoViewModel>();
 
@@ -72,7 +72,7 @@ namespace BI.GST.Application.ViewModels
         public bool Delete { get; set; }
 
         
-        public virtual List<AgentePPRAViewModel> AgentesAmbientais { get; set; }
+        public virtual List<AgentePPRAViewModel> AgentesPPRA { get; set; }
         public virtual List<CronogramaDeAcoesViewModel> CronogramasDeAcao { get; set; }
         public virtual List<AnexoViewModel> Anexos { get; set; }
         public virtual ColaboradorViewModel ResponsavelTecnico { get; set; }

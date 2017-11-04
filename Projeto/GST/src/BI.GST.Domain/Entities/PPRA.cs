@@ -11,7 +11,7 @@ namespace BI.GST.Domain.Entities
     {
         public PPRA()
         {
-            AgentesAmbientais = new List<AgentePPRA>();
+            AgentesPPRA = new List<AgentePPRA>();
             CronogramasDeAcao = new List<CronogramaDeAcoes>();
             Anexos            = new List<Anexo>();
         }
@@ -54,7 +54,7 @@ namespace BI.GST.Domain.Entities
 
         //public virtual ICollection<AlteracoesPPRA> AlteracoesPPRA { get; set; } ??? não tem tabela disso
 
-        public virtual ICollection<AgentePPRA> AgentesAmbientais { get; set; }
+        public virtual ICollection<AgentePPRA> AgentesPPRA { get; set; }
         public virtual ICollection<CronogramaDeAcoes> CronogramasDeAcao { get; set; }
         public virtual ICollection<Anexo> Anexos { get; set; }
         public virtual Colaborador ResponsavelTecnico { get; set; }

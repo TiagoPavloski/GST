@@ -12,5 +12,8 @@ namespace BI.GST.Domain.Interface.IRepository
         IEnumerable<CIPAEmpresa> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
+
+        CIPAEmpresa ObterUltimaCipaPorEmpresa(int empresaId);
+
     }
 }

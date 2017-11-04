@@ -6,23 +6,23 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Criar</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>PPRA</h4>
         <hr />
-        
+
         <h4> Dados da empresa </h4>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
         <div class="form-group">
             @Html.LabelFor(model => model.EmpresaClienteId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                @Html.DropDownList("EmpresaClienteId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("EmpresaClienteId", null, "-- Selecione --",htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EmpresaClienteId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EmpresaLocalId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                @Html.DropDownList("EmpresaLocalId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("EmpresaLocalId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EmpresaLocalId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -59,21 +59,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataEmissao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.DataEmissao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.DataEmissao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
         <hr />
         <h4> Responsáveis </h4>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ResponsavelTecnicoId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                @Html.DropDownList("ResponsavelTecnicoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ResponsavelTecnicoId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ResponsavelTecnicoId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -81,15 +73,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ResponsavelMedicoId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                @Html.DropDownList("ResponsavelMedicoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ResponsavelMedicoId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ResponsavelMedicoId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.ResponsavelAmbientalId,  htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ResponsavelAmbientalId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                @Html.DropDownList("ResponsavelAmbientalId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ResponsavelAmbientalId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ResponsavelAmbientalId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -129,7 +121,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.EquipamentoRuidoId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
-                @Html.DropDownList("EquipamentoRuidoId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("EquipamentoRuidoId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.EquipamentoRuidoId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -143,20 +135,16 @@
                 <p><a id="add-agentePPRA" class="btn">Adicionar novo agente</a></p>
             </div>
         </div>
-
-
         <div id="tab-1" class="tab-pane">
-            @if (Model != null && Model.AgentesAmbientais != null)
+            @if (Model != null && Model.AgentesPPRA != null)
             {
-                foreach (var agente in Model.AgentesAmbientais)
+                foreach (var agentePPRA in Model.AgentesPPRA)
                 {
-                    Html.RenderPartial("_AgentePPRA", agente);
+                    Html.RenderPartial("_AgentePPRA", agentePPRA);
                     <hr />
                 }
             }
         </div>
-
-
         <hr />
 
         <h4> Cronograma de ações </h4>
@@ -167,9 +155,7 @@
                 <p><a id="add-cronograma" class="btn">Adicionar nova atividade</a></p>
             </div>
         </div>
-
-
-        <div id="tab-1" class="tab-pane">
+        <div id="tab-2" class="tab-pane">
             @if (Model != null && Model.CronogramasDeAcao != null)
             {
                 foreach (var cronograma in Model.CronogramasDeAcao)
@@ -179,18 +165,14 @@
                 }
             }
         </div>
-
-
         <hr />
 
         <h4> Anexos </h4>
-
-
         <hr />
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Criar" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -204,18 +186,37 @@
 
 <script type="text/javascript">
     $("#add-agentePPRA").click(function () {
-	    $.get('/PPRAs/AgentePPRA', function (template) {
-			$("#tab-1").append(template);
-		});
-	});
+        $.get('/PPRAs/AgentePPRA', function (template) {
+            $("#tab-1").append(template);
+        });
+    });
 </script>
 
 <script type="text/javascript">
     $("#add-cronograma").click(function () {
-	    $.get('/PPRAs/Cronograma', function (template) {
-			$("#tab-1").append(template);
-		});
-	});
+        $.get('/PPRAs/Cronograma', function (template) {
+            $("#tab-2").append(template);
+        });
+    });
+</script>
+
+
+<script type="text/javascript">
+    $("#EmpresaLocalId").change(function () {
+        $.ajax({
+            url: "/PPRAs/CipaEmpresa/" + $('#EmpresaLocalId').val(),
+            success: function (data) {
+                $("#CIPA").empty();
+                $("#CIPA").val(1);
+                $("#NumeroFuncionariosEfetivos").empty();
+                $("#NumeroFuncionariosEfetivos").val(data.NumeroFuncionariosEfetivos);
+                $("#NumeroFuncionariosSuplentes").empty();
+                $("#NumeroFuncionariosSuplentes").val(data.NumeroFuncionariosSuplentes);
+
+            
+            }
+        })
+    });
 </script>
 
 
