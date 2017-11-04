@@ -14,7 +14,6 @@ namespace BI.GST.Infra.Data.EntityConfig
                 .HasMaxLength(70);
 
             Property(e => e.Descricao)
-                .IsRequired()
                 .HasMaxLength(400);
 
             Property(e => e.CodigoCBO)

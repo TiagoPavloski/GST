@@ -55,11 +55,13 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!_escalaAppService.Adicionar(escalaViewModel))
+                var result = _escalaAppService.Adicionar(escalaViewModel);
+
+                if (result != "")
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há uma Escala com o mesmo nome!')</SCRIPT>");
+                    TempData["Mensagem"] = result;
                 }
+
                 else
                     return RedirectToAction("Index");
             }
@@ -91,9 +93,11 @@ namespace BI.GST.UI.MVC.Controllers
 
             if (ModelState.IsValid)
             {
-                if (!_escalaAppService.Atualizar(escalaViewModel))
+                var result = _escalaAppService.Atualizar(escalaViewModel);
+
+                if (result != "")
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há uma Escala com o mesmo nome!')</SCRIPT>");
+                    TempData["Mensagem"] = result;
                 }
                 else
                     return RedirectToAction("Index");
@@ -121,10 +125,12 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_escalaAppService.Excluir(id))
+            var result = _escalaAppService.Excluir(id);
+
+            if (result != "")
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
-                return null;
+                TempData["Mensagem"] = result;
+                return RedirectToAction("Index");
             }
             else
             {

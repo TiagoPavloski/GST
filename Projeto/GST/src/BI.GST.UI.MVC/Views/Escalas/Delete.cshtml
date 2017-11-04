@@ -16,10 +16,17 @@
             @Html.DisplayNameFor(model => model.Nome)
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.HoraAlmoco)
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.HoraAlmoco)
+        </dd>
     </dl>
 
     @using (Html.BeginForm()) {
@@ -31,3 +38,5 @@
         </div>
     }
 </div>
+
+@Html.Partial("_Mensagem")
