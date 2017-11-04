@@ -1,68 +1,64 @@
 ﻿@model BI.GST.Application.ViewModels.OSViewModel
 
 @{
-    ViewBag.Title = "Criar";
+	ViewBag.Title = "Criar";
 }
 
 <h2>Criar</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Ordem de Serviço</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Funcionario.FuncionarioId, "FuncionarioId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Funcionario.FuncionarioId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+	@Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataElaboracao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataElaboracao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.DataElaboracao, "", new { @class = "text-danger" })
-            </div>
-        </div>
+	<div class="form-horizontal">
+		<h4>Ordem de Serviço</h4>
+		<hr />
+		@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+		<div class="form-group">
+			@Html.LabelFor(model => model.Funcionario.FuncionarioId, "FuncionarioId", htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-6">
+				@Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
+				@Html.ValidationMessageFor(model => model.Funcionario.FuncionarioId, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataRevisao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataRevisao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.DataRevisao, "", new { @class = "text-danger" })
-            </div>
-        </div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.DataElaboracao, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-2">
+				@Html.EditorFor(model => model.DataElaboracao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+				@Html.ValidationMessageFor(model => model.DataElaboracao, "", new { @class = "text-danger" })
+			</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.EPIRecomendado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.EPIRecomendado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.EPIRecomendado, "", new { @class = "text-danger" })
-            </div>
-        </div>
+			@Html.LabelFor(model => model.DataRevisao, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-2">
+				@Html.EditorFor(model => model.DataRevisao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+				@Html.ValidationMessageFor(model => model.DataRevisao, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.EPIRecomendado, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-6">
+				@Html.TextAreaFor(model => model.EPIRecomendado, new { @class = "form-control", @rows = "5" })
+				@Html.ValidationMessageFor(model => model.EPIRecomendado, "", new { @class = "text-danger" })
+			</div>
+		</div>
+		<div class="form-group">
+			@Html.LabelFor(model => model.Recomentacoes, htmlAttributes: new { @class = "control-label col-md-2" })
+			<div class="col-md-6">
+				@Html.TextAreaFor(model => model.Recomentacoes, new { @class = "form-control", @rows = "5" })
+				@Html.ValidationMessageFor(model => model.Recomentacoes, "", new { @class = "text-danger" })
+			</div>
+		</div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Recomentacoes, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Recomentacoes, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Recomentacoes, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Criar" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+		<div class="form-group">
+			<div class="col-md-offset-2 col-md-10">
+				<input type="submit" value="Criar" class="btn btn-default" />
+			</div>
+		</div>
+	</div>
 }
 
 <div>
-    @Html.ActionLink("Voltar para lista", "Index")
+	@Html.ActionLink("Voltar para lista", "Index")
 </div>
 @Html.Partial("_Mensagem")
