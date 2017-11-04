@@ -22,9 +22,15 @@
             @Html.DisplayNameFor(model => model.HoraAlmoco)
         </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.HoraAlmoco)
+        </dd>
+
     </dl>
 </div>
 <p>
     @Html.ActionLink("Editar", "Edit", new { id = Model.EscalaId }) |
     @Html.ActionLink("Voltar para lista", "Index")
 </p>
+
+@Html.Partial("_Mensagem")
