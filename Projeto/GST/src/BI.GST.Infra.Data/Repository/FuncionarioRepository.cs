@@ -25,6 +25,7 @@ namespace BI.GST.Infra.Data.Repository
 
         public IEnumerable<Funcionario> ObterPorEmpresa(int empresaId)
         {
+            Context.Configuration.LazyLoadingEnabled = false;
             return DbSet.Where(x => (x.EmpresaId == empresaId) && (x.Delete == false))
                        .OrderBy(u => u.Nome);
         }

@@ -20,5 +20,12 @@ namespace BI.GST.Infra.Data.Repository
         {
             return DbSet.Count(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false));
         }
+
+        public IEnumerable<Colaborador> ObterTodosPorEmpresa(int EmpresaId)
+        {
+            Context.Configuration.LazyLoadingEnabled = false;
+            return DbSet.Where(x => (x.EmpresaId == EmpresaId) && (x.Delete == false)).ToList();
+        }
+
     }
 }

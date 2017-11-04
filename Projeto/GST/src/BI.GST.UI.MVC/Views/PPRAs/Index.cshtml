@@ -1,0 +1,61 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.PPRAViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Criar", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Versao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataGeracaoPPRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataValidadePPRA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpresaClienteId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpresaLocalId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Versao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataGeracaoPPRA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataValidadePPRA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpresaCliente.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpresaLocal.NomeFantasia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Gerar", "Gerar", new { id=item.PPRAId }) |
+            @Html.ActionLink("Detalhar", "Details", new { id=item.PPRAId })
+        </td>
+    </tr>
+}
+
+</table>
