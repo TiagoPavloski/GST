@@ -21,7 +21,7 @@ namespace BI.GST.Application.ViewModels
 
 		[Required(ErrorMessage = "Prencher campo Data Elaboração")]
 		[MaxLength(10, ErrorMessage = "Máximo de 10")]
-		[DisplayName("Data Elaboração")]
+		[DisplayName("Data Revisão")]
 		public string DataRevisao { get; set; }
 
 		[Required(ErrorMessage = "Prencher campo EPI Recomendado")]

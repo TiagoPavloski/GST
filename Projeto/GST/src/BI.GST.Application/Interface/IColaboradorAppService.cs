@@ -20,5 +20,7 @@ namespace BI.GST.Application.Interface
         IEnumerable<ColaboradorViewModel> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
+
+        IEnumerable<ColaboradorViewModel> ObterTodosPorEmpresa(int EmpresaId);
     }
 }
