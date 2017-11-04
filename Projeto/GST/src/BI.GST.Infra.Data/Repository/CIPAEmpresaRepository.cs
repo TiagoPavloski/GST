@@ -59,5 +59,14 @@ namespace BI.GST.Infra.Data.Repository
             base.Atualizar(obj);
         }
 
+        public CIPAEmpresa ObterUltimaCipaPorEmpresa(int empresaId)
+        {
+            var ano = DbSet.Where(c => (c.EmpresaId == empresaId) && (c.Delete == false))
+                     .Select(c => c.Ano)
+                     .DefaultIfEmpty(0)
+                     .Max();
+
+            return DbSet.Where(x => (x.EmpresaId == empresaId) && (x.Delete == false) && (x.Ano == ano)).FirstOrDefault();
+        }
     }
 }

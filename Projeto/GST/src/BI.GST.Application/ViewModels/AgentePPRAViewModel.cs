@@ -21,9 +21,13 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Meio de Propagação")]
         public int MeioPropagacaoId { get; set; }
 
-        public virtual AgenteAmbiental AgenteAmbiental { get; set; }
+        public int PPRAId { get; set; }
 
-        public virtual MeioPropagacao MeioPropagacao { get; set; }
+        public virtual AgenteAmbientalViewModel AgenteAmbiental { get; set; }
+
+        public virtual MeioPropagacaoViewModel MeioPropagacao { get; set; }
+
+        public virtual PPRAViewModel PPRA { get; set; }
 
     }
 }

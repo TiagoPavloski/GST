@@ -75,7 +75,8 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
             }
-            
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
+
             return View(agenteAcidenteViewModel);
         }
 

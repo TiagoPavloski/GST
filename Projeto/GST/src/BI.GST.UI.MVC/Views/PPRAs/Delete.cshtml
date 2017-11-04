@@ -1,0 +1,72 @@
+﻿@model BI.GST.Application.ViewModels.PPRAViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Tem certeza que deseja excluir este registro?</h3>
+<div>
+    <h4>PPRA</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           @Html.DisplayNameFor(model => model.Versao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Versao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataGeracaoPPRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataGeracaoPPRA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataValidadePPRA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataValidadePPRA)
+        </dd>
+
+        <dt>
+           @Html.DisplayNameFor(model => model.EmpresaClienteId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpresaCliente.NomeFantasia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmpresaLocalId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmpresaLocal.NomeFantasia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar para lista", "Index")
+        </div>
+    }
+</div>

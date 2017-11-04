@@ -1,11 +1,7 @@
 ﻿using BI.GST.Domain.Entities;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace BI.GST.Application.ViewModels
 {
@@ -21,6 +17,12 @@ namespace BI.GST.Application.ViewModels
         [MaxLength(500, ErrorMessage = "Máximo de 500")]
         [DisplayName("Atividade")]
         public string Atividade { get; set; }
+
+        [DisplayName("Data")]
+        public string Data { get; set; }
+
+        [Required(ErrorMessage = "Prencher campo Prioridade")]
+        public string Prioridade { get; set; }
 
         public virtual PPRA PPRA { get; set; }
     }

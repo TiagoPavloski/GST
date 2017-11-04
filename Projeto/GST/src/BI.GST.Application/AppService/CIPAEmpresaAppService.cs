@@ -192,5 +192,10 @@ namespace BI.GST.Application.AppService
 
             return "";
         }
+
+        public CIPAEmpresaViewModel ObterUltimaCipaPorEmpresa(int empresaId)
+        {
+            return Mapper.Map<CIPAEmpresa, CIPAEmpresaViewModel>(_cipaEmpresaService.ObterUltimaCipaPorEmpresa(empresaId));
+        }
     }
 }

@@ -60,6 +60,11 @@ namespace BI.GST.Domain.Services
             return _colaboradorRepository.ObterTodos();
         }
 
+        public IEnumerable<Colaborador> ObterTodosPorEmpresa(int EmpresaId)
+        {
+            return _colaboradorRepository.ObterTodosPorEmpresa(EmpresaId);
+        }
+
         public int ObterTotalRegistros(string pesquisa)
         {
             return _colaboradorRepository.ObterTotalRegistros(pesquisa);
