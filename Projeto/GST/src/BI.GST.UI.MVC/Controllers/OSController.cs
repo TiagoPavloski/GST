@@ -140,7 +140,8 @@ namespace BI.GST.UI.MVC.Controllers
 			var pdf = new ViewAsPdf
 			{
 				ViewName = "Gerar",
-				Model = oS
+				Model = oS,
+				FileName = "OS.pdf"
 			};
 
 			return pdf;

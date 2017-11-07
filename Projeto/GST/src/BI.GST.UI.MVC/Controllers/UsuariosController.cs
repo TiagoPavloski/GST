@@ -7,21 +7,23 @@ namespace BI.GST.UI.MVC.Controllers
 {
 	public class UsuariosController : Controller
 	{
-		private readonly IUsuarioAppService _UsuarioAppService;
+		private readonly IUsuarioAppService _usuarioAppService;
+		private readonly ICursoAppService _cursoAppService;
 
-		public UsuariosController(IUsuarioAppService UsuarioAppService)
+		public UsuariosController(IUsuarioAppService usuarioAppService, ICursoAppService cursoAppService)
 		{
-			_UsuarioAppService = UsuarioAppService;
+			_usuarioAppService = usuarioAppService;
+			_cursoAppService = cursoAppService;
 		}
 
 		// GET: Usuarios
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
-			var UsuarioViewModel = _UsuarioAppService.ObterGrid(page, pesquisa);
+			var UsuarioViewModel = _usuarioAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
 			ViewBag.Controller = "Cursos";
-			ViewBag.TotalRegistros = _UsuarioAppService.ObterTotalRegistros(pesquisa);
+			ViewBag.TotalRegistros = _usuarioAppService.ObterTotalRegistros(pesquisa);
 
 			return View(UsuarioViewModel);
 		}
@@ -33,7 +35,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			var Usuario = _UsuarioAppService.ObterPorId(id.Value);
+			var Usuario = _usuarioAppService.ObterPorId(id.Value);
 			if (Usuario == null)
 			{
 				return HttpNotFound();
@@ -56,7 +58,7 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (!_UsuarioAppService.Adicionar(UsuarioViewModel))
+				if (!_usuarioAppService.Adicionar(UsuarioViewModel))
 				{
 					TempData["Mensagem"] = "Atenção, há um Usuario com os mesmos dados";
 				}
@@ -72,11 +74,11 @@ namespace BI.GST.UI.MVC.Controllers
 			UsuarioViewModel usuario = null;
 			if (id == null)
 			{
-				usuario = _UsuarioAppService.ObterPorId((int)Session["usuarioId"]);
+				usuario = _usuarioAppService.ObterPorId((int)Session["usuarioId"]);
 			}
 			else
 			{
-				usuario = _UsuarioAppService.ObterPorId(id.Value);
+				usuario = _usuarioAppService.ObterPorId(id.Value);
 			}
 			if (usuario == null)
 			{
@@ -94,7 +96,7 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				if (!_UsuarioAppService.Atualizar(UsuarioViewModel))
+				if (!_usuarioAppService.Atualizar(UsuarioViewModel))
 				{
 					TempData["Mensagem"] = "Atenção, há um tipo de Usuario com os mesmos dados já cadastrada";
 				}
@@ -113,7 +115,7 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
-			var Usuario = _UsuarioAppService.ObterPorId(id.Value);
+			var Usuario = _usuarioAppService.ObterPorId(id.Value);
 			if (Usuario == null)
 			{
 				return HttpNotFound();
@@ -126,7 +128,7 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
-			if (!_UsuarioAppService.Excluir(id))
+			if (!_usuarioAppService.Excluir(id))
 			{
 				TempData["Mensagem"] = "Erro";
 				return null;
@@ -147,12 +149,15 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Login(UsuarioViewModel usuarioViewModel)
 		{
-			var usuario = _UsuarioAppService.Login(usuarioViewModel);
+			var usuario = _usuarioAppService.Login(usuarioViewModel);
 
 			if (usuario.UsuarioId != 0)
 			{
 				Session["usuario"] = usuario;
 				Session["usuarioId"] = usuario.UsuarioId;
+
+				Alertas();
+
 				return RedirectToAction("Index", "Home");
 			}
 			else
@@ -168,21 +173,37 @@ namespace BI.GST.UI.MVC.Controllers
 			if (id.HasValue)
 			{
 				Session["actionUsuario"] = id.Value;
-				return RedirectToAction("Edit", "Empresas", new { @id = id.Value});
+				return RedirectToAction("Edit", "Empresas", new { @id = id.Value });
 			}
 			else
 			{
 				TempData["Mensagem"] = "Empresa não encontrada";
-				var usuario = _UsuarioAppService.ObterPorId(id.Value);
+				var usuario = _usuarioAppService.ObterPorId(id.Value);
 				return View(usuario);
 			}
+		}
+
+		public ActionResult Alertas()
+		{
+			var cursos = _cursoAppService.AlertaCursos();
+			if (cursos != null)
+			{
+				string funcionarioCurso = "";
+				foreach (var item in cursos)
+				{
+					funcionarioCurso += item.Funcionario.Nome + ", ";
+				}
+
+				TempData["Mensagem"] = "Os funcionarios listados abaixo estão com seus cursos vencidos: " + funcionarioCurso + "/n";
+			}
+			return View();
 		}
 
 		protected override void Dispose(bool disposing)
 		{
 			if (disposing)
 			{
-				_UsuarioAppService.Dispose();
+				_usuarioAppService.Dispose();
 			}
 			base.Dispose(disposing);
 		}

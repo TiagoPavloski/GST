@@ -95,5 +95,24 @@ namespace BI.GST.Application.AppService
 		{
 			return _cursoService.ObterTotalRegistros(pesquisa);
 		}
+
+		public IEnumerable<CursoViewModel> AlertaCursos()
+		{
+			var cursos = Mapper.Map<IEnumerable<Curso>, IEnumerable<CursoViewModel>>(_cursoService.AlertaCursos());
+			List<CursoViewModel> cursosVencidos = new List<CursoViewModel>();
+			foreach (var item in cursos)
+			{
+				if (VerificaVencimento(item.Data, item.TipoCurso.MesesValidade))
+				{
+					cursosVencidos.Add(item);
+				}
+			}
+			return cursosVencidos;
+		}
+
+		public bool VerificaVencimento(string data, int mesesValidade)
+		{
+			return !(Convert.ToDateTime(data).AddMonths(mesesValidade) > DateTime.Today);
+		}
 	}
 }

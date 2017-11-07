@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.Interface
 {
-  public interface ICursoAppService : IDisposable
-  {
-    IEnumerable<CursoViewModel> ObterTodos();
+	public interface ICursoAppService : IDisposable
+	{
+		IEnumerable<CursoViewModel> ObterTodos();
 
-    CursoViewModel ObterPorId(int id);
+		CursoViewModel ObterPorId(int id);
 
-    bool Adicionar(CursoViewModel cursoViewModel);
+		bool Adicionar(CursoViewModel cursoViewModel);
 
-    bool Atualizar(CursoViewModel cursoViewModel);
+		bool Atualizar(CursoViewModel cursoViewModel);
 
-    bool Excluir(int id);
+		bool Excluir(int id);
 
-    IEnumerable<CursoViewModel> ObterGrid(int page, string pesquisa);
+		IEnumerable<CursoViewModel> ObterGrid(int page, string pesquisa);
 
-    int ObterTotalRegistros(string pesquisa);
-  }
+		int ObterTotalRegistros(string pesquisa);
+
+		IEnumerable<CursoViewModel> AlertaCursos();
+	}
 }
