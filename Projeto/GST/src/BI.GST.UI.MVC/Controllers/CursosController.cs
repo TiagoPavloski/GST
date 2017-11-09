@@ -50,7 +50,7 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Cursos/Create
         public ActionResult Create()
         {
-            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodosAtivos(), "FuncionarioId", "Nome");
             ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
             return View();
         }
@@ -66,14 +66,14 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_cursoAppService.Adicionar(cursoViewModel))
                 {
-					TempData["Mensagem"] = "Atenção, há um Curso com os mesmos dados";
+					TempData["Mensagem"] = "Atenção, há um Curso com os mesmos dados já cadastrado";
                 }
                 else
                     return RedirectToAction("Index");
             }
 
-            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", cursoViewModel.FuncionarioId);
-            ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome", cursoViewModel.TipoCursoId);
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodosAtivos(), "FuncionarioId", "Nome");
+            ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
             return View(cursoViewModel);
         }
 
@@ -89,7 +89,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", curso.FuncionarioId);
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodosAtivos(), "FuncionarioId", "Nome", curso.FuncionarioId);
             ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome", curso.TipoCursoId);
             return View(curso);
         }
@@ -106,7 +106,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_cursoAppService.Atualizar(cursoViewModel))
                 {
-					TempData["Mensagem"] = "Atenção, há um Curso com os mesmos dados já cadastrada";
+					TempData["Mensagem"] = "Atenção, há um Curso com os mesmos dados já cadastrado";
                 }
                 else
                     return RedirectToAction("Index");

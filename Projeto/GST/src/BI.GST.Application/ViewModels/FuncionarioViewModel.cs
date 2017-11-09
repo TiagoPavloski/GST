@@ -22,7 +22,7 @@ namespace BI.GST.Application.ViewModels
 
         [DisplayName("RG")]
         public string RG { get; set; }
-
+        
         [DisplayName("Data Nascimento")]
         public string DataNascimento { get; set; }
 
@@ -52,6 +52,7 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Responsável da Empresa?")]
         public bool Responsavel { get; set; }
 
+        [Required(ErrorMessage = "Selecione uma empresa")]
         [DisplayName("Empresa")]
         public int EmpresaId { get; set; }
        
@@ -64,12 +65,15 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Admissão")]
         public string Admissao { get; set; }
 
+        [Required(ErrorMessage = "Selecione uma função")]
         [DisplayName("Função na empresa")]
         public int CBOId { get; set; }
 
+        [Required(ErrorMessage = "Selecione um setor")]
         [DisplayName("Setor do funcionário")]
         public int SetorId { get; set; }
 
+        [Required(ErrorMessage = "Selecione uma escala")]
         [DisplayName("Tipo de escala do funcionário")]
         public int EscalaId { get; set; }
 
@@ -82,6 +86,7 @@ namespace BI.GST.Application.ViewModels
         public virtual CBOViewModel CBO { get; set; }
         public virtual SetorViewModel Setor { get; set; }
         public virtual EscalaViewModel Escala { get; set; }
+        public virtual List<CursoViewModel> Cursos { get; set; }
 
 
 

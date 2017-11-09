@@ -16,7 +16,7 @@ namespace BI.GST.Infra.Data.Repository
     public class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : class
     {
         protected ProjetoContext Context;
-        protected DbSet<TEntity> DbSet;
+        public DbSet<TEntity> DbSet;
         private readonly ContextManager _contextManager = ServiceLocator.Current.GetInstance<IContextManager>() as ContextManager;
 
         public virtual IEnumerable<TEntity> ObterTodos()

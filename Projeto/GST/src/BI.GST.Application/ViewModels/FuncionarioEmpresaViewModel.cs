@@ -51,5 +51,5 @@ namespace BI.GST.Application.ViewModels
 		public virtual EscalaViewModel Escala { get; set; }
 
 		public bool Delete { get; set; }
-	}
+    }
 }
