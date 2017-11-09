@@ -60,9 +60,19 @@ namespace BI.GST.Domain.Services
             return _funcionarioRepository.ObterPorEmpresa(empresaId);
         }
 
+        public IEnumerable<Funcionario> ObterFuncionariosEC(int empresaId, int cursoId)
+        {
+            return _funcionarioRepository.ObterFuncionariosEC(empresaId, cursoId);
+        }
+
         public IEnumerable<Funcionario> ObterTodos()
         {
             return _funcionarioRepository.ObterTodos();
+        }
+
+        public IEnumerable<Funcionario> ObterTodosAtivos()
+        {
+            return _funcionarioRepository.ObterTotalAtivos();
         }
 
         public int ObterTotalRegistros(string pesquisa)

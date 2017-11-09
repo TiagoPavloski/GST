@@ -9,9 +9,13 @@ namespace BI.GST.Domain.Interface.IRepository
 
         int ObterTotalRegistros(string pesquisa);
 
+        IEnumerable<Funcionario> ObterTotalAtivos();
+
         IEnumerable<Funcionario> ObterPorEmpresa(int idEmpresa);
 
         int ObterTotalPorEmpresa(int idEmpresa);
+
+        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso);
 
     }
 }
