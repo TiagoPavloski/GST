@@ -17,6 +17,7 @@ namespace BI.GST.UI.MVC.Controllers
     {
         private readonly IFinanceiroAppService _financeiroAppService;
         private readonly IFinanceiroParcelaAppService _financeiroParcelaAppService;
+        private int usuarioId;
 
         public FinanceiroController(IFinanceiroAppService financeiroAppService, IFinanceiroParcelaAppService financeiroParcelaAppService)
         {
@@ -34,11 +35,12 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Financeiro
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var financeiroViewModel = _financeiroAppService.ObterGrid(page, pesquisa);
+            usuarioId = (int)Session["usuarioId"];
+            var financeiroViewModel = _financeiroAppService.ObterGrid(page, pesquisa, usuarioId);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
             ViewBag.Controller = "Financeiro";
-            ViewBag.TotalRegistros = _financeiroAppService.ObterTotalRegistros(pesquisa);
+            ViewBag.TotalRegistros = _financeiroAppService.ObterTotalRegistros(pesquisa, usuarioId);
 
 
             #region DDL Status
@@ -120,9 +122,11 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FinanceiroViewModel financeiroViewModel, List<FinanceiroParcelaViewModel> financeiroParcelaViewModel)
         {
+            usuarioId = (int)Session["usuarioId"];
             if (financeiroViewModel.Valor <= 0)
                 TempData["Mensagem"] = "O valor do título tem que ser maior que zero"; 
             financeiroViewModel.Status = "0";
+            financeiroViewModel.UsuarioId = usuarioId;
             if (ModelState.IsValid)
             { 
                 var result = _financeiroAppService.Adicionar(financeiroViewModel, financeiroParcelaViewModel);
