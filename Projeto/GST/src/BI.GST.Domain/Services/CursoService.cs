@@ -10,59 +10,64 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Services
 {
-  public class CursoService : ICursoService
-  {
-    private readonly ICursoRepository _cursoRepository;
+	public class CursoService : ICursoService
+	{
+		private readonly ICursoRepository _cursoRepository;
 
-    public CursoService(ICursoRepository cursoRepository)
-    {
-      _cursoRepository = cursoRepository;
-    }
+		public CursoService(ICursoRepository cursoRepository)
+		{
+			_cursoRepository = cursoRepository;
+		}
 
-    public void Adicionar(Curso curso)
-    {
-      _cursoRepository.Adicionar(curso);
-    }
+		public void Adicionar(Curso curso)
+		{
+			_cursoRepository.Adicionar(curso);
+		}
 
-    public void Atualizar(Curso curso)
-    {
-      _cursoRepository.Atualizar(curso);
-    }
+		public void Atualizar(Curso curso)
+		{
+			_cursoRepository.Atualizar(curso);
+		}
 
-    public void Dispose()
-    {
-      _cursoRepository.Dispose();
-      GC.SuppressFinalize(this);
-    }
+		public void Dispose()
+		{
+			_cursoRepository.Dispose();
+			GC.SuppressFinalize(this);
+		}
 
-    public void Excluir(int id)
-    {
-      _cursoRepository.Excluir(id);
-    }
+		public void Excluir(int id)
+		{
+			_cursoRepository.Excluir(id);
+		}
 
-    public IEnumerable<Curso> Find(Expression<Func<Curso, bool>> predicate)
-    {
-      return _cursoRepository.Find(predicate);
-    }
+		public IEnumerable<Curso> Find(Expression<Func<Curso, bool>> predicate)
+		{
+			return _cursoRepository.Find(predicate);
+		}
 
-    public IEnumerable<Curso> ObterGrid(int page, string pesquisa)
-    {
-      return _cursoRepository.ObterGrid(page, pesquisa);
-    }
+		public IEnumerable<Curso> ObterGrid(int page, string pesquisa)
+		{
+			return _cursoRepository.ObterGrid(page, pesquisa);
+		}
 
-    public Curso ObterPorId(int id)
-    {
-      return _cursoRepository.ObterPorId(id);
-    }
+		public Curso ObterPorId(int id)
+		{
+			return _cursoRepository.ObterPorId(id);
+		}
 
-    public IEnumerable<Curso> ObterTodos()
-    {
-      return _cursoRepository.ObterTodos();
-    }
+		public IEnumerable<Curso> ObterTodos()
+		{
+			return _cursoRepository.ObterTodos();
+		}
 
-    public int ObterTotalRegistros(string pesquisa)
-    {
-      return _cursoRepository.ObterTotalRegistros(pesquisa);
-    }
-  }
+		public int ObterTotalRegistros(string pesquisa)
+		{
+			return _cursoRepository.ObterTotalRegistros(pesquisa);
+		}
+
+		public IEnumerable<Curso> AlertaCursos()
+		{
+			return _cursoRepository.AlertaCursos();
+		}
+	}
 }
