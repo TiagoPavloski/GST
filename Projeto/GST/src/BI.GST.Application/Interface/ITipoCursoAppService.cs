@@ -17,7 +17,7 @@ namespace BI.GST.Application.Interface
 
     bool Atualizar(TipoCursoViewModel tipoCursoViewModel);
 
-    bool Excluir(int id);
+    string Excluir(int id);
 
     IEnumerable<TipoCursoViewModel> ObterGrid(int page, string pesquisa);
 

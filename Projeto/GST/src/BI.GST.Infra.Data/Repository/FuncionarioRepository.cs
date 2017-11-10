@@ -44,33 +44,29 @@ namespace BI.GST.Infra.Data.Repository
 
         public IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idTipoCurso)
         {
-            List<Funcionario> funcionariosporra = new List<Funcionario>();
+            //foreach (var func in FuncionariosEmpresa)
+            //{
+            //    if (func.Cursos != null)
+            //    {
+            //        foreach (var curso in func.Cursos)
+            //        {
+            //            if (curso.TipoCursoId == idTipoCurso && curso.Delete == false)
+            //            {
+            //                funcionariosporra.Add(func);
+            //                break;
+            //            }
 
-            var FuncionariosEmpresa = ObterPorEmpresa(idEmpresa);
-
-            foreach (var func in FuncionariosEmpresa)
-            {
-                if (func.Cursos != null)
-                {
-                    foreach (var curso in func.Cursos)
-                    {
-                        if (curso.TipoCursoId == idTipoCurso && curso.Delete == false)
-                        {
-                            funcionariosporra.Add(func);
-                            break;
-                        }
-
-                    }
-                }
+            //        }
+            //    }
               
-            }
+            //}
 
-            return funcionariosporra;
 
-            //return DbSet.Where(x => (x.EmpresaId == idEmpresa) 
-            //                    && (x.Delete == false)
-            //                    && (x.Cursos.Where(c => c.TipoCurso.TipoCursoId == idTipoCurso 
-            //                                       && c.Delete == false).Any())).OrderBy(u => u.Nome);
+
+            return DbSet.Where(x => (x.EmpresaId == idEmpresa)
+                                && (x.Delete == false)
+                                && (x.Cursos.Where(c => c.TipoCurso.TipoCursoId == idTipoCurso
+                                                   && c.Delete == false).Any())).OrderBy(u => u.Nome);
 
         }
 

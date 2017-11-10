@@ -64,7 +64,7 @@ namespace BI.GST.Application.AppService
       GC.SuppressFinalize(this);
     }
 
-    public bool Excluir(int id)
+    public string Excluir(int id)
     {
       bool existente = _tipoExameService.Find(e => e.TipoExameId == id && (e.Delete == false)).Any();
       bool exameUtiliza = _exameService.Find(c => c.TipoExameId == id && c.Delete == false).Any();
@@ -76,9 +76,9 @@ namespace BI.GST.Application.AppService
         tipoExame.Delete = true;
         _tipoExameService.Atualizar(tipoExame);
         Commit();
-        return true;
+        return "";
       }
-      return false;
+      return "Exclusão negada! Existem exames com esse tipo";
     }
 
     public IEnumerable<TipoExameViewModel> ObterGrid(int page, string pesquisa)
