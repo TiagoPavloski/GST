@@ -8,22 +8,24 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Interface.IService
 {
-  public interface IExameService : IDisposable
-  {
-    IEnumerable<Exame> ObterTodos();
+	public interface IExameService : IDisposable
+	{
+		IEnumerable<Exame> ObterTodos();
 
-    Exame ObterPorId(int id);
+		Exame ObterPorId(int id);
 
-    IEnumerable<Exame> Find(Expression<Func<Exame, bool>> predicate);
+		IEnumerable<Exame> Find(Expression<Func<Exame, bool>> predicate);
 
-    void Adicionar(Exame exame);
+		void Adicionar(Exame exame);
 
-    void Atualizar(Exame exame);
+		void Atualizar(Exame exame);
 
-    void Excluir(int id);
+		void Excluir(int id);
 
-    IEnumerable<Exame> ObterGrid(int page, string pesquisa);
+		IEnumerable<Exame> ObterGrid(int page, string pesquisa);
 
-    int ObterTotalRegistros(string pesquisa);
-  }
+		int ObterTotalRegistros(string pesquisa);
+
+		IEnumerable<Exame> AlertaExames();
+	}
 }

@@ -96,7 +96,7 @@ namespace BI.GST.Application.AppService
 			return _cursoService.ObterTotalRegistros(pesquisa);
 		}
 
-		public IEnumerable<CursoViewModel> AlertaCursos()
+		public List<CursoViewModel> AlertaCursos()
 		{
 			var cursos = Mapper.Map<IEnumerable<Curso>, IEnumerable<CursoViewModel>>(_cursoService.AlertaCursos());
 			List<CursoViewModel> cursosVencidos = new List<CursoViewModel>();
