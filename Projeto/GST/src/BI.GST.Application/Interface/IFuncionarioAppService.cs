@@ -8,6 +8,8 @@ namespace BI.GST.Application.Interface
     {
         IEnumerable<FuncionarioViewModel> ObterTodos();
 
+        IEnumerable<FuncionarioViewModel> ObterTodosAtivos();
+
         FuncionarioViewModel ObterPorId(int id);
 
         bool Adicionar(FuncionarioViewModel funcionarioViewModel);
@@ -21,6 +23,8 @@ namespace BI.GST.Application.Interface
         int ObterTotalRegistros(string pesquisa);
 
         IEnumerable<FuncionarioViewModel> ObterPorEmpresa(int empresaId);
+
+        IEnumerable<FuncionarioViewModel> ObterFuncionariosEC(int empresaId, int cursoId);
 
         int ObterTotalPorEmpresa(int empresaId);
     }

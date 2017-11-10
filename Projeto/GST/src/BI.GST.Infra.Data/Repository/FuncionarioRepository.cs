@@ -2,6 +2,7 @@
 using BI.GST.Domain.Interface.IRepository;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace BI.GST.Infra.Data.Repository
 
         public IEnumerable<Funcionario> ObterPorEmpresa(int empresaId)
         {
-            Context.Configuration.LazyLoadingEnabled = false;
+            //Context.Configuration.LazyLoadingEnabled = false;
             return DbSet.Where(x => (x.EmpresaId == empresaId) && (x.Delete == false))
                        .OrderBy(u => u.Nome);
         }
@@ -34,5 +35,44 @@ namespace BI.GST.Infra.Data.Repository
         {
             return DbSet.Count(x => (x.EmpresaId == idEmpresa) && (x.Delete == false));
         }
+
+        public IEnumerable<Funcionario> ObterTotalAtivos()
+        {
+            return DbSet.Where(f => (f.Delete == false) && (f.Status == 1))
+                .OrderBy(x => x.Nome);
+        }
+
+        public IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idTipoCurso)
+        {
+            List<Funcionario> funcionariosporra = new List<Funcionario>();
+
+            var FuncionariosEmpresa = ObterPorEmpresa(idEmpresa);
+
+            foreach (var func in FuncionariosEmpresa)
+            {
+                if (func.Cursos != null)
+                {
+                    foreach (var curso in func.Cursos)
+                    {
+                        if (curso.TipoCursoId == idTipoCurso && curso.Delete == false)
+                        {
+                            funcionariosporra.Add(func);
+                            break;
+                        }
+
+                    }
+                }
+              
+            }
+
+            return funcionariosporra;
+
+            //return DbSet.Where(x => (x.EmpresaId == idEmpresa) 
+            //                    && (x.Delete == false)
+            //                    && (x.Cursos.Where(c => c.TipoCurso.TipoCursoId == idTipoCurso 
+            //                                       && c.Delete == false).Any())).OrderBy(u => u.Nome);
+
+        }
+
     }
 }

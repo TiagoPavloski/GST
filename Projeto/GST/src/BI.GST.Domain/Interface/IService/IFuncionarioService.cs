@@ -12,6 +12,8 @@ namespace BI.GST.Domain.Interface.IService
     {
         IEnumerable<Funcionario> ObterTodos();
 
+        IEnumerable<Funcionario> ObterTodosAtivos();
+
         Funcionario ObterPorId(int id);
 
         IEnumerable<Funcionario> Find(Expression<Func<Funcionario, bool>> predicate);
@@ -25,6 +27,8 @@ namespace BI.GST.Domain.Interface.IService
         IEnumerable<Funcionario> ObterGrid(string pesquisa, int page);
 
         IEnumerable<Funcionario> ObterPorEmpresa(int empresaId);
+
+        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso);
 
         int ObterTotalRegistros(string pesquisa);
 

@@ -32,19 +32,14 @@ namespace BI.GST.Infra.Data.EntityConfig
                 .HasMaxLength(16);
 
             Property(e => e.DataNascimento)
-               .HasMaxLength(10)
-               .IsRequired();
+               .HasMaxLength(10);
 
-            Property(e => e.HoraEntrada)
-                .IsRequired();
+            Property(e => e.HoraEntrada);
 
-            Property(e => e.HoraSaida)
-                .IsRequired();
+            Property(e => e.HoraSaida);
 
-            Property(e => e.Admissao)
-                .IsRequired();
+            Property(e => e.Admissao);
             
-
             Property(c => c.Status)
                 .IsRequired();
 

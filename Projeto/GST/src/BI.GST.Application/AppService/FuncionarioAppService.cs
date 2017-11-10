@@ -93,9 +93,19 @@ namespace BI.GST.Application.AppService
             return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>> (_funcionarioService.ObterPorEmpresa(empresaId));
         }
 
+        public IEnumerable<FuncionarioViewModel> ObterFuncionariosEC(int empresaId, int cursoId)
+        {
+            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterFuncionariosEC(empresaId, cursoId));
+        }
+
         public IEnumerable<FuncionarioViewModel> ObterTodos()
         {
             return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterTodos());
+        }
+
+        public IEnumerable<FuncionarioViewModel> ObterTodosAtivos()
+        {
+            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterTodosAtivos());
         }
 
         public int ObterTotalRegistros(string pesquisa)

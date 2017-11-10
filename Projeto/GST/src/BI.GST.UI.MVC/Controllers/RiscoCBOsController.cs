@@ -30,10 +30,11 @@ namespace BI.GST.UI.MVC.Controllers
         }
 
         // GET: RiscoCBOs
-        public ActionResult Index(int page = 0)
+        public ActionResult Index(string pesquisa, int page = 0)
         {
-            var riscoCBOViewModel = _riscoCBOAppService.ObterGrid(page);
+            var riscoCBOViewModel = _riscoCBOAppService.ObterGrid(pesquisa, page);
             ViewBag.PaginaAtual = page;
+            ViewBag.Busca = "&pesquisa=" + pesquisa;
             ViewBag.Controller = "RiscoCBOs";
             ViewBag.TotalRegistros = _riscoCBOAppService.ObterTotalRegistros();
 
@@ -75,7 +76,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_riscoCBOAppService.Adicionar(riscoCBOViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um risco da função com os mesmos dados')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, um risco de CBO com o mesmo nome";
                 }
                 else
                     return RedirectToAction("Index");
@@ -115,11 +116,15 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(RiscoCBOViewModel riscoCBOViewModel)
         {
+            ViewBag.AgenteRiscoCBOId = new SelectList(_agenteRiscoCBOAppService.ObterTodos(), "AgenteRiscoCBOId", "Nome", riscoCBOViewModel.AgenteRiscoCBOId);
+            ViewBag.FonteRiscoCBOId = new SelectList(_fonteRiscoCBOAppService.ObterTodos(), "FonteRiscoCBOId", "Nome", riscoCBOViewModel.FonteRiscoCBOId);
+            ViewBag.AgenteCausadorCBOId = new SelectList(_agenteCausadorCBOAppService.ObterTodos(), "AgenteCausadorCBOId", "Nome", riscoCBOViewModel.AgenteCausadorCBOId);
+
             if (ModelState.IsValid)
             {
                 if (!_riscoCBOAppService.Atualizar(riscoCBOViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um risco de Função com os mesmos dados já cadastrada')</SCRIPT>");
+                    TempData["Mensagem"] = "Atenção, um risco de CBO com o mesmo nome";
                 }
                 else
                     return RedirectToAction("Index");
@@ -149,7 +154,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_riscoCBOAppService.Excluir(id))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+                TempData["Mensagem"] = "Erro, atualize a página";
                 return null;
             }
             else
