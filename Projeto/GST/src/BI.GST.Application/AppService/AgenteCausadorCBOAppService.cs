@@ -51,7 +51,7 @@ namespace BI.GST.Application.AppService
     {
       var agenteCausadorCBO = Mapper.Map<AgenteCausadorCBOViewModel, AgenteCausadorCBO>(agenteCausadorCBOViewModel);
 
-      var duplicado = _agenteCausadorCBOService.Find(e => e.Nome == agenteCausadorCBO.Nome && e.Delete == false && e.AgenteCausadorCBOId != agenteCausadorCBO.AgenteCausadorCBOId).Any();
+      var duplicado = _agenteCausadorCBOService.Find(e => e.AgenteCausadorCBOId != agenteCausadorCBO.AgenteCausadorCBOId && e.Nome == agenteCausadorCBO.Nome && e.Delete == false).Any();
 
       if (duplicado)
       {
