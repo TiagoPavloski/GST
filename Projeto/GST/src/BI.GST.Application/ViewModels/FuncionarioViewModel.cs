@@ -22,7 +22,8 @@ namespace BI.GST.Application.ViewModels
 
         [DisplayName("RG")]
         public string RG { get; set; }
-        
+
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [DisplayName("Data Nascimento")]
         public string DataNascimento { get; set; }
 

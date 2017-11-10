@@ -19,7 +19,7 @@ namespace BI.GST.Application.Interface
 
     bool Excluir(int id);
 
-    IEnumerable<RiscoCBOViewModel> ObterGrid(int page);
+    IEnumerable<RiscoCBOViewModel> ObterGrid(string pesquisa, int page);
 
     int ObterTotalRegistros();
   }
