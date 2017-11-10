@@ -66,7 +66,7 @@ namespace BI.GST.Application.AppService
       GC.SuppressFinalize(this);
     }
 
-    public bool Excluir(int id)
+    public string Excluir(int id)
     {
       bool existente = _tipoCursoService.Find(e => (e.TipoCursoId) == id && (e.Delete == false)).Any();
       bool cursoUtiliza = _cursoService.Find(c => c.TipoCursoId == id && c.Delete == false).Any();
@@ -78,9 +78,9 @@ namespace BI.GST.Application.AppService
         tipoCurso.Delete = true;
         _tipoCursoService.Atualizar(tipoCurso);
         Commit();
-        return true;
+        return "";
       }
-      return false;
+      return "Exclusão negada! Existem cursos deste tipo.";
     }
 
     public IEnumerable<TipoCursoViewModel> ObterGrid(int page, string pesquisa)

@@ -28,6 +28,11 @@ namespace BI.GST.UI.MVC.Controllers
             _escalaAppService = escalaAppService;
         }
 
+        public JsonResult Setores(int idEmpresa)
+        {
+            return Json(_empresaAppService.ObterPorId(idEmpresa).Setores, JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Funcionarios
         public ActionResult Index(string pesquisa, int page = 0)
         {
@@ -83,9 +88,10 @@ namespace BI.GST.UI.MVC.Controllers
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
             TempData["ddlStatus_Funcionarios"] = ddlStatus_Funcionario;
 
+            List<SelectListItem> muamba = new List<SelectListItem>();
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome");
-            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+            ViewBag.SetorId = muamba;
             ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome");
 
             var funcionarioViewModel = new FuncionarioViewModel();
@@ -111,7 +117,7 @@ namespace BI.GST.UI.MVC.Controllers
 
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome");
-            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+            ViewBag.SetorId = new SelectList(null);
             ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome");
 
             List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();

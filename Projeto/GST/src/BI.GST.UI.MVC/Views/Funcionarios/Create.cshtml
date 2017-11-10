@@ -143,6 +143,24 @@
 @Html.Partial("_Mensagem")
 
 <script>
+    $("#EmpresaId").change(function () {
+        var empresa = $("#EmpresaId").val();
+        $.ajax({
+            url: "/Funcionarios/Setores/",
+            contentType: "application/json; charset=utf-8",
+            data: { "idEmpresa": empresa},
+            success: function (data) {
+                $("#SetorId").empty();
+                $.each(data, function (index, element) {
+                    $("#SetorId").append('<option value="' + element.SetorId + '">' + element.Nome + '</option>');
+                });
+            }
+        });
+    });
+</script>
+
+
+<script>
     jQuery(function ($) {
         $("#CPF").mask("999.999.999-99");
         $("#PIS").mask("999.99999.99-9");
