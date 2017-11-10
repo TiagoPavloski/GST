@@ -23,6 +23,6 @@ namespace BI.GST.Application.Interface
 
 		int ObterTotalRegistros(string pesquisa);
 
-		IEnumerable<CursoViewModel> AlertaCursos();
+		List<CursoViewModel> AlertaCursos();
 	}
 }

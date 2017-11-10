@@ -8,19 +8,27 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Infra.Data.Repository
 {
-  public class VacinaRepository : BaseRepository<Vacina>, IVacinaRepository
-  {
-    public int ObterTotalRegistros(string pesquisa)
-    {
-      return DbSet.Count(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Funcionario.Nome != null) && (x.Delete == false));
-    }
+	public class VacinaRepository : BaseRepository<Vacina>, IVacinaRepository
+	{
+		public int ObterTotalRegistros(string pesquisa)
+		{
+			return DbSet.Count(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Funcionario.Nome != null) && (x.Delete == false));
+		}
 
-    public IEnumerable<Vacina> ObterGrid(int page, string pesquisa)
-    {
-      return DbSet.Where(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Funcionario.Nome != null) && (x.Delete == false))
-                 .OrderBy(u => u.Funcionario.Nome)
-                 .Skip((page) * 10)
-                 .Take(10);
-    }
-  }
+		public IEnumerable<Vacina> ObterGrid(int page, string pesquisa)
+		{
+			return DbSet.Where(x => (pesquisa != null ? x.Funcionario.Nome.Contains(pesquisa) : x.Funcionario.Nome != null) && (x.Delete == false))
+					   .OrderBy(u => u.Funcionario.Nome)
+					   .Skip((page) * 10)
+					   .Take(10);
+		}
+
+		public IEnumerable<Vacina> AlertaVacinas()
+		{
+			DateTime testDate = DateTime.Now.AddMonths(-1);
+			return DbSet.Where(x => (x.Renovado == false) && (x.Delete == false))
+						   .OrderBy(u => u.Funcionario.Nome);
+
+		}
+	}
 }

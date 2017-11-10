@@ -47,6 +47,26 @@ namespace BI.GST.UI.MVC.Controllers
 			//}
 			#endregion
 
+			#region Alertas Vacinas Vencidas
+			string mensagem = null;
+			var vacinas = _vacinaAppService.AlertaVacinas();
+			if (vacinas != null)
+			{
+				string funcionariosVacina = "";
+				foreach (var item in vacinas)
+				{
+					funcionariosVacina += item.Funcionario.Nome + ", ";
+				}
+				mensagem += "* Os seguintes funcionarios estão com suas vacinas vencidas: " + funcionariosVacina + ".";
+			}
+			if (vacinas != null && vacinas.Count > 0)
+			{
+				mensagem = mensagem.Substring(0, mensagem.Length - 2);
+				mensagem += ".";
+				TempData["Mensagem"] = mensagem;
+			}
+			#endregion
+
 			return View(vacinasViewModel);
 		}
 

@@ -10,59 +10,65 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Services
 {
-  public class VacinaService : IVacinaService
-  {
-    private readonly IVacinaRepository _vacinaRepository;
+	public class VacinaService : IVacinaService
+	{
+		private readonly IVacinaRepository _vacinaRepository;
 
-    public VacinaService(IVacinaRepository vacinaRepository)
-    {
-      _vacinaRepository = vacinaRepository;
-    }
+		public VacinaService(IVacinaRepository vacinaRepository)
+		{
+			_vacinaRepository = vacinaRepository;
+		}
 
-    public void Adicionar(Vacina vacina)
-    {
-      _vacinaRepository.Adicionar(vacina);
-    }
+		public void Adicionar(Vacina vacina)
+		{
+			_vacinaRepository.Adicionar(vacina);
+		}
 
-    public void Atualizar(Vacina vacina)
-    {
-      _vacinaRepository.Atualizar(vacina);
-    }
+		public void Atualizar(Vacina vacina)
+		{
+			_vacinaRepository.Atualizar(vacina);
+		}
 
-    public void Dispose()
-    {
-      _vacinaRepository.Dispose();
-      GC.SuppressFinalize(this);
-    }
+		public void Dispose()
+		{
+			_vacinaRepository.Dispose();
+			GC.SuppressFinalize(this);
+		}
 
-    public void Excluir(int id)
-    {
-      _vacinaRepository.Excluir(id);
-    }
+		public void Excluir(int id)
+		{
+			_vacinaRepository.Excluir(id);
+		}
 
-    public IEnumerable<Vacina> Find(Expression<Func<Vacina, bool>> predicate)
-    {
-      return _vacinaRepository.Find(predicate);
-    }
+		public IEnumerable<Vacina> Find(Expression<Func<Vacina, bool>> predicate)
+		{
+			return _vacinaRepository.Find(predicate);
+		}
 
-    public IEnumerable<Vacina> ObterGrid(int page, string pesquisa)
-    {
-      return _vacinaRepository.ObterGrid(page, pesquisa);
-    }
+		public IEnumerable<Vacina> ObterGrid(int page, string pesquisa)
+		{
+			return _vacinaRepository.ObterGrid(page, pesquisa);
+		}
 
-    public Vacina ObterPorId(int id)
-    {
-      return _vacinaRepository.ObterPorId(id);
-    }
+		public Vacina ObterPorId(int id)
+		{
+			return _vacinaRepository.ObterPorId(id);
+		}
 
-    public IEnumerable<Vacina> ObterTodos()
-    {
-      return _vacinaRepository.ObterTodos();
-    }
+		public IEnumerable<Vacina> ObterTodos()
+		{
+			return _vacinaRepository.ObterTodos();
+		}
 
-    public int ObterTotalRegistros(string pesquisa)
-    {
-      return _vacinaRepository.ObterTotalRegistros(pesquisa);
-    }
-  }
+		public int ObterTotalRegistros(string pesquisa)
+		{
+			return _vacinaRepository.ObterTotalRegistros(pesquisa);
+		}
+
+
+		public IEnumerable<Vacina> AlertaVacinas()
+		{
+			return _vacinaRepository.AlertaVacinas();
+		}
+	}
 }
