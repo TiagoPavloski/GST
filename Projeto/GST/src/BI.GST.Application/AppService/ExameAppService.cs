@@ -15,9 +15,9 @@ namespace BI.GST.Application.AppService
 	{
 		private readonly IExameService _exameService;
 
-		public ExameAppService(IExameService vacinaService)
+		public ExameAppService(IExameService exameService)
 		{
-			_exameService = vacinaService;
+			_exameService = exameService;
 		}
 		public bool Adicionar(ExameViewModel exameViewModel)
 		{
@@ -95,6 +95,25 @@ namespace BI.GST.Application.AppService
 		public int ObterTotalRegistros(string pesquisa)
 		{
 			return _exameService.ObterTotalRegistros(pesquisa);
+		}
+
+		public List<ExameViewModel> AlertaExames()
+		{
+			var exame = Mapper.Map<IEnumerable<Exame>, IEnumerable<ExameViewModel>>(_exameService.AlertaExames());
+			List<ExameViewModel> examesVencidos = new List<ExameViewModel>();
+			foreach (var item in exame)
+			{
+				if (VerificaVencimento(item.Data, item.TipoExame.MesesValidade))
+				{
+					examesVencidos.Add(item);
+				}
+			}
+			return examesVencidos;
+		}
+
+		public bool VerificaVencimento(string data, int mesesValidade)
+		{
+			return !(Convert.ToDateTime(data).AddMonths(mesesValidade) > DateTime.Today);
 		}
 	}
 }

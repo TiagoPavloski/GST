@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.Interface
 {
-  public interface IExameAppService : IDisposable
-  {
-    IEnumerable<ExameViewModel> ObterTodos();
+	public interface IExameAppService : IDisposable
+	{
+		IEnumerable<ExameViewModel> ObterTodos();
 
-    ExameViewModel ObterPorId(int id);
+		ExameViewModel ObterPorId(int id);
 
-    bool Adicionar(ExameViewModel tipoExameViewModel);
+		bool Adicionar(ExameViewModel tipoExameViewModel);
 
-    bool Atualizar(ExameViewModel tipoExameViewModel);
+		bool Atualizar(ExameViewModel tipoExameViewModel);
 
-    bool Excluir(int id);
+		bool Excluir(int id);
 
-    IEnumerable<ExameViewModel> ObterGrid(int page, string pesquisa);
+		IEnumerable<ExameViewModel> ObterGrid(int page, string pesquisa);
 
-    int ObterTotalRegistros(string pesquisa);
-  }
+		int ObterTotalRegistros(string pesquisa);
+
+		List<ExameViewModel> AlertaExames();
+    }
 }
