@@ -31,8 +31,6 @@ namespace BI.GST.Domain.Entities
 
 		public int EnderecoId { get; set; }
 
-		public string Logo { get; set; }
-
 		public bool Delete { get; set; }
 
 

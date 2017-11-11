@@ -132,7 +132,6 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaeSecundarios.Select(x => x.CnaeId));
 			ViewBag.CnaeId = new SelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaePrincipal.CnaeId);
 			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome", empresa.Setores.Select(x => x.SetorId));
-			/*ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", empresa.Responsaveis.Select(x => x.FuncionarioId));*/
 
 			return View(empresa);
 		}
@@ -159,7 +158,6 @@ namespace BI.GST.UI.MVC.Controllers
 				{
 					avatar.Content = reader.ReadBytes(upload.ContentLength);
 				}
-				//empresaViewModel.Files.Clear();
 				empresaViewModel.Files = new List<FileViewModel> { avatar };
 			}
 
@@ -175,6 +173,11 @@ namespace BI.GST.UI.MVC.Controllers
 			}
 			return RedirectToAction("Index");
 			//}
+			//ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
+			//ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
+			//ViewBag.CnaeId = ViewBag.CnaeIdList;
+			//ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+
 			//return View(empresaViewModel);
 		}
 

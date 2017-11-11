@@ -115,17 +115,5 @@ namespace BI.GST.Infra.Data.Repository
 			//Atualiza Endereco
 			new EnderecoRepository().Atualizar(obj.Endereco);
 		}
-
-		public void RemoverListas(int idEmpresa)
-		{
-			var empresa = base.ObterPorId(idEmpresa);
-			empresa.CnaeSecundarios.Clear();
-			empresa.Setores.Clear();
-
-			var entry = Context.Entry(empresa);
-			DbSet.Attach(empresa);
-			entry.State = EntityState.Modified;
-			base.SaveChanges();
-		}
 	}
 }
