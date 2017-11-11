@@ -9,8 +9,8 @@
 
 <h2>Editar</h2>
 
-@using (Html.BeginForm())
-{
+@using (Html.BeginForm("Edit", "Empresas", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+			{
 	@Html.AntiForgeryToken()
 
 	<div class="form-horizontal">
@@ -69,14 +69,6 @@
 				@Html.ListBox("cnaeSecundarioId", (MultiSelectList)ViewBag.CnaeIdList, htmlAttributes: new { @class = "form-control" })
 			</div>
 		</div>
-
-
-		@*<div class="form-group">
-				@Html.Label("Reponsaveis", htmlAttributes: new { @class = "control-label col-md-2" })
-				<div class="col-md-10">
-					@Html.ListBox("funcionarioId", (MultiSelectList)ViewBag.FuncionarioIdList, htmlAttributes: new { @class = "form-control" })
-				</div>
-			</div>*@
 
 		<div class="form-group">
 			@Html.Label("Setores", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -170,11 +162,20 @@
 			</div>
 		</div>
 
+		@if (Model.Files.Any(model => model.FileType == BI.GST.Application.ViewModels.FileTypeViewModel.Avatar))
+		{
+			<div class="form-group">
+				<span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+				<div class="col-md-5">
+					<img src="~/File?id=@Model.Files.First(model => model.FileType == BI.GST.Application.ViewModels.FileTypeViewModel.Avatar).FileId" alt="avatar" width="200" />
+				</div>
+			</div>
+		}
+
 		<div class="form-group">
-			@Html.LabelFor(model => model.Logo, htmlAttributes: new { @class = "control-label col-md-2" })
+			@Html.Label("Avatar", new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.Logo, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Logo, "", new { @class = "text-danger" })
+				<input type="file" id="Avatar" name="upload" />
 			</div>
 		</div>
 

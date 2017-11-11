@@ -125,6 +125,7 @@
     <Compile Include="Repository\AgenteAmbientalRepository.cs" />
     <Compile Include="Repository\EPIRepository.cs" />
     <Compile Include="Repository\CertificadoRepository.cs" />
+    <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="Repository\InstituicaoCursoRepository.cs" />
     <Compile Include="Repository\FuncionarioEmpresaRepository.cs" />
     <Compile Include="Repository\FinanceiroParcelaRepository.cs" />

@@ -44,5 +44,6 @@ namespace BI.GST.Domain.Entities
 		public virtual ICollection<Setor> Setores { get; set; }
 		public virtual ICollection<Funcionario> Responsaveis { get; set; }
 		public virtual ICollection<Usuario> Usuarios { get; set; }
+		public virtual ICollection<File> Files { get; set; }
 	}
 }

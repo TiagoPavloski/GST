@@ -61,6 +61,8 @@
     <Compile Include="Entities\CronogramaDeAcoes.cs" />
     <Compile Include="Entities\Curso.cs" />
     <Compile Include="Entities\Empresa.cs" />
+    <Compile Include="Entities\File.cs" />
+    <Compile Include="Entities\FileType.cs" />
     <Compile Include="Entities\GrupoCipa.cs" />
     <Compile Include="Entities\FinanceiroParcela.cs" />
     <Compile Include="Entities\SESMTEmpresa.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Interface\IRepository\ICipaQuadroRepository.cs" />
     <Compile Include="Interface\IRepository\IColaboradorRepository.cs" />
     <Compile Include="Interface\IRepository\ICBORepository.cs" />
+    <Compile Include="Interface\IRepository\IFileRepository.cs" />
     <Compile Include="Interface\IRepository\IFuncionarioEmpresaRepository.cs" />
     <Compile Include="Interface\IRepository\IInstituicaoCursoRepository.cs" />
     <Compile Include="Interface\IRepository\IFinanceiroParcelaRepository.cs" />
@@ -147,6 +150,7 @@
     <Compile Include="Interface\IService\IAgenteAmbientalService.cs" />
     <Compile Include="Interface\IService\IEPIService.cs" />
     <Compile Include="Interface\IService\ICertificadoService.cs" />
+    <Compile Include="Interface\IService\IFileService.cs" />
     <Compile Include="Interface\IService\IInstituicaoCursoService.cs" />
     <Compile Include="Interface\IService\IColaboradorService.cs" />
     <Compile Include="Interface\IService\ICBOService.cs" />
@@ -199,6 +203,7 @@
     <Compile Include="Services\AgenteAmbientalService.cs" />
     <Compile Include="Services\EPIService.cs" />
     <Compile Include="Services\CertificadoService.cs" />
+    <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\InstituicaoCursoService.cs" />
     <Compile Include="Services\FuncionarioEmpresaService.cs" />
     <Compile Include="Services\FinanceiroParcelaService.cs" />
