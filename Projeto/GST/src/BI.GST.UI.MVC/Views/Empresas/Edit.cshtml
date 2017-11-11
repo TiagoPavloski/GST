@@ -165,7 +165,7 @@
 		@if (Model.Files.Any(model => model.FileType == BI.GST.Application.ViewModels.FileTypeViewModel.Avatar))
 		{
 			<div class="form-group">
-				<span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+				<span class="control-label col-md-2"><strong></strong></span>
 				<div class="col-md-5">
 					<img src="~/File?id=@Model.Files.First(model => model.FileType == BI.GST.Application.ViewModels.FileTypeViewModel.Avatar).FileId" alt="avatar" width="200" />
 				</div>
@@ -173,7 +173,7 @@
 		}
 
 		<div class="form-group">
-			@Html.Label("Avatar", new { @class = "control-label col-md-2" })
+			@Html.Label("Logo", new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
 				<input type="file" id="Avatar" name="upload" />
 			</div>

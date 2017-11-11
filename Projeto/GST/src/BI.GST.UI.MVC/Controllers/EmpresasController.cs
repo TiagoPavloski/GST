@@ -142,21 +142,38 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
+		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, System.Web.HttpPostedFileBase upload)
 		{
 			//if (ModelState.IsValid) //verificar por que erro converter telefoneViewModel to String
 			//{
-				if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
+
+			if (upload != null && upload.ContentLength > 0)
+			{
+				var avatar = new FileViewModel
 				{
-					TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
-					return View(empresaViewModel);
-				}
-				if (Session["actionUsuario"] != null)
+					FileName = System.IO.Path.GetFileName(upload.FileName),
+					FileType = FileTypeViewModel.Avatar,
+					ContentType = upload.ContentType
+				};
+				using (var reader = new System.IO.BinaryReader(upload.InputStream))
 				{
-					Session["actionUsuario"] = null;
-					return RedirectToAction("Edit", "Usuarios");
+					avatar.Content = reader.ReadBytes(upload.ContentLength);
 				}
-				return RedirectToAction("Index");
+				//empresaViewModel.Files.Clear();
+				empresaViewModel.Files = new List<FileViewModel> { avatar };
+			}
+
+			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
+			{
+				TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
+				return View(empresaViewModel);
+			}
+			if (Session["actionUsuario"] != null)
+			{
+				Session["actionUsuario"] = null;
+				return RedirectToAction("Edit", "Usuarios");
+			}
+			return RedirectToAction("Index");
 			//}
 			//return View(empresaViewModel);
 		}

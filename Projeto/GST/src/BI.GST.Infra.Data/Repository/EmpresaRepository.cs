@@ -54,6 +54,7 @@ namespace BI.GST.Infra.Data.Repository
 		{
 			SetorRepository st = new SetorRepository();
 			CnaeRepository cr = new CnaeRepository();
+			FileRepository file = new FileRepository();
 
 			//Adiciona Objeto CnaePrincipal
 			obj.CnaePrincipal = new CnaeRepository().ObterPorId(obj.CnaePrincipal.CnaeId);
@@ -76,7 +77,16 @@ namespace BI.GST.Infra.Data.Repository
 			}
 			obj.Setores = setores;
 
+			obj.Files.FirstOrDefault().EmpresaId = obj.EmpresaId;
+
 			base.Atualizar(obj);
+
+			//Remove Imagem antiga e insere imagem nova
+			var imagem = file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault();
+			if (imagem != null)
+				file.Excluir(file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault().FileId);
+			if (obj.Files.FirstOrDefault() != null)
+				file.Adicionar(obj.Files.FirstOrDefault());
 
 			//Atualiza ou Insere Telefone
 			foreach (var item in obj.Telefones)
