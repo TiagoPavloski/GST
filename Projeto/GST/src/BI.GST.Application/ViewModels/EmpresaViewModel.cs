@@ -30,7 +30,6 @@ namespace BI.GST.Application.ViewModels
 		[MaxLength(150, ErrorMessage = "Máximo de 20 caracteres")]
 		public string CNPJ { get; set; }
 
-
 		[Required]
 		[MaxLength(150, ErrorMessage = "Máximo de 30 caracteres")]
 		public string Email { get; set; }
