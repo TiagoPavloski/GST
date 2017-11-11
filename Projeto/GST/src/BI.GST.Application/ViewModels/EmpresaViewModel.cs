@@ -41,8 +41,6 @@ namespace BI.GST.Application.ViewModels
 
 		public int UFId { get; set; }
 
-		public string Logo { get; set; }
-
 		public bool Delete { get; set; }
 
 		[ForeignKey("CnaeId")]
