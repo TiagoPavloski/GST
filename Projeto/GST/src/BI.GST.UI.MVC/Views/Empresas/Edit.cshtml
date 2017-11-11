@@ -162,12 +162,12 @@
 			</div>
 		</div>
 
-		@if (Model.Files.Any(model => model.FileType == BI.GST.Application.ViewModels.FileTypeViewModel.Avatar))
+		@if (Model.Files.Any(model => model.FileType == FileTypeViewModel.Avatar))
 		{
 			<div class="form-group">
 				<span class="control-label col-md-2"><strong></strong></span>
 				<div class="col-md-5">
-					<img src="~/File?id=@Model.Files.First(model => model.FileType == BI.GST.Application.ViewModels.FileTypeViewModel.Avatar).FileId" alt="avatar" width="200" />
+					<img src="~/File?id=@Model.Files.First(model => model.FileType == FileTypeViewModel.Avatar).FileId" alt="avatar" width="200" />
 				</div>
 			</div>
 		}

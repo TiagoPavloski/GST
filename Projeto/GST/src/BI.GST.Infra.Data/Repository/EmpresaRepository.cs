@@ -1,5 +1,6 @@
 ﻿using BI.GST.Domain.Entities;
 using BI.GST.Domain.Interface.IRepository;
+using BI.GST.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -77,17 +78,31 @@ namespace BI.GST.Infra.Data.Repository
 			}
 			obj.Setores = setores;
 
-			obj.Files.FirstOrDefault().EmpresaId = obj.EmpresaId;
+			if (obj.Files != null && obj.Files.Count > 0)
+				obj.Files.FirstOrDefault().EmpresaId = obj.EmpresaId;
+
+			//Atualiza tabela Empresasetor e CnaeSecundarioEmpresa
+			using (var context = new ProjetoContext())
+			{
+				context.Database.ExecuteSqlCommand("delete empresasetor where Empresa_EmpresaId = " + obj.EmpresaId + "");
+				context.Database.ExecuteSqlCommand("delete cnaeSecundarioEmpresa where EmpresaId = " + obj.EmpresaId + "");
+				foreach (var item in setores)
+					context.Database.ExecuteSqlCommand("insert into empresasetor values (" + obj.EmpresaId + ", " + item.SetorId + ")");
+				foreach (var item in cnaes)
+					context.Database.ExecuteSqlCommand("insert into CnaeSecundarioEmpresa values (" + obj.EmpresaId + ", " + item.CnaeId + ")");
+			}
 
 			base.Atualizar(obj);
 
 			//Remove Imagem antiga e insere imagem nova
-			var imagem = file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault();
-			if (imagem != null)
-				file.Excluir(file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault().FileId);
-			if (obj.Files.FirstOrDefault() != null)
-				file.Adicionar(obj.Files.FirstOrDefault());
-
+			if (obj.Files != null && obj.Files.Count > 0)
+			{
+				var imagem = file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault();
+				if (imagem != null)
+					file.Excluir(file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault().FileId);
+				if (obj.Files.FirstOrDefault() != null)
+					file.Adicionar(obj.Files.FirstOrDefault());
+			}
 			//Atualiza ou Insere Telefone
 			foreach (var item in obj.Telefones)
 			{
