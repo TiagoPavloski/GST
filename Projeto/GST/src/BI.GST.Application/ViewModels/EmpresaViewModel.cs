@@ -54,5 +54,6 @@ namespace BI.GST.Application.ViewModels
 		public virtual List<CnaeViewModel> CnaeSecundarios { get; set; }
 		public virtual List<SetorViewModel> Setores { get; set; }
 		public virtual ICollection<FuncionarioViewModel> Responsaveis { get; set; }
+		public virtual ICollection<FileViewModel> Files { get; set; }
 	}
 }
