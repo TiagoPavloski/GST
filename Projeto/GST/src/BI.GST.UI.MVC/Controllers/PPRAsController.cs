@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BI.GST.Domain.Entities;
-using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
+using Rotativa;
 using Rotativa.MVC;
+using Microsoft.Reporting.WebForms;
+
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -28,6 +25,7 @@ namespace BI.GST.UI.MVC.Controllers
         private readonly IFuncionarioAppService _funcionarioAppService;
         private readonly IMeioPropagacaoAppService _meioPropagacaoAppService;
         private readonly IAgenteAmbientalAppService _agenteAmbientalAppService;
+        private CIPAEmpresaViewModel cipaEmpresa;
 
         public PPRAsController(IPPRAAppService ppraAppService, IAgentePPRAAppService agentePPRAAppService, ICronogramaDeAcoesAppService cronogramaDeAcoesAppService, IAnexoAppService anexoAppService,
             IColaboradorAppService colaboradorAppService, IEquipamentoRuidoAppService equipamentoRuidoAppService, IEmpresaAppService empresaAppService, IUsuarioAppService usuarioAppService, 
@@ -65,7 +63,16 @@ namespace BI.GST.UI.MVC.Controllers
 
         public JsonResult CipaEmpresa(int id)
         {
-            CIPAEmpresaViewModel cipaEmpresa = _cipaEmpresaAppService.ObterUltimaCipaPorEmpresa(id);
+            cipaEmpresa = null;
+            cipaEmpresa = _cipaEmpresaAppService.ObterUltimaCipaPorEmpresa(id);
+
+            if (cipaEmpresa == null)
+            {
+                cipaEmpresa = new CIPAEmpresaViewModel();
+                cipaEmpresa.NumeroFuncionariosEfetivos = 0;
+                cipaEmpresa.NumeroFuncionariosSuplentes = 0;
+            }
+
             return Json(cipaEmpresa, JsonRequestBehavior.AllowGet);
         }
 
@@ -122,7 +129,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                _PPRAAppService.Adicionar(ppraViewModel);
+                _PPRAAppService.Adicionar(ppraViewModel, agentePPRAViewModel, cronogramaDeAcoesViewModel);
                 return RedirectToAction("Index");
             }
             var usuario = _usuarioAppService.ObterTodos().FirstOrDefault();
@@ -137,7 +144,7 @@ namespace BI.GST.UI.MVC.Controllers
 
             //Agente PPRA
             ViewBag.AgenteAmbientalId = new SelectList(_agenteAmbientalAppService.ObterTodos(), "AgenteAmbientalId", "Nome");
-            ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Nome");
+            ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Meio");
 
             ppraViewModel.CronogramasDeAcao = cronogramaDeAcoesViewModel;
             ppraViewModel.AgentesPPRA = agentePPRAViewModel;
@@ -239,15 +246,38 @@ namespace BI.GST.UI.MVC.Controllers
 
         public ActionResult Gerar(int? id)
         {
-            var ppra = _PPRAAppService.ObterPorId(id.Value);
+            var DataSet = new DataSets.DataSetPPRA();
+            var PPRATableAdapter = new DataSets.DataSetPPRATableAdapters.PPRATableAdapter();
+            ReportViewer reportViewer = new ReportViewer();
+            PPRATableAdapter.Fill(DataSet.PPRA, 12);
 
-            var pdf = new ViewAsPdf
-            {
-                ViewName = "PPRA",
-                Model = ppra
-            };
+            reportViewer.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Local;
+            reportViewer.SizeToReportContent = true;
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reports/RelatorioPPRA.rdlc";
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSetPPRA", (System.Data.DataTable)DataSet.PPRA));
 
-            return pdf;
+            reportViewer.LocalReport.Refresh();
+          
+            ViewBag.ReportViewer = reportViewer;
+
+            return View(ViewBag);
+
+
+
+            //var ppra = _PPRAAppService.ObterPorId(id.Value);
+            //var pdf = new ViewAsPdf();
+            //{
+            //    ViewName = "PPRA",
+            //    Model = ppra,
+            //};
+            //return pdf;
+
+
+            //reportViewer.LocalReport.ReportPath = [Caminho do seu arquivo .rdlc] (Report);
+            //reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", seudataset1));
+            //reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", seudataset2));
+
         }
+
     }
 }

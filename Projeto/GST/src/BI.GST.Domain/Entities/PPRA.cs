@@ -28,7 +28,7 @@ namespace BI.GST.Domain.Entities
 
         public int EmpresaLocalId { get; set; }
 
-        public int UsuarioId { get; set; }
+     //   public int UsuarioId { get; set; }
 
         public string DataEmissao { get; set; }
 
@@ -40,11 +40,11 @@ namespace BI.GST.Domain.Entities
 
         public bool CIPA { get; set; }
 
-        public int CIPAEmpresaId { get; set; }
+   //     public int CIPAEmpresaId { get; set; }
 
-        public int SESMTEmpresaId { get; set; }
+      //  public int SESMTEmpresaId { get; set; }
 
-        public bool SESMT { get; set; }
+      //  public bool SESMT { get; set; }
 
         public int EquipamentoRuidoId { get; set; }
 
@@ -63,8 +63,8 @@ namespace BI.GST.Domain.Entities
         public virtual EquipamentoRuido EquipamentoRuido { get; set; }
         public virtual Empresa EmpresaCliente { get; set; }
         public virtual Empresa EmpresaLocal { get; set; }
-        public virtual Usuario Usuario { get; set; }
-        public virtual CIPAEmpresa CipaEmpresa { get; set; }
-        public virtual SESMTEmpresa SESMTEmpresa { get; set; }
+      //  public virtual Usuario Usuario { get; set; }
+     //   public virtual CIPAEmpresa CipaEmpresa { get; set; }
+      //  public virtual SESMTEmpresa SESMTEmpresa { get; set; }
     }
 }
