@@ -66,7 +66,7 @@ namespace BI.GST.Application.AppService
             GC.SuppressFinalize(this);
         }
 
-        public bool Excluir(int id)
+        public string Excluir(int id)
         {
             bool existente = _tipoSetorService.Find(e => (e.TipoSetorId) == id && (e.Delete == false)).Any();
             bool SetorUtiliza = _SetorService.Find(c => c.TipoSetorId == id && c.Delete == false).Any();
@@ -78,9 +78,9 @@ namespace BI.GST.Application.AppService
                 tipoSetor.Delete = true;
                 _tipoSetorService.Atualizar(tipoSetor);
                 Commit();
-                return true;
+                return "";
             }
-            return false;
+            return "Exclusão negada! Existem setores que usam este tipo";
         }
 
         public IEnumerable<TipoSetorViewModel> ObterGrid(int page, string pesquisa)

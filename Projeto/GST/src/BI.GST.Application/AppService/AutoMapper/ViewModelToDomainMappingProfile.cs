@@ -70,8 +70,9 @@ namespace BI.GST.Application.AutoMapper
             Mapper.CreateMap<TipoSetorViewModel, TipoSetor>();
             Mapper.CreateMap<CipaQuadroViewModel, CipaQuadro>();
             Mapper.CreateMap<SesmtQuadroViewModel, SesmtQuadro>();
-
-        }
+			Mapper.CreateMap<FileViewModel, File>();
+			Mapper.CreateMap<FileTypeViewModel, FileType>();
+		}
 
     }
 }

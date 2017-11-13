@@ -10,11 +10,17 @@ namespace BI.GST.Application.ViewModels
        
         public int CertificadoId { get; set; }
 
+        [DisplayName("Empresa")]
+        public int EmpresaId { get; set; }
+
         [DisplayName("Funcionario")]
         public int FuncionarioId { get; set; }
 
         [DisplayName("Curso")]
         public int CursoId { get; set; }
+
+        [DisplayName("Curso")]
+        public int TipoCursoId { get; set; }
 
         [DisplayName("Data de emissão")]
         [Required(ErrorMessage = "Prencher a data de Emissão")]

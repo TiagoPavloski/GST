@@ -101,5 +101,24 @@ namespace BI.GST.Application.AppService
 		{
 			return _vacinaService.ObterTotalRegistros(pesquisa);
 		}
+
+		public List<VacinaViewModel> AlertaVacinas()
+		{
+			var vacina = Mapper.Map<IEnumerable<Vacina>, IEnumerable<VacinaViewModel>>(_vacinaService.AlertaVacinas());
+			List<VacinaViewModel> vacinasVencidos = new List<VacinaViewModel>();
+			foreach (var item in vacina)
+			{
+				if (VerificaVencimento(item.Data, item.TipoVacina.MesesValidade))
+				{
+					vacinasVencidos.Add(item);
+				}
+			}
+			return vacinasVencidos;
+		}
+
+		public bool VerificaVencimento(string data, int mesesValidade)
+		{
+			return !(Convert.ToDateTime(data).AddMonths(mesesValidade) > DateTime.Today);
+		}
 	}
 }

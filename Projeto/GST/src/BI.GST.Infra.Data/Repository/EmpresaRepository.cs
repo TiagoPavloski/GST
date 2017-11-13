@@ -1,5 +1,6 @@
 ﻿using BI.GST.Domain.Entities;
 using BI.GST.Domain.Interface.IRepository;
+using BI.GST.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -54,6 +55,7 @@ namespace BI.GST.Infra.Data.Repository
 		{
 			SetorRepository st = new SetorRepository();
 			CnaeRepository cr = new CnaeRepository();
+			FileRepository file = new FileRepository();
 
 			//Adiciona Objeto CnaePrincipal
 			obj.CnaePrincipal = new CnaeRepository().ObterPorId(obj.CnaePrincipal.CnaeId);
@@ -76,8 +78,31 @@ namespace BI.GST.Infra.Data.Repository
 			}
 			obj.Setores = setores;
 
+			if (obj.Files != null && obj.Files.Count > 0)
+				obj.Files.FirstOrDefault().EmpresaId = obj.EmpresaId;
+
+			//Atualiza tabela Empresasetor e CnaeSecundarioEmpresa
+			using (var context = new ProjetoContext())
+			{
+				context.Database.ExecuteSqlCommand("delete empresasetor where Empresa_EmpresaId = " + obj.EmpresaId + "");
+				context.Database.ExecuteSqlCommand("delete cnaeSecundarioEmpresa where EmpresaId = " + obj.EmpresaId + "");
+				foreach (var item in setores)
+					context.Database.ExecuteSqlCommand("insert into empresasetor values (" + obj.EmpresaId + ", " + item.SetorId + ")");
+				foreach (var item in cnaes)
+					context.Database.ExecuteSqlCommand("insert into CnaeSecundarioEmpresa values (" + obj.EmpresaId + ", " + item.CnaeId + ")");
+			}
+
 			base.Atualizar(obj);
 
+			//Remove Imagem antiga e insere imagem nova
+			if (obj.Files != null && obj.Files.Count > 0)
+			{
+				var imagem = file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault();
+				if (imagem != null)
+					file.Excluir(file.Find(x => x.EmpresaId == obj.EmpresaId).FirstOrDefault().FileId);
+				if (obj.Files.FirstOrDefault() != null)
+					file.Adicionar(obj.Files.FirstOrDefault());
+			}
 			//Atualiza ou Insere Telefone
 			foreach (var item in obj.Telefones)
 			{
@@ -89,18 +114,6 @@ namespace BI.GST.Infra.Data.Repository
 
 			//Atualiza Endereco
 			new EnderecoRepository().Atualizar(obj.Endereco);
-		}
-
-		public void RemoverListas(int idEmpresa)
-		{
-			var empresa = base.ObterPorId(idEmpresa);
-			empresa.CnaeSecundarios.Clear();
-			empresa.Setores.Clear();
-
-			var entry = Context.Entry(empresa);
-			DbSet.Attach(empresa);
-			entry.State = EntityState.Modified;
-			base.SaveChanges();
 		}
 	}
 }

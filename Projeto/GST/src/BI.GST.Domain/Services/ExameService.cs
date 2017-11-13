@@ -10,59 +10,65 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Services
 {
-  public class ExameService : IExameService
-  {
-    private readonly IExameRepository _exameRepository;
+	public class ExameService : IExameService
+	{
+		private readonly IExameRepository _exameRepository;
 
-    public ExameService(IExameRepository exameRepository)
-    {
-      _exameRepository = exameRepository;
-    }
+		public ExameService(IExameRepository exameRepository)
+		{
+			_exameRepository = exameRepository;
+		}
 
-    public void Adicionar(Exame exame)
-    {
-      _exameRepository.Adicionar(exame);
-    }
+		public void Adicionar(Exame exame)
+		{
+			_exameRepository.Adicionar(exame);
+		}
 
-    public void Atualizar(Exame exame)
-    {
-      _exameRepository.Atualizar(exame);
-    }
+		public void Atualizar(Exame exame)
+		{
+			_exameRepository.Atualizar(exame);
+		}
 
-    public void Dispose()
-    {
-      _exameRepository.Dispose();
-      GC.SuppressFinalize(this);
-    }
+		public void Dispose()
+		{
+			_exameRepository.Dispose();
+			GC.SuppressFinalize(this);
+		}
 
-    public void Excluir(int id)
-    {
-      _exameRepository.Excluir(id);
-    }
+		public void Excluir(int id)
+		{
+			_exameRepository.Excluir(id);
+		}
 
-    public IEnumerable<Exame> Find(Expression<Func<Exame, bool>> predicate)
-    {
-      return _exameRepository.Find(predicate);
-    }
+		public IEnumerable<Exame> Find(Expression<Func<Exame, bool>> predicate)
+		{
+			return _exameRepository.Find(predicate);
+		}
 
-    public IEnumerable<Exame> ObterGrid(int page, string pesquisa)
-    {
-      return _exameRepository.ObterGrid(page, pesquisa);
-    }
+		public IEnumerable<Exame> ObterGrid(int page, string pesquisa)
+		{
+			return _exameRepository.ObterGrid(page, pesquisa);
+		}
 
-    public Exame ObterPorId(int id)
-    {
-      return _exameRepository.ObterPorId(id);
-    }
+		public Exame ObterPorId(int id)
+		{
+			return _exameRepository.ObterPorId(id);
+		}
 
-    public IEnumerable<Exame> ObterTodos()
-    {
-      return _exameRepository.ObterTodos();
-    }
+		public IEnumerable<Exame> ObterTodos()
+		{
+			return _exameRepository.ObterTodos();
+		}
 
-    public int ObterTotalRegistros(string pesquisa)
-    {
-      return _exameRepository.ObterTotalRegistros(pesquisa);
-    }
-  }
+		public int ObterTotalRegistros(string pesquisa)
+		{
+			return _exameRepository.ObterTotalRegistros(pesquisa);
+		}
+
+
+		public IEnumerable<Exame> AlertaExames()
+		{
+			return _exameRepository.AlertaExames();
+		}
+	}
 }

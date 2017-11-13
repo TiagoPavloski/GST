@@ -16,14 +16,23 @@ namespace BI.GST.UI.MVC.Controllers
         private readonly IFuncionarioAppService _funcionarioAppService;
         private readonly ICursoAppService _cursoAppService;
         private readonly IInstituicaoCursoAppService _instituicaoCursoAppService;
+        private readonly IEmpresaAppService _empresaAppService;
+        private readonly ITipoCursoAppService _tipoCursoAppService;
 
         public CertificadosController(ICertificadoAppService certificadoAppService, IFuncionarioAppService funcionarioAppService, ICursoAppService cursoAppService,
-            IInstituicaoCursoAppService instituicaoCursoAppService)
+            IInstituicaoCursoAppService instituicaoCursoAppService, IEmpresaAppService empresaAppService, ITipoCursoAppService tipoCursoAppService)
         {
             _certificadoAppService = certificadoAppService;
             _funcionarioAppService = funcionarioAppService;
             _cursoAppService = cursoAppService;
             _instituicaoCursoAppService = instituicaoCursoAppService;
+            _empresaAppService = empresaAppService;
+            _tipoCursoAppService = tipoCursoAppService;
+        }
+
+        public JsonResult Funcionario(int idEmpresa, int idCurso)
+        {
+            return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso), JsonRequestBehavior.AllowGet);
         }
 
         // GET: Certificados
@@ -72,16 +81,20 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Certificados/Create
         public ActionResult Create()
         {
+            var certificadoViewModel = new CertificadoViewModel();
+
             List<SelectListItem> ddlStatusCertificado = new List<SelectListItem>();
             ddlStatusCertificado.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
             ddlStatusCertificado.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
             TempData["ddlStatusCertificado"] = ddlStatusCertificado;
 
+            ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             ViewBag.CursoId = new SelectList(_cursoAppService.ObterTodos(), "CursoId", "Data");
-            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
+            ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterPorEmpresa(certificadoViewModel.EmpresaId), "FuncionarioId", "Nome");
             ViewBag.InstituicaoCursoId = new SelectList(_instituicaoCursoAppService.ObterTodos(), "InstituicaoCursoId", "Nome");
 
-            return View();
+            return View(certificadoViewModel);
         }
 
         // POST: Certificados/Create
@@ -108,6 +121,7 @@ namespace BI.GST.UI.MVC.Controllers
             TempData["ddlStatusCertificado"] = ddlStatusCertificado;
 
             ViewBag.CursoId = new SelectList(_cursoAppService.ObterTodos(), "CursoId", "Data");
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId, NomeFantasia");
             ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
             ViewBag.InstituicaoCursoId = new SelectList(_instituicaoCursoAppService.ObterTodos(), "InstituicaoCursoId", "Nome");
 

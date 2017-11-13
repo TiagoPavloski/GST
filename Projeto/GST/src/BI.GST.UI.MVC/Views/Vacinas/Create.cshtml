@@ -17,7 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FuncionarioId, "Funcionario", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.DropDownList("FuncionarioId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("FuncionarioId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.FuncionarioId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TipoVacinaId, "TipoVacinaId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.DropDownList("TipoVacinaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TipoVacinaId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoVacinaId, "", new { @class = "text-danger" })
             </div>
         </div>

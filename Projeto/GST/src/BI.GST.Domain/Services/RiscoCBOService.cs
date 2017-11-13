@@ -45,9 +45,9 @@ namespace BI.GST.Domain.Services
       return _riscoCBORepository.Find(predicate);
     }
 
-    public IEnumerable<RiscoCBO> ObterGrid(int page)
+    public IEnumerable<RiscoCBO> ObterGrid(string pesquisa, int page)
     {
-      return _riscoCBORepository.ObterGrid(page);
+      return _riscoCBORepository.ObterGrid(pesquisa, page);
     }
 
     public RiscoCBO ObterPorId(int id)

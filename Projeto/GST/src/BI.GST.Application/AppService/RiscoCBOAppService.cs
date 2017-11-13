@@ -9,75 +9,94 @@ using System.Linq;
 
 namespace BI.GST.Application.AppService
 {
-  public class RiscoCBOAppService : BaseAppService, IRiscoCBOAppService
-  {
-    private readonly IRiscoCBOService _riscoCBOService;
-
-    public RiscoCBOAppService(IRiscoCBOService riscoCBOService)
+    public class RiscoCBOAppService : BaseAppService, IRiscoCBOAppService
     {
-      _riscoCBOService = riscoCBOService;
+        private readonly IRiscoCBOService _riscoCBOService;
+
+        public RiscoCBOAppService(IRiscoCBOService riscoCBOService)
+        {
+            _riscoCBOService = riscoCBOService;
+        }
+        public bool Adicionar(RiscoCBOViewModel cursoViewModel)
+        {
+            var riscoCBO = Mapper.Map<RiscoCBOViewModel, RiscoCBO>(cursoViewModel);
+            var duplicado = _riscoCBOService.Find(e => e.Nome == riscoCBO.Nome &&
+            e.RiscoCBOId != riscoCBO.RiscoCBOId && e.Delete == false).Any();
+
+            if (duplicado)
+            {
+                return false;
+            }
+            else
+            {
+                BeginTransaction();
+                _riscoCBOService.Adicionar(riscoCBO);
+                Commit();
+                return true;
+            }
+        }
+
+
+        public bool Atualizar(RiscoCBOViewModel cursoViewModel)
+        {
+            var riscoCBO = Mapper.Map<RiscoCBOViewModel, RiscoCBO>(cursoViewModel);
+
+            var duplicado = _riscoCBOService.Find(e => e.Nome == riscoCBO.Nome &&
+            e.RiscoCBOId != riscoCBO.RiscoCBOId && e.Delete == false).Any();
+
+            if (duplicado)
+            {
+                return false;
+            }
+            else
+            {
+                BeginTransaction();
+                _riscoCBOService.Atualizar(riscoCBO);
+                Commit();
+                return true;
+            }
+        }
+
+
+        public void Dispose()
+        {
+            _riscoCBOService.Dispose();
+            GC.SuppressFinalize(this);
+        }
+
+        public bool Excluir(int id)
+        {
+            bool existente = _riscoCBOService.Find(e => e.RiscoCBOId == id).Any();
+            if (existente)
+            {
+                BeginTransaction();
+                var riscoCBO = _riscoCBOService.ObterPorId(id);
+                riscoCBO.Delete = true;
+                _riscoCBOService.Atualizar(riscoCBO);
+                Commit();
+                return true;
+            }
+            return false;
+        }
+
+        public IEnumerable<RiscoCBOViewModel> ObterGrid(string pesquisa, int page)
+        {
+            return Mapper.Map<IEnumerable<RiscoCBO>, IEnumerable<RiscoCBOViewModel>>(_riscoCBOService.ObterGrid(pesquisa, page));
+        }
+
+        public RiscoCBOViewModel ObterPorId(int id)
+        {
+            return Mapper.Map<RiscoCBO, RiscoCBOViewModel>(_riscoCBOService.ObterPorId(id));
+        }
+
+        public IEnumerable<RiscoCBOViewModel> ObterTodos()
+        {
+            return Mapper.Map<IEnumerable<RiscoCBO>, IEnumerable<RiscoCBOViewModel>>(_riscoCBOService.ObterTodos());
+        }
+
+        public int ObterTotalRegistros()
+        {
+            return _riscoCBOService.ObterTotalRegistros();
+        }
     }
-    public bool Adicionar(RiscoCBOViewModel cursoViewModel)
-    {
-      var riscoCBO = Mapper.Map<RiscoCBOViewModel, RiscoCBO>(cursoViewModel);
-
-      BeginTransaction();
-      _riscoCBOService.Adicionar(riscoCBO);
-      Commit();
-      return true;
-    }
-
-
-    public bool Atualizar(RiscoCBOViewModel cursoViewModel)
-    {
-      var riscoCBO = Mapper.Map<RiscoCBOViewModel, RiscoCBO>(cursoViewModel);
-
-      BeginTransaction();
-      _riscoCBOService.Atualizar(riscoCBO);
-      Commit();
-      return true;
-    }
-
-
-    public void Dispose()
-    {
-      _riscoCBOService.Dispose();
-      GC.SuppressFinalize(this);
-    }
-
-    public bool Excluir(int id)
-    {
-      bool existente = _riscoCBOService.Find(e => e.RiscoCBOId == id).Any();
-      if (existente)
-      {
-        BeginTransaction();
-        var riscoCBO = _riscoCBOService.ObterPorId(id);
-        riscoCBO.Delete = true;
-        _riscoCBOService.Atualizar(riscoCBO);
-        Commit();
-        return true;
-      }
-      return false;
-    }
-
-    public IEnumerable<RiscoCBOViewModel> ObterGrid(int page)
-    {
-      return Mapper.Map<IEnumerable<RiscoCBO>, IEnumerable<RiscoCBOViewModel>>(_riscoCBOService.ObterGrid(page));
-    }
-
-    public RiscoCBOViewModel ObterPorId(int id)
-    {
-      return Mapper.Map<RiscoCBO, RiscoCBOViewModel>(_riscoCBOService.ObterPorId(id));
-    }
-
-    public IEnumerable<RiscoCBOViewModel> ObterTodos()
-    {
-      return Mapper.Map<IEnumerable<RiscoCBO>, IEnumerable<RiscoCBOViewModel>>(_riscoCBOService.ObterTodos());
-    }
-
-    public int ObterTotalRegistros()
-    {
-      return _riscoCBOService.ObterTotalRegistros();
-    }
-  }
 }
