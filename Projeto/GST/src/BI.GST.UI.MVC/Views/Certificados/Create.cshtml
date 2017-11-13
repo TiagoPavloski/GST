@@ -25,7 +25,7 @@
         <div class="form-group">
             @Html.Label("Curso", "Curso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.DropDownList("TipoCursoId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TipoCursoId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoCursoId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -80,7 +80,9 @@
 @Html.Partial("_Mensagem")
 
 <script>
-    $("#TipoCursoId").change(function () {
+    $("#TipoCursoId, #EmpresaId").change(function () {
+        $("#Funcionarios").empty();
+        $("#Funcionarios").append('<option value="null"> Buscando... </option>');
         var empresa = $("#EmpresaId").val();
         var tipoCurso = $("#TipoCursoId").val();
         $.ajax({
@@ -89,9 +91,13 @@
             data: { "idEmpresa": empresa, "idCurso": tipoCurso },
             success: function (data) {
                 $("#Funcionarios").empty();
-                $.each(data, function (index, element) {
-                    $("#Funcionarios").append('<option value="' + element.FuncionarioId + '">' + element.Nome + '</option>');
-                });
+                if (data != 0) {
+                    $.each(data, function (index, element) {
+                        $("#Funcionarios").append('<option value="' + element.FuncionarioId + '">' + element.Nome + '</option>');
+                    });
+                } else {
+                    $("#Funcionarios").append('<option value="null"> Nada encontrado </option>');
+                }
             }
         });
     });

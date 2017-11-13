@@ -35,6 +35,11 @@ namespace BI.GST.UI.MVC.Controllers
             return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult Curso(int idEmpresa, int idCurso)
+        {
+            return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso), JsonRequestBehavior.AllowGet);
+        }
+
         // GET: Certificados
         public ActionResult Index(string pesquisa, int page =0)
         {
