@@ -1,4 +1,5 @@
-﻿using Microsoft.Reporting.WebForms;
+﻿using BI.GST.UI.MVC.DataSet;
+using Microsoft.Reporting.WebForms;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: RelatorioPPRA
         public ActionResult Index()
         {
-            var DataSet = DataSets.DataSetPPRA.AbrirDataSet(12);
+            var dataSet = PPRADataSet.AbrirDataSet(12);
            // var PPRATableAdapter = new DataSets.DataSetPPRATableAdapters.PPRATableAdapter();
             ReportViewer reportViewer = new ReportViewer();
 
@@ -20,13 +21,14 @@ namespace BI.GST.UI.MVC.Controllers
 
             reportViewer.ProcessingMode = Microsoft.Reporting.WebForms.ProcessingMode.Local;
             reportViewer.SizeToReportContent = true;
-            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Views\Reports\RelatorioPPRA.rdlc";
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("PPRA", (System.Data.DataTable)DataSet.PPRA));
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("AgentePPRA", (System.Data.DataTable)DataSet.AgentePPRA));
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Cronograma", (System.Data.DataTable)DataSet.CronogramaDeAcoes));
-            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Funcionario", (System.Data.DataTable)DataSet.Funcionario));
+            reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Views\Report\RelatorioPPRA.rdlc";
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("PPRA", (System.Data.DataTable)dataSet.PPRA));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("AgentePPRA", (System.Data.DataTable)dataSet.AgentePPRA));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Cronograma", (System.Data.DataTable)dataSet.CronogramaDeAcoes));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Funcionario", (System.Data.DataTable)dataSet.Funcionario));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Empresa", (System.Data.DataTable)dataSet.Empresa));
             //reportViewer.Width = System.Web.UI.WebControls.Unit.Percentage(100);
-          //  reportViewer.Height = System.Web.UI.WebControls.Unit.Percentage(100);
+            //  reportViewer.Height = System.Web.UI.WebControls.Unit.Percentage(100);
 
             reportViewer.LocalReport.EnableExternalImages = true;
             reportViewer.LocalReport.Refresh();

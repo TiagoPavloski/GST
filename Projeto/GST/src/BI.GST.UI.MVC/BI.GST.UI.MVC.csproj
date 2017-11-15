@@ -58,14 +58,6 @@
       <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.12.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\iTextSharp.5.5.12\lib\itextsharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="itextsharp.xmlworker, Version=5.5.4.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\itextsharp.xmlworker.5.5.4\lib\itextsharp.xmlworker.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -243,6 +235,7 @@
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
     <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
+    <Compile Include="Controllers\PPRARelatorioNewController.cs" />
     <Compile Include="Controllers\PPRAsController.cs" />
     <Compile Include="Controllers\RelatorioPPRAController.cs" />
     <Compile Include="Controllers\RiscoFuncionariosController.cs" />
@@ -264,30 +257,18 @@
     <Compile Include="Controllers\TipoExamesController.cs" />
     <Compile Include="Controllers\TipoVacinasController.cs" />
     <Compile Include="Controllers\VacinasController.cs" />
-    <Compile Include="DataSets\DataSetPPRA.cs">
-      <DependentUpon>DataSetPPRA.xsd</DependentUpon>
+    <Compile Include="DataSet\PPRADataSet.cs">
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\DataSetPPRA.Designer.cs">
+    <Compile Include="DataSet\PPRADataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSetPPRA.xsd</DependentUpon>
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Report\PPRAaspx.aspx.cs">
-      <DependentUpon>PPRAaspx.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Report\PPRAaspx.aspx.designer.cs">
-      <DependentUpon>PPRAaspx.aspx</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Consentra.mdf" />
@@ -316,7 +297,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="images\american-express.png" />
     <Content Include="images\cropper.jpg" />
-    <Content Include="images\fundo-ppra.png" />
     <Content Include="images\img.jpg" />
     <Content Include="images\inbox.png" />
     <Content Include="images\mastercard.png" />
@@ -333,8 +313,6 @@
     <Content Include="js\datepicker\daterangepicker.js" />
     <Content Include="js\mask\maskInput.js" />
     <Content Include="js\moment\moment.min.js" />
-    <Content Include="ReportViewerWebForm.aspx" />
-    <Content Include="Report\PPRAaspx.aspx" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -342,16 +320,16 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Browsers\qt.browser" />
-    <Content Include="DataSets\DataSetPPRA.xsc">
-      <DependentUpon>DataSetPPRA.xsd</DependentUpon>
+    <Content Include="DataSet\PPRADataSet.xsc">
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
     </Content>
-    <None Include="DataSets\DataSetPPRA.xsd">
+    <None Include="DataSet\PPRADataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSetPPRA.Designer.cs</LastGenOutput>
+      <LastGenOutput>PPRADataSet.Designer.cs</LastGenOutput>
     </None>
-    <Content Include="DataSets\DataSetPPRA.xss">
-      <DependentUpon>DataSetPPRA.xsd</DependentUpon>
+    <Content Include="DataSet\PPRADataSet.xss">
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -365,8 +343,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="SqlServerTypes\x64\SqlServerSpatial110.dll" />
-    <Content Include="SqlServerTypes\x86\SqlServerSpatial110.dll" />
     <Content Include="vendors\animate.css\animate.css" />
     <Content Include="vendors\animate.css\animate.min.css" />
     <Content Include="vendors\animate.css\gulpfile.js" />
@@ -4832,10 +4808,11 @@
     <Content Include="Views\PPRAs\_AgentePPRA.cshtml" />
     <Content Include="Views\PPRAs\_CronogramaDeAcoes.cshtml" />
     <Content Include="Views\PPRAs\_Anexos.cshtml" />
-    <Content Include="Views\PPRAs\SemNome.frx" />
-    <Content Include="Views\RelatorioPPRA\Index.cshtml" />
+    <Content Include="Views\PPRARelatorioNew\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\RelatorioPPRAs\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -4868,19 +4845,13 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
     <TypeScriptCompile Include="vendors\moment\moment.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report1.rdlc" />
-    <EmbeddedResource Include="Views\Reports\RelatorioPPRA.rdlc" />
+    <EmbeddedResource Include="Views\Report\RelatorioPPRA.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

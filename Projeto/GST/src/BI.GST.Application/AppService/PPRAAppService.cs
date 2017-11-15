@@ -14,22 +14,15 @@ namespace BI.GST.Application.AppService
     public class PPRAAppService : BaseAppService, IPPRAAppService
     {
         private readonly IPPRAService _ppraService;
-        private readonly IMeioPropagacaoAppService _meioPropagacaoAppService;
-        private readonly IAgenteAmbientalAppService _agenteAmbientalAppService;
 
-        public PPRAAppService(IPPRAService ppraService, IMeioPropagacaoAppService meioPropagacaoAppService, IAgenteAmbientalAppService agenteAmbientalAppService)
+        public PPRAAppService(IPPRAService ppraService)
         {
-            _ppraService               = ppraService;
-            _meioPropagacaoAppService  = meioPropagacaoAppService;
-            _agenteAmbientalAppService = agenteAmbientalAppService;
+            _ppraService = ppraService;
         }
 
-        public bool Adicionar(PPRAViewModel pPRAViewModel, List<AgentePPRAViewModel> agentePPRAViewModel, List<CronogramaDeAcoesViewModel> cronogramaDeAcoesViewModel)
+        public bool Adicionar(PPRAViewModel pPRAViewModel)
         {
             var ppra = Mapper.Map<PPRAViewModel, PPRA>(pPRAViewModel);
-
-            ppra.AgentesPPRA = Mapper.Map<List<AgentePPRAViewModel>, List<AgentePPRA>>(agentePPRAViewModel);
-            ppra.CronogramasDeAcao = Mapper.Map<List<CronogramaDeAcoesViewModel>, List<CronogramaDeAcoes>>(cronogramaDeAcoesViewModel);
 
             BeginTransaction();
             _ppraService.Adicionar(ppra);

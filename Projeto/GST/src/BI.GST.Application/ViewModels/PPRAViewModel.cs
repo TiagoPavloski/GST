@@ -42,8 +42,9 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Empresa Local")]
         public int EmpresaLocalId { get; set; }
 
-       // public int UsuarioId { get; set; }
+        //public int UsuarioId { get; set; }
 
+        [Required(ErrorMessage = "Prencher Data Emissão")]
         [DisplayName("Data Emissão")]
         public string DataEmissao { get; set; }
 
@@ -57,9 +58,9 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Responsável ambiental")]
         public int ResponsavelAmbientalId { get; set; }
 
-    //    public int CipaEmpresaId { get; set; }
+        //public int CipaEmpresaId { get; set; }
 
-        public bool CIPA { get; set; }
+        //public bool CIPA { get; set; }
 
         //public bool SESMT { get; set; }
 
@@ -80,7 +81,7 @@ namespace BI.GST.Application.ViewModels
         public virtual EquipamentoRuidoViewModel EquipamentoRuido { get; set; }
         public virtual EmpresaViewModel EmpresaCliente { get; set; }
         public virtual EmpresaViewModel EmpresaLocal { get; set; }
-    //    public virtual UsuarioViewModel Usuario { get; set; }
-     //   public virtual CIPAEmpresaViewModel CipaEmpresa { get; set; }
+        //public virtual UsuarioViewModel Usuario { get; set; }
+        //public virtual CIPAEmpresaViewModel CipaEmpresa { get; set; }
     }
 }

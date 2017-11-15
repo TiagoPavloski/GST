@@ -98,7 +98,7 @@
             </div>
         </div>
 
-        @*<div class="form-group">
+        <div class="form-group">
             @Html.LabelFor(model => model.CipaEmpresa.NumeroFuncionariosEfetivos, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-2">
                 @Html.EditorFor(model => model.CipaEmpresa.NumeroFuncionariosEfetivos, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
@@ -112,7 +112,7 @@
                 @Html.EditorFor(model => model.CipaEmpresa.NumeroFuncionariosSuplentes, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                 @Html.ValidationMessageFor(model => model.CipaEmpresa.NumeroFuncionariosSuplentes, "", new { @class = "text-danger" })
             </div>
-        </div>*@
+        </div>
 
         <hr />
 
@@ -201,18 +201,22 @@
 </script>
 
 
-@*<script type="text/javascript">
+<script type="text/javascript">
     $("#EmpresaLocalId").change(function () {
         $.ajax({
             url: "/PPRAs/CipaEmpresa/" + $('#EmpresaLocalId').val(),
             success: function (data) {
-                $("#CipaEmpresa_NumeroFuncionariosEfetivos").empty();
-                $("#CipaEmpresa_NumeroFuncionariosEfetivos").val(data.NumeroFuncionariosEfetivos);
-                $("#CipaEmpresa_NumeroFuncionariosSuplentes").empty();
-                $("#CipaEmpresa_NumeroFuncionariosSuplentes").val(data.NumeroFuncionariosSuplentes);            
+                $("#CIPA").empty();
+                $("#CIPA").val(1);
+                $("#NumeroFuncionariosEfetivos").empty();
+                $("#NumeroFuncionariosEfetivos").val(data.NumeroFuncionariosEfetivos);
+                $("#NumeroFuncionariosSuplentes").empty();
+                $("#NumeroFuncionariosSuplentes").val(data.NumeroFuncionariosSuplentes);
+
+            
             }
         })
     });
-</script>*@
+</script>
 
 
