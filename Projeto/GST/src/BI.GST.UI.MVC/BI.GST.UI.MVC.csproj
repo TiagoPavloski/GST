@@ -265,6 +265,7 @@
     <Content Include="images\cropper.jpg" />
     <Content Include="images\img.jpg" />
     <Content Include="images\inbox.png" />
+    <Content Include="images\logoVerde.png" />
     <Content Include="images\mastercard.png" />
     <Content Include="images\media.jpg" />
     <Content Include="images\paypal.png" />
