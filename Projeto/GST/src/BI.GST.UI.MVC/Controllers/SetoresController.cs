@@ -40,6 +40,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: setors
         public ActionResult Index(string pesquisa, int page = 0)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             var setorViewModel = _setorAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -51,6 +54,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: setors/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -66,6 +72,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: setors/Create
         public ActionResult Create()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             ViewBag.TipoSetorId = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome");
             ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
             ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
@@ -85,6 +94,9 @@ namespace BI.GST.UI.MVC.Controllers
         public ActionResult Create(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId
             , int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_setorAppService.Adicionar(setorViewModel, agenteAcidenteId, agenteBiologicoId, agenteErgonomicoId, agenteFisicoId, agenteQuimicoId))
@@ -106,6 +118,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: setors/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,6 +147,9 @@ namespace BI.GST.UI.MVC.Controllers
         public ActionResult Edit(SetorViewModel setorViewModel, int[] agenteAcidenteId, int[] agenteBiologicoId
             , int[] agenteErgonomicoId, int[] agenteFisicoId, int[] agenteQuimicoId)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 ViewBag.TipoSetorId = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome", setorViewModel.TipoSetorId);
@@ -153,6 +171,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: setors/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -170,6 +191,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (!_setorAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");

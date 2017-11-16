@@ -26,6 +26,9 @@ namespace BI.GST.UI.MVC.Controllers
 
         public ActionResult Index(string pesquisa, int page = 0)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+        
             var agenteAcidenteViewModel = _agenteAcidenteAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -37,6 +40,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteAcidentes/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -52,6 +58,8 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteAcidentes/Create
         public ActionResult Create()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
             ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
             var agenteAcidenteViewModel = new AgenteAcidenteViewModel();
             return View(agenteAcidenteViewModel);
@@ -64,6 +72,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AgenteAcidenteViewModel agenteAcidenteViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_agenteAcidenteAppService.Adicionar(agenteAcidenteViewModel))
@@ -82,6 +93,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteAcidentes/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -102,9 +116,12 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AgenteAcidenteViewModel agenteAcidenteViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
-                ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteAcidenteViewModel.ClassificacaoEfeitoId);
+               
                 if (!_agenteAcidenteAppService.Atualizar(agenteAcidenteViewModel))
                 {
                     TempData["Mensagem"] = "Atenção, há um Agente Acidente com os mesmos dados já cadastrado";
@@ -113,6 +130,7 @@ namespace BI.GST.UI.MVC.Controllers
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao", agenteAcidenteViewModel.ClassificacaoEfeitoId);
             return View(agenteAcidenteViewModel);
         }
 
@@ -120,6 +138,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteAcidentes/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -137,6 +158,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (!_agenteAcidenteAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");

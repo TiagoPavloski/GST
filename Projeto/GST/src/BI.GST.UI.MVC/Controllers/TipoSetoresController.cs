@@ -24,6 +24,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: TipoSetores
         public ActionResult Index(string pesquisa, int page = 0)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             var tipoSetorViewModel = _tipoSetorAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -35,6 +38,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: TipoSetores/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -50,6 +56,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: TipoSetores/Create
         public ActionResult Create()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             return View();
         }
 
@@ -60,6 +69,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(TipoSetorViewModel tipoSetorViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_tipoSetorAppService.Adicionar(tipoSetorViewModel))
@@ -75,6 +87,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: TipoSetores/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -94,6 +109,8 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(TipoSetorViewModel tipoSetorViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
 
             if (ModelState.IsValid)
             {
@@ -110,6 +127,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: TipoSetores/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -127,6 +147,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (!_tipoSetorAppService.Excluir(id))
             {
                 TempData["Mensagem"] = "Erro ao excluir";
