@@ -6,6 +6,7 @@ using BI.GST.Domain.Entities;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
 using System.Collections.Generic;
+using System;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -25,6 +26,11 @@ namespace BI.GST.UI.MVC.Controllers
             _cboAppService = cboAppService;
             _setorAppService = setorAppService;
             _escalaAppService = escalaAppService;
+        }
+
+        public JsonResult Setores(int idEmpresa)
+        {
+            return Json(_empresaAppService.ObterPorId(idEmpresa).Setores, JsonRequestBehavior.AllowGet);
         }
 
         // GET: Funcionarios
@@ -82,9 +88,10 @@ namespace BI.GST.UI.MVC.Controllers
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
             TempData["ddlStatus_Funcionarios"] = ddlStatus_Funcionario;
 
+            List<SelectListItem> muamba = new List<SelectListItem>();
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome");
-            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+            ViewBag.SetorId = muamba;
             ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome");
 
             var funcionarioViewModel = new FuncionarioViewModel();
@@ -110,7 +117,7 @@ namespace BI.GST.UI.MVC.Controllers
 
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
             ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome");
-            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+            ViewBag.SetorId = new SelectList(null);
             ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome");
 
             List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
@@ -160,6 +167,16 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FuncionarioViewModel funcionarioViewModel)
         {
+            List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
+            ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Funcionarios"] = ddlStatus_Funcionario;
+
+            ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId", "NomeFantasia");
+            ViewBag.CBOId = new SelectList(_cboAppService.ObterTodos(), "CBOId", "Nome");
+            ViewBag.SetorId = new SelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+            ViewBag.EscalaId = new SelectList(_escalaAppService.ObterTodos(), "EscalaId", "Nome");
+
             if (!_funcionarioAppService.Atualizar(funcionarioViewModel))
             {
                 TempData["Mensagem"] = "Atenção, há um funcionario com o mesmo CPF já cadastrado";

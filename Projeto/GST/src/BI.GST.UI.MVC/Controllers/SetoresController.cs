@@ -101,12 +101,13 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_setorAppService.Adicionar(setorViewModel, agenteAcidenteId, agenteBiologicoId, agenteErgonomicoId, agenteFisicoId, agenteQuimicoId))
                 {
-                    ViewBag.TipoSetores = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome");
+
                     TempData["Mensagem"] = "Atenção, há um setor com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
             }
+            ViewBag.TipoSetorId = new SelectList(_tipoSetorAppService.ObterTodos(), "TipoSetorId", "Nome");
             ViewBag.AgenteAcidentes = new MultiSelectList(_agenteAcidenteAppService.ObterTodos(), "AgenteAcidenteId", "Nome");
             ViewBag.AgenteBiologicos = new MultiSelectList(_agenteBiologicoAppService.ObterTodos(), "AgenteBiologicoId", "Nome");
             ViewBag.AgenteErgonomicos = new MultiSelectList(_agenteErgonomicoAppService.ObterTodos(), "AgenteErgonomicoId", "Nome");

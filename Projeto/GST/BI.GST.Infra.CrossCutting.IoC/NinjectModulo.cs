@@ -68,10 +68,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
             Bind<ITipoSetorAppService>().To<TipoSetorAppService>();
             Bind<ICipaQuadroAppService>().To<CipaQuadroAppService>();
             Bind<ISesmtQuadroAppService>().To<SesmtQuadroAppService>();
+			Bind<IFileAppService>().To<FileAppService>();
 
 
-            //Servicos
-            Bind<ITipoCursoService>().To<TipoCursoService>();
+			//Servicos
+			Bind<ITipoCursoService>().To<TipoCursoService>();
 			Bind<ITipoExameService>().To<TipoExameService>();
 			Bind<ITipoVacinaService>().To<TipoVacinaService>();
 			Bind<ICursoService>().To<CursoService>();
@@ -122,10 +123,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUsuarioService>().To<UsuarioService>();
             Bind<IFinanceiroParcelaService>().To<FinanceiroParcelaService>();
             Bind<ITipoSetorService>().To<TipoSetorService>();
+			Bind<IFileService>().To<FileService>();
 
 
-            //Data Repository
-            Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
+			//Data Repository
+			Bind<ITipoCursoRepository>().To<TipoCursoRepository>();
 			Bind<ITipoExameRepository>().To<TipoExameRepository>();
 			Bind<ITipoVacinaRepository>().To<TipoVacinaRepository>();
 			Bind<ICursoRepository>().To<CursoRepository>();
@@ -176,10 +178,11 @@ namespace BI.GST.Infra.CrossCutting.IoC
 			Bind<IUsuarioRepository>().To<UsuarioRepository>();
             Bind<IFinanceiroParcelaRepository>().To<FinanceiroParcelaRepository>();
             Bind<ITipoSetorRepository>().To<TipoSetorRepository>();
+			Bind<IFileRepository>().To<FileRepository>();
 
 
-            //Data Configuration
-            Bind<IContextManager>().To<ContextManager>();
+			//Data Configuration
+			Bind<IContextManager>().To<ContextManager>();
 			Bind<IUnitOfWork>().To<UnitOfWork>();
 		}
 	}

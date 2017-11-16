@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Interface.IRepository
 {
-  public interface IExameRepository : IBaseRepository<Exame>
-  {
-    IEnumerable<Exame> ObterGrid(int page, string pesquisa);
+	public interface IExameRepository : IBaseRepository<Exame>
+	{
+		IEnumerable<Exame> ObterGrid(int page, string pesquisa);
 
-    int ObterTotalRegistros(string pesquisa);
-  }
+		int ObterTotalRegistros(string pesquisa);
+
+		IEnumerable<Exame> AlertaExames();
+    }
 }

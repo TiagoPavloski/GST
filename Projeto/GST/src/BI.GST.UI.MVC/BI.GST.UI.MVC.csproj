@@ -211,9 +211,11 @@
     <Compile Include="Controllers\CursosController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EPIsController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
     <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
+    <Compile Include="Controllers\PPRAsController.cs" />
     <Compile Include="Controllers\RiscoFuncionariosController.cs" />
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
@@ -252,6 +254,7 @@
     <Content Include="build\js\custom.min.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\os.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="css\maps\jquery-jvectormap-2.0.3.css" />
     <Content Include="favicon.ico" />
@@ -4752,6 +4755,14 @@
     <Content Include="Views\TipoSetores\Details.cshtml" />
     <Content Include="Views\TipoSetores\Edit.cshtml" />
     <Content Include="Views\TipoSetores\Index.cshtml" />
+    <Content Include="Views\PPRAs\Create.cshtml" />
+    <Content Include="Views\PPRAs\Delete.cshtml" />
+    <Content Include="Views\PPRAs\Details.cshtml" />
+    <Content Include="Views\PPRAs\Index.cshtml" />
+    <Content Include="Views\PPRAs\PPRA.cshtml" />
+    <Content Include="Views\PPRAs\_AgentePPRA.cshtml" />
+    <Content Include="Views\PPRAs\_CronogramaDeAcoes.cshtml" />
+    <Content Include="Views\PPRAs\_Anexos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

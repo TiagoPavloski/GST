@@ -22,7 +22,7 @@ namespace BI.GST.Domain.Interface.IService
 
         void Excluir(int id);
 
-        IEnumerable<RiscoCBO> ObterGrid(int page);
+        IEnumerable<RiscoCBO> ObterGrid(string pesquisa, int page);
 
         int ObterTotalRegistros();
     }

@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Application.Interface
 {
-  public interface IVacinaAppService : IDisposable
-  {
-    IEnumerable<VacinaViewModel> ObterTodos();
+	public interface IVacinaAppService : IDisposable
+	{
+		IEnumerable<VacinaViewModel> ObterTodos();
 
-    VacinaViewModel ObterPorId(int id);
+		VacinaViewModel ObterPorId(int id);
 
-    bool Adicionar(VacinaViewModel tipoVacinaViewModel);
+		bool Adicionar(VacinaViewModel tipoVacinaViewModel);
 
-    bool Atualizar(VacinaViewModel tipoVacinaViewModel);
+		bool Atualizar(VacinaViewModel tipoVacinaViewModel);
 
-    bool Excluir(int id);
+		bool Excluir(int id);
 
-    IEnumerable<VacinaViewModel> ObterGrid(int page, string pesquisa);
+		IEnumerable<VacinaViewModel> ObterGrid(int page, string pesquisa);
 
-    int ObterTotalRegistros(string pesquisa);
-  }
+		int ObterTotalRegistros(string pesquisa);
+
+		List<VacinaViewModel> AlertaVacinas();
+	}
 }

@@ -147,16 +147,15 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (Session["usuario"] == null)
+   if (Session["usuario"] == null)
                 return RedirectToAction("Login", "Usuarios");
-
-            if (!_tipoSetorAppService.Excluir(id))
-            {
-                TempData["Mensagem"] = "Erro ao excluir";
-                return null;
+            var response = _tipoSetorAppService.Excluir(id);
+            if(response.Equals("")){
+                return RedirectToAction("Index");
             }
             else
             {
+                TempData["Mensagem"] = response;
                 return RedirectToAction("Index");
             }
         }

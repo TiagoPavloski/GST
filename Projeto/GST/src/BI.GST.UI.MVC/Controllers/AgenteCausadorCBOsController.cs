@@ -65,6 +65,10 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteCausadorCBOes/Create
         public ActionResult Create()
         {
+            List<SelectListItem> ddlStatus_Risco = new List<SelectListItem>();
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Causador"] = ddlStatus_Risco;
             return View();
         }
 
@@ -79,8 +83,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_agenteCausadorCBOAppService.Adicionar(agenteCausadorCBOViewModel))
                 {
-                    //TempData["Mensagem"] = "Atenção, há um Tipo Curso com os mesmos dados";
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Agente Causador com o mesmo nome!')</SCRIPT>");
+                    TempData["Mensagem"] = "Erro, há um agente causador com o mesmo nome";
                 }
                 else
                     return RedirectToAction("Index");
@@ -127,12 +130,16 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AgenteCausadorCBOViewModel agenteCausadorCBOViewModel)
         {
+            List<SelectListItem> ddlStatus_Risco = new List<SelectListItem>();
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatus_Risco.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
+            TempData["ddlStatus_Causador"] = ddlStatus_Risco;
 
             if (ModelState.IsValid)
             {
                 if (!_agenteCausadorCBOAppService.Atualizar(agenteCausadorCBOViewModel))
                 {
-                    System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Atenção, há um Agente Causador com o mesmo nome!')</SCRIPT>");
+                    TempData["Mensagem"] = "Erro, há um agente causador com o mesmo nome";
                 }
                 else
                     return RedirectToAction("Index");
@@ -166,7 +173,7 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (!_agenteCausadorCBOAppService.Excluir(id))
             {
-                System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
+                TempData["Mensagem"] = "Erro, atualize a pagina";
                 return null;
             }
             else

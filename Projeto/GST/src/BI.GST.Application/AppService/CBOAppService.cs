@@ -58,7 +58,7 @@ namespace BI.GST.Application.AppService
 
             if (duplicado)
             {
-                return "Atenção, já existe um CBO com o nome informado";
+                return "Atenção, já existe um CBO com este nome.";
             }
             else
             {
@@ -102,7 +102,7 @@ namespace BI.GST.Application.AppService
             var duplicado = _cboService.Find(e => (e.Nome == cbo.Nome) && (e.Delete == false)).Any();
             if (duplicado)
             {
-                return "Atenção, já existe um CBO com o nome informado";
+                return "Atenção, já existe um CBO com este nome.";
             }
             else
             {

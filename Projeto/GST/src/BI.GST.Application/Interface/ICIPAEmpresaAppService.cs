@@ -19,5 +19,7 @@ namespace BI.GST.Application.Interface
         IEnumerable<CIPAEmpresaViewModel> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
+
+        CIPAEmpresaViewModel ObterUltimaCipaPorEmpresa(int empresaId);
     }
 }

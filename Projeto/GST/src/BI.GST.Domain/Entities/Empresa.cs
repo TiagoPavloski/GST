@@ -31,8 +31,6 @@ namespace BI.GST.Domain.Entities
 
 		public int EnderecoId { get; set; }
 
-		public string Logo { get; set; }
-
 		public bool Delete { get; set; }
 
 
@@ -44,5 +42,6 @@ namespace BI.GST.Domain.Entities
 		public virtual ICollection<Setor> Setores { get; set; }
 		public virtual ICollection<Funcionario> Responsaveis { get; set; }
 		public virtual ICollection<Usuario> Usuarios { get; set; }
+		public virtual ICollection<File> Files { get; set; }
 	}
 }

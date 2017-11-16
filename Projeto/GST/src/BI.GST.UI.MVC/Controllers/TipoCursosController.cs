@@ -126,15 +126,16 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
-            if (!_tipoCursoAppService.Excluir(id))
-			{
-				TempData["Mensagem"] = "Erro ao excluir";
-				return null;
+			var response = _tipoCursoAppService.Excluir(id);
+            if(response.Equals(""))
+            {
+                return RedirectToAction("Index");
 			}
 			else
 			{
-				return RedirectToAction("Index");
-			}
+                TempData["Mensagem"] = response;
+                return RedirectToAction("Index");
+            }
 		}
 
 		protected override void Dispose(bool disposing)

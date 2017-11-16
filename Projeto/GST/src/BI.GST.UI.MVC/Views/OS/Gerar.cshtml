@@ -5,8 +5,13 @@
 }
 
 <style>
+	body{
+		font-family: Calibri;
+		color: #423a2f;
+	}
+
 	table, th, td {
-		border: 4px solid white;
+		border: 2px solid black;
 		border-collapse: collapse;
 	}
 
@@ -15,12 +20,13 @@
 		text-align: left;
 	}
 
-	.backgroundcolor {
-		background-color: #c7cac959;
+	.tablethtd {
+		border: 4px solid white;
+		border-collapse: collapse;
 	}
 
 	.titulo {
-		color: #928888;
+		/*color: #928888;*/
 		text-align: center;
 	}
 
@@ -29,11 +35,10 @@
 	}
 </style>
 
+<div id="HTMLtoPDF">
 
 
-<div id="HTMLtoPDF" class="backgroundcolor">
-
-	<h2 class="titulo">ORDEM DE SERVIÇO</h2>
+	<h1 class="titulo">ORDEM DE SERVIÇO</h1>
 
 	<div>
 		<table style="width:100%">
@@ -64,37 +69,36 @@
 			</tr>
 			<tr>
 				<td>
-					FISICO: @foreach (var item in Model.Funcionario.Setor.AgenteFisicos)
+					FISICO @foreach (var item in Model.Funcionario.Setor.AgenteFisicos)
 					{
 						@Html.DisplayFor(model => item.Nome)
 					}
 				</td>
 
 				<td>
-					QUIMICO: @foreach (var item in Model.Funcionario.Setor.AgenteQuimicos)
+					QUIMICO @foreach (var item in Model.Funcionario.Setor.AgenteQuimicos)
 					{
 						@Html.DisplayFor(model => item.Nome)
 					}
 				</td>
 				<td>
-					BIOLOGICO: @foreach (var item in Model.Funcionario.Setor.AgenteBiologicos)
+					BIOLOGICO @foreach (var item in Model.Funcionario.Setor.AgenteBiologicos)
 					{
 						@Html.DisplayFor(model => item.Nome)
 					}
 				</td>
 				<td>
-					ERGONIMICO: @foreach (var item in Model.Funcionario.Setor.AgenteErgonomicos)
+					ERGONIMICO @foreach (var item in Model.Funcionario.Setor.AgenteErgonomicos)
 					{
 						@Html.DisplayFor(model => item.Nome)
 					}
 				</td>
 				<td>
-					ACIDENTE: @foreach (var item in Model.Funcionario.Setor.AgenteAcidentes)
+					ACIDENTE @foreach (var item in Model.Funcionario.Setor.AgenteAcidentes)
 					{
 						@Html.DisplayFor(model => item.Nome)
 					}
 				</td>
-				<td>
 			</tr>
 			<tr>
 				<th colspan="5" class="center">RISCOS AMBIENTAIS ENCONTRADOS</th>
@@ -114,12 +118,12 @@
 				<th colspan="2" class="center">DATA</th>
 			</tr>
 			<tr>
-				<td colspan="3" class="center"></td>
+				<td colspan="3" class="center"><br /><br /></td>
 
-				<td colspan="2" class="center"></td>
+				<td colspan="2" class="center"><br /><br /></td>
 			</tr>
 			<tr>
-				<th colspan="3" class="center">REPRESENTANTES DA EMPRESA</th>
+				<th colspan="5" class="center">REPRESENTANTES DA EMPRESA</th>
 			</tr>
 			<tr>
 				<td colspan="3" class="center">TÉCNICO DE SEGURANÇA</td>
@@ -127,9 +131,9 @@
 				<td colspan="2" class="center">RESPONSÁVEL</td>
 			</tr>
 			<tr>
-				<td colspan="3" class="center"></td>
+				<td colspan="3" class="center"><br /><br /></td>
 
-				<td colspan="2" class="center"></td>
+				<td colspan="2" class="center"><br /><br /></td>
 			</tr>
 		</table>
 	</div>

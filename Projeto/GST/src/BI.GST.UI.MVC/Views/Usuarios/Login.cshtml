@@ -41,7 +41,7 @@
 							@Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
 						</div>
 						<div>
-							@Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", placeholder = "Senha" } })
+							@Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", placeholder = "Senha", @Type = "password" } })
 							@Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
 
 						</div>
@@ -56,7 +56,7 @@
 							<br />
 							<div>
 								<h1><i class="fa fa-shield"></i> GST</h1>
-								<p>©@DateTime.Now.Year Equipe Bridge IT - Todos os direitos reservados</p>
+								<p>©@DateTime.Now.Year Equipe Bridge IT</p>
 							</div>
 						</div>
 					}

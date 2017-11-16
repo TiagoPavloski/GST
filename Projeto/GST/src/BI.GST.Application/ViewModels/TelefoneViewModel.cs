@@ -13,9 +13,7 @@ namespace BI.GST.Application.ViewModels
 	{
 		public int TelefoneId { get; set; }
 
-		[Required]
 		[DisplayName("Número")]
-		[MaxLength(9, ErrorMessage = "Máximo de 9")]
 		public string Numero { get; set; }
 
 		public bool Delete { get; set; }

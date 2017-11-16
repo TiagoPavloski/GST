@@ -89,6 +89,11 @@ namespace BI.GST.Application.AppService
             return Mapper.Map<IEnumerable<Colaborador>, IEnumerable<ColaboradorViewModel>>(_colaboradorService.ObterTodos());
         }
 
+        public IEnumerable<ColaboradorViewModel> ObterTodosPorEmpresa(int EmpresaId)
+        {
+            return Mapper.Map<IEnumerable<Colaborador>, IEnumerable<ColaboradorViewModel>>(_colaboradorService.ObterTodosPorEmpresa(EmpresaId));
+        }
+
         public int ObterTotalRegistros(string pesquisa)
         {
             return _colaboradorService.ObterTotalRegistros(pesquisa);

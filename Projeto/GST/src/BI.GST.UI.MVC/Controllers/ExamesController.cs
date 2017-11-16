@@ -47,6 +47,26 @@ namespace BI.GST.UI.MVC.Controllers
 			//}
 			#endregion
 
+			#region Alertas Exames Vencidos
+			string mensagem = null;
+			var exames = _exameAppService.AlertaExames();
+			if (exames != null)
+			{
+				string funcionariosExame = "";
+				foreach (var item in exames)
+				{
+					funcionariosExame += item.Funcionario.Nome + ", ";
+				}
+				mensagem += "* Os seguintes funcionarios estão com seus exames vencidos: " + funcionariosExame;
+			}
+			if (exames != null && exames.Count > 0)
+			{
+				mensagem = mensagem.Substring(0, mensagem.Length - 2);
+				mensagem += ".";
+				TempData["Mensagem"] = mensagem;
+			}
+			#endregion
+
 			return View(examesViewModel);
 		}
 

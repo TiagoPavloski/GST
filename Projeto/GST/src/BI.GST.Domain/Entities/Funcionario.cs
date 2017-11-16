@@ -4,7 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BI.GST.Domain.Entities
 {
 	public class Funcionario : Pessoa
-	{
+    {
+        public Funcionario()
+        {
+            Cursos = new List<Curso>();
+        }
 
         public int FuncionarioId { get; set; }
 
@@ -34,5 +38,6 @@ namespace BI.GST.Domain.Entities
         public virtual CBO CBO { get; set; }
         public virtual Setor Setor { get; set; }
         public virtual Escala Escala { get; set; }
+        public virtual ICollection<Curso> Cursos { get; set; }
     }
 }

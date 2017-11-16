@@ -5,6 +5,9 @@ using System.Net;
 using System.Web.Mvc;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
+using System.Web;
+using BI.GST.Domain.Entities;
+using System;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -47,6 +50,7 @@ namespace BI.GST.UI.MVC.Controllers
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
 			var empresa = _empresaAppService.ObterPorId(id.Value);
+
 			if (empresa == null)
 			{
 				return HttpNotFound();
@@ -77,10 +81,26 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId/*, int[] funcionarioId*/)
+		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, System.Web.HttpPostedFileBase upload /*, int[] funcionarioId*/)
 		{
 			if (ModelState.IsValid)
 			{
+				if (upload != null && upload.ContentLength > 0)
+				{
+					var avatar = new FileViewModel
+					{
+						FileName = System.IO.Path.GetFileName(upload.FileName),
+						FileType = FileTypeViewModel.Avatar,
+						ContentType = upload.ContentType
+					};
+					using (var reader = new System.IO.BinaryReader(upload.InputStream))
+					{
+						avatar.Content = reader.ReadBytes(upload.ContentLength);
+					}
+					empresaViewModel.Files = new List<FileViewModel> { avatar };
+				}
+
+
 				if (!_empresaAppService.Adicionar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId/*, funcionarioId*/))
 				{
 					TempData["Mensagem"] = "Atenção, há um empresa com os mesmos dados";
@@ -112,7 +132,6 @@ namespace BI.GST.UI.MVC.Controllers
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaeSecundarios.Select(x => x.CnaeId));
 			ViewBag.CnaeId = new SelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao", empresa.CnaePrincipal.CnaeId);
 			ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome", empresa.Setores.Select(x => x.SetorId));
-			/*ViewBag.FuncionarioIdList = new MultiSelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome", empresa.Responsaveis.Select(x => x.FuncionarioId));*/
 
 			return View(empresa);
 		}
@@ -122,22 +141,43 @@ namespace BI.GST.UI.MVC.Controllers
 		// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId)
+		public ActionResult Edit(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, System.Web.HttpPostedFileBase upload)
 		{
 			//if (ModelState.IsValid) //verificar por que erro converter telefoneViewModel to String
 			//{
-				if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
+
+			if (upload != null && upload.ContentLength > 0)
+			{
+				var avatar = new FileViewModel
 				{
-					TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
-					return View(empresaViewModel);
-				}
-				if (Session["actionUsuario"] != null)
+					FileName = System.IO.Path.GetFileName(upload.FileName),
+					FileType = FileTypeViewModel.Avatar,
+					ContentType = upload.ContentType
+				};
+				using (var reader = new System.IO.BinaryReader(upload.InputStream))
 				{
-					Session["actionUsuario"] = null;
-					return RedirectToAction("Edit", "Usuarios");
+					avatar.Content = reader.ReadBytes(upload.ContentLength);
 				}
-				return RedirectToAction("Index");
+				empresaViewModel.Files = new List<FileViewModel> { avatar };
+			}
+
+			if (!_empresaAppService.Atualizar(empresaViewModel, telefoneViewModel, setorId, cnaeSecundarioId))
+			{
+				TempData["Mensagem"] = "Atenção, há um tipo de Curso com os mesmos dados já cadastrada";
+				return View(empresaViewModel);
+			}
+			if (Session["actionUsuario"] != null)
+			{
+				Session["actionUsuario"] = null;
+				return RedirectToAction("Edit", "Usuarios");
+			}
+			return RedirectToAction("Index");
 			//}
+			//ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
+			//ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
+			//ViewBag.CnaeId = ViewBag.CnaeIdList;
+			//ViewBag.SetorIdList = new MultiSelectList(_setorAppService.ObterTodos(), "SetorId", "Nome");
+
 			//return View(empresaViewModel);
 		}
 

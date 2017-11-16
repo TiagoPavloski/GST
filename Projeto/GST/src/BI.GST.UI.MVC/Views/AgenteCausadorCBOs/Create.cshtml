@@ -16,7 +16,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-xs-12 col-md-5">
                 @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
             </div>
@@ -24,7 +24,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-xs-12 col-md-2">
                 @Html.DropDownList("Status", (IEnumerable<SelectListItem>)TempData["ddlStatus_Causador"], new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
             </div>
@@ -41,3 +41,5 @@
 <div>
     @Html.ActionLink("Voltar para lista", "Index")
 </div>
+
+@Html.Partial("_Mensagem")

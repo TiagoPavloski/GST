@@ -25,5 +25,9 @@ namespace BI.GST.Domain.Interface.IService
         IEnumerable<Colaborador> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
+
+        IEnumerable<Colaborador> ObterTodosPorEmpresa(int EmpresaId);
+
+
     }
 }

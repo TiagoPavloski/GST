@@ -14,12 +14,12 @@ namespace BI.GST.Infra.CrossCutting.MVCFilters
 
 			if (data.AddMonths(MesesValidade).Date < DateTime.Now.Date)
 			{
-				//Vencido
-				return true;
+				//Não Vencido
+				return false;
 			}
 			else
-				//Não vencido
-				return false;
+				//Vencido
+				return true;
 		}
 
 		public static DateTime ConverteStringToDate(string DataRealizacao)

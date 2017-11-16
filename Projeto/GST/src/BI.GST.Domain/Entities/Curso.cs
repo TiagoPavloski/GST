@@ -1,4 +1,6 @@
-﻿namespace BI.GST.Domain.Entities
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BI.GST.Domain.Entities
 {
 	public class Curso
 	{
@@ -14,7 +16,8 @@
 
 		public bool Delete { get; set; }
 
-		public virtual Funcionario Funcionario { get; set; }
+        [ForeignKey("FuncionarioId")]
+        public virtual Funcionario Funcionario { get; set; }
 		public virtual TipoCurso TipoCurso { get; set; }
 	}
 }
