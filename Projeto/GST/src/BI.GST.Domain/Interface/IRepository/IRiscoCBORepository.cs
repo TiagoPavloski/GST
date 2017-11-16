@@ -9,7 +9,7 @@ namespace BI.GST.Domain.Interface.IRepository
 {
   public interface IRiscoCBORepository : IBaseRepository<RiscoCBO>
   {
-    IEnumerable<RiscoCBO> ObterGrid(int page);
+    IEnumerable<RiscoCBO> ObterGrid(string pesquisa, int page);
 
     int ObterTotalRegistros();
   }

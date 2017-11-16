@@ -72,6 +72,7 @@ namespace BI.GST.Infra.Data.Repository
         {
             Context.SaveChanges();
         }
+
         public void Dispose()
         {
             Context.Dispose();

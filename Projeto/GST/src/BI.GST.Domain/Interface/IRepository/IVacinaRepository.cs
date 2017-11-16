@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace BI.GST.Domain.Interface.IRepository
 {
-  public interface IVacinaRepository : IBaseRepository<Vacina>
-  {
-    IEnumerable<Vacina> ObterGrid(int page, string pesquisa);
+	public interface IVacinaRepository : IBaseRepository<Vacina>
+	{
+		IEnumerable<Vacina> ObterGrid(int page, string pesquisa);
 
-    int ObterTotalRegistros(string pesquisa);
-  }
+		int ObterTotalRegistros(string pesquisa);
+
+		IEnumerable<Vacina> AlertaVacinas();
+	}
 }

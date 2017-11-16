@@ -64,6 +64,7 @@
     <Compile Include="AppService\CipaQuadroAppService.cs" />
     <Compile Include="AppService\EPIAppService.cs" />
     <Compile Include="AppService\CertificadoAppService.cs" />
+    <Compile Include="AppService\FileAppService.cs" />
     <Compile Include="AppService\InstituicaoCursoAppService.cs" />
     <Compile Include="AppService\ColaboradorAppService.cs" />
     <Compile Include="AppService\CBOAppService.cs" />
@@ -113,12 +114,14 @@
     <Compile Include="AppService\AutoMapper\DomainToViewModelMappingProfile.cs" />
     <Compile Include="AppService\AutoMapper\ViewModelToDomainMappingProfile.cs" />
     <Compile Include="AppService\BaseAppService.cs" />
+    <Compile Include="Interface\HttpPostedFileBase.cs" />
     <Compile Include="Interface\IAgenteAmbientalAppService.cs" />
     <Compile Include="Interface\IAgenteAcidenteAppService.cs" />
     <Compile Include="Interface\IAgenteBiologicoAppService.cs" />
     <Compile Include="Interface\ICipaQuadroAppService.cs" />
     <Compile Include="Interface\IEPIAppService.cs" />
     <Compile Include="Interface\ICertificadoAppService.cs" />
+    <Compile Include="Interface\IFileAppService.cs" />
     <Compile Include="Interface\IInstituicaoCursoAppService.cs" />
     <Compile Include="Interface\IColaboradorAppService.cs" />
     <Compile Include="Interface\ICBOAppService.cs" />
@@ -172,6 +175,8 @@
     <Compile Include="ViewModels\CipaQuadroViewModel.cs" />
     <Compile Include="ViewModels\EPIViewModel.cs" />
     <Compile Include="ViewModels\CertificadoViewModel.cs" />
+    <Compile Include="ViewModels\FileTypeViewModel.cs" />
+    <Compile Include="ViewModels\FileViewModel.cs" />
     <Compile Include="ViewModels\InstituicaoCursoViewModel.cs" />
     <Compile Include="ViewModels\CBOViewModel.cs" />
     <Compile Include="ViewModels\FinanceiroParcelaViewModel.cs" />

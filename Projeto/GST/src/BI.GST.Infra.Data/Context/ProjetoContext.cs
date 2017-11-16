@@ -71,8 +71,9 @@ namespace BI.GST.Infra.Data.Context
         public DbSet<CipaQuadro> CipaQuadro { get; set; }
         public DbSet<SesmtQuadro> SesmtQuadro { get; set; }
         public DbSet<FinanceiroParcela> FinanceiroParcela { get; set; }
+		public DbSet<File> Files { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             //Convenções
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); //tira pluralização

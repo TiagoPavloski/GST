@@ -12,17 +12,14 @@ namespace BI.GST.Infra.Data.EntityConfig
             Property(c => c.Nome)
            .HasMaxLength(150)
            .IsRequired();
-            
+
             Property(c => c.FonteGeradora)
-           .HasMaxLength(200)
-           .IsRequired();
+           .HasMaxLength(200);
 
             Property(c => c.Orientacao)
-           .HasMaxLength(500)
-           .IsRequired();
-
-            Property(c => c.Delete)
-           .IsRequired();
+           .IsMaxLength();
+         
+            Property(c => c.Delete);
         }
   }
 }

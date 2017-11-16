@@ -9,6 +9,13 @@
 <p>
     @Html.ActionLink("Criar", "Create")
 </p>
+
+@using (Html.BeginForm("Index", "RiscoCBOs", new { pesquisa = "" }, FormMethod.Get))
+{
+    <p>
+        Pesquisar Por nome: @Html.Editor("pesquisa") <input type="submit" value="Pesquisar" class="btn btn-default" />
+    </p>
+}
 <table class="table">
     <tr>
         <th>
@@ -22,12 +29,6 @@
         </th>
         <th>
             @Html.DisplayName("Agente do Risco")
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Consequencias)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MedidasPreventivas)
         </th>
         <th></th>
     </tr>
@@ -46,12 +47,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.AgenteRiscoCBO.Nome)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Consequencias)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MedidasPreventivas)
-        </td>
+
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.RiscoCBOId }) |
             @Html.ActionLink("Detalhar", "Details", new { id=item.RiscoCBOId }) |

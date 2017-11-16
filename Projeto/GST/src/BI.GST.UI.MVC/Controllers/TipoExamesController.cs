@@ -65,7 +65,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_tipoExameAppService.Adicionar(tipoExameViewModel))
                 {
-					TempData["Mensagem"] = "Atenção, há um tipoExame com os mesmos dados";
+					TempData["Mensagem"] = "Inserção negada, há um Tipo de exame com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
@@ -99,7 +99,7 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 if (!_tipoExameAppService.Atualizar(tipoExameViewModel))
                 {
-					TempData["Mensagem"] = "Atenção, há um tipo de Exame com os mesmos dados já cadastrada";
+                    TempData["Mensagem"] = "Edição negada, há um Tipo de exame com os mesmos dados";
                 }
                 else
                     return RedirectToAction("Index");
@@ -127,14 +127,16 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            if (!_tipoExameAppService.Excluir(id))
+            var response = _tipoExameAppService.Excluir(id);
+            if(response.Equals(""))
             {
-				TempData["Mensagem"] = "Erro ao excluir";
-                return null;
+                return RedirectToAction("Index");
             }
             else
             {
+                TempData["Mensagem"] = response;
                 return RedirectToAction("Index");
+
             }
         }
 

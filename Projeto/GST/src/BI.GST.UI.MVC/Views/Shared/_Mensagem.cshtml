@@ -15,7 +15,10 @@
 						@{
 							string Mensagem = TempData["Mensagem"].ToString();
 						}
-						@Mensagem
+						<div>
+							<p>@Mensagem</p>
+							
+						</div>
 					</div>
 					@{
 						TempData["Mensagem"] = null;

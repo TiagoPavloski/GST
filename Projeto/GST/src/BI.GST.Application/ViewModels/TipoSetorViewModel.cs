@@ -12,11 +12,10 @@ namespace BI.GST.Application.ViewModels
     {
         public int TipoSetorId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Prencher campo Tipo Setor")]
         [DisplayName("Tipo Setor")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Descrição")]
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
         public string Descricao { get; set; }
 

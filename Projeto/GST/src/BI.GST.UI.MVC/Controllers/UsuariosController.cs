@@ -9,11 +9,15 @@ namespace BI.GST.UI.MVC.Controllers
 	{
 		private readonly IUsuarioAppService _usuarioAppService;
 		private readonly ICursoAppService _cursoAppService;
+		private readonly IExameAppService _exameAppService;
+		private readonly IVacinaAppService _vacinaAppService;
 
-		public UsuariosController(IUsuarioAppService usuarioAppService, ICursoAppService cursoAppService)
+		public UsuariosController(IUsuarioAppService usuarioAppService, ICursoAppService cursoAppService, IExameAppService exameAppService, IVacinaAppService vacinaAppService)
 		{
 			_usuarioAppService = usuarioAppService;
 			_cursoAppService = cursoAppService;
+			_exameAppService = exameAppService;
+			_vacinaAppService = vacinaAppService;
 		}
 
 		// GET: Usuarios
@@ -155,8 +159,9 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				Session["usuario"] = usuario;
 				Session["usuarioId"] = usuario.UsuarioId;
+				Session["usuarioNome"] = usuario.Nome;
 
-				Alertas();
+				//Alertas();
 
 				return RedirectToAction("Index", "Home");
 			}
@@ -183,21 +188,49 @@ namespace BI.GST.UI.MVC.Controllers
 			}
 		}
 
-		public ActionResult Alertas()
-		{
-			var cursos = _cursoAppService.AlertaCursos();
-			if (cursos != null)
-			{
-				string funcionarioCurso = "";
-				foreach (var item in cursos)
-				{
-					funcionarioCurso += item.Funcionario.Nome + ", ";
-				}
+		//public ActionResult Alertas()
+		//{
+		//	string mensagem = null;
 
-				TempData["Mensagem"] = "Os funcionarios listados abaixo estão com seus cursos vencidos: " + funcionarioCurso + "/n";
-			}
-			return View();
-		}
+		//	var cursos = _cursoAppService.AlertaCursos();
+		//	if (cursos != null)
+		//	{
+		//		string funcionarioCurso = "";
+		//		foreach (var item in cursos)
+		//		{
+		//			funcionarioCurso += item.Funcionario.Nome + ", <br>";
+		//		}
+		//		mensagem += "* Os seguintes funcionarios estão com seus cursos vencidos: " + funcionarioCurso + ".";
+		//	}
+
+		//	var exames = _exameAppService.AlertaExames();
+		//	if (exames != null)
+		//	{
+		//		string funcionariosExame = "";
+		//		foreach (var item in exames)
+		//		{
+		//			funcionariosExame += item.Funcionario.Nome + ", <br>";
+		//		}
+		//		mensagem += "* Os seguintes funcionarios estão com seus exames vencidos: " + funcionariosExame + ".";
+		//	}
+
+		//	var vacinas = _exameAppService.AlertaExames();
+		//	if (vacinas != null)
+		//	{
+		//		string funcionariosVacina = "";
+		//		foreach (var item in vacinas)
+		//		{
+		//			funcionariosVacina += item.Funcionario.Nome + ", <br>";
+		//		}
+		//		mensagem += "* Os seguintes funcionarios estão com suas vacinas vencidas: " + funcionariosVacina + ".";
+		//	}
+		//	if (!string.IsNullOrWhiteSpace(mensagem))
+		//	{
+		//		TempData["Mensagem"] = mensagem;
+		//	}
+
+		//	return View();
+		//}
 
 		protected override void Dispose(bool disposing)
 		{
