@@ -12,7 +12,6 @@ namespace BI.GST.Application.ViewModels
     {
         public int MedicaoAgenteId { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Data")]
         [MaxLength(150, ErrorMessage = "Máximo de 150")]
         public string Data { get; set; }
 
@@ -21,7 +20,6 @@ namespace BI.GST.Application.ViewModels
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
         public string Medicao { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Item Demonstra Ambientais")]
         [DisplayName("Item Demonstra Ambientais")]
         [MaxLength(150, ErrorMessage = "Máximo de 150")]
         public string ItemDemonstraAmbientais { get; set; }
