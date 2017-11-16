@@ -25,6 +25,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteErgonomicos
         public ActionResult Index(string pesquisa, int page = 0)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             var agenteErgonomicoViewModel = _agenteErgonomicoAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -36,6 +39,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteErgonomicos/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -51,6 +57,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteErgonomicos/Create
         public ActionResult Create()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             return View();
         }
 
@@ -61,6 +70,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AgenteErgonomicoViewModel agenteErgonomicoViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_agenteErgonomicoAppService.Adicionar(agenteErgonomicoViewModel))
@@ -77,6 +89,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteErgonomicos/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -96,6 +111,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit( AgenteErgonomicoViewModel agenteErgonomicoViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_agenteErgonomicoAppService.Atualizar(agenteErgonomicoViewModel))
@@ -111,6 +129,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: AgenteErgonomicos/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -128,6 +149,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (!_agenteErgonomicoAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");

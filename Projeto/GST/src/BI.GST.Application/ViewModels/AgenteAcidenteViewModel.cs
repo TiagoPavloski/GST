@@ -14,11 +14,10 @@ namespace BI.GST.Application.ViewModels
     {
         public int AgenteAcidenteId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Prencher campo Nome")]
         [DisplayName("Nome agente")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Frequência")]
         [MaxLength(150, ErrorMessage = "Máximo de 150")]
         [DisplayName("Frequência")]
         public string Frequencia { get; set; }
@@ -28,37 +27,28 @@ namespace BI.GST.Application.ViewModels
 
         [ForeignKey("ClassificacaoEfeitoId")]
         public virtual ClassificacaoEfeitoViewModel ClassificacaoEfeito { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo Tempo Exposição")]
+                
         [MaxLength(100, ErrorMessage = "Máximo de 100")]
         [DisplayName("Tempo Exposição")]
         public string TempoExposicao { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo Fonte geradora")]
+                
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
         [DisplayName("Fonte geradora")]
         public string Fonte { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Efeito")]
         [MaxLength(150, ErrorMessage = "Máximo de 150")]
         public string Efeito { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo Orientação")]
-        [MaxLength(500, ErrorMessage = "Máximo de 500")]
+                
         [DisplayName("Orientação")]
         public string Orientacao { get; set; }
-
-        [Required(ErrorMessage = "Prencher campo Medidas Propostas")]
-        [MaxLength(200, ErrorMessage = "Máximo de 200")]
+                
         [DisplayName("Medidas Propostas")]
         public string MedidasPropostas { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Fundamentação")]
         [MaxLength(100, ErrorMessage = "Máximo de 100")]
         [DisplayName("Técnica Utilizada")]
         public string Tecnica { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Fundamentação")]
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
         [DisplayName("Fundamentação Legal")]
         public string FundamentacaoLegal { get; set; }
