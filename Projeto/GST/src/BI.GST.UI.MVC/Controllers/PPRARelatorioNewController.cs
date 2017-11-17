@@ -11,9 +11,9 @@ namespace BI.GST.UI.MVC.Controllers
     public class PPRARelatorioNewController : Controller
     {
         // GET: PPRARelatorioNew
-        public ActionResult Index()
+        public ActionResult Index(int ppraId)
         {
-            var dataSet = PPRADataSet.AbrirDataSet(12);
+            var dataSet = PPRADataSet.AbrirDataSet(ppraId);
             // var PPRATableAdapter = new DataSets.DataSetPPRATableAdapters.PPRATableAdapter();
             ReportViewer reportViewer = new ReportViewer();
 
@@ -27,6 +27,8 @@ namespace BI.GST.UI.MVC.Controllers
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Cronograma", (System.Data.DataTable)dataSet.CronogramaDeAcoes));
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Funcionario", (System.Data.DataTable)dataSet.Funcionario));
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Empresa", (System.Data.DataTable)dataSet.Empresa));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Escala", (System.Data.DataTable)dataSet.Escala));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Setor", (System.Data.DataTable)dataSet.Setor));
             //reportViewer.Width = System.Web.UI.WebControls.Unit.Percentage(100);
             //  reportViewer.Height = System.Web.UI.WebControls.Unit.Percentage(100);
 

@@ -13,7 +13,7 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: RelatorioPPRA
         public ActionResult Index()
         {
-            var dataSet = PPRADataSet.AbrirDataSet(12);
+            var dataSet = PPRADataSet.AbrirDataSet(0);
            // var PPRATableAdapter = new DataSets.DataSetPPRATableAdapters.PPRATableAdapter();
             ReportViewer reportViewer = new ReportViewer();
 

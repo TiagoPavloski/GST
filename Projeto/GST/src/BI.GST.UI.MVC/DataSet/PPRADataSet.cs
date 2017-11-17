@@ -22,6 +22,12 @@
             var EmpresaTableAdapter = new DataSet.PPRADataSetTableAdapters.EmpresaTableAdapter();
             FuncionarioTableAdapter.Fill(ds.Funcionario, 8);
 
+            var EscalaTableAdapter = new DataSet.PPRADataSetTableAdapters.EscalaTableAdapter();
+            EscalaTableAdapter.Fill(ds.Escala, 4);
+
+            var SetorTableAdapter = new DataSet.PPRADataSetTableAdapters.SetorTableAdapter();
+            SetorTableAdapter.Fill(ds.Setor, 4);
+
             return ds;
         }
     }

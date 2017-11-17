@@ -11,6 +11,7 @@ using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
 using Rotativa.MVC;
+using Microsoft.Reporting.WebForms;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -239,15 +240,7 @@ namespace BI.GST.UI.MVC.Controllers
 
         public ActionResult Gerar(int? id)
         {
-            var ppra = _PPRAAppService.ObterPorId(id.Value);
-
-            var pdf = new ViewAsPdf
-            {
-                ViewName = "PPRA",
-                Model = ppra
-            };
-
-            return pdf;
+            return RedirectToAction("Index", "PPRARelatorioNew", new { ppraid = id });
         }
     }
 }
