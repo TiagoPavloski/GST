@@ -42,31 +42,12 @@ namespace BI.GST.Infra.Data.Repository
                 .OrderBy(x => x.Nome);
         }
 
-        public IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idTipoCurso)
+        public IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idTipoCurso, string dataRealizacao)
         {
-            //foreach (var func in FuncionariosEmpresa)
-            //{
-            //    if (func.Cursos != null)
-            //    {
-            //        foreach (var curso in func.Cursos)
-            //        {
-            //            if (curso.TipoCursoId == idTipoCurso && curso.Delete == false)
-            //            {
-            //                funcionariosporra.Add(func);
-            //                break;
-            //            }
-
-            //        }
-            //    }
-              
-            //}
-
-
-
             return DbSet.Where(x => (x.EmpresaId == idEmpresa)
                                 && (x.Delete == false)
                                 && (x.Cursos.Where(c => c.TipoCurso.TipoCursoId == idTipoCurso
-                                                   && c.Delete == false).Any())).OrderBy(u => u.Nome);
+                                                   && c.Delete == false && c.Data.Equals(dataRealizacao)).Any())).OrderBy(u => u.Nome);
 
         }
 

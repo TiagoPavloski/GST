@@ -31,31 +31,20 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.DataRealizacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.DataRealizacao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataRealizacao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             @Html.LabelFor(model => model.FuncionarioId, "Funcionarios", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
                 @Html.ListBox("Funcionarios", (MultiSelectList)ViewBag.FuncionarioId, htmlAttributes: new { @class = "form-control", size = "10" })
                 @Html.ValidationMessageFor(model => model.FuncionarioId, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CursoId, "Curso", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.DropDownList("CursoId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CursoId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataEmissao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.DataEmissao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.DataEmissao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-            @Html.HiddenFor(model => model.InstituicaoCursoId, "Instituição")
-            @Html.Hidden("InstituicaoCursoId", null, htmlAttributes: new { @class = "form-control" })
 
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -80,15 +69,16 @@
 @Html.Partial("_Mensagem")
 
 <script>
-    $("#TipoCursoId, #EmpresaId").change(function () {
+    $("#TipoCursoId, #EmpresaId, #DataRealizacao").change(function () {
         $("#Funcionarios").empty();
         $("#Funcionarios").append('<option value="null"> Buscando... </option>');
         var empresa = $("#EmpresaId").val();
         var tipoCurso = $("#TipoCursoId").val();
+        var dataRealizacao = $("#DataRealizacao").val();
         $.ajax({
             url: "/Certificados/Funcionario/",
             contentType: "application/json; charset=utf-8",
-            data: { "idEmpresa": empresa, "idCurso": tipoCurso },
+            data: { "idEmpresa": empresa, "idCurso": tipoCurso, "dataRealizacao": dataRealizacao },
             success: function (data) {
                 $("#Funcionarios").empty();
                 if (data != 0) {

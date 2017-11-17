@@ -30,15 +30,11 @@ namespace BI.GST.UI.MVC.Controllers
             _tipoCursoAppService = tipoCursoAppService;
         }
 
-        public JsonResult Funcionario(int idEmpresa, int idCurso)
+        public JsonResult Funcionario(int idEmpresa, int idCurso, string dataRealizacao)
         {
-            return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso), JsonRequestBehavior.AllowGet);
+            return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso, dataRealizacao), JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Curso(int idEmpresa, int idCurso)
-        {
-            return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso), JsonRequestBehavior.AllowGet);
-        }
 
         // GET: Certificados
         public ActionResult Index(string pesquisa, int page =0)
@@ -107,7 +103,7 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CertificadoViewModel certificadoViewModel)
+        public ActionResult Create(CertificadoViewModel certificadoViewModel, int[] Funcionarios)
         {
             if (ModelState.IsValid)
              if (ModelState.IsValid)

@@ -22,5 +22,6 @@ namespace BI.GST.Infra.Data.Repository
                        .Skip((page) * 10)
                        .Take(10);
         }
+
     }
 }
