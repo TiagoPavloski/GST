@@ -17,13 +17,26 @@ namespace BI.GST.Application.AppService
         {
             _certificadoService = certificadoService;
         }
-        public bool Adicionar(CertificadoViewModel certificadoViewModel)
+        public bool Adicionar(CertificadoViewModel certificadoViewModel, int[] funcionarios)
         {
             var certificado = Mapper.Map<CertificadoViewModel, Certificado>(certificadoViewModel);
 
+            //Fazer validação de repetido
+
+            certificado.DataEmissao = DateTime.Now.Year.ToString() + "-"
+                + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString();
+            certificado.InstituicaoCursoId = 1;
+
             BeginTransaction();
-            _certificadoService.Adicionar(certificado);
+            foreach (var f in funcionarios)
+            {
+                
+                certificado.FuncionarioId = f;
+                _certificadoService.Adicionar(certificado, certificadoViewModel.TipoCursoId, certificadoViewModel.DataRealizacao);
+                
+            }
             Commit();
+
             return true;
         }
 
@@ -47,13 +60,13 @@ namespace BI.GST.Application.AppService
 
         public bool Excluir(int id)
         {
-            bool existente = _certificadoService.Find(e => e.CursoId == id).Any();
+            bool existente = _certificadoService.Find(e => e.CertificadoId == id).Any();
             if (existente)
             {
                 BeginTransaction();
-                var tipoCurso = _certificadoService.ObterPorId(id);
-                tipoCurso.Delete = true;
-                _certificadoService.Atualizar(tipoCurso);
+                var certificado = _certificadoService.ObterPorId(id);
+                certificado.Delete = true;
+                _certificadoService.Atualizar(certificado);
                 Commit();
                 return true;
             }

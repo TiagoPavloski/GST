@@ -23,5 +23,19 @@ namespace BI.GST.Infra.Data.Repository
                        .Take(10);
         }
 
+        public void Adicionar(Certificado obj, int tipoCurso, string dataRealizacao)
+        {
+            CursoRepository c = new CursoRepository();
+
+            var curso = c.ObterCursoCertificado(obj.FuncionarioId, dataRealizacao, tipoCurso);
+            obj.Curso = curso;
+
+
+
+            base.Adicionar(obj);
+
+            base.SaveChanges();
+        }
+
     }
 }
