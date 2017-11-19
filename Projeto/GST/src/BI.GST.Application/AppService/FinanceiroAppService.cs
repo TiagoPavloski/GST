@@ -106,14 +106,14 @@ namespace BI.GST.Application.AppService
             return Mapper.Map<List<Financeiro>, List<FinanceiroViewModel>>(_financeiroService.ObterContasPorOperacao(operacao));
         }
 
-        public IEnumerable<FinanceiroViewModel> ObterGrid(int page, string pesquisa)
+        public IEnumerable<FinanceiroViewModel> ObterGrid(int page, string pesquisa, int usuarioId)
         {
-            return Mapper.Map<IEnumerable<Financeiro>, IEnumerable<FinanceiroViewModel>>(_financeiroService.ObterGrid(page, pesquisa));
+            return Mapper.Map<IEnumerable<Financeiro>, IEnumerable<FinanceiroViewModel>>(_financeiroService.ObterGrid(page, pesquisa, usuarioId));
         }
 
-        public int ObterTotalRegistros(string pesquisa)
+        public int ObterTotalRegistros(string pesquisa, int usuarioId)
         {
-            return _financeiroService.ObterTotalRegistros(pesquisa);
+            return _financeiroService.ObterTotalRegistros(pesquisa, usuarioId);
         }
 
         public string ValidarParcelas(ref Financeiro financeiro, ref List<FinanceiroParcelaViewModel> parcelaViewModel)

@@ -23,8 +23,8 @@ namespace BI.GST.Domain.Interface.IService
 
 		void Excluir(int id);
 
-		IEnumerable<Empresa> ObterGrid(int page, string pesquisa);
+		IEnumerable<Empresa> ObterGrid(int page, string pesquisa, int usuarioId);
 
-		int ObterTotalRegistros(string pesquisa);
+		int ObterTotalRegistros(string pesquisa, int usuarioId);
 	}
 }

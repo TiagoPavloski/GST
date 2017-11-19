@@ -57,14 +57,14 @@ namespace BI.GST.Domain.Services
 			_empresaRepository.Excluir(id);
 		}
 
-		public IEnumerable<Empresa> ObterGrid(int page, string pesquisa)
+		public IEnumerable<Empresa> ObterGrid(int page, string pesquisa, int usuarioId)
 		{
-			return _empresaRepository.ObterGrid(page, pesquisa);
+			return _empresaRepository.ObterGrid(page, pesquisa, usuarioId);
 		}
 
-		public int ObterTotalRegistros(string pesquisa)
+		public int ObterTotalRegistros(string pesquisa, int usuarioId)
 		{
-			return _empresaRepository.ObterTotalRegistros(pesquisa);
+			return _empresaRepository.ObterTotalRegistros(pesquisa, usuarioId);
 		}
 	}
 }

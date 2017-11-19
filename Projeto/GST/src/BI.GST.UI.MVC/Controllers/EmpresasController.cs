@@ -20,6 +20,7 @@ namespace BI.GST.UI.MVC.Controllers
 		private readonly ICnaeAppService _cnaeAppService;
 		private readonly ISetorAppService _setorAppService;
 		private readonly IUFAppService _uFAppService;
+		private int usuarioId;
 
 		public EmpresasController(IEmpresaAppService empresaAppService, IEnderecoAppService enderecoAppService, ITelefoneAppService telefoneAppService, ICnaeAppService cnaeAppService, ISetorAppService setorAppService, IUFAppService uFAppService/*, IFuncionarioAppService funcionarioAppService*/)
 		{
@@ -33,13 +34,15 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Empresas
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
+			usuarioId = (int)Session["usuarioId"];
+			var empresaViewModel = _empresaAppService.ObterGrid(page, pesquisa, usuarioId);
 			if (Session["usuario"] == null)
 				return RedirectToAction("Login", "Usuarios");
 			var empresaViewModel = _empresaAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
 			ViewBag.Controller = "Empresas";
-			ViewBag.TotalRegistros = _empresaAppService.ObterTotalRegistros(pesquisa);
+			ViewBag.TotalRegistros = _empresaAppService.ObterTotalRegistros(pesquisa, usuarioId);
 
 			return View(empresaViewModel);
 		}
@@ -89,8 +92,12 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, System.Web.HttpPostedFileBase upload /*, int[] funcionarioId*/)
 		{
+
+			usuarioId = (int)Session["usuarioId"];
+			empresaViewModel.UsuarioId = usuarioId;
 			if (Session["usuario"] == null)
 				return RedirectToAction("Login", "Usuarios");
+
 			if (ModelState.IsValid)
 			{
 				if (upload != null && upload.ContentLength > 0)

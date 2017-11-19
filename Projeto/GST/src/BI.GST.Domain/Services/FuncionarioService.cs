@@ -45,9 +45,9 @@ namespace BI.GST.Domain.Services
             return _funcionarioRepository.Find(predicate);
         }
 
-        public IEnumerable<Funcionario> ObterGrid(string pesquisa, int page)
+        public IEnumerable<Funcionario> ObterGrid(string pesquisa, int page, int usuarioId)
         {
-            return _funcionarioRepository.ObterGrid(pesquisa, page);
+            return _funcionarioRepository.ObterGrid(pesquisa, page, usuarioId);
         }
 
         public Funcionario ObterPorId(int id)
@@ -75,9 +75,9 @@ namespace BI.GST.Domain.Services
             return _funcionarioRepository.ObterTotalAtivos();
         }
 
-        public int ObterTotalRegistros(string pesquisa)
+        public int ObterTotalRegistros(string pesquisa, int usuarioId)
         {
-            return _funcionarioRepository.ObterTotalRegistros(pesquisa);
+            return _funcionarioRepository.ObterTotalRegistros(pesquisa, usuarioId);
         }
 
         public int ObterTotalPorEmpresa(int idEmpresa)

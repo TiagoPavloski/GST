@@ -81,6 +81,10 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Demissão")]
         public string Demissao { get; set; }
 
+        public int UsuarioId { get; set; }
+
+        public virtual UsuarioViewModel Usuario { get; set; }
+
         public bool Delete { get; set; }
 
         public virtual EmpresaViewModel Empresa { get; set; }

@@ -17,6 +17,7 @@ namespace BI.GST.UI.MVC.Controllers
         private readonly ICBOAppService _cboAppService;
         private readonly ISetorAppService _setorAppService;
         private readonly IEscalaAppService _escalaAppService;
+        private int usuarioId;
 
         public FuncionariosController(IFuncionarioAppService funcionarioAppService, IEmpresaAppService empresaAppService,
             ICBOAppService cboAppService, ISetorAppService setorAppService, IEscalaAppService escalaAppService)
@@ -36,11 +37,14 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Funcionarios
         public ActionResult Index(string pesquisa, int page = 0)
         {
-            var funcionarioViewModel = _funcionarioAppService.ObterGrid(pesquisa, page);
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+            usuarioId = (int)Session["usuarioId"];
+            var funcionarioViewModel = _funcionarioAppService.ObterGrid(pesquisa,page, usuarioId);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
             ViewBag.Controller = "Funcionarios";
-            ViewBag.TotalRegistros = _funcionarioAppService.ObterTotalRegistros(pesquisa);
+            ViewBag.TotalRegistros = _funcionarioAppService.ObterTotalRegistros(pesquisa, usuarioId);
 
             #region DDL Status
             List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
@@ -60,6 +64,8 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Funcionarios/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -83,6 +89,8 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Funcionarios/Create
         public ActionResult Create()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
             List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
@@ -105,6 +113,10 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(FuncionarioViewModel funcionarioViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+            usuarioId = (int)Session["usuarioId"];
+            funcionarioViewModel.UsuarioId = usuarioId;
             if (ModelState.IsValid)
             {
                 if (!_funcionarioAppService.Adicionar(funcionarioViewModel))
@@ -133,6 +145,8 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Funcionarios/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -167,6 +181,8 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(FuncionarioViewModel funcionarioViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
             List<SelectListItem> ddlStatus_Funcionario = new List<SelectListItem>();
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
             ddlStatus_Funcionario.Add(new SelectListItem() { Text = "Desativado", Value = "2" });
@@ -190,6 +206,8 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Funcionarios/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

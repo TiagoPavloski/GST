@@ -47,6 +47,10 @@ namespace BI.GST.Application.ViewModels
 
         public string StatusNome { get; set; }
 
+        public int UsuarioId { get; set; }
+
+        public virtual UsuarioViewModel Usuario { get; set; }
+
         [ScaffoldColumn(false)]
         public bool Delete { get; set; }
 
