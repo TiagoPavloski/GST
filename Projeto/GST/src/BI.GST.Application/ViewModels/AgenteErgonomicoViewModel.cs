@@ -13,14 +13,13 @@ namespace BI.GST.Application.ViewModels
 
         public int AgenteErgonomicoId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Prencher campo Nome")]
+        [DisplayName("Nome agente")]
         public string Nome { get; set; }
 
-        [Required]
         [DisplayName("Fonte geradora")]
         public string FonteGeradora { get; set; }
 
-        [Required]
         [DisplayName("Orientação")]
         public string Orientacao { get; set; }
 

@@ -20,6 +20,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: OS
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			var osViewModel = _oSAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -33,6 +35,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: OS/Create
 		public ActionResult Create()
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
 			return View();
 		}
@@ -44,6 +48,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(OSViewModel oSViewModel)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_oSAppService.Adicionar(oSViewModel))
@@ -60,6 +66,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: OS/Edit/5
 		public ActionResult Edit(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,6 +88,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(OSViewModel oS)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_oSAppService.Atualizar(oS))
@@ -96,6 +106,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: OS/Delete/5
 		public ActionResult Delete(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -113,6 +125,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (!_oSAppService.Excluir(id))
 			{
 				TempData["Mensagem"] = "Erro";
@@ -135,6 +149,8 @@ namespace BI.GST.UI.MVC.Controllers
 
 		public ActionResult Gerar(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			var oS = _oSAppService.ObterPorId(id.Value);
 
 			var pdf = new ViewAsPdf

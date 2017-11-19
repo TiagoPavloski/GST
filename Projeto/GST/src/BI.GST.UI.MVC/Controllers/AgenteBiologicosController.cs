@@ -19,6 +19,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteBiologicos
         public ActionResult Index(string pesquisa, int page = 0)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             var agenteBiologicoViewModel = _agenteBiologicoAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -30,6 +33,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteBiologicos/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -45,6 +51,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteBiologicos/Create
         public ActionResult Create()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
             var agenteBiologicoViewModel = new AgenteBiologicoViewModel();
             return View(agenteBiologicoViewModel);
@@ -57,6 +66,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AgenteBiologicoViewModel agenteBiologicoViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_agenteBiologicoAppService.Adicionar(agenteBiologicoViewModel))
@@ -74,6 +86,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteBiologicos/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -94,6 +109,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AgenteBiologicoViewModel agenteBiologicoViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_agenteBiologicoAppService.Atualizar(agenteBiologicoViewModel))
@@ -111,6 +129,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteBiologicos/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -128,6 +149,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (!_agenteBiologicoAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");

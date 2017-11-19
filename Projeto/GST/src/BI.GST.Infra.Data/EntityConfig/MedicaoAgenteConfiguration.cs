@@ -14,15 +14,12 @@ namespace BI.GST.Infra.Data.EntityConfig
            .IsRequired();
 
             Property(c => c.Medicao)
-           .HasMaxLength(200)
-           .IsRequired();
+           .HasMaxLength(200);
 
             Property(c => c.ItemDemonstraAmbientais)
-           .HasMaxLength(150)
-           .IsRequired();
+           .HasMaxLength(150);
 
-            Property(c => c.Delete)
-           .IsRequired();
+            Property(c => c.Delete);
         }
   }
 }

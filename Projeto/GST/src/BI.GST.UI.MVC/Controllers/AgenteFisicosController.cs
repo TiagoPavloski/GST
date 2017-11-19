@@ -27,6 +27,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteFisicos
         public ActionResult Index(string pesquisa, int page = 0)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             var agenteFisicoViewModel = _agenteFisicoAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
             ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -38,6 +41,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteFisicos/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -53,6 +59,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteFisicos/Create
         public ActionResult Create()
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             ViewBag.ClassificacaoEfeitoId = new SelectList(_classificacaoEfeitoAppService.ObterTodos(), "ClassificacaoEfeitoId", "Classificacao");
             var agenteFisicoViewModel = new AgenteFisicoViewModel();
             return View(agenteFisicoViewModel);
@@ -65,6 +74,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(AgenteFisicoViewModel agenteFisicoViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_agenteFisicoAppService.Adicionar(agenteFisicoViewModel))
@@ -82,6 +94,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteFisicos/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -102,6 +117,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(AgenteFisicoViewModel agenteFisicoViewModel)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (ModelState.IsValid)
             {
                 if (!_agenteFisicoAppService.Atualizar(agenteFisicoViewModel))
@@ -119,6 +137,9 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: agenteFisicos/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,6 +157,9 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["usuario"] == null)
+                return RedirectToAction("Login", "Usuarios");
+
             if (!_agenteFisicoAppService.Excluir(id))
             {
                 System.Web.HttpContext.Current.Response.Write("<SCRIPT> alert('Erro')</SCRIPT>");
