@@ -33,8 +33,6 @@ namespace BI.GST.Domain.Entities
 
 		public bool Delete { get; set; }
 
-		public int UsuarioId { get; set; }
-
 
 		[ForeignKey("CnaeId")]
 		public virtual Cnae CnaePrincipal { get; set; }

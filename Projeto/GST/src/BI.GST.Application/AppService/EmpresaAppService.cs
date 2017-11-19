@@ -119,9 +119,9 @@ namespace BI.GST.Application.AppService
 			return false;
 		}
 
-		public IEnumerable<EmpresaViewModel> ObterGrid(int page, string pesquisa, int usuarioId)
+		public IEnumerable<EmpresaViewModel> ObterGrid(int page, string pesquisa)
 		{
-			return Mapper.Map<IEnumerable<Empresa>, IEnumerable<EmpresaViewModel>>(_empresaService.ObterGrid(page, pesquisa, usuarioId));
+			return Mapper.Map<IEnumerable<Empresa>, IEnumerable<EmpresaViewModel>>(_empresaService.ObterGrid(page, pesquisa));
 		}
 
 		public EmpresaViewModel ObterPorId(int id)
@@ -134,9 +134,9 @@ namespace BI.GST.Application.AppService
 			return Mapper.Map<IEnumerable<Empresa>, IEnumerable<EmpresaViewModel>>(_empresaService.ObterTodos());
 		}
 
-		public int ObterTotalRegistros(string pesquisa, int usuarioId)
+		public int ObterTotalRegistros(string pesquisa)
 		{
-			return _empresaService.ObterTotalRegistros(pesquisa, usuarioId);
+			return _empresaService.ObterTotalRegistros(pesquisa);
 		}
 	}
 }

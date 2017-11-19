@@ -11,14 +11,14 @@ namespace BI.GST.Infra.Data.Repository
 {
     public class FuncionarioRepository : BaseRepository<Funcionario>, IFuncionarioRepository
     {
-        public int ObterTotalRegistros(string pesquisa, int usuarioId)
+        public int ObterTotalRegistros(string pesquisa)
         {
-            return DbSet.Count(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false) && (x.UsuarioId == usuarioId));
+            return DbSet.Count(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false));
         }
 
-        public IEnumerable<Funcionario> ObterGrid(string pesquisa, int page, int usuarioId)
+        public IEnumerable<Funcionario> ObterGrid(string pesquisa, int page)
         {
-            return DbSet.Where(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false) && (x.UsuarioId == usuarioId))
+            return DbSet.Where(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false))
                        .OrderBy(u => u.Nome)
                        .Skip((page) * 10)
                        .Take(10);
@@ -58,7 +58,7 @@ namespace BI.GST.Infra.Data.Repository
 
             //        }
             //    }
-
+              
             //}
 
 
@@ -70,14 +70,5 @@ namespace BI.GST.Infra.Data.Repository
 
         }
 
-        public override void Adicionar(Funcionario obj)
-        {
-            var parcelaRepository = new FuncionarioRepository();
-            var usuarioRepository = new UsuarioRepository();
-
-            obj.Usuario = usuarioRepository.ObterPorId(obj.UsuarioId);
-            base.Adicionar(obj);
-
-        }
     }
 }

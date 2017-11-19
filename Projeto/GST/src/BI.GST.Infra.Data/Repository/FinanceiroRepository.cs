@@ -23,17 +23,17 @@ namespace BI.GST.Infra.Data.Repository
             return DbSet.Where((x => (x.Operacao == operacao) && (x.Delete == false))).ToList<Financeiro>();
         }
 
-        public IEnumerable<Financeiro> ObterGrid(int page, string pesquisa, int usuarioId)
+        public IEnumerable<Financeiro> ObterGrid(int page, string pesquisa)
         {
-            return DbSet.Where(x => (pesquisa != null ? x.Titulo.Contains(pesquisa) : x.Titulo != null) && (x.Delete == false) && (x.UsuarioId == usuarioId))
+            return DbSet.Where(x => (pesquisa != null ? x.Titulo.Contains(pesquisa) : x.Titulo != null) && (x.Delete == false))
                .OrderBy(u => u.Titulo)
                .Skip((page) * 10)
                .Take(10);
         }
 
-        public int ObterTotalRegistros(string pesquisa, int usuarioId)
+        public int ObterTotalRegistros(string pesquisa)
         {
-            return DbSet.Count(x => (pesquisa != null ? x.Titulo.Contains(pesquisa) : x.Titulo != null) && (x.Delete == false) && (x.UsuarioId == usuarioId));
+            return DbSet.Count(x => pesquisa != null ? x.Titulo.Contains(pesquisa) : x.Titulo != null && (x.Delete == false));
         }
 
         public override void Atualizar(Financeiro obj)
@@ -60,9 +60,6 @@ namespace BI.GST.Infra.Data.Repository
         public override void Adicionar(Financeiro obj)
         {
             var parcelaRepository = new FinanceiroParcelaRepository();
-            var usuarioRepository = new UsuarioRepository();
-
-            obj.Usuario = usuarioRepository.ObterPorId(obj.UsuarioId);
             base.Adicionar(obj);
 
             foreach (var item in obj.Parcelas)
