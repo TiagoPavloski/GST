@@ -12,17 +12,16 @@ namespace BI.GST.Infra.Data.Repository
 {
 	public class EmpresaRepository : BaseRepository<Empresa>, IEmpresaRepository
 	{
-		public int ObterTotalRegistros(string pesquisa, int usuarioId)
+		public int ObterTotalRegistros(string pesquisa)
 		{
-			return DbSet.Count(x => (pesquisa != null ? x.NomeFantasia.Contains(pesquisa) : x.NomeFantasia != null) && (x.Delete == false) && (x.UsuarioId == usuarioId));
+			return DbSet.Count(x => (pesquisa != null ? x.NomeFantasia.Contains(pesquisa) : x.NomeFantasia != null) && (x.Delete == false));
 		}
 
-		public IEnumerable<Empresa> ObterGrid(int page, string pesquisa, int usuarioId)
+		public IEnumerable<Empresa> ObterGrid(int page, string pesquisa)
 		{
-			//var empresaUtilizadora = new UsuarioRepository().ObterTodos().FirstOrDefault();
-			var usuario = new UsuarioRepository().ObterPorId(usuarioId);
+			var empresaUtilizadora = new UsuarioRepository().ObterTodos().FirstOrDefault();
 
-			return DbSet.Where(x => (pesquisa != null ? x.NomeFantasia.Contains(pesquisa) : x.NomeFantasia != null) && (x.Delete == false) && (x.UsuarioId == usuarioId) && (x.EmpresaId != usuario.EmpresaId))
+			return DbSet.Where(x => (pesquisa != null ? x.NomeFantasia.Contains(pesquisa) : x.NomeFantasia != null) && (x.Delete == false) && (x.EmpresaId != empresaUtilizadora.EmpresaId))
 					   .OrderBy(u => u.NomeFantasia)
 					   .Skip((page) * 10)
 					   .Take(10);

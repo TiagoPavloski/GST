@@ -21,7 +21,7 @@ namespace BI.GST.Domain.Entities
 
         public string Descricao { get; set; }
 
-        public virtual Usuario Usuario { get; set; }
+        public virtual Colaborador Colaborador { get; set; }
 
         public string DataOperacao { get; set; }
 
@@ -32,8 +32,6 @@ namespace BI.GST.Domain.Entities
         public string Status { get; set; }
 
         public bool Delete { get; set; }
-
-        public int UsuarioId { get; set; }
 
         public virtual ICollection<FinanceiroParcela> Parcelas { get; set; }
     }

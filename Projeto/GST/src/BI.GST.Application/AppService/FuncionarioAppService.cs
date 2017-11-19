@@ -78,9 +78,9 @@ namespace BI.GST.Application.AppService
             return false;
         }
 
-        public IEnumerable<FuncionarioViewModel> ObterGrid(string pesquisa, int page, int usuarioId)
+        public IEnumerable<FuncionarioViewModel> ObterGrid(string pesquisa, int page)
         {
-            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterGrid(pesquisa, page, usuarioId));
+            return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterGrid(pesquisa, page));
         }
 
         public FuncionarioViewModel ObterPorId(int id)
@@ -108,15 +108,14 @@ namespace BI.GST.Application.AppService
             return Mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(_funcionarioService.ObterTodosAtivos());
         }
 
-        public int ObterTotalRegistros(string pesquisa, int usuarioId)
+        public int ObterTotalRegistros(string pesquisa)
         {
-            return _funcionarioService.ObterTotalRegistros(pesquisa, usuarioId);
+            return _funcionarioService.ObterTotalRegistros(pesquisa);
         }
 
         public int ObterTotalPorEmpresa(int empresaId)
         {
             return _funcionarioService.ObterTotalPorEmpresa(empresaId);
-            
         }
     }
 }
