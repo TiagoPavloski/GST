@@ -24,13 +24,13 @@ namespace BI.GST.Domain.Interface.IService
 
         void Excluir(int id);
 
-        IEnumerable<Funcionario> ObterGrid(string pesquisa, int page);
+        IEnumerable<Funcionario> ObterGrid(string pesquisa, int page, int usuarioId);
 
         IEnumerable<Funcionario> ObterPorEmpresa(int empresaId);
 
         IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso);
 
-        int ObterTotalRegistros(string pesquisa);
+        int ObterTotalRegistros(string pesquisa, int usuarioId);
 
         int ObterTotalPorEmpresa(int idEmpresa);
     }
