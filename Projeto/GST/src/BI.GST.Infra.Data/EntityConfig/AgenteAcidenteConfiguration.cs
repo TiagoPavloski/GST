@@ -15,39 +15,39 @@ namespace BI.GST.Infra.Data.EntityConfig
            .IsRequired();
 
             Property(c => c.Frequencia)
-            .HasMaxLength(150)
-            .IsRequired();
+            .HasMaxLength(50);
+
 
             Property(c => c.TempoExposicao)
-            .HasMaxLength(100)
-            .IsRequired();
+            .HasMaxLength(50);
+
 
             Property(c => c.Fonte)
-            .HasMaxLength(200)
-            .IsRequired();
+            .HasMaxLength(100);
+
 
             Property(c => c.Efeito)
-           .HasMaxLength(150)
-           .IsRequired();
+           .HasMaxLength(100);
+
 
             Property(c => c.Orientacao)
-           .HasMaxLength(500)
-           .IsRequired();
+           .IsMaxLength(); 
+
 
             Property(c => c.MedidasPropostas)
-           .HasMaxLength(200)
-           .IsRequired();
+           .IsMaxLength();
+
 
             Property(c => c.Tecnica)
-           .HasMaxLength(100)
-           .IsRequired();
+           .HasMaxLength(100);
+
 
             Property(c => c.FundamentacaoLegal)
-           .HasMaxLength(200)
-           .IsRequired();
+           .HasMaxLength(200);
 
-            Property(c => c.Delete)
-           .IsRequired();
+
+            Property(c => c.Delete);
+           
         }
     }
 }
