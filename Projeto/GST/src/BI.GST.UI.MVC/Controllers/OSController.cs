@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
-using Rotativa.MVC;
-using Rotativa.Core.Options;
+using Rotativa;
+using Rotativa.Options;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -157,8 +157,10 @@ namespace BI.GST.UI.MVC.Controllers
 			{
 				ViewName = "Gerar",
 				Model = oS,
-				FileName = "OS.pdf"
-			};
+				FileName = "OS.pdf",
+                PageSize = Size.A4,
+                PageMargins = new Margins { Bottom = 0, Left = 0, Right = 0, Top = 0 },
+            };
 
 			return pdf;
 		}

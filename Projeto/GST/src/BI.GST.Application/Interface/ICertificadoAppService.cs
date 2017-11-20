@@ -13,7 +13,7 @@ namespace BI.GST.Application.Interface
 
         CertificadoViewModel ObterPorId(int id);
 
-        bool Adicionar(CertificadoViewModel certificadoViewModel);
+        bool Adicionar(CertificadoViewModel certificadoViewModel, int[] funcionarios);
 
         bool Atualizar(CertificadoViewModel certificadoViewModel);
 

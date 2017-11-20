@@ -1,12 +1,11 @@
-﻿using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using BI.GST.Domain.Entities;
-using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using System.Collections.Generic;
 using BI.GST.Application.ViewModels;
+using Rotativa;
+using Rotativa.Options;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -30,10 +29,11 @@ namespace BI.GST.UI.MVC.Controllers
             _tipoCursoAppService = tipoCursoAppService;
         }
 
-        public JsonResult Funcionario(int idEmpresa, int idCurso)
+        public JsonResult Funcionario(int idEmpresa, int idCurso, string dataRealizacao)
         {
-            return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso), JsonRequestBehavior.AllowGet);
+            return Json(_funcionarioAppService.ObterFuncionariosEC(idEmpresa, idCurso, dataRealizacao), JsonRequestBehavior.AllowGet);
         }
+
 
         // GET: Certificados
         public ActionResult Index(string pesquisa, int page =0)
@@ -102,12 +102,11 @@ namespace BI.GST.UI.MVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CertificadoViewModel certificadoViewModel)
+        public ActionResult Create(CertificadoViewModel certificadoViewModel, int[] funcionarios)
         {
-            if (ModelState.IsValid)
              if (ModelState.IsValid)
             {
-                if (!_certificadoAppService.Adicionar(certificadoViewModel))
+                if (!_certificadoAppService.Adicionar(certificadoViewModel, funcionarios))
                 {
                         TempData["Mensagem"] = "Atenção, há um certificado com os mesmos dados já cadastrado";
                     }
@@ -120,6 +119,7 @@ namespace BI.GST.UI.MVC.Controllers
             ddlStatusCertificado.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
             TempData["ddlStatusCertificado"] = ddlStatusCertificado;
 
+            ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
             ViewBag.CursoId = new SelectList(_cursoAppService.ObterTodos(), "CursoId", "Data");
             ViewBag.EmpresaId = new SelectList(_empresaAppService.ObterTodos(), "EmpresaId, NomeFantasia");
             ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
@@ -160,6 +160,7 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(CertificadoViewModel certificadoViewModel)
         {
+
             if (ModelState.IsValid)
             {
                 if (!_certificadoAppService.Atualizar(certificadoViewModel))
@@ -175,6 +176,11 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: Certificados/Delete/5
         public ActionResult Delete(int? id)
         {
+            List<SelectListItem> ddlStatusCertificado = new List<SelectListItem>();
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Ativo", Value = "1" });
+            ddlStatusCertificado.Add(new SelectListItem() { Text = "Vencido", Value = "2" });
+            TempData["ddlStatusCertificado"] = ddlStatusCertificado;
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -184,9 +190,9 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
+
             var ddlStatusCertificados = (List<SelectListItem>)TempData["ddlStatusCertificado"];
             certificado.StatusNome = ddlStatusCertificados.Where(e => e.Value.Trim().Equals(certificado.Status.ToString())).First().Text;
-
             return View(certificado);
         }
 
@@ -198,7 +204,7 @@ namespace BI.GST.UI.MVC.Controllers
             if (!_certificadoAppService.Excluir(id))
             {
                 TempData["Mensagem"] = "Erro, atualize a página";
-                return null;
+                return RedirectToAction("Index");
             }
             else
             {
@@ -213,6 +219,25 @@ namespace BI.GST.UI.MVC.Controllers
                 _certificadoAppService.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Gerar(int? id)
+        {
+            var certificado = _certificadoAppService.ObterPorId(id.Value);
+
+
+            var pdf = new ViewAsPdf() {
+
+                ViewName = "Gerar",
+                Model = certificado,
+                FileName = "Certificado.pdf",
+                PageSize = Size.A4,
+                PageOrientation = Orientation.Landscape,
+                PageMargins = new Margins { Bottom = 0, Left = 0, Right = 0, Top = 0 },
+            };
+                
+            
+            return pdf;
         }
     }
 }

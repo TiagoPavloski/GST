@@ -28,7 +28,7 @@ namespace BI.GST.Domain.Interface.IService
 
         IEnumerable<Funcionario> ObterPorEmpresa(int empresaId);
 
-        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso);
+        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso, string dataRealizacao);
 
         int ObterTotalRegistros(string pesquisa);
 

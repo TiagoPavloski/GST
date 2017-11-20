@@ -24,7 +24,7 @@ namespace BI.GST.Application.Interface
 
         IEnumerable<FuncionarioViewModel> ObterPorEmpresa(int empresaId);
 
-        IEnumerable<FuncionarioViewModel> ObterFuncionariosEC(int empresaId, int cursoId);
+        IEnumerable<FuncionarioViewModel> ObterFuncionariosEC(int empresaId, int cursoId, string dataRealizacao);
 
         int ObterTotalPorEmpresa(int empresaId);
     }
