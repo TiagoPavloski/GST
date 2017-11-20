@@ -6,25 +6,28 @@ using System.Web.Mvc;
 
 namespace BI.GST.UI.MVC.Controllers
 {
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            return View();
-        }
+	public class HomeController : Controller
+	{
+		public ActionResult Index()
+		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			return View();
+		}
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
-        }
+		public ActionResult About()
+		{
+			ViewBag.Message = "Your application description page.";
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+			return View();
+		}
 
-            return View();
-        }
-    }
+		public ActionResult Contact()
+		{
+			ViewBag.Message = "Your contact page.";
+
+			return View();
+		}
+	}
 }
