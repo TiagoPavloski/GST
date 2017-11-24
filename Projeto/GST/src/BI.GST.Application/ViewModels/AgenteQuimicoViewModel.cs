@@ -57,7 +57,6 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("EPC")]
         public string EPC { get; set; }
 
-        [MaxLength(150, ErrorMessage = "Máximo de 150")]
         [DisplayName("Caracteristicas")]
         public string Caracteristicas { get; set; }
 
@@ -67,23 +66,18 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Medidas Propostas")]
         public string MedidasPropostas { get; set; }
 
-        [MaxLength(150, ErrorMessage = "Máximo de 150")]
         [DisplayName("Medidas Existentes")]
         public string MedidasExistentes { get; set; }
 
-        [MaxLength(150, ErrorMessage = "Máximo de 150")]
         [DisplayName("Análise Qualitativa")]
         public string AnaliseQualitativa { get; set; }
 
-        [MaxLength(150, ErrorMessage = "Máximo de 150")]
         [DisplayName("Efeitos Potências")]
         public string EfeitosPotenciais { get; set; }
 
-        [MaxLength(100, ErrorMessage = "Máximo de 100")]
         [DisplayName("Técnica Utilizada")]
         public string Tecnica { get; set; }
 
-        [MaxLength(200, ErrorMessage = "Máximo de 200")]
         [DisplayName("Fundamentação Legal")]
         public string FundamentacaoLegal { get; set; }
 
