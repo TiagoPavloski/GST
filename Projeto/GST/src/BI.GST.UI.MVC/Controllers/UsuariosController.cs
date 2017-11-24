@@ -23,6 +23,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Usuarios
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			var UsuarioViewModel = _usuarioAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -35,6 +37,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Usuarios/Details/5
 		public ActionResult Details(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -50,6 +54,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Usuarios/Create
 		public ActionResult Create()
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			return View();
 		}
 
@@ -60,6 +66,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(UsuarioViewModel UsuarioViewModel)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_usuarioAppService.Adicionar(UsuarioViewModel))
@@ -75,6 +83,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Usuarios/Edit/5
 		public ActionResult Edit(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			UsuarioViewModel usuario = null;
 			if (id == null)
 			{
@@ -98,6 +108,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(UsuarioViewModel UsuarioViewModel)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_usuarioAppService.Atualizar(UsuarioViewModel))
@@ -115,6 +127,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Usuarios/Delete/5
 		public ActionResult Delete(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -132,6 +146,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (!_usuarioAppService.Excluir(id))
 			{
 				TempData["Mensagem"] = "Erro";
@@ -160,9 +176,11 @@ namespace BI.GST.UI.MVC.Controllers
 				Session["usuario"] = usuario;
 				Session["usuarioId"] = usuario.UsuarioId;
 				Session["usuarioNome"] = usuario.Nome;
-
-				//Alertas();
-
+				//foreach (var item in usuario.Empresa.Files)
+				//{
+				//	Session["usuarioImg"] = item.FileId;
+				//	break;
+				//}
 				return RedirectToAction("Index", "Home");
 			}
 			else
@@ -175,6 +193,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Usuarios/Edit/5
 		public ActionResult EditEmpresa(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id.HasValue)
 			{
 				Session["actionUsuario"] = id.Value;
@@ -187,50 +207,6 @@ namespace BI.GST.UI.MVC.Controllers
 				return View(usuario);
 			}
 		}
-
-		//public ActionResult Alertas()
-		//{
-		//	string mensagem = null;
-
-		//	var cursos = _cursoAppService.AlertaCursos();
-		//	if (cursos != null)
-		//	{
-		//		string funcionarioCurso = "";
-		//		foreach (var item in cursos)
-		//		{
-		//			funcionarioCurso += item.Funcionario.Nome + ", <br>";
-		//		}
-		//		mensagem += "* Os seguintes funcionarios estão com seus cursos vencidos: " + funcionarioCurso + ".";
-		//	}
-
-		//	var exames = _exameAppService.AlertaExames();
-		//	if (exames != null)
-		//	{
-		//		string funcionariosExame = "";
-		//		foreach (var item in exames)
-		//		{
-		//			funcionariosExame += item.Funcionario.Nome + ", <br>";
-		//		}
-		//		mensagem += "* Os seguintes funcionarios estão com seus exames vencidos: " + funcionariosExame + ".";
-		//	}
-
-		//	var vacinas = _exameAppService.AlertaExames();
-		//	if (vacinas != null)
-		//	{
-		//		string funcionariosVacina = "";
-		//		foreach (var item in vacinas)
-		//		{
-		//			funcionariosVacina += item.Funcionario.Nome + ", <br>";
-		//		}
-		//		mensagem += "* Os seguintes funcionarios estão com suas vacinas vencidas: " + funcionariosVacina + ".";
-		//	}
-		//	if (!string.IsNullOrWhiteSpace(mensagem))
-		//	{
-		//		TempData["Mensagem"] = mensagem;
-		//	}
-
-		//	return View();
-		//}
 
 		protected override void Dispose(bool disposing)
 		{

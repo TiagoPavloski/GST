@@ -29,6 +29,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Vacinas
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			var vacinasViewModel = _vacinaAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -73,6 +75,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Vacinas/Details/5
 		public ActionResult Details(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -90,6 +94,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Vacinas/Create
 		public ActionResult Create()
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
 			ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
 			return View();
@@ -102,6 +108,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(VacinaViewModel vacinaViewModel)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_vacinaAppService.Adicionar(vacinaViewModel))
@@ -119,6 +127,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Vacinas/Edit/5
 		public ActionResult Edit(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -140,7 +150,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(VacinaViewModel vacinaViewModel)
 		{
-
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_vacinaAppService.Atualizar(vacinaViewModel))
@@ -156,6 +167,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Vacinas/Delete/5
 		public ActionResult Delete(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -175,6 +188,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (!_vacinaAppService.Excluir(id))
 			{
 				TempData["Mensagem"] = "Erro ao excluir";

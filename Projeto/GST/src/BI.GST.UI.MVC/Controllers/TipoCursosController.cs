@@ -24,7 +24,9 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: TipoCursos
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
-            var tipoCursoViewModel = _tipoCursoAppService.ObterGrid(page, pesquisa);
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			var tipoCursoViewModel = _tipoCursoAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
 			ViewBag.Controller = "TipoCursos";
@@ -35,7 +37,9 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: TipoCursos/Details/5
 		public ActionResult Details(int? id)
 		{
-            if (id == null)
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
@@ -50,7 +54,9 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: TipoCursos/Create
 		public ActionResult Create()
 		{
-           return View();
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			return View();
 		}
 
 		// POST: TipoCursos/Create
@@ -60,7 +66,9 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(TipoCursoViewModel tipoCursoViewModel)
 		{
-           if (ModelState.IsValid)
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			if (ModelState.IsValid)
 			{
 				if (!_tipoCursoAppService.Adicionar(tipoCursoViewModel))
 				{
@@ -75,7 +83,9 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: TipoCursos/Edit/5
 		public ActionResult Edit(int? id)
 		{
-           if (id == null)
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
@@ -94,7 +104,9 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(TipoCursoViewModel tipoCursoViewModel)
 		{
-            if (ModelState.IsValid)
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			if (ModelState.IsValid)
 			{
 				if (!_tipoCursoAppService.Atualizar(tipoCursoViewModel))
 				{
@@ -109,7 +121,9 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: TipoCursos/Delete/5
 		public ActionResult Delete(int? id)
 		{
-            if (id == null)
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
+			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			}
@@ -126,16 +140,18 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			var response = _tipoCursoAppService.Excluir(id);
-            if(response.Equals(""))
-            {
-                return RedirectToAction("Index");
+			if (response.Equals(""))
+			{
+				return RedirectToAction("Index");
 			}
 			else
 			{
-                TempData["Mensagem"] = response;
-                return RedirectToAction("Index");
-            }
+				TempData["Mensagem"] = response;
+				return RedirectToAction("Index");
+			}
 		}
 
 		protected override void Dispose(bool disposing)

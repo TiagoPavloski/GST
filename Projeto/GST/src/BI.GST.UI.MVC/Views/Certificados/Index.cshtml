@@ -54,6 +54,7 @@
             @Html.DisplayFor(modelItem => item.StatusNome)
         </td>
         <td>
+            @Html.ActionLink("Gerar", "Gerar", new { id = item.CertificadoId })
             @Html.ActionLink("Detalhar", "Details", new { id=item.CertificadoId }) |
             @Html.ActionLink("Deletar", "Delete", new { id=item.CertificadoId })
         </td>

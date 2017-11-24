@@ -1,0 +1,248 @@
+﻿@model BI.GST.Application.ViewModels.CertificadoViewModel
+@{
+    ViewBag.Title = "DownloadCertificate";
+    Layout = "";
+}
+<html>
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>
+        Impressão de certificado
+    </title>
+    <style type="text/css" media="print">
+    </style>
+
+    <style type="text/css" media="all">
+        #top {
+            height: 100%;
+        }
+
+        body {
+            margin: 0px;
+        }
+
+        #position_me {
+            left: 0;
+        }
+
+        .SlideBackGround {
+            height: 100%;
+            width: 100% ;
+            position: fixed;
+            margin: 0px 0px 0px 0px;
+            background-color: white;
+            background-image: url(http://bridgeit.com.br/img/frame.png);
+            background-size: 100%;
+            background-repeat: no-repeat;
+            z-index: 2;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://bridgeit.com.br/img/frame.png',sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='frame.png',sizingMethod='scale')";
+        }
+
+        .Signature {
+            width: 180px;
+            height: 90px;
+            position: absolute;
+            margin-left: -90px;
+            left: 66%;
+            top: 770px;
+            background-image: url(http://dotnet.ondev.com/ft63/content/sections/certificates/upload/krogarnase/signature.png);
+            background-size: 180px 90px;
+            background-repeat: no-repeat;
+            z-index: 11;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://dotnet.ondev.com/ft63/content/sections/certificates/upload/krogarnase/signature.png',sizingMethod='scale');
+            -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='signature.png',sizingMethod='scale')";
+        }
+
+
+        .DateLine {
+            width: 300px;
+            position: absolute;
+            left: 33%;
+            top: 840px;
+            margin-left: -150px;
+            z-index: 11;
+        }
+
+        .ExaminerLine {
+            width: 300px;
+            position: absolute;
+            left: 66%;
+            top: 840px;
+            margin-left: -150px;
+            z-index: 11;
+        }
+
+        .ExaminerText {
+            width: 300px;
+            position: absolute;
+            left: 66%;
+            font-size: 23px;
+            margin-left: -150px;
+            text-align: center;
+            top: 860px;
+            color: #000000;
+            z-index: 11;
+        }
+
+        .DateText {
+            width: 300px;
+            position: absolute;
+            margin-left: -150px;
+            font-size: 23px;
+            text-align: center;
+            left: 33%;
+            top: 860px;
+            z-index: 11;
+            color: #000000;
+        }
+
+        .Curso {
+            height: 200px;
+            width: 800px;
+            position: absolute;
+            left: 50%;
+            top: 400px;
+            margin-left: -400px;
+            font-size: 20px;
+            text-align: center;
+            z-index: 11;
+            color: #000000;
+        }
+
+        .Programatico {
+            height: 250px;
+            width: 1000px;
+            position: absolute;
+            margin-left: -500px;
+            left: 50%;
+            top: 550px;
+            font-size: 18px;
+            text-align: justify;
+            z-index: 11;
+            color: #000000;
+        }
+
+        .Introducao {
+            height: 200px;
+            width: 420px;
+            position: absolute;
+            left: 50%;
+            top: 270px;
+            margin-left: -210px;
+            font-size: 24px;
+            text-align: center;
+            z-index: 11;
+            color: #000000;
+        }
+
+        .Cabecalho {
+            height: 200px;
+            width: 800px;
+            position: absolute;
+            left: 50%;
+            top: 70px;
+            margin-left: -400px;
+            font-size: 66px;
+            z-index: 11;
+            color: #000000;
+            text-align: center;
+        }
+
+        .MiddleLine {
+            width: 720px;
+            position: fixed;
+            margin-left: -360px;
+            left: 50%;
+            top: 345px;
+            z-index: 11;
+            color: #8B7B67;
+        }
+
+        .Nome {
+            font-weight: bold;
+            height: 200px;
+            width: 720px;
+            position: absolute;
+            left: 50%;
+            top: 310px;
+            margin-left: -360px;
+            font-size: 32px;
+            text-align: center;
+            z-index: 11;
+            color: #000000;
+        }
+
+        .CompletionDate {
+            position: absolute;
+            height: 150px;
+            width: 300px;
+            margin-left: -150px;
+            font-size: 25px;
+            left: 33%;
+            top: 810px;
+            z-index: 11;
+            color: #000000;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="SlideBackGround">
+    </div>
+
+    <div class="MiddlePart">
+    </div>
+
+    <div class="Cabecalho">Certificado de Treinamento @Html.DisplayFor(model => model.Curso.TipoCurso.Nome)</div>
+
+    <div class="Introducao">
+        Certificamos que
+    </div>
+    <div class="Curso">
+        Participou do curso de CONDIÇÕES E MEIO AMBIENTE DE TRABALHO NA INDÚSTRIA DA CONSTRUÇÃO – NR 18.28, no dia
+        23 de Agosto de 2017 com carga horária de 06 horas no Empreendimento Queen Victória, situado na Rua Professor Pedro
+        Viriato Parigot de Souza 2795, bairro Campina do Siqueira – Curitiba/PR.
+    </div>
+
+    <div class="Programatico">
+        1. Introdução a NR-18; 2. Apresentação do Canteiro de Obras e sobre as condições e meio ambiente de trabalho; 3. Riscos inerentes a função exercida de acordo com a O.S. de cada função; 4.
+        Equipamento de Proteção Individual – EPI; 5. Proteção contra quedas com diferença de nível; 6. Conceito Legal do Acidente do Trabalho; 7. Riscos de Acidentes; 8. Segurança do Trabalho x Construção
+        Civil; 9. Acidentes de trabalho na construção civil; 10. Tipos de lesões dos acidentados; 11. A NR-18 aplicada no empreendimento específico; Condições de Conforto aos Trabalhadores; Escavações;
+        fundações; Carpintaria; Armação de aço; Estruturas de concreto; Estruturas metálicas; Operações de soldagem e corte a quente; Escadas, Rampas e passarelas; Movimentação e transporte de materiais e
+        pessoas; Andaimes e Plataformas de Trabalho; Cabos de aço e cabos de fibra sintética; Alvenaria, Revestimentos e Acabamentos; Telhados e Coberturas; Instalações elétricas; Máquinas, Equipamentos e
+        Ferramentas diversas; Armazenagem e Estocagem de materiais; Proteção contra incêndio; Sinalização de Segurança; Treinamentos, Ordem e limpeza; Tapumes, CIPA, RTP’s e demais disposições.
+    </div>
+
+    <div class="Seal"></div>
+
+    <div class="Ribbon"></div>
+
+    <hr class="DateLine" />
+
+    <hr class="ExaminerLine" />
+
+    <hr class="MiddleLine" />
+
+    <div class="DateText">Data</div>
+
+    <div class="ExaminerText">Profissional</div>
+
+    <div class="Signature"></div>
+
+    <div id="CompletionDatePanel" class="CompletionDate">
+
+        <span id="CompletionDateLabel">@Html.DisplayFor(model => model.DataEmissao)</span>
+
+    </div>
+
+    <div id="StudentNamePanel" class="Nome">
+
+        <span id="StudentNameLabel">@Html.DisplayFor(model => model.Funcionario.Nome)</span>
+
+    </div>
+
+</body>
+</html>
+

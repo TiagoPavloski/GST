@@ -29,6 +29,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Exames
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			var examesViewModel = _exameAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -73,6 +75,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Exames/Details/5
 		public ActionResult Details(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -90,6 +94,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Exames/Create
 		public ActionResult Create()
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			ViewBag.FuncionarioId = new SelectList(_funcionarioAppService.ObterTodos(), "FuncionarioId", "Nome");
 			ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
 			return View();
@@ -102,6 +108,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(ExameViewModel exameViewModel)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_exameAppService.Adicionar(exameViewModel))
@@ -119,6 +127,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Exames/Edit/5
 		public ActionResult Edit(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -140,6 +150,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(ExameViewModel exameViewModel)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (!_exameAppService.Atualizar(exameViewModel))
@@ -155,6 +167,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Exames/Delete/5
 		public ActionResult Delete(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -174,6 +188,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (!_exameAppService.Excluir(id))
 			{
 				TempData["Mensagem"] = "Erro";
