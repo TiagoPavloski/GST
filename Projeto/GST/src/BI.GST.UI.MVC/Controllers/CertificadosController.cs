@@ -36,7 +36,7 @@ namespace BI.GST.UI.MVC.Controllers
 
 
         // GET: Certificados
-        public ActionResult Index(string pesquisa, int page =0)
+        public ActionResult Index(string pesquisa, int page = 0)
         {
             var certificadosViewModel = _certificadoAppService.ObterGrid(page, pesquisa);
             ViewBag.PaginaAtual = page;
@@ -104,14 +104,29 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CertificadoViewModel certificadoViewModel, int[] funcionarios)
         {
-             if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                if (!_certificadoAppService.Adicionar(certificadoViewModel, funcionarios))
+                var certificado = _certificadoAppService.Adicionar(certificadoViewModel, funcionarios);
+
+                if (certificado == null || certificado.Count <= 0)
                 {
-                        TempData["Mensagem"] = "Atenção, há um certificado com os mesmos dados já cadastrado";
-                    }
+                    TempData["Mensagem"] = "Atenção, há um certificado com os mesmos dados já cadastrado";
+                }
                 else
-                    return RedirectToAction("Index");
+                {
+                    var pdf = new ViewAsPdf()
+                    {
+                        ViewName = "Gerar",
+                        Model = certificado,
+                        FileName = "certificado.pdf",
+                        PageSize = Size.A4,
+                        PageOrientation = Orientation.Landscape,
+                        PageMargins = new Margins { Bottom = 0, Left = 0, Right = 0, Top = 0 },
+                    };
+
+                    return pdf;
+
+                }
             }
 
             List<SelectListItem> ddlStatusCertificado = new List<SelectListItem>();
@@ -224,19 +239,16 @@ namespace BI.GST.UI.MVC.Controllers
         public ActionResult Gerar(int? id)
         {
             var certificado = _certificadoAppService.ObterPorId(id.Value);
-
-
-            var pdf = new ViewAsPdf() {
-
+            var pdf = new ViewAsPdf()
+            {
                 ViewName = "Gerar",
                 Model = certificado,
-                FileName = "Certificado.pdf",
+                FileName = "certificado.pdf",
                 PageSize = Size.A4,
                 PageOrientation = Orientation.Landscape,
                 PageMargins = new Margins { Bottom = 0, Left = 0, Right = 0, Top = 0 },
             };
-                
-            
+
             return pdf;
         }
     }

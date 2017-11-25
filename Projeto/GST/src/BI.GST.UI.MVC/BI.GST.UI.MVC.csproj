@@ -266,7 +266,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\american-express.png" />
+    <Content Include="images\backgroundOs.jpg" />
     <Content Include="images\cropper.jpg" />
+    <Content Include="images\frame.png" />
     <Content Include="images\img.jpg" />
     <Content Include="images\inbox.png" />
     <Content Include="images\logoVerde.png" />

@@ -22,6 +22,14 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Curso")]
         public int TipoCursoId { get; set; }
 
+        [DisplayName("Descrição")]
+        [Required(ErrorMessage = "Preencha o campo descrição")]
+        public string Descricao { get; set; }
+
+        [DisplayName("Programatico")]
+        [Required(ErrorMessage = "Preencha o campo programático")]
+        public string Programatico { get; set; }
+        
         [DisplayName("Data de realização")]
         public string DataRealizacao { get; set; }
 
