@@ -41,6 +41,9 @@
 					<div class="profile clearfix">
 						<div class="profile_pic">
 							<img src="~/images/img.jpg" alt="..." class="img-circle profile_img">
+
+							@*<img src="~/File?id= + @Session["usuarioImg"]" />
+							@Html.DisplayName(Session["usuarioNome"].ToString())*@
 						</div>
 						<div class="profile_info">
 							<span>Bem Vindo,</span>
@@ -151,6 +154,10 @@
 							<li class="">
 								<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<img src="~/images/img.jpg" alt="">
+
+									@*<img src="~/File?id= + @Session["usuarioImg"]" />
+									@Html.DisplayName(Session["usuarioNome"].ToString())*@
+
 									@if (Session["usuarioNome"] != null)
 									{
 										@Html.DisplayName(Session["usuarioNome"].ToString())

@@ -176,9 +176,11 @@ namespace BI.GST.UI.MVC.Controllers
 				Session["usuario"] = usuario;
 				Session["usuarioId"] = usuario.UsuarioId;
 				Session["usuarioNome"] = usuario.Nome;
-
-				//Alertas();
-
+				//foreach (var item in usuario.Empresa.Files)
+				//{
+				//	Session["usuarioImg"] = item.FileId;
+				//	break;
+				//}
 				return RedirectToAction("Index", "Home");
 			}
 			else
