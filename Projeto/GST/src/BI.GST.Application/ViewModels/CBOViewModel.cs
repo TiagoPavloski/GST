@@ -28,7 +28,7 @@ namespace BI.GST.Application.ViewModels
         public string CodigoCBO { get; set; }
 
         [DisplayName("Descrição")]
-        [MaxLength(400, ErrorMessage = "Máximo de 400 caracteres")]
+        [MaxLength(800, ErrorMessage = "Máximo de 800 caracteres")]
         public string Descricao { get; set; }
 
 		public bool Delete { get; set; }

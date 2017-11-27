@@ -25,12 +25,12 @@ namespace BI.GST.Application.ViewModels
 		public string DataRevisao { get; set; }
 
 		[Required(ErrorMessage = "Prencher campo EPI Recomendado")]
-		[MaxLength(500, ErrorMessage = "Máximo de 500")]
+		[MaxLength(800, ErrorMessage = "Máximo de 800")]
 		[DisplayName("EPI Recomendados")]
 		public string EPIRecomendado { get; set; }
 
 		[Required(ErrorMessage = "Prencher campo Recomendações")]
-		[MaxLength(500, ErrorMessage = "Máximo de 500")]
+		[MaxLength(800, ErrorMessage = "Máximo de 800")]
 		[DisplayName("Recomendações")]
 		public string Recomentacoes { get; set; }
 
