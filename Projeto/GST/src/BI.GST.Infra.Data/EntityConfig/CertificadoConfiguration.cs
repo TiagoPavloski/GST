@@ -12,6 +12,14 @@ namespace BI.GST.Infra.Data.EntityConfig
             Property(e => e.DataEmissao)
                 .IsRequired();
 
+            Property(e => e.Descricao)
+                .IsMaxLength()
+                .IsRequired();
+
+            Property(e => e.Programatico)
+                .IsMaxLength()
+                .IsRequired();
+
         }
     }
 }

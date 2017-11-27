@@ -24,6 +24,10 @@ namespace BI.GST.Domain.Entities
 
         public virtual InstituicaoCurso InstituicaoCurso { get; set; }
 
+        public string Descricao { get; set; }
+
+        public string Programatico { get; set; }
+
         public int Status { get; set; }
 
         public bool Delete { get; set; }

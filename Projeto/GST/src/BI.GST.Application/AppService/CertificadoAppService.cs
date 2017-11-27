@@ -12,34 +12,50 @@ namespace BI.GST.Application.AppService
     public class CertificadoAppService : BaseAppService, ICertificadoAppService
     {
         private readonly ICertificadoService _certificadoService;
+        private readonly IFuncionarioService _funcionarioService;
 
-        public CertificadoAppService(ICertificadoService certificadoService)
+        public CertificadoAppService(ICertificadoService certificadoService, IFuncionarioService funcionarioservice)
         {
             _certificadoService = certificadoService;
+            _funcionarioService = funcionarioservice;
         }
-        public bool Adicionar(CertificadoViewModel certificadoViewModel, int[] funcionarios)
+        public List<CertificadoViewModel> Adicionar(CertificadoViewModel certificadoViewModel, int[] funcionarios)
         {
             var certificado = Mapper.Map<CertificadoViewModel, Certificado>(certificadoViewModel);
 
             //Fazer validação de repetido
 
+            List<CertificadoViewModel> certificados = new List<CertificadoViewModel>();
+            CertificadoViewModel certificadovm;
+
             certificado.DataEmissao = DateTime.Now.Year.ToString() + "-"
                 + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString();
-            certificado.InstituicaoCursoId = 1;
+                certificado.InstituicaoCursoId = 1;
 
             BeginTransaction();
             foreach (var f in funcionarios)
             {
-                
                 certificado.FuncionarioId = f;
                 _certificadoService.Adicionar(certificado, certificadoViewModel.TipoCursoId, certificadoViewModel.DataRealizacao);
-                
+                certificadovm = Mapper.Map<Certificado, CertificadoViewModel>(certificado);
+                certificadovm.Funcionario = _funcionarioService.ObterPorId(f);
+                certificados.Add(certificadovm);
             }
             Commit();
 
-            return true;
+            return certificados;
         }
 
+        public string GerarHtml(List<CertificadoViewModel> certificados)
+        {
+            string corpo = "oi";
+            foreach (CertificadoViewModel c in certificados)
+            {
+                //corpo += 
+            }
+
+            return corpo;
+        }
 
         public bool Atualizar(CertificadoViewModel cursoViewModel)
         {
