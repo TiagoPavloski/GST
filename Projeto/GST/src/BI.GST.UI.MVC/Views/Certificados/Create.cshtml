@@ -25,8 +25,16 @@
         <div class="form-group">
             @Html.Label("Curso", "Curso", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-5">
-                @Html.DropDownList("TipoCursoId", null, "-- Selecione --", htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("TipoCursoId", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TipoCursoId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DataRealizacao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.DataRealizacao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataRealizacao, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -39,23 +47,20 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CursoId, "Curso", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-5">
-                @Html.DropDownList("CursoId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CursoId, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-xs-12 col-md-10">
+                @Html.TextAreaFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataEmissao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-2">
-                @Html.EditorFor(model => model.DataEmissao, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.DataEmissao, "", new { @class = "text-danger" })
+            @Html.LabelFor(model => model.Programatico, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-xs-12 col-md-10">
+                @Html.TextAreaFor(model => model.Programatico, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Programatico, "", new { @class = "text-danger" })
             </div>
         </div>
-
-            @Html.HiddenFor(model => model.InstituicaoCursoId, "Instituição")
-            @Html.Hidden("InstituicaoCursoId", null, htmlAttributes: new { @class = "form-control" })
 
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -80,18 +85,25 @@
 @Html.Partial("_Mensagem")
 
 <script>
-    $("#TipoCursoId").change(function () {
+    $("#TipoCursoId, #EmpresaId, #DataRealizacao").change(function () {
+        $("#Funcionarios").empty();
+        $("#Funcionarios").append('<option value="null"> Buscando... </option>');
         var empresa = $("#EmpresaId").val();
         var tipoCurso = $("#TipoCursoId").val();
+        var dataRealizacao = $("#DataRealizacao").val();
         $.ajax({
             url: "/Certificados/Funcionario/",
             contentType: "application/json; charset=utf-8",
-            data: { "idEmpresa": empresa, "idCurso": tipoCurso },
+            data: { "idEmpresa": empresa, "idCurso": tipoCurso, "dataRealizacao": dataRealizacao },
             success: function (data) {
                 $("#Funcionarios").empty();
-                $.each(data, function (index, element) {
-                    $("#Funcionarios").append('<option value="' + element.FuncionarioId + '">' + element.Nome + '</option>');
-                });
+                if (data != 0) {
+                    $.each(data, function (index, element) {
+                        $("#Funcionarios").append('<option value="' + element.FuncionarioId + '">' + element.Nome + '</option>');
+                    });
+                } else {
+                    $("#Funcionarios").append('<option value="null"> Nada encontrado </option>');
+                }
             }
         });
     });

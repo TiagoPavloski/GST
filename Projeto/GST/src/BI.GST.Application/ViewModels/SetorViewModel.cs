@@ -34,7 +34,6 @@ namespace BI.GST.Application.ViewModels
         [ForeignKey("TipoSetorId")]
         public virtual TipoSetorViewModel TipoSetor { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Descrição")]
         [MaxLength(200, ErrorMessage = "Máximo de 200")]
         public string Descricao { get; set; }
 

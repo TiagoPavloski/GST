@@ -1,4 +1,6 @@
-﻿namespace BI.GST.Domain.Entities
+﻿using System.Collections.Generic;
+
+namespace BI.GST.Domain.Entities
 {
 	public class TipoCurso
 	{
@@ -9,5 +11,7 @@
 		public int MesesValidade { get; set; }
 
 		public bool Delete { get; set; }
-	}
+
+        public virtual ICollection<CBO> CBOs { get; set; }
+    }
 }

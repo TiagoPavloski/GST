@@ -19,9 +19,9 @@ namespace BI.GST.Domain.Services
             _certificadoRepository = certificadoRepository;
         }
 
-        public void Adicionar(Certificado certificado)
+        public void Adicionar(Certificado certificado, int tipoCurso, string dataRealizacao)
         {
-            _certificadoRepository.Adicionar(certificado);
+            _certificadoRepository.Adicionar(certificado, tipoCurso, dataRealizacao);
         }
 
         public void Atualizar(Certificado certificado)

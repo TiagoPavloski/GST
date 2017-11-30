@@ -15,7 +15,7 @@ namespace BI.GST.Domain.Interface.IRepository
 
         int ObterTotalPorEmpresa(int idEmpresa);
 
-        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso);
+        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso, string dataRealizacao);
 
     }
 }

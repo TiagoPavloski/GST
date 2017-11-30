@@ -131,12 +131,16 @@
       <HintPath>..\..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RotativaW7.1.5.4\lib\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ReportViewerForMvc, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ReportViewerForMvc.1.1.1\lib\net45\ReportViewerForMvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+      <HintPath>..\..\packages\Rotativa.Core.2.0.2.1\lib\net45\Rotativa.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -296,9 +300,12 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\american-express.png" />
+    <Content Include="images\backgroundOs.jpg" />
     <Content Include="images\cropper.jpg" />
+    <Content Include="images\frame.png" />
     <Content Include="images\img.jpg" />
     <Content Include="images\inbox.png" />
+    <Content Include="images\logoVerde.png" />
     <Content Include="images\mastercard.png" />
     <Content Include="images\media.jpg" />
     <Content Include="images\paypal.png" />
@@ -313,6 +320,14 @@
     <Content Include="js\datepicker\daterangepicker.js" />
     <Content Include="js\mask\maskInput.js" />
     <Content Include="js\moment\moment.min.js" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\libeay32.dll" />
+    <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
+    <Content Include="Rotativa\mingwm10.dll" />
+    <Content Include="Rotativa\README.txt" />
+    <Content Include="Rotativa\ssleay32.dll" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -320,6 +335,13 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\PublishProfiles\BridgeIT - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\BridgeIT - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <Content Include="DataSet\PPRADataSet.xsc">
       <DependentUpon>PPRADataSet.xsd</DependentUpon>
     </Content>
@@ -4808,6 +4830,7 @@
     <Content Include="Views\PPRAs\_AgentePPRA.cshtml" />
     <Content Include="Views\PPRAs\_CronogramaDeAcoes.cshtml" />
     <Content Include="Views\PPRAs\_Anexos.cshtml" />
+    <Content Include="Views\Certificados\Gerar.cshtml" />
     <Content Include="Views\PPRARelatorioNew\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>

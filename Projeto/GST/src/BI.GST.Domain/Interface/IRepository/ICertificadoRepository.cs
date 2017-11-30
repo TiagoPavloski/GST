@@ -12,5 +12,7 @@ namespace BI.GST.Domain.Interface.IRepository
         IEnumerable<Certificado> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
+
+        void Adicionar(Certificado obj, int tipoCurso, string dataRealizacao);
     }
 }

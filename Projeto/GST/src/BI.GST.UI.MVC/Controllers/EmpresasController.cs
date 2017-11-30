@@ -33,6 +33,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Empresas
 		public ActionResult Index(string pesquisa, int page = 0)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			var empresaViewModel = _empresaAppService.ObterGrid(page, pesquisa);
 			ViewBag.PaginaAtual = page;
 			ViewBag.Busca = "&pesquisa=" + pesquisa;
@@ -45,6 +47,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Empresas/Details/5
 		public ActionResult Details(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -67,6 +71,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Empresas/Create
 		public ActionResult Create()
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			ViewBag.UFId = new SelectList(_uFAppService.ObterTodos(), "UFId", "Nome");
 			ViewBag.CnaeIdList = new MultiSelectList(_cnaeAppService.ObterTodos(), "CnaeId", "Descricao");
 			ViewBag.CnaeId = ViewBag.CnaeIdList;
@@ -83,6 +89,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Create(EmpresaViewModel empresaViewModel, List<TelefoneViewModel> telefoneViewModel, int[] setorId, int[] cnaeSecundarioId, System.Web.HttpPostedFileBase upload /*, int[] funcionarioId*/)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (ModelState.IsValid)
 			{
 				if (upload != null && upload.ContentLength > 0)
@@ -118,6 +126,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Empresas/Edit/5
 		public ActionResult Edit(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -145,7 +155,8 @@ namespace BI.GST.UI.MVC.Controllers
 		{
 			//if (ModelState.IsValid) //verificar por que erro converter telefoneViewModel to String
 			//{
-
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (upload != null && upload.ContentLength > 0)
 			{
 				var avatar = new FileViewModel
@@ -184,6 +195,8 @@ namespace BI.GST.UI.MVC.Controllers
 		// GET: Empresas/Delete/5
 		public ActionResult Delete(int? id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (id == null)
 			{
 				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -201,6 +214,8 @@ namespace BI.GST.UI.MVC.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(int id)
 		{
+			if (Session["usuario"] == null)
+				return RedirectToAction("Login", "Usuarios");
 			if (!_empresaAppService.Excluir(id))
 			{
 				TempData["Mensagem"] = "Erro";
