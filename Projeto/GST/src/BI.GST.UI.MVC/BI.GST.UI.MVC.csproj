@@ -4852,6 +4852,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\Report\RelatorioPPRA.rdlc" />
+    <EmbeddedResource Include="Views\Report\SubReportAgentesSetorrdlc.rdlc" />
+    <EmbeddedResource Include="Views\Report\SubReportSetor.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

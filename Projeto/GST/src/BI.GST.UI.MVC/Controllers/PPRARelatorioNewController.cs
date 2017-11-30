@@ -31,6 +31,7 @@ namespace BI.GST.UI.MVC.Controllers
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Setor", (System.Data.DataTable)dataSet.Setor));
             //reportViewer.Width = System.Web.UI.WebControls.Unit.Percentage(100);
             //  reportViewer.Height = System.Web.UI.WebControls.Unit.Percentage(100);
+            // reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Setor", (System.Data.DataTable)dataSet.Setor));
 
             reportViewer.LocalReport.EnableExternalImages = true;
             reportViewer.LocalReport.Refresh();
