@@ -23,7 +23,7 @@ namespace BI.GST.Application.AppService
         public bool Adicionar(MeioPropagacaoViewModel meioPropagacaoViewModel)
         {
             var meioPropagacao = Mapper.Map<MeioPropagacaoViewModel, MeioPropagacao>(meioPropagacaoViewModel);
-            var duplicado = _meioPropagacaoService.Find(e => e.Meio == meioPropagacao.Meio).Any();
+            var duplicado = _meioPropagacaoService.Find(e => e.Nome == meioPropagacao.Nome).Any();
             if (duplicado)
             {
                 return false;
@@ -41,7 +41,7 @@ namespace BI.GST.Application.AppService
         {
             var meioPropagacao = Mapper.Map<MeioPropagacaoViewModel, MeioPropagacao>(meioPropagacaoViewModel);
 
-            var duplicado = _meioPropagacaoService.Find(e => e.Meio == meioPropagacao.Meio && e.MeioPropagacaoId != meioPropagacao.MeioPropagacaoId).Any();
+            var duplicado = _meioPropagacaoService.Find(e => e.Nome == meioPropagacao.Nome && e.MeioPropagacaoId != meioPropagacao.MeioPropagacaoId).Any();
 
             if (duplicado)
             {

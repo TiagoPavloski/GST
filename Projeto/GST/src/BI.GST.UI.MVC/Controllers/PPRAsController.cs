@@ -11,6 +11,7 @@ using BI.GST.Infra.Data.Context;
 using BI.GST.Application.Interface;
 using BI.GST.Application.ViewModels;
 using Rotativa.MVC;
+using Microsoft.Reporting.WebForms;
 
 namespace BI.GST.UI.MVC.Controllers
 {
@@ -59,7 +60,7 @@ namespace BI.GST.UI.MVC.Controllers
             var agentePPRA = new AgentePPRAViewModel();
             //Agente PPRA
             ViewBag.AgenteAmbientalId = new SelectList(_agenteAmbientalAppService.ObterTodos(), "AgenteAmbientalId", "Nome");
-            ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Meio");
+            ViewBag.MeioPropagacaoId = new SelectList(_meioPropagacaoAppService.ObterTodos(), "MeioPropagacaoId", "Nome");
             return PartialView("_AgentePPRA", agentePPRA);
         }
 
@@ -120,11 +121,11 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(PPRAViewModel ppraViewModel, List<AgentePPRAViewModel> agentePPRAViewModel, List<CronogramaDeAcoesViewModel> cronogramaDeAcoesViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                _PPRAAppService.Adicionar(ppraViewModel);
-                return RedirectToAction("Index");
-            }
+           // if (ModelState.IsValid)
+  
+            _PPRAAppService.Adicionar(ppraViewModel,agentePPRAViewModel, cronogramaDeAcoesViewModel);
+            return RedirectToAction("Index");
+
             var usuario = _usuarioAppService.ObterTodos().FirstOrDefault();
             ViewBag.EquipamentoRuidoId = new SelectList(_equipamentoRuidoAppService.ObterTodos(), "EquipamentoRuidoId", "Nome");
 
@@ -239,15 +240,7 @@ namespace BI.GST.UI.MVC.Controllers
 
         public ActionResult Gerar(int? id)
         {
-            var ppra = _PPRAAppService.ObterPorId(id.Value);
-
-            var pdf = new ViewAsPdf
-            {
-                ViewName = "PPRA",
-                Model = ppra
-            };
-
-            return pdf;
+            return RedirectToAction("Index", "PPRARelatorioNew", new { ppraid = id });
         }
     }
 }
