@@ -17,16 +17,28 @@
             CronogramaTableAdapter.Fill(ds.CronogramaDeAcoes, id);
 
             var FuncionarioTableAdapter = new DataSet.PPRADataSetTableAdapters.FuncionarioTableAdapter();
-            FuncionarioTableAdapter.Fill(ds.Funcionario, 8);
+            FuncionarioTableAdapter.Fill(ds.Funcionario, 2);
 
             var EmpresaTableAdapter = new DataSet.PPRADataSetTableAdapters.EmpresaTableAdapter();
-            FuncionarioTableAdapter.Fill(ds.Funcionario, 8);
+            FuncionarioTableAdapter.Fill(ds.Funcionario, 2);
 
             var EscalaTableAdapter = new DataSet.PPRADataSetTableAdapters.EscalaTableAdapter();
-            EscalaTableAdapter.Fill(ds.Escala, 4);
+            EscalaTableAdapter.Fill(ds.Escala, 2);
 
             var SetorTableAdapter = new DataSet.PPRADataSetTableAdapters.SetorTableAdapter();
-            SetorTableAdapter.Fill(ds.Setor, 4);
+            SetorTableAdapter.Fill(ds.Setor, 2);
+
+            //var FisicoTableAdapter = new DataSet.PPRADataSetTableAdapters.FisicoTableAdapter();
+            //FisicoTableAdapter.Fill(ds.Fisico, 2);
+
+            var ErgonomicoTableAdapter = new DataSet.PPRADataSetTableAdapters.ErgonomicoTableAdapter();
+            ErgonomicoTableAdapter.Fill(ds.Ergonomico, 2);
+
+            //var QuimicoTableAdapter = new DataSet.PPRADataSetTableAdapters.QuimicoTableAdapter();
+            //QuimicoTableAdapter.Fill(ds.Quimico, 2);
+
+            var AcidenteTableAdapter = new DataSet.PPRADataSetTableAdapters.AcidenteTableAdapter();
+            AcidenteTableAdapter.Fill(ds.Acidente, 2);
 
             return ds;
         }

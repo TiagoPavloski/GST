@@ -12,10 +12,10 @@ namespace BI.GST.Application.ViewModels
     {
         public int MeioPropagacaoId { get; set; }
 
-        [Required(ErrorMessage = "Prencher campo Meio")]
+        [Required(ErrorMessage = "Prencher campo Nome")]
         [MaxLength(150, ErrorMessage = "Máximo de 150")]
-        [DisplayName("Meio")]
-        public string Meio { get; set; }
+        [DisplayName("Nome")]
+        public string Nome { get; set; }
 
         public bool Delete { get; set; }
     }

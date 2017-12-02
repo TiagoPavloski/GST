@@ -10,7 +10,7 @@ namespace BI.GST.Domain.Entities
   {
     public int MeioPropagacaoId { get; set; }
 
-    public string Meio { get; set; }
+    public string Nome { get; set; }
 
     public bool Delete { get; set; }
   }

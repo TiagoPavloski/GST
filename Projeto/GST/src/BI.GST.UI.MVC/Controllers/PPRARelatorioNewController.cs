@@ -29,6 +29,10 @@ namespace BI.GST.UI.MVC.Controllers
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Empresa", (System.Data.DataTable)dataSet.Empresa));
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Escala", (System.Data.DataTable)dataSet.Escala));
             reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Setor", (System.Data.DataTable)dataSet.Setor));
+            //reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Fisico", (System.Data.DataTable)dataSet.Fisico));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Ergonomico", (System.Data.DataTable)dataSet.Ergonomico));
+            //reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Quimico", (System.Data.DataTable)dataSet.Quimico));
+            reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Acidente", (System.Data.DataTable)dataSet.Acidente));
             //reportViewer.Width = System.Web.UI.WebControls.Unit.Percentage(100);
             //  reportViewer.Height = System.Web.UI.WebControls.Unit.Percentage(100);
             // reportViewer.LocalReport.DataSources.Add(new ReportDataSource("Setor", (System.Data.DataTable)dataSet.Setor));

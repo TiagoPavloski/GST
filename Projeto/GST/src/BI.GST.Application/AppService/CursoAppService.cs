@@ -112,7 +112,7 @@ namespace BI.GST.Application.AppService
 
 		public bool VerificaVencimento(string data, int mesesValidade)
 		{
-			return !(Convert.ToDateTime(data).AddMonths(mesesValidade) > DateTime.Today);
+			return !(Convert.ToDateTime(data).AddMonths(mesesValidade) > DateTime.Today.AddMonths(-2));
 		}
 	}
 }

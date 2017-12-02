@@ -12,9 +12,7 @@
               <DbSource ConnectionRef="ProjetoContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        AgentePPRA.AgentePPRAId, AgentePPRA.AgenteAmbientalId, AgentePPRA.MeioPropagacaoId, AgentePPRA.PPRAId, AgentePPRA.[Delete], AgenteAmbiental.AgenteAmbientalId AS Expr1, AgenteAmbiental.Nome, 
-                         AgenteAmbiental.[Delete] AS Expr2, MeioPropagacao.MeioPropagacaoId AS Expr3, MeioPropagacao.Meio, MeioPropagacao.[Delete] AS Expr4, MeioPropagacao.AgenteFisico_AgenteFisicoId, 
-                         MeioPropagacao.AgenteQuimico_AgenteQuimicoId
+                    <CommandText>SELECT        AgentePPRA.AgentePPRAId, AgentePPRA.AgenteAmbientalId, AgentePPRA.MeioPropagacaoId, AgentePPRA.PPRAId, AgenteAmbiental.Nome, MeioPropagacao.Nome AS NomeMeio
 FROM            AgentePPRA LEFT OUTER JOIN
                          AgenteAmbiental ON AgenteAmbiental.AgenteAmbientalId = AgentePPRA.AgenteAmbientalId LEFT OUTER JOIN
                          MeioPropagacao ON MeioPropagacao.MeioPropagacaoId = AgentePPRA.MeioPropagacaoId
@@ -31,15 +29,8 @@ WHERE        (AgentePPRA.PPRAId = @PpraId)</CommandText>
               <Mapping SourceColumn="AgenteAmbientalId" DataSetColumn="AgenteAmbientalId" />
               <Mapping SourceColumn="MeioPropagacaoId" DataSetColumn="MeioPropagacaoId" />
               <Mapping SourceColumn="PPRAId" DataSetColumn="PPRAId" />
-              <Mapping SourceColumn="Delete" DataSetColumn="Delete" />
-              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
               <Mapping SourceColumn="Nome" DataSetColumn="Nome" />
-              <Mapping SourceColumn="Expr2" DataSetColumn="Expr2" />
-              <Mapping SourceColumn="Expr3" DataSetColumn="Expr3" />
-              <Mapping SourceColumn="Meio" DataSetColumn="Meio" />
-              <Mapping SourceColumn="Expr4" DataSetColumn="Expr4" />
-              <Mapping SourceColumn="AgenteFisico_AgenteFisicoId" DataSetColumn="AgenteFisico_AgenteFisicoId" />
-              <Mapping SourceColumn="AgenteQuimico_AgenteQuimicoId" DataSetColumn="AgenteQuimico_AgenteQuimicoId" />
+              <Mapping SourceColumn="NomeMeio" DataSetColumn="NomeMeio" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -48,20 +39,11 @@ WHERE        (AgentePPRA.PPRAId = @PpraId)</CommandText>
               <DbSource ConnectionRef="ProjetoContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        Funcionario.FuncionarioId, Funcionario.Status, Funcionario.Responsavel, Funcionario.EmpresaId, Funcionario.HoraEntrada, Funcionario.HoraSaida, Funcionario.Admissao, Funcionario.CBOId, Funcionario.SetorId, 
-                         Funcionario.EscalaId, Funcionario.Demissao, Funcionario.[Delete], Funcionario.Nome, Funcionario.CPF, Funcionario.RG, Funcionario.DataNascimento, Funcionario.Email, Funcionario.PIS, Funcionario.CLT, Funcionario.Serie, 
-                         Escala.Nome AS EscalaNome, Escala.HoraAlmoco, CBO.Nome AS NomeCBO, CBO.CodigoCBO, CBO.Descricao, RiscoCBOCBO.RiscoCBO_RiscoCBOId, RiscoCBOCBO.CBO_CBOId, RiscoCBO.RiscoCBOId, 
-                         RiscoCBO.Nome AS NomeRiscoCBO, RiscoCBO.AgenteRiscoCBOId, RiscoCBO.AgenteCausadorCBOId, RiscoCBO.FonteRiscoCBOId, RiscoCBO.Consequencias, RiscoCBO.MedidasPreventivas, 
-                         AgenteCausadorCBO.AgenteCausadorCBOId AS Expr9, AgenteCausadorCBO.Nome AS NomeAgenteCausadorCBO, AgenteRiscoCBO.AgenteRiscoCBOId AS Expr13, AgenteRiscoCBO.Nome AS NomeAgenteRiscoCBO, 
-                         FonteRiscoCBO.FonteRiscoCBOId AS Expr17, FonteRiscoCBO.Nome AS NomeFonteRiscoCBO
-FROM            Funcionario LEFT OUTER JOIN
-                         Escala ON Escala.EscalaId = Funcionario.EscalaId LEFT OUTER JOIN
-                         CBO ON CBO.CBOId = Funcionario.CBOId LEFT OUTER JOIN
-                         RiscoCBOCBO ON RiscoCBOCBO.CBO_CBOId = CBO.CBOId LEFT OUTER JOIN
-                         RiscoCBO ON RiscoCBO.RiscoCBOId = RiscoCBOCBO.RiscoCBO_RiscoCBOId LEFT OUTER JOIN
-                         AgenteCausadorCBO ON AgenteCausadorCBO.AgenteCausadorCBOId = RiscoCBO.AgenteCausadorCBOId LEFT OUTER JOIN
-                         AgenteRiscoCBO ON AgenteRiscoCBO.AgenteRiscoCBOId = RiscoCBO.AgenteRiscoCBOId LEFT OUTER JOIN
-                         FonteRiscoCBO ON FonteRiscoCBO.FonteRiscoCBOId = RiscoCBO.FonteRiscoCBOId
+                    <CommandText>SELECT        CBO.Nome AS NomeCBO, CBO.CodigoCBO, CBO.Descricao, Funcionario.Status, Funcionario.Responsavel, Funcionario.FuncionarioId, Funcionario.EmpresaId, Funcionario.HoraEntrada, Funcionario.HoraSaida, 
+                         Funcionario.Admissao, Funcionario.CBOId, Funcionario.SetorId, Funcionario.EscalaId, Funcionario.Demissao, Funcionario.Nome, Funcionario.CPF, Funcionario.RG, Funcionario.DataNascimento, Funcionario.Email, 
+                         Funcionario.PIS, Funcionario.CLT, Funcionario.Serie
+FROM            Funcionario INNER JOIN
+                         CBO ON Funcionario.CBOId = CBO.CBOId
 WHERE        (Funcionario.EmpresaId = @EmpresaId)</CommandText>
                     <Parameters>
                       <Parameter AllowDbNull="false" AutogeneratedName="EmpresaId" ColumnName="EmpresaId" DataSourceName="Consentra.dbo.Funcionario" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@EmpresaId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="EmpresaId" SourceColumnNullMapping="false" SourceVersion="Current" />
@@ -82,7 +64,6 @@ WHERE        (Funcionario.EmpresaId = @EmpresaId)</CommandText>
               <Mapping SourceColumn="SetorId" DataSetColumn="SetorId" />
               <Mapping SourceColumn="EscalaId" DataSetColumn="EscalaId" />
               <Mapping SourceColumn="Demissao" DataSetColumn="Demissao" />
-              <Mapping SourceColumn="Delete" DataSetColumn="Delete" />
               <Mapping SourceColumn="Nome" DataSetColumn="Nome" />
               <Mapping SourceColumn="CPF" DataSetColumn="CPF" />
               <Mapping SourceColumn="RG" DataSetColumn="RG" />
@@ -91,26 +72,9 @@ WHERE        (Funcionario.EmpresaId = @EmpresaId)</CommandText>
               <Mapping SourceColumn="PIS" DataSetColumn="PIS" />
               <Mapping SourceColumn="CLT" DataSetColumn="CLT" />
               <Mapping SourceColumn="Serie" DataSetColumn="Serie" />
-              <Mapping SourceColumn="HoraAlmoco" DataSetColumn="HoraAlmoco" />
               <Mapping SourceColumn="CodigoCBO" DataSetColumn="CodigoCBO" />
               <Mapping SourceColumn="Descricao" DataSetColumn="Descricao" />
-              <Mapping SourceColumn="RiscoCBO_RiscoCBOId" DataSetColumn="RiscoCBO_RiscoCBOId" />
-              <Mapping SourceColumn="CBO_CBOId" DataSetColumn="CBO_CBOId" />
-              <Mapping SourceColumn="RiscoCBOId" DataSetColumn="RiscoCBOId" />
-              <Mapping SourceColumn="AgenteRiscoCBOId" DataSetColumn="AgenteRiscoCBOId" />
-              <Mapping SourceColumn="AgenteCausadorCBOId" DataSetColumn="AgenteCausadorCBOId" />
-              <Mapping SourceColumn="FonteRiscoCBOId" DataSetColumn="FonteRiscoCBOId" />
-              <Mapping SourceColumn="Consequencias" DataSetColumn="Consequencias" />
-              <Mapping SourceColumn="MedidasPreventivas" DataSetColumn="MedidasPreventivas" />
-              <Mapping SourceColumn="Expr9" DataSetColumn="Expr9" />
-              <Mapping SourceColumn="Expr13" DataSetColumn="Expr13" />
-              <Mapping SourceColumn="Expr17" DataSetColumn="Expr17" />
-              <Mapping SourceColumn="EscalaNome" DataSetColumn="EscalaNome" />
               <Mapping SourceColumn="NomeCBO" DataSetColumn="NomeCBO" />
-              <Mapping SourceColumn="NomeRiscoCBO" DataSetColumn="NomeRiscoCBO" />
-              <Mapping SourceColumn="NomeAgenteCausadorCBO" DataSetColumn="NomeAgenteCausadorCBO" />
-              <Mapping SourceColumn="NomeAgenteRiscoCBO" DataSetColumn="NomeAgenteRiscoCBO" />
-              <Mapping SourceColumn="NomeFonteRiscoCBO" DataSetColumn="NomeFonteRiscoCBO" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -377,21 +341,22 @@ GROUP BY Setor.Nome, Setor.SetorId</CommandText>
             </Mappings>
             <Sources />
           </TableAdapter>
-          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SubReportSetorTableAdapter" GeneratorDataComponentClassName="SubReportSetorTableAdapter" Name="SubReportSetor" UserDataComponentName="SubReportSetorTableAdapter">
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="AcidenteTableAdapter" GeneratorDataComponentClassName="AcidenteTableAdapter" Name="Acidente" UserDataComponentName="AcidenteTableAdapter">
             <MainSource>
               <DbSource ConnectionRef="ProjetoContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        CBO.Nome, COUNT(Funcionario.FuncionarioId) AS NumFuncionario, CBO.Descricao, Setor.Nome AS NomeSetor
+                    <CommandText>SELECT        Funcionario.EmpresaId, AgenteAcidente.Nome AS NomeAgenteAcidente, AgenteAcidente.Frequencia, AgenteAcidente.TempoExposicao, AgenteAcidente.MedidasPropostas, AgenteAcidente.Orientacao, AgenteAcidente.Efeito, 
+                         AgenteAcidente.Fonte, AgenteAcidente.Tecnica, AgenteAcidente.FundamentacaoLegal, Setor.Nome
 FROM            Setor INNER JOIN
-                         Funcionario ON Funcionario.SetorId = Setor.SetorId INNER JOIN
-                         Empresa ON Empresa.EmpresaId = Funcionario.EmpresaId INNER JOIN
-                         CBO ON CBO.CBOId = Funcionario.CBOId
-WHERE        (Empresa.EmpresaId = @EmpresaID) AND (Setor.SetorId = @SetorId)
-GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
+                         Funcionario ON Setor.SetorId = Funcionario.SetorId INNER JOIN
+                         AgenteAcidenteSetor ON Setor.SetorId = AgenteAcidenteSetor.SetorId INNER JOIN
+                         AgenteAcidente ON AgenteAcidenteSetor.AgenteAcidenteId = AgenteAcidente.AgenteAcidenteId
+WHERE        (Funcionario.EmpresaId = @Param1)
+GROUP BY Funcionario.EmpresaId, AgenteAcidente.Nome, AgenteAcidente.Frequencia, AgenteAcidente.TempoExposicao, AgenteAcidente.MedidasPropostas, AgenteAcidente.Orientacao, AgenteAcidente.Efeito, AgenteAcidente.Fonte, 
+                         AgenteAcidente.Tecnica, AgenteAcidente.FundamentacaoLegal, Setor.Nome</CommandText>
                     <Parameters>
-                      <Parameter AllowDbNull="false" AutogeneratedName="EmpresaID" ColumnName="EmpresaId" DataSourceName="Consentra.dbo.Empresa" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@EmpresaID" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="EmpresaId" SourceColumnNullMapping="false" SourceVersion="Current" />
-                      <Parameter AllowDbNull="false" AutogeneratedName="SetorId" ColumnName="SetorId" DataSourceName="Consentra.dbo.Setor" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@SetorId" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="SetorId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="EmpresaId" DataSourceName="Consentra.dbo.Funcionario" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Param1" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="EmpresaId" SourceColumnNullMapping="false" SourceVersion="Current" />
                     </Parameters>
                   </DbCommand>
                 </SelectCommand>
@@ -399,9 +364,43 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
             </MainSource>
             <Mappings>
               <Mapping SourceColumn="Nome" DataSetColumn="Nome" />
-              <Mapping SourceColumn="NumFuncionario" DataSetColumn="NumFuncionario" />
-              <Mapping SourceColumn="Descricao" DataSetColumn="Descricao" />
-              <Mapping SourceColumn="NomeSetor" DataSetColumn="NomeSetor" />
+              <Mapping SourceColumn="EmpresaId" DataSetColumn="EmpresaId" />
+              <Mapping SourceColumn="Frequencia" DataSetColumn="Frequencia" />
+              <Mapping SourceColumn="TempoExposicao" DataSetColumn="TempoExposicao" />
+              <Mapping SourceColumn="Efeito" DataSetColumn="Efeito" />
+              <Mapping SourceColumn="Orientacao" DataSetColumn="Orientacao" />
+              <Mapping SourceColumn="MedidasPropostas" DataSetColumn="MedidasPropostas" />
+              <Mapping SourceColumn="Tecnica" DataSetColumn="Tecnica" />
+              <Mapping SourceColumn="FundamentacaoLegal" DataSetColumn="FundamentacaoLegal" />
+              <Mapping SourceColumn="NomeAgenteAcidente" DataSetColumn="NomeAgenteAcidente" />
+              <Mapping SourceColumn="Fonte" DataSetColumn="Fonte" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ErgonomicoTableAdapter" GeneratorDataComponentClassName="ErgonomicoTableAdapter" Name="Ergonomico" UserDataComponentName="ErgonomicoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ProjetoContext (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        Funcionario.EmpresaId, AgenteErgonomico.Nome, AgenteErgonomico.FonteGeradora, AgenteErgonomico.Orientacao
+FROM            AgenteErgonomico INNER JOIN
+                         AgenteErgonomicoSetor ON AgenteErgonomico.AgenteErgonomicoId = AgenteErgonomicoSetor.AgenteErgonomicoId INNER JOIN
+                         Funcionario ON AgenteErgonomicoSetor.SetorId = Funcionario.SetorId INNER JOIN
+                         Setor ON AgenteErgonomicoSetor.SetorId = Setor.SetorId AND Funcionario.SetorId = Setor.SetorId
+WHERE        (Funcionario.EmpresaId = @Param1)
+GROUP BY Funcionario.EmpresaId, AgenteErgonomico.Nome, AgenteErgonomico.FonteGeradora, AgenteErgonomico.Orientacao</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Param1" ColumnName="EmpresaId" DataSourceName="Consentra.dbo.Funcionario" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Param1" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="EmpresaId" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="EmpresaId" DataSetColumn="EmpresaId" />
+              <Mapping SourceColumn="Nome" DataSetColumn="Nome" />
+              <Mapping SourceColumn="FonteGeradora" DataSetColumn="FonteGeradora" />
+              <Mapping SourceColumn="Orientacao" DataSetColumn="Orientacao" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -420,8 +419,6 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
               <xs:element name="AgenteAmbientalId" msprop:Generator_ColumnVarNameInTable="columnAgenteAmbientalId" msprop:Generator_ColumnPropNameInRow="AgenteAmbientalId" msprop:Generator_ColumnPropNameInTable="AgenteAmbientalIdColumn" msprop:Generator_UserColumnName="AgenteAmbientalId" type="xs:int" />
               <xs:element name="MeioPropagacaoId" msprop:Generator_ColumnVarNameInTable="columnMeioPropagacaoId" msprop:Generator_ColumnPropNameInRow="MeioPropagacaoId" msprop:Generator_ColumnPropNameInTable="MeioPropagacaoIdColumn" msprop:Generator_UserColumnName="MeioPropagacaoId" type="xs:int" />
               <xs:element name="PPRAId" msprop:Generator_ColumnVarNameInTable="columnPPRAId" msprop:Generator_ColumnPropNameInRow="PPRAId" msprop:Generator_ColumnPropNameInTable="PPRAIdColumn" msprop:Generator_UserColumnName="PPRAId" type="xs:int" />
-              <xs:element name="Delete" msprop:Generator_ColumnVarNameInTable="columnDelete" msprop:Generator_ColumnPropNameInRow="Delete" msprop:Generator_ColumnPropNameInTable="DeleteColumn" msprop:Generator_UserColumnName="Delete" type="xs:boolean" />
-              <xs:element name="Expr1" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1" type="xs:int" minOccurs="0" />
               <xs:element name="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_UserColumnName="Nome" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -429,18 +426,13 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Expr2" msprop:Generator_ColumnVarNameInTable="columnExpr2" msprop:Generator_ColumnPropNameInRow="Expr2" msprop:Generator_ColumnPropNameInTable="Expr2Column" msprop:Generator_UserColumnName="Expr2" type="xs:boolean" minOccurs="0" />
-              <xs:element name="Expr3" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr3" msprop:Generator_ColumnPropNameInRow="Expr3" msprop:Generator_ColumnPropNameInTable="Expr3Column" msprop:Generator_UserColumnName="Expr3" type="xs:int" minOccurs="0" />
-              <xs:element name="Meio" msprop:Generator_ColumnVarNameInTable="columnMeio" msprop:Generator_ColumnPropNameInRow="Meio" msprop:Generator_ColumnPropNameInTable="MeioColumn" msprop:Generator_UserColumnName="Meio" minOccurs="0">
+              <xs:element name="NomeMeio" msprop:Generator_ColumnVarNameInTable="columnNomeMeio" msprop:Generator_ColumnPropNameInRow="NomeMeio" msprop:Generator_ColumnPropNameInTable="NomeMeioColumn" msprop:Generator_UserColumnName="NomeMeio" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Expr4" msprop:Generator_ColumnVarNameInTable="columnExpr4" msprop:Generator_ColumnPropNameInRow="Expr4" msprop:Generator_ColumnPropNameInTable="Expr4Column" msprop:Generator_UserColumnName="Expr4" type="xs:boolean" minOccurs="0" />
-              <xs:element name="AgenteFisico_AgenteFisicoId" msprop:Generator_ColumnVarNameInTable="columnAgenteFisico_AgenteFisicoId" msprop:Generator_ColumnPropNameInRow="AgenteFisico_AgenteFisicoId" msprop:Generator_ColumnPropNameInTable="AgenteFisico_AgenteFisicoIdColumn" msprop:Generator_UserColumnName="AgenteFisico_AgenteFisicoId" type="xs:int" minOccurs="0" />
-              <xs:element name="AgenteQuimico_AgenteQuimicoId" msprop:Generator_ColumnVarNameInTable="columnAgenteQuimico_AgenteQuimicoId" msprop:Generator_ColumnPropNameInRow="AgenteQuimico_AgenteQuimicoId" msprop:Generator_ColumnPropNameInTable="AgenteQuimico_AgenteQuimicoIdColumn" msprop:Generator_UserColumnName="AgenteQuimico_AgenteQuimicoId" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -482,7 +474,6 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Delete" msprop:Generator_ColumnVarNameInTable="columnDelete" msprop:Generator_ColumnPropNameInRow="Delete" msprop:Generator_ColumnPropNameInTable="DeleteColumn" msprop:Generator_UserColumnName="Delete" type="xs:boolean" />
               <xs:element name="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_UserColumnName="Nome">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -539,14 +530,7 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="HoraAlmoco" msprop:Generator_ColumnVarNameInTable="columnHoraAlmoco" msprop:Generator_ColumnPropNameInRow="HoraAlmoco" msprop:Generator_ColumnPropNameInTable="HoraAlmocoColumn" msprop:Generator_UserColumnName="HoraAlmoco" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CodigoCBO" msprop:Generator_ColumnVarNameInTable="columnCodigoCBO" msprop:Generator_ColumnPropNameInRow="CodigoCBO" msprop:Generator_ColumnPropNameInTable="CodigoCBOColumn" msprop:Generator_UserColumnName="CodigoCBO" minOccurs="0">
+              <xs:element name="CodigoCBO" msprop:Generator_ColumnVarNameInTable="columnCodigoCBO" msprop:Generator_ColumnPropNameInRow="CodigoCBO" msprop:Generator_ColumnPropNameInTable="CodigoCBOColumn" msprop:Generator_UserColumnName="CodigoCBO">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="20" />
@@ -560,68 +544,10 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="RiscoCBO_RiscoCBOId" msprop:Generator_ColumnVarNameInTable="columnRiscoCBO_RiscoCBOId" msprop:Generator_ColumnPropNameInRow="RiscoCBO_RiscoCBOId" msprop:Generator_ColumnPropNameInTable="RiscoCBO_RiscoCBOIdColumn" msprop:Generator_UserColumnName="RiscoCBO_RiscoCBOId" type="xs:int" minOccurs="0" />
-              <xs:element name="CBO_CBOId" msprop:Generator_ColumnVarNameInTable="columnCBO_CBOId" msprop:Generator_ColumnPropNameInRow="CBO_CBOId" msprop:Generator_ColumnPropNameInTable="CBO_CBOIdColumn" msprop:Generator_UserColumnName="CBO_CBOId" type="xs:int" minOccurs="0" />
-              <xs:element name="RiscoCBOId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnRiscoCBOId" msprop:Generator_ColumnPropNameInRow="RiscoCBOId" msprop:Generator_ColumnPropNameInTable="RiscoCBOIdColumn" msprop:Generator_UserColumnName="RiscoCBOId" type="xs:int" minOccurs="0" />
-              <xs:element name="AgenteRiscoCBOId" msprop:Generator_ColumnVarNameInTable="columnAgenteRiscoCBOId" msprop:Generator_ColumnPropNameInRow="AgenteRiscoCBOId" msprop:Generator_ColumnPropNameInTable="AgenteRiscoCBOIdColumn" msprop:Generator_UserColumnName="AgenteRiscoCBOId" type="xs:int" minOccurs="0" />
-              <xs:element name="AgenteCausadorCBOId" msprop:Generator_ColumnVarNameInTable="columnAgenteCausadorCBOId" msprop:Generator_ColumnPropNameInRow="AgenteCausadorCBOId" msprop:Generator_ColumnPropNameInTable="AgenteCausadorCBOIdColumn" msprop:Generator_UserColumnName="AgenteCausadorCBOId" type="xs:int" minOccurs="0" />
-              <xs:element name="FonteRiscoCBOId" msprop:Generator_ColumnVarNameInTable="columnFonteRiscoCBOId" msprop:Generator_ColumnPropNameInRow="FonteRiscoCBOId" msprop:Generator_ColumnPropNameInTable="FonteRiscoCBOIdColumn" msprop:Generator_UserColumnName="FonteRiscoCBOId" type="xs:int" minOccurs="0" />
-              <xs:element name="Consequencias" msprop:Generator_ColumnVarNameInTable="columnConsequencias" msprop:Generator_ColumnPropNameInRow="Consequencias" msprop:Generator_ColumnPropNameInTable="ConsequenciasColumn" msprop:Generator_UserColumnName="Consequencias" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="500" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="MedidasPreventivas" msprop:Generator_ColumnVarNameInTable="columnMedidasPreventivas" msprop:Generator_ColumnPropNameInRow="MedidasPreventivas" msprop:Generator_ColumnPropNameInTable="MedidasPreventivasColumn" msprop:Generator_UserColumnName="MedidasPreventivas" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="500" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Expr9" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr9" msprop:Generator_ColumnPropNameInRow="Expr9" msprop:Generator_ColumnPropNameInTable="Expr9Column" msprop:Generator_UserColumnName="Expr9" type="xs:int" minOccurs="0" />
-              <xs:element name="Expr13" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr13" msprop:Generator_ColumnPropNameInRow="Expr13" msprop:Generator_ColumnPropNameInTable="Expr13Column" msprop:Generator_UserColumnName="Expr13" type="xs:int" minOccurs="0" />
-              <xs:element name="Expr17" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnExpr17" msprop:Generator_ColumnPropNameInRow="Expr17" msprop:Generator_ColumnPropNameInTable="Expr17Column" msprop:Generator_UserColumnName="Expr17" type="xs:int" minOccurs="0" />
-              <xs:element name="EscalaNome" msprop:Generator_ColumnVarNameInTable="columnEscalaNome" msprop:Generator_ColumnPropNameInRow="EscalaNome" msprop:Generator_ColumnPropNameInTable="EscalaNomeColumn" msprop:Generator_UserColumnName="EscalaNome" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="25" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NomeCBO" msprop:Generator_ColumnVarNameInTable="columnNomeCBO" msprop:Generator_ColumnPropNameInRow="NomeCBO" msprop:Generator_ColumnPropNameInTable="NomeCBOColumn" msprop:Generator_UserColumnName="NomeCBO" minOccurs="0">
+              <xs:element name="NomeCBO" msprop:Generator_ColumnVarNameInTable="columnNomeCBO" msprop:Generator_ColumnPropNameInRow="NomeCBO" msprop:Generator_ColumnPropNameInTable="NomeCBOColumn" msprop:Generator_UserColumnName="NomeCBO">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="70" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NomeRiscoCBO" msprop:Generator_ColumnVarNameInTable="columnNomeRiscoCBO" msprop:Generator_ColumnPropNameInRow="NomeRiscoCBO" msprop:Generator_ColumnPropNameInTable="NomeRiscoCBOColumn" msprop:Generator_UserColumnName="NomeRiscoCBO" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NomeAgenteCausadorCBO" msprop:Generator_ColumnVarNameInTable="columnNomeAgenteCausadorCBO" msprop:Generator_ColumnPropNameInRow="NomeAgenteCausadorCBO" msprop:Generator_ColumnPropNameInTable="NomeAgenteCausadorCBOColumn" msprop:Generator_UserColumnName="NomeAgenteCausadorCBO" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="60" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NomeAgenteRiscoCBO" msprop:Generator_ColumnVarNameInTable="columnNomeAgenteRiscoCBO" msprop:Generator_ColumnPropNameInRow="NomeAgenteRiscoCBO" msprop:Generator_ColumnPropNameInTable="NomeAgenteRiscoCBOColumn" msprop:Generator_UserColumnName="NomeAgenteRiscoCBO" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="45" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NomeFonteRiscoCBO" msprop:Generator_ColumnVarNameInTable="columnNomeFonteRiscoCBO" msprop:Generator_ColumnPropNameInRow="NomeFonteRiscoCBO" msprop:Generator_ColumnPropNameInTable="NomeFonteRiscoCBOColumn" msprop:Generator_UserColumnName="NomeFonteRiscoCBO" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="55" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1134,28 +1060,105 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="SubReportSetor" msprop:Generator_TableClassName="SubReportSetorDataTable" msprop:Generator_TableVarName="tableSubReportSetor" msprop:Generator_TablePropName="SubReportSetor" msprop:Generator_RowDeletingName="SubReportSetorRowDeleting" msprop:Generator_RowChangingName="SubReportSetorRowChanging" msprop:Generator_RowEvHandlerName="SubReportSetorRowChangeEventHandler" msprop:Generator_RowDeletedName="SubReportSetorRowDeleted" msprop:Generator_UserTableName="SubReportSetor" msprop:Generator_RowChangedName="SubReportSetorRowChanged" msprop:Generator_RowEvArgName="SubReportSetorRowChangeEvent" msprop:Generator_RowClassName="SubReportSetorRow">
+        <xs:element name="Acidente" msprop:Generator_TableClassName="AcidenteDataTable" msprop:Generator_TableVarName="tableAcidente" msprop:Generator_TablePropName="Acidente" msprop:Generator_RowDeletingName="AcidenteRowDeleting" msprop:Generator_RowChangingName="AcidenteRowChanging" msprop:Generator_RowEvHandlerName="AcidenteRowChangeEventHandler" msprop:Generator_RowDeletedName="AcidenteRowDeleted" msprop:Generator_UserTableName="Acidente" msprop:Generator_RowChangedName="AcidenteRowChanged" msprop:Generator_RowEvArgName="AcidenteRowChangeEvent" msprop:Generator_RowClassName="AcidenteRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_UserColumnName="Nome">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
-                    <xs:maxLength value="70" />
+                    <xs:maxLength value="150" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="NumFuncionario" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnNumFuncionario" msprop:Generator_ColumnPropNameInRow="NumFuncionario" msprop:Generator_ColumnPropNameInTable="NumFuncionarioColumn" msprop:Generator_UserColumnName="NumFuncionario" type="xs:int" minOccurs="0" />
-              <xs:element name="Descricao" msprop:Generator_ColumnVarNameInTable="columnDescricao" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_UserColumnName="Descricao" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="400" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="NomeSetor" msprop:Generator_ColumnVarNameInTable="columnNomeSetor" msprop:Generator_ColumnPropNameInRow="NomeSetor" msprop:Generator_ColumnPropNameInTable="NomeSetorColumn" msprop:Generator_UserColumnName="NomeSetor">
+              <xs:element name="EmpresaId" msprop:Generator_ColumnVarNameInTable="columnEmpresaId" msprop:Generator_ColumnPropNameInRow="EmpresaId" msprop:Generator_ColumnPropNameInTable="EmpresaIdColumn" msprop:Generator_UserColumnName="EmpresaId" type="xs:int" />
+              <xs:element name="Frequencia" msprop:Generator_ColumnVarNameInTable="columnFrequencia" msprop:Generator_ColumnPropNameInRow="Frequencia" msprop:Generator_ColumnPropNameInTable="FrequenciaColumn" msprop:Generator_UserColumnName="Frequencia" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TempoExposicao" msprop:Generator_ColumnVarNameInTable="columnTempoExposicao" msprop:Generator_ColumnPropNameInRow="TempoExposicao" msprop:Generator_ColumnPropNameInTable="TempoExposicaoColumn" msprop:Generator_UserColumnName="TempoExposicao" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Efeito" msprop:Generator_ColumnVarNameInTable="columnEfeito" msprop:Generator_ColumnPropNameInRow="Efeito" msprop:Generator_ColumnPropNameInTable="EfeitoColumn" msprop:Generator_UserColumnName="Efeito" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Orientacao" msprop:Generator_ColumnVarNameInTable="columnOrientacao" msprop:Generator_ColumnPropNameInRow="Orientacao" msprop:Generator_ColumnPropNameInTable="OrientacaoColumn" msprop:Generator_UserColumnName="Orientacao" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="MedidasPropostas" msprop:Generator_ColumnVarNameInTable="columnMedidasPropostas" msprop:Generator_ColumnPropNameInRow="MedidasPropostas" msprop:Generator_ColumnPropNameInTable="MedidasPropostasColumn" msprop:Generator_UserColumnName="MedidasPropostas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Tecnica" msprop:Generator_ColumnVarNameInTable="columnTecnica" msprop:Generator_ColumnPropNameInRow="Tecnica" msprop:Generator_ColumnPropNameInTable="TecnicaColumn" msprop:Generator_UserColumnName="Tecnica" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FundamentacaoLegal" msprop:Generator_ColumnVarNameInTable="columnFundamentacaoLegal" msprop:Generator_ColumnPropNameInRow="FundamentacaoLegal" msprop:Generator_ColumnPropNameInTable="FundamentacaoLegalColumn" msprop:Generator_UserColumnName="FundamentacaoLegal" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="NomeAgenteAcidente" msprop:Generator_ColumnVarNameInTable="columnNomeAgenteAcidente" msprop:Generator_ColumnPropNameInRow="NomeAgenteAcidente" msprop:Generator_ColumnPropNameInTable="NomeAgenteAcidenteColumn" msprop:Generator_UserColumnName="NomeAgenteAcidente">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fonte" msprop:Generator_ColumnVarNameInTable="columnFonte" msprop:Generator_ColumnPropNameInRow="Fonte" msprop:Generator_ColumnPropNameInTable="FonteColumn" msprop:Generator_UserColumnName="Fonte" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Ergonomico" msprop:Generator_TableClassName="ErgonomicoDataTable" msprop:Generator_TableVarName="tableErgonomico" msprop:Generator_TablePropName="Ergonomico" msprop:Generator_RowDeletingName="ErgonomicoRowDeleting" msprop:Generator_RowChangingName="ErgonomicoRowChanging" msprop:Generator_RowEvHandlerName="ErgonomicoRowChangeEventHandler" msprop:Generator_RowDeletedName="ErgonomicoRowDeleted" msprop:Generator_UserTableName="Ergonomico" msprop:Generator_RowChangedName="ErgonomicoRowChanged" msprop:Generator_RowEvArgName="ErgonomicoRowChangeEvent" msprop:Generator_RowClassName="ErgonomicoRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EmpresaId" msprop:Generator_ColumnVarNameInTable="columnEmpresaId" msprop:Generator_ColumnPropNameInRow="EmpresaId" msprop:Generator_ColumnPropNameInTable="EmpresaIdColumn" msprop:Generator_UserColumnName="EmpresaId" type="xs:int" />
+              <xs:element name="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_UserColumnName="Nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="150" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FonteGeradora" msprop:Generator_ColumnVarNameInTable="columnFonteGeradora" msprop:Generator_ColumnPropNameInRow="FonteGeradora" msprop:Generator_ColumnPropNameInTable="FonteGeradoraColumn" msprop:Generator_UserColumnName="FonteGeradora" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="200" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Orientacao" msprop:Generator_ColumnVarNameInTable="columnOrientacao" msprop:Generator_ColumnPropNameInRow="Orientacao" msprop:Generator_ColumnPropNameInTable="OrientacaoColumn" msprop:Generator_UserColumnName="Orientacao" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8000" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
@@ -1165,6 +1168,14 @@ GROUP BY CBO.Nome, CBO.Descricao, Setor.Nome</CommandText>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:AgentePPRA" />
+      <xs:field xpath="mstns:AgentePPRAId" />
+    </xs:unique>
+    <xs:unique name="Funcionario_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:Funcionario" />
+      <xs:field xpath="mstns:FuncionarioId" />
+    </xs:unique>
+    <xs:unique name="CronogramaDeAcoes_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:CronogramaDeAcoes" />
       <xs:field xpath="mstns:CronogramaDeAcoesId" />
     </xs:unique>

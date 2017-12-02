@@ -9,7 +9,7 @@ namespace BI.GST.Infra.Data.EntityConfig
     {
       HasKey(e => e.MeioPropagacaoId);
 
-            Property(c => c.Meio)
+            Property(c => c.Nome)
            .HasMaxLength(150)
            .IsRequired();
 
