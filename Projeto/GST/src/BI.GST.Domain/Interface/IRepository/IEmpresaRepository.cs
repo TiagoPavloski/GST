@@ -9,8 +9,8 @@ namespace BI.GST.Domain.Interface.IRepository
 {
 	public interface IEmpresaRepository : IBaseRepository<Empresa>
 	{
-		IEnumerable<Empresa> ObterGrid(int page, string pesquisa, int usuarioId);
+		IEnumerable<Empresa> ObterGrid(int page, string pesquisa);
 
-		int ObterTotalRegistros(string pesquisa, int usuarioId);
+		int ObterTotalRegistros(string pesquisa);
 	}
 }

@@ -5,9 +5,9 @@ namespace BI.GST.Domain.Interface.IRepository
 {
     public interface IFuncionarioRepository : IBaseRepository<Funcionario>
     {
-        IEnumerable<Funcionario> ObterGrid(string pesquisa, int page, int usuarioId);
+        IEnumerable<Funcionario> ObterGrid(string pesquisa, int page);
 
-        int ObterTotalRegistros(string pesquisa, int usuarioId);
+        int ObterTotalRegistros(string pesquisa);
 
         IEnumerable<Funcionario> ObterTotalAtivos();
 
@@ -15,7 +15,7 @@ namespace BI.GST.Domain.Interface.IRepository
 
         int ObterTotalPorEmpresa(int idEmpresa);
 
-        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso);
+        IEnumerable<Funcionario> ObterFuncionariosEC(int idEmpresa, int idCurso, string dataRealizacao);
 
     }
 }

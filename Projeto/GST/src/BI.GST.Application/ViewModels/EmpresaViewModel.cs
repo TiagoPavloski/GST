@@ -42,8 +42,6 @@ namespace BI.GST.Application.ViewModels
 
 		public bool Delete { get; set; }
 
-		public int UsuarioId { get; set; }
-
 		[ForeignKey("CnaeId")]
 		public virtual CnaeViewModel CnaePrincipal { get; set; }
 		public virtual EnderecoViewModel Endereco { get; set; }

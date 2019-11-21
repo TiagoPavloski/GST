@@ -12,13 +12,13 @@ namespace BI.GST.Infra.Data.Repository
     {
         public int ObterTotalRegistros(string pesquisa)
         {
-            return DbSet.Count(x => (pesquisa != null ? x.Meio.Contains(pesquisa) : x.Meio != null) && (x.Delete == false));
+            return DbSet.Count(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false));
         }
 
         public IEnumerable<MeioPropagacao> ObterGrid(int page, string pesquisa)
         {
-            return DbSet.Where(x => (pesquisa != null ? x.Meio.Contains(pesquisa) : x.Meio != null) && (x.Delete == false))
-                       .OrderBy(u => u.Meio)
+            return DbSet.Where(x => (pesquisa != null ? x.Nome.Contains(pesquisa) : x.Nome != null) && (x.Delete == false))
+                       .OrderBy(u => u.Nome)
                        .Skip((page) * 10)
                        .Take(10);
         }

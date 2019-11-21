@@ -18,11 +18,11 @@ namespace BI.GST.Infra.Data.EntityConfig
 				 .IsRequired();
 
 			Property(c => c.EPIRecomendado)
-				 .HasMaxLength(500)
+				 .HasMaxLength(800)
 				 .IsRequired();
 
 			Property(c => c.Recomentacoes)
-				 .HasMaxLength(500)
+				 .HasMaxLength(800)
 				 .IsRequired();
 		}
 	}

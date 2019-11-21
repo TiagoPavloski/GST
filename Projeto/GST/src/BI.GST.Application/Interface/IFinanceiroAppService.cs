@@ -16,9 +16,9 @@ namespace BI.GST.Application.Interface
 
         bool Excluir(int id);
 
-        IEnumerable<FinanceiroViewModel> ObterGrid(int page, string pesquisa, int usuarioId);
+        IEnumerable<FinanceiroViewModel> ObterGrid(int page, string pesquisa);
 
-        int ObterTotalRegistros(string pesquisa, int usuarioId);
+        int ObterTotalRegistros(string pesquisa);
 
         List<FinanceiroViewModel> ObterContasPorOperacao(int operacao);
 

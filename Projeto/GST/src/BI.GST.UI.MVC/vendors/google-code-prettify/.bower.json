@@ -2,8 +2,6 @@
   "name": "google-code-prettify",
   "version": "1.0.4",
   "main": [
-    "./bin/prettify.min.css",
-    "./bin/prettify.min.js"
   ],
   "dependencies": {},
   "ignore": [

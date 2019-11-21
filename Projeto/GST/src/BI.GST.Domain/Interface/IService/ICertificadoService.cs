@@ -16,7 +16,7 @@ namespace BI.GST.Domain.Interface.IService
 
         IEnumerable<Certificado> Find(Expression<Func<Certificado, bool>> predicate);
 
-        void Adicionar(Certificado certificado);
+        void Adicionar(Certificado certificado, int tipoCurso, string dataRealizacao);
 
         void Atualizar(Certificado certificado);
 

@@ -57,10 +57,10 @@ namespace BI.GST.UI.MVC.Controllers
         // GET: CBOs/Create
         public ActionResult Create()
         {
-            ViewBag.RiscoCBOId = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
-            ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
-            ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
-            ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
+            ViewBag.RiscoCBOList = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
+            ViewBag.TipoCursoList = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
+            ViewBag.TipoExameList = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
+            ViewBag.TipoVacinaList = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
 
             var cboViewModel = new CBOViewModel();
             return View(cboViewModel);
@@ -73,10 +73,10 @@ namespace BI.GST.UI.MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CBOViewModel cboViewModel, int[] riscoCBOId, int[] tipoCursoId, int[] tipoExameId, int[] tipoVacina)
         {
-            ViewBag.RiscoCBOId = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
-            ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
-            ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
-            ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
+            ViewBag.RiscoCBOList = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
+            ViewBag.TipoCursoList = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
+            ViewBag.TipoExameList = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
+            ViewBag.TipoVacinaList = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
 
             if (ModelState.IsValid)
             {
@@ -104,12 +104,11 @@ namespace BI.GST.UI.MVC.Controllers
             {
                 return HttpNotFound();
             }
-
-
-            ViewBag.RiscoCBOId = new MultiSelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome", cbo.RiscoCBOs.Select(x => x.RiscoCBOId));
-            ViewBag.TipoCursoId = new MultiSelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome", cbo.TipoCursos.Select(x => x.TipoCursoId));
-            ViewBag.TipoExameId = new MultiSelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome", cbo.TipoExames.Select(x => x.TipoExameId));
-            ViewBag.TipoVacinaId = new MultiSelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome", cbo.TipoVacinas.Select(x => x.TipoVacinaId));
+ 
+            ViewBag.RiscoCBOList = new MultiSelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome", cbo.RiscoCBOs.Select(x => x.RiscoCBOId));
+            ViewBag.TipoCursoList = new MultiSelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome", cbo.TipoCursos.Select(x => x.TipoCursoId));
+            ViewBag.TipoExameList = new MultiSelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome", cbo.TipoExames.Select(x => x.TipoExameId));
+            ViewBag.TipoVacinaList = new MultiSelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome", cbo.TipoVacinas.Select(x => x.TipoVacinaId));
 
             return View(cbo);
         }
@@ -123,10 +122,10 @@ namespace BI.GST.UI.MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.RiscoCBOId = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
-                ViewBag.TipoCursoId = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
-                ViewBag.TipoExameId = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
-                ViewBag.TipoVacinaId = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
+                ViewBag.RiscoCBOList = new SelectList(_riscoCBOAppService.ObterTodos(), "RiscoCBOId", "Nome");
+                ViewBag.TipoCursoList = new SelectList(_tipoCursoAppService.ObterTodos(), "TipoCursoId", "Nome");
+                ViewBag.TipoExameList = new SelectList(_tipoExameAppService.ObterTodos(), "TipoExameId", "Nome");
+                ViewBag.TipoVacinaList = new SelectList(_tipoVacinaAppService.ObterTodos(), "TipoVacinaId", "Nome");
 
                 var result = _cboAppService.Atualizar(cboViewModel, riscoCBOId, tipoCursoId, tipoExameId, tipoVacina);
                 if (result != "")

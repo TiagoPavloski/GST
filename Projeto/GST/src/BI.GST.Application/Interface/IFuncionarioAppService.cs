@@ -18,13 +18,13 @@ namespace BI.GST.Application.Interface
 
         bool Excluir(int id);
 
-        IEnumerable<FuncionarioViewModel> ObterGrid(string pesquisa, int page, int usuarioId);
+        IEnumerable<FuncionarioViewModel> ObterGrid(string pesquisa, int page);
 
-        int ObterTotalRegistros(string pesquisa, int usuarioId);
+        int ObterTotalRegistros(string pesquisa);
 
         IEnumerable<FuncionarioViewModel> ObterPorEmpresa(int empresaId);
 
-        IEnumerable<FuncionarioViewModel> ObterFuncionariosEC(int empresaId, int cursoId);
+        IEnumerable<FuncionarioViewModel> ObterFuncionariosEC(int empresaId, int cursoId, string dataRealizacao);
 
         int ObterTotalPorEmpresa(int empresaId);
     }

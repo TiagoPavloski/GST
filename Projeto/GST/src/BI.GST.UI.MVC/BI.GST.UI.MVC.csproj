@@ -91,6 +91,22 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MicrosoftReportViewerWebForms.11.0.0.0\lib\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MicrosoftReportViewerWebForms.11.0.0.0\lib\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\MicrosoftReportViewerWebForms.11.0.0.0\lib\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.SqlServer.Types.11.0.0\lib\net20\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -115,8 +131,16 @@
       <HintPath>..\..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\RotativaW7.1.5.4\lib\Rotativa.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ReportViewerForMvc, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\ReportViewerForMvc.1.1.1\lib\net45\ReportViewerForMvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Rotativa.Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Rotativa.Core.2.0.0\lib\net45\Rotativa.Core.dll</HintPath>
+      <HintPath>..\..\packages\Rotativa.Core.2.0.2.1\lib\net45\Rotativa.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Rotativa.MVC, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -215,7 +239,9 @@
     <Compile Include="Controllers\FuncionarioEmpresasController.cs" />
     <Compile Include="Controllers\InstituicaoCursosController.cs" />
     <Compile Include="Controllers\OSController.cs" />
+    <Compile Include="Controllers\PPRARelatorioNewController.cs" />
     <Compile Include="Controllers\PPRAsController.cs" />
+    <Compile Include="Controllers\RelatorioPPRAController.cs" />
     <Compile Include="Controllers\RiscoFuncionariosController.cs" />
     <Compile Include="Controllers\SESMTEmpresasController.cs" />
     <Compile Include="Controllers\FuncionariosController.cs" />
@@ -235,12 +261,24 @@
     <Compile Include="Controllers\TipoExamesController.cs" />
     <Compile Include="Controllers\TipoVacinasController.cs" />
     <Compile Include="Controllers\VacinasController.cs" />
+    <Compile Include="DataSet\PPRADataSet.cs">
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\PPRADataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Consentra.mdf" />
+    <Content Include="App_Data\Consentra_log.ldf">
+      <DependentUpon>Consentra.mdf</DependentUpon>
+    </Content>
     <Content Include="build\css\custom.css" />
     <Content Include="build\css\custom.min.css" />
     <Content Include="build\images\back_disabled.png" />
@@ -262,7 +300,9 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="images\american-express.png" />
+    <Content Include="images\backgroundOs.jpg" />
     <Content Include="images\cropper.jpg" />
+    <Content Include="images\frame.png" />
     <Content Include="images\img.jpg" />
     <Content Include="images\inbox.png" />
     <Content Include="images\logoVerde.png" />
@@ -280,6 +320,14 @@
     <Content Include="js\datepicker\daterangepicker.js" />
     <Content Include="js\mask\maskInput.js" />
     <Content Include="js\moment\moment.min.js" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\libeay32.dll" />
+    <Content Include="Rotativa\libgcc_s_dw2-1.dll" />
+    <Content Include="Rotativa\mingwm10.dll" />
+    <Content Include="Rotativa\README.txt" />
+    <Content Include="Rotativa\ssleay32.dll" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
     <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -287,6 +335,24 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="App_Browsers\qt.browser" />
+    <None Include="Properties\PublishProfiles\BridgeIT - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\BridgeIT - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %283%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %284%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings %285%29.pubxml" />
+    <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <Content Include="DataSet\PPRADataSet.xsc">
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="DataSet\PPRADataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PPRADataSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DataSet\PPRADataSet.xss">
+      <DependentUpon>PPRADataSet.xsd</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -4764,9 +4830,11 @@
     <Content Include="Views\PPRAs\_AgentePPRA.cshtml" />
     <Content Include="Views\PPRAs\_CronogramaDeAcoes.cshtml" />
     <Content Include="Views\PPRAs\_Anexos.cshtml" />
+    <Content Include="Views\Certificados\Gerar.cshtml" />
+    <Content Include="Views\PPRARelatorioNew\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Views\RelatorioPPRAs\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -4804,6 +4872,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="vendors\devbridge-autocomplete\src\jquery.autocomplete.d.ts" />
     <TypeScriptCompile Include="vendors\moment\moment.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\Report\RelatorioPPRA.rdlc" />
+    <EmbeddedResource Include="Views\Report\SubReportAgentesSetorrdlc.rdlc" />
+    <EmbeddedResource Include="Views\Report\SubReportSetor.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

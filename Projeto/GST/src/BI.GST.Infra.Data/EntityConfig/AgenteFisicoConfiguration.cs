@@ -38,7 +38,7 @@ namespace BI.GST.Infra.Data.EntityConfig
            .HasMaxLength(150);
 
             Property(c => c.Caracteristicas)
-           .HasMaxLength(150);
+           .IsMaxLength();
 
             Property(c => c.Orientacao)
            .IsMaxLength();
@@ -47,16 +47,16 @@ namespace BI.GST.Infra.Data.EntityConfig
            .IsMaxLength();
 
             Property(c => c.MedidasExistentes)
-           .HasMaxLength(150);
+           .IsMaxLength();
 
             Property(c => c.AnaliseQualitativa)
-           .HasMaxLength(150);
+           .IsMaxLength();
 
             Property(c => c.EfeitosPotenciais)
-           .HasMaxLength(150);
+           .IsMaxLength();
 
             Property(c => c.FundamentacaoLegal)
-           .HasMaxLength(200);
+           .IsMaxLength();
 
             Property(c => c.Observacao)
            .IsMaxLength();

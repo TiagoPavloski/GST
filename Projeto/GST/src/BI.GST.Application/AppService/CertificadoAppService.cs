@@ -12,21 +12,50 @@ namespace BI.GST.Application.AppService
     public class CertificadoAppService : BaseAppService, ICertificadoAppService
     {
         private readonly ICertificadoService _certificadoService;
+        private readonly IFuncionarioService _funcionarioService;
 
-        public CertificadoAppService(ICertificadoService certificadoService)
+        public CertificadoAppService(ICertificadoService certificadoService, IFuncionarioService funcionarioservice)
         {
             _certificadoService = certificadoService;
+            _funcionarioService = funcionarioservice;
         }
-        public bool Adicionar(CertificadoViewModel certificadoViewModel)
+        public List<CertificadoViewModel> Adicionar(CertificadoViewModel certificadoViewModel, int[] funcionarios)
         {
             var certificado = Mapper.Map<CertificadoViewModel, Certificado>(certificadoViewModel);
 
+            //Fazer validação de repetido
+
+            List<CertificadoViewModel> certificados = new List<CertificadoViewModel>();
+            CertificadoViewModel certificadovm;
+
+            certificado.DataEmissao = DateTime.Now.Year.ToString() + "-"
+                + DateTime.Now.Month.ToString() + "-" + DateTime.Now.Day.ToString();
+                certificado.InstituicaoCursoId = 1;
+
             BeginTransaction();
-            _certificadoService.Adicionar(certificado);
+            foreach (var f in funcionarios)
+            {
+                certificado.FuncionarioId = f;
+                _certificadoService.Adicionar(certificado, certificadoViewModel.TipoCursoId, certificadoViewModel.DataRealizacao);
+                certificadovm = Mapper.Map<Certificado, CertificadoViewModel>(certificado);
+                certificadovm.Funcionario = _funcionarioService.ObterPorId(f);
+                certificados.Add(certificadovm);
+            }
             Commit();
-            return true;
+
+            return certificados;
         }
 
+        public string GerarHtml(List<CertificadoViewModel> certificados)
+        {
+            string corpo = "oi";
+            foreach (CertificadoViewModel c in certificados)
+            {
+                //corpo += 
+            }
+
+            return corpo;
+        }
 
         public bool Atualizar(CertificadoViewModel cursoViewModel)
         {
@@ -47,13 +76,13 @@ namespace BI.GST.Application.AppService
 
         public bool Excluir(int id)
         {
-            bool existente = _certificadoService.Find(e => e.CursoId == id).Any();
+            bool existente = _certificadoService.Find(e => e.CertificadoId == id).Any();
             if (existente)
             {
                 BeginTransaction();
-                var tipoCurso = _certificadoService.ObterPorId(id);
-                tipoCurso.Delete = true;
-                _certificadoService.Atualizar(tipoCurso);
+                var certificado = _certificadoService.ObterPorId(id);
+                certificado.Delete = true;
+                _certificadoService.Atualizar(certificado);
                 Commit();
                 return true;
             }

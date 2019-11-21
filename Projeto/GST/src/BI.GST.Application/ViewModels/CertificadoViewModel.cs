@@ -22,8 +22,18 @@ namespace BI.GST.Application.ViewModels
         [DisplayName("Curso")]
         public int TipoCursoId { get; set; }
 
-        [DisplayName("Data de emissão")]
-        [Required(ErrorMessage = "Prencher a data de Emissão")]
+        [DisplayName("Descrição")]
+        [Required(ErrorMessage = "Preencha o campo descrição")]
+        public string Descricao { get; set; }
+
+        [DisplayName("Programatico")]
+        [Required(ErrorMessage = "Preencha o campo programático")]
+        public string Programatico { get; set; }
+        
+        [DisplayName("Data de realização")]
+        public string DataRealizacao { get; set; }
+
+        [DisplayName("Data de emissão")]    
         [MaxLength(10, ErrorMessage = "Máximo de 10 caracteres")]
         public string DataEmissao { get; set; }
 

@@ -32,5 +32,10 @@ namespace BI.GST.Infra.Data.Repository
 
 		}
 
+        public Curso ObterCursoCertificado(int funcionarioId, string data, int tipoCurso)
+        {
+            return DbSet.Where(x => x.FuncionarioId == funcionarioId && x.TipoCurso.TipoCursoId == tipoCurso && x.Data.Equals(data)).FirstOrDefault();
+        }
+
 	}
 }

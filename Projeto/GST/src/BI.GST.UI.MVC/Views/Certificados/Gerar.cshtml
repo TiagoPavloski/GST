@@ -1,0 +1,196 @@
+﻿@model IEnumerable<BI.GST.Application.ViewModels.CertificadoViewModel>
+@{
+    ViewBag.Title = "DownloadCertificate";
+    Layout = "";
+}
+
+    <html>
+    <head id="Head1">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>
+            Impressão de certificado
+        </title>
+        <style type="text/css" media="print">
+        </style>
+
+
+    </head>
+
+    <body class="SlideBackGround">
+
+@foreach (var item in Model)
+{
+        <style type="text/css" media="all">
+
+            #top {
+                height: 100%;
+            }
+
+            table, th, td {
+                border-collapse: collapse;
+            }
+
+            body {
+                margin: 0px;
+                font-family: Arial;
+            }
+
+            #position_me {
+                left: 0;
+            }
+
+            .SlideBackGround {
+
+                margin: 0px 0px 0px 0px;
+                background-color: white;
+                background-image: url(http://bridgeit.com.br/img/frame.png);
+                background-size: 100%;
+                z-index: 0;
+                filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://bridgeit.com.br/img/frame.png',sizingMethod='scale');
+                -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='frame.png',sizingMethod='scale')";
+            }
+
+            .titulo {
+                text-align: center;
+                height: 190px;
+                font-size: 50px;
+            }
+
+            .intruducao {
+                text-align: center;
+                height: 40px;
+                font-size: 26px;
+            }
+
+            .nome {
+                text-align: center;
+                font-size: 32px;
+            }
+
+            .espacoNome {
+                width: 120px;
+            }
+
+            .espacoPrgramatico {
+                width: 180px;
+            }
+
+            .participou {
+                text-align: center;
+                font-size: 18px;
+            }
+
+            .programatico {
+                text-align: justify;
+                font-size: 16px;
+                padding-left: 60px;
+                padding-right: 60px;
+            }
+
+            .funcionario {
+                height: 30px;
+                font-size: 24px;
+                text-align: center;
+            }
+            .espacoTitulo{
+                height: 45px;
+            }
+
+            .espacoHnome{
+                height: 20px;
+            }
+
+            .espacoHprogramatico{
+                height: 40px;
+            }
+
+            .espacoData{
+                height: 90px;
+            }
+
+            .espacoAssinatura{
+                padding-top: 30px;
+                font-size: 14px;
+                text-align: right;
+                padding-right: 90px;
+            }
+
+        </style>
+
+        <div >
+
+
+            <div id="HTMLtoPDF" class="corpo">
+                <div>
+                    <table style="page-break-before: always;">
+                        <tr>
+                            <th colspan="7" class="espacoTitulo"></th>
+                        </tr>
+                        <tr>
+                            <th colspan="7" class="titulo">Certificado de Treinamento<br />Salva Vidas</th>
+                        </tr>
+                        <tr>
+                            <td colspan="7" class="intruducao">Certificamos que</td>
+                        </tr>
+                        <tr>
+                            <td colspan="7" class="nome"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.DisplayFor(modelItem => item.Funcionario.Nome)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7" class="espacoHnome"></td>
+                        </tr>
+                        <tr>
+                            <td class="espacoNome"></td>
+                            <td class="espacoNome"></td>
+                            <td class="participou" colspan="2">
+                                @Html.DisplayFor(modelItem => item.Descricao)
+                            </td>
+                            <td class="espacoNome"></td>
+                            <td class="espacoNome"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7" class="espacoHprogramatico"></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="4" class="programatico">
+                                @Html.DisplayFor(modelItem => item.Programatico)
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7" class="espacoData"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="7" class="funcionario"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><br/>FUNCIONÁRIO</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" class="espacoData"></td>
+                            <td colspan="4" class="espacoAssinatura"><u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</u><br/>INSTRUTOR<br />
+                                Washington Assis<br />
+                                Técnico em Segurança do Trabalho<br />
+                                Supervisor de trabalho em altura<br />
+                                Drt 0008330/PR</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div></div>
+
+        </div>
+        <div style="page-break-before: always;"></div>
+        }
+    </body>
+
+</html>
+
+
+
+

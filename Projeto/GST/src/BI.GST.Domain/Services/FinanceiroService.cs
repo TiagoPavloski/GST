@@ -52,14 +52,14 @@ namespace BI.GST.Domain.Services
             return _financeiroRepository.ObterContasPorOperacao(operacao);
         }
 
-        public IEnumerable<Financeiro> ObterGrid(int page, string pesquisa, int usuarioId)
+        public IEnumerable<Financeiro> ObterGrid(int page, string pesquisa)
         {
-            return _financeiroRepository.ObterGrid(page, pesquisa, usuarioId);
+            return _financeiroRepository.ObterGrid(page, pesquisa);
         }
 
-        public int ObterTotalRegistros(string pesquisa, int usuarioId)
+        public int ObterTotalRegistros(string pesquisa)
         {
-            return _financeiroRepository.ObterTotalRegistros(pesquisa, usuarioId);
+            return _financeiroRepository.ObterTotalRegistros(pesquisa);
         }
 
         public IEnumerable<Financeiro> Find(Expression<Func<Financeiro, bool>> predicate)

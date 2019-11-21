@@ -10,9 +10,9 @@ namespace BI.GST.Domain.Interface.IRepository
 {
     public interface IFinanceiroRepository : IBaseRepository<Financeiro>
     {
-        IEnumerable<Financeiro> ObterGrid(int page, string pesquisa, int usuarioId);
+        IEnumerable<Financeiro> ObterGrid(int page, string pesquisa);
 
-        int ObterTotalRegistros(string pesquisa, int usuarioId);
+        int ObterTotalRegistros(string pesquisa);
 
         List<Financeiro> ObterContasPorOperacao(int operacao);
 

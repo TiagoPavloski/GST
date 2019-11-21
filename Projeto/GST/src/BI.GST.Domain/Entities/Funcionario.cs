@@ -34,9 +34,6 @@ namespace BI.GST.Domain.Entities
 
         public bool Delete { get; set; }
 
-        public int UsuarioId { get; set; }
-
-        public virtual Usuario Usuario { get; set; }
         public virtual Empresa Empresa { get; set; }
         public virtual CBO CBO { get; set; }
         public virtual Setor Setor { get; set; }

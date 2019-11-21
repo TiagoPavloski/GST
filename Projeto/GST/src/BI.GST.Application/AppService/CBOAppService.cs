@@ -99,7 +99,7 @@ namespace BI.GST.Application.AppService
                     cbo.TipoVacinas.Add(new TipoVacina { TipoVacinaId = item });
             }
 
-            var duplicado = _cboService.Find(e => (e.Nome == cbo.Nome) && (e.Delete == false)).Any();
+            var duplicado = _cboService.Find(e => (e.Nome == cbo.Nome) && (e.CBOId != cbo.CBOId) && (e.Delete == false)).Any();
             if (duplicado)
             {
                 return "Atenção, já existe um CBO com este nome.";

@@ -13,7 +13,7 @@ namespace BI.GST.Application.Interface
 
         CertificadoViewModel ObterPorId(int id);
 
-        bool Adicionar(CertificadoViewModel certificadoViewModel);
+        List<CertificadoViewModel> Adicionar(CertificadoViewModel certificadoViewModel, int[] funcionarios);
 
         bool Atualizar(CertificadoViewModel certificadoViewModel);
 
@@ -22,5 +22,7 @@ namespace BI.GST.Application.Interface
         IEnumerable<CertificadoViewModel> ObterGrid(int page, string pesquisa);
 
         int ObterTotalRegistros(string pesquisa);
+
+        string GerarHtml(List<CertificadoViewModel> certificados);
     }
 }

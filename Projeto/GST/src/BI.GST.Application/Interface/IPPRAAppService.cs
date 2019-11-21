@@ -13,7 +13,7 @@ namespace BI.GST.Application.Interface
 
         PPRAViewModel ObterPorId(int id);
 
-        bool Adicionar(PPRAViewModel pPRAViewModel);
+        bool Adicionar(PPRAViewModel pPRAViewModel, List<AgentePPRAViewModel> agentePPRAViewModel, List<CronogramaDeAcoesViewModel> cronogramaDeAcoesViewModel);
 
         bool Atualizar(PPRAViewModel pPRAViewModel);
 
